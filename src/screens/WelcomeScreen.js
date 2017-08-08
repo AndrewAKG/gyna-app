@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Image, Dimensions } from 'react-native';
+import { Button } from 'react-native-elements';
+import BackgroundImage from '../components/BackgroundImage';
+
+const { height, width } = Dimensions.get('window');
 
 class WelcomeScreen extends Component {
   static navigationOptions = {
@@ -8,19 +12,51 @@ class WelcomeScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
+    const { buttonStyle, viewStyle } = styles;
 
     return (
-      <View>
-        <Text>
-          Welcome Screen
-        </Text>
-        <Button
-          onPress={() => navigate('login')}
-          title = "Next"
-        />
-      </View>
+      <BackgroundImage>
+        <View style={{ flex: 1 }}>
+          <View style={viewStyle}>
+            <Image
+              style={{ width: 0.35 * width, height: 0.25 * height,paddingTop:10 }}
+              source={require('../../assets/icons/4.png')}
+              
+            />
+          </View>
+          <View style={viewStyle}>
+            <Image
+              style={{ width:  width, height: 0.30 * height }}
+              source={require('../../assets/icons/2.png')}
+            />
+          </View>
+          <View style={viewStyle}>
+            <Button
+              onPress={() => navigate('login')}
+              title="Next"
+              buttonStyle={buttonStyle}
+              color='white'
+              fontWeight='bold'
+            />
+          </View>
+        </View>
+      </BackgroundImage >
     );
   }
 }
+
+const styles = {
+  buttonStyle: {
+    borderRadius: 25,
+    backgroundColor: '#4891DE',
+    width: 0.7 * width,
+    height: 0.05 * height
+  },
+  viewStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+};
 
 export default WelcomeScreen;
