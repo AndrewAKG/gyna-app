@@ -16,3 +16,5 @@ class LifeScreen extends Component {
     );
   }
 }
+
+export default LifeScreen;

@@ -16,3 +16,5 @@ class HomeScreen extends Component {
     );
   }
 }
+
+export default HomeScreen;

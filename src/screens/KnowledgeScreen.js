@@ -16,3 +16,5 @@ class KnowledgeScreen extends Component {
     );
   }
 }
+
+export default KnowledgeScreen;

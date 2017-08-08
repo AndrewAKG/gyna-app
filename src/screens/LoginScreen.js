@@ -16,15 +16,15 @@ class LoginScreen extends Component {
         </Text>
         <Button
           onPress={() => navigate('mainScreen')}
-        >
-          to tab screen
-        </Button>
+          title="to tab Screen"
+        />
         <Button
           onPress={() => navigate('signUp')}
-        >
-          go to sign up
-        </Button>
+          title="sign up"
+        />
       </View>
     );
   }
 }
+
+export default LoginScreen;

@@ -16,3 +16,5 @@ class NotificationsScreen extends Component {
     );
   }
 }
+
+export default NotificationsScreen;

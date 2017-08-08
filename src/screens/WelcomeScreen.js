@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 class WelcomeScreen extends Component {
   static navigationOptions = {
@@ -7,12 +7,20 @@ class WelcomeScreen extends Component {
   };
 
   render() {
+    const { navigate } = this.props.navigation;
+
     return (
       <View>
         <Text>
           Welcome Screen
         </Text>
+        <Button
+          onPress={() => navigate('login')}
+          title = "Next"
+        />
       </View>
     );
   }
 }
+
+export default WelcomeScreen;
