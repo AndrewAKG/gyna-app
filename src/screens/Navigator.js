@@ -30,13 +30,19 @@ class Navigator extends Component {
           more: { screen: MoreScreen }
         }, {
             tabBarPosition: 'bottom',
+            animationEnabled: true,
+            swipeEnabled: true,
             tabBarOptions: {
               showIcon: true,
               upperCaseLabel: false,
               activeTintColor: '#182A58',
               labelStyle: {
-                fontSize: 13,
-                paddingBottom: 10
+                fontSize: 10,
+                paddingBottom: 5
+              },
+              tabStyle: {
+                flex: 1,
+                alignItems: 'center'
               },
               style: {
                 backgroundColor: 'white',

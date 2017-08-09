@@ -1,20 +1,38 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
+import BackgroundImage from '../components/BackgroundImage';
 
 class NotificationsScreen extends Component {
   static navigationOptions = {
-    tabBarLabel: 'Notifications'
+    tabBarLabel: 'Notification',
+    tabBarIcon: ({ tintColor }) => (
+      // setting the Tab's Icon
+      <Image
+        source={require('../../assets/icons/noti.png')}
+        style={[styles.icon, { tintColor }]}
+      />
+    )
   };
 
   render() {
     return (
-      <View>
-        <Text>
-          Notifications Screen
+      <BackgroundImage>
+        <View>
+          <Text>
+            Notifications Screen
         </Text>
-      </View>
+        </View>
+      </BackgroundImage>
     );
   }
 }
+
+const styles = {
+  icon: {
+    width: 24,
+    height: 24,
+    marginTop: 6
+  }
+};
 
 export default NotificationsScreen;

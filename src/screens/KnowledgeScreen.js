@@ -1,20 +1,38 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
+import BackgroundImage from '../components/BackgroundImage';
 
 class KnowledgeScreen extends Component {
   static navigationOptions = {
-    tabBarLabel: 'Knowledge'
+    tabBarLabel: 'Knowledge',
+    tabBarIcon: ({ tintColor }) => (
+      // setting the Tab's Icon
+      <Image
+        source={require('../../assets/icons/knowledge.png')}
+        style={[styles.icon, { tintColor }]}
+      />
+    )
   };
 
   render() {
     return (
-      <View>
-        <Text>
-          Knowledge Screen
+      <BackgroundImage>
+        <View>
+          <Text>
+            Knowledge Screen
         </Text>
-      </View>
+        </View>
+      </BackgroundImage>
     );
   }
 }
+
+const styles = {
+  icon: {
+    width: 24,
+    height: 24,
+    marginTop: 6
+  }
+};
 
 export default KnowledgeScreen;
