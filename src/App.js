@@ -1,11 +1,9 @@
 import React from 'react';
-import { Asset } from 'expo';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import Navigator from './screens/Navigator';
 import reducers from './reducers';
-import LoadingScreen from './screens/LoadingScreen';
 
 export default class App extends React.Component {
 
@@ -41,10 +39,10 @@ export default class App extends React.Component {
     await Promise.all(promises);
     this.setState({ appLoaded: true });
   }
-
+  
   render() {
     if (!this.state.appLoaded) {
-      return <LoadingScreen />
+      return <AppLoading />
     }
     return (
       <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
