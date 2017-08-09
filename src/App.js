@@ -4,7 +4,15 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import Navigator from './screens/Navigator';
 import reducers from './reducers';
+import LoadingScreen from './screens/LoadingScreen';
 
+const assets = [
+      require('../assets/icons/1.png'),
+      require('../assets/icons/2.png'),
+      require('../assets/icons/bigZ.png'),
+      require('../assets/icons/welcome.png'),
+      require('../assets/icons/4.png')
+    ];
 export default class App extends React.Component {
 
   state = {
@@ -41,6 +49,7 @@ export default class App extends React.Component {
   }
   
   render() {
+    
     if (!this.state.appLoaded) {
       return <AppLoading />
     }
