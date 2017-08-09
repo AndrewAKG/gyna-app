@@ -19,14 +19,14 @@ class WelcomeScreen extends Component {
         <View style={{ flex: 1 }}>
           <View style={viewStyle}>
             <Image
-              style={{ width: 0.35 * width, height: 0.25 * height,paddingTop:10 }}
+              style={{ width: 0.35 * width, height: 0.25 * height, paddingTop: 10 }}
               source={require('../../assets/icons/4.png')}
-              
+
             />
           </View>
           <View style={viewStyle}>
             <Image
-              style={{ width:  width, height: 0.30 * height }}
+              style={{ width: width, height: 0.30 * height }}
               source={require('../../assets/icons/2.png')}
             />
           </View>
