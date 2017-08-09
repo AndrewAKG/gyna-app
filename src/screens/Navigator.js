@@ -30,21 +30,26 @@ class Navigator extends Component {
           more: { screen: MoreScreen }
         }, {
             tabBarPosition: 'bottom',
+            animationEnabled: true,
+            swipeEnabled: true,
             tabBarOptions: {
               showIcon: true,
               upperCaseLabel: false,
-              activeTintColor: '#182A58',
+              activeTintColor: 'white',
               labelStyle: {
-                fontSize: 13,
-                paddingBottom: 10
+                fontSize: 10,
+                paddingBottom: 5
+              },
+              tabStyle: {
+                flex: 1
               },
               style: {
-                backgroundColor: 'white',
+                backgroundColor: '#5C1634',
                 height: 56,
                 elevation: 8,
                 shadowColor: '#000'
               },
-              inactiveTintColor: 'rgba(0,0,0,0.54)'
+              inactiveTintColor: '#D0D3D4'
             }
           })
       }

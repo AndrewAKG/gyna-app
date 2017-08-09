@@ -15,11 +15,11 @@ const Spinner = ({ size }) => {
 /**
  * Style of spinner "How it looks like!"
  */
-const styles ={
-    SpinnerStyle:{
-        flex : 1 ,
-        justifyContent : 'center',
-        alignItems : 'center'
+const styles = {
+    SpinnerStyle: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 };
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Image, Dimensions, View } from 'react-native';
 import BackgroundImage from '../components/BackgroundImage';
-import  Spinner  from '../components/Spinner';
+import Spinner from '../components/Spinner';
 
 const { height, width } = Dimensions.get('window');
 
@@ -9,10 +9,9 @@ class LoadingScreen extends Component {
   render() {
     return (
       <BackgroundImage>
-        <View style={{flex:1 , alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Image
             style={styles.LoadingImageStyle}
-
             source={require('../../assets/icons/bigZ.png')}
           />
           <Spinner />
@@ -25,8 +24,8 @@ class LoadingScreen extends Component {
 const styles = {
   LoadingImageStyle: {
     flex: 1,
-    width: 0.5 * width,
-    height: 0.5 * height
+    width: 0.6 * width,
+    height: 0.3 * height
   }
 };
 

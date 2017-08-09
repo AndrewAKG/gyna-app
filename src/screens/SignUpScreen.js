@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { Input } from '../components/Input';
 import BackgroundImage from '../components/BackgroundImage';
+import { Input } from '../components/Input';
+
 class SignUpScreen extends Component {
   static navigationOptions = {
     title: 'signUp'
