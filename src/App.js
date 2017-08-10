@@ -6,6 +6,7 @@ import ReduxThunk from 'redux-thunk';
 import Navigator from './screens/Navigator';
 import reducers from './reducers';
 import LoadingScreen from './screens/LoadingScreen';
+import rootReducer from './reducers/index';
 
 const assets = [
   require('../assets/icons/1.png'),
@@ -13,7 +14,7 @@ const assets = [
   require('../assets/icons/bigZ.png'),
   require('../assets/icons/welcome.png'),
   require('../assets/icons/4.png'),
-  require('../assets/icons/12.png'),
+  require('../assets/icons/22.png'),
   require('../assets/icons/5.png'),
   require('../assets/icons/more.png'),
   require('../assets/icons/noti.png'),
@@ -65,14 +66,28 @@ export default class App extends React.Component {
 
     this.setState({ appLoaded: true });
   }
+ configureStore() {
+  const store = createStore(rootReducer);
 
+  if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept('./reducers', () => {
+      const nextRootReducer = require('./reducers/index');
+      store.replaceReducer(nextRootReducer);
+    });
+  }
+
+  return store;
+}
   render() {
 
     if (!this.state.appLoaded) {
       return <LoadingScreen />
     }
+
     return (
-      <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
+
+      <Provider store={this.configureStore()}>
         <Navigator />
       </Provider>
     );

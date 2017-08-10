@@ -11,14 +11,11 @@ class SignUpScreen extends Component {
   render() {
     return (
       <BackgroundImage>
-        <View style={{ flex: 1 }}>
-          <View style={{ flex: 1, paddingTop: 25 }}>
+        <View style={{ flex: 1, paddingTop: 25 }}>
             <Input
-              iconSource={require('../../assets/icons/12.png')}
               placeholder='username'
             />
           </View>
-        </View>
       </BackgroundImage>
     );
   }
