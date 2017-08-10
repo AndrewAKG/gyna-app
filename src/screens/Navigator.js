@@ -59,7 +59,7 @@ class Navigator extends Component {
       }
     },
       {
-        headerMode: 'none'
+        headerMode: (Platform.OS === 'ios') ? 'float' : 'screen'
       });
 
     return (

@@ -6,11 +6,11 @@ import { View, Text, TextInput, Image, Dimensions } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-const Input = ({ value, placeholder, iconSource }) => {
+const Input = ({ value, placeholder, iconSource, style, Type }) => {
   const { containerStyle, inputStyle, imageStyle } = styles;
 
   return (
-    <View style={containerStyle}>
+    <View style={[containerStyle, style]}>
       <View style={{ flex: 2 }}>
         <Image
           style={imageStyle}
@@ -19,6 +19,7 @@ const Input = ({ value, placeholder, iconSource }) => {
       </View>
       <View style={{ flex: 8 }}>
         <TextInput
+          keyboardType={Type}
           autoCorrect={false}
           placeholder={placeholder}
           placeholderTextColor='white'
@@ -39,11 +40,12 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 20,
-    borderWidth: 0.1,
+    borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5c1634',
-    height: 50,
-    width: 0.8 * SCREEN_WIDTH
+    height: 60,
+    width: 0.9 * SCREEN_WIDTH,
+    margin: 10
   },
   inputStyle: {
     color: 'white',
@@ -52,13 +54,12 @@ const styles = {
     fontSize: 18,
     lineHeight: 23,
     fontWeight: "200",
-    height: 50,
-    width: 0.8 * SCREEN_WIDTH,
+    height: 50
   },
   imageStyle: {
-    width: 32,
-    height: 32,
-    margin: 10
+    width: 25,
+    height: 25,
+    margin: 15
   }
 }
 

@@ -5,6 +5,7 @@ import BackgroundImage from '../components/BackgroundImage';
 class LifeScreen extends Component {
   static navigationOptions = {
     tabBarLabel: 'your life',
+    header: null,
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image

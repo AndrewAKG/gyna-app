@@ -5,6 +5,7 @@ import BackgroundImage from '../components/BackgroundImage';
 class HomeScreen extends Component {
   static navigationOptions = {
     tabBarLabel: 'Home',
+    header: null,
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image

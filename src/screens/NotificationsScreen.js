@@ -5,6 +5,7 @@ import BackgroundImage from '../components/BackgroundImage';
 class NotificationsScreen extends Component {
   static navigationOptions = {
     tabBarLabel: 'notifications',
+    header: null,
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image
