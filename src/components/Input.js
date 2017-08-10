@@ -6,14 +6,16 @@ import { View, Text, TextInput, Image, Dimensions } from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 
-const Input = ({ value, placeholder }) => {
-  const { containerStyle, inputStyle } = styles;
+const Input = ({ value, placeholder, iconSource }) => {
+  const { containerStyle, inputStyle, imageStyle } = styles;
 
   return (
     <View style={containerStyle}>
       <View style={{ flex: 2 }}>
-        <Image style={{ width: 32, height: 32, margin: 10 }}
-          source={require('../../assets/icons/12.png')} />
+        <Image
+          style={imageStyle}
+          source={iconSource}
+        />
       </View>
       <View style={{ flex: 8 }}>
         <TextInput
@@ -52,8 +54,12 @@ const styles = {
     fontWeight: "200",
     height: 50,
     width: 0.8 * SCREEN_WIDTH,
+  },
+  imageStyle: {
+    width: 32,
+    height: 32,
+    margin: 10
   }
-
 }
 
 export { Input };

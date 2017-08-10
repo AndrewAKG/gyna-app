@@ -13,6 +13,7 @@ class SignUpScreen extends Component {
       <BackgroundImage>
         <View style={{ flex: 1, paddingTop: 25 }}>
             <Input
+            iconSource = {require('../../assets/icons/12.png')}
               placeholder='username'
             />
           </View>
