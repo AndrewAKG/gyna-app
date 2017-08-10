@@ -2,7 +2,9 @@
  * this component is used whenever i want to take a text field as input from user
  */
 import React from 'react';
-import { View, Text, TextInput, Image } from 'react-native';
+import { View, Text, TextInput, Image, Dimensions } from 'react-native';
+const SCREEN_WIDTH = Dimensions.get('window').width;
+
 
 const Input = ({ value, placeholder }) => {
   const { containerStyle, inputStyle } = styles;
@@ -39,7 +41,7 @@ const styles = {
     borderColor: 'white',
     backgroundColor: '#5c1634',
      height: 50,
-    width: 200,
+    width: 0.8*SCREEN_WIDTH,
   },
   inputStyle: {
     color: 'white',
@@ -49,7 +51,7 @@ const styles = {
     lineHeight: 23,
     fontWeight: "200",
      height: 50,
-    width: 200,
+    width: 0.8*SCREEN_WIDTH,
   }
 
 }
