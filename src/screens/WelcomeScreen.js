@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Dimensions } from 'react-native';
+import { View, Text, Image, Dimensions, TextInput } from 'react-native';
 import { Button } from 'react-native-elements';
 import BackgroundImage from '../components/BackgroundImage';
 
