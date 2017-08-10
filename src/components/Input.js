@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import { View, Text, TextInput, Image, Dimensions } from 'react-native';
-const SCREEN_WIDTH = Dimensions.get('window').width;
 
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const Input = ({ value, placeholder, iconSource }) => {
   const { containerStyle, inputStyle, imageStyle } = styles;
@@ -29,10 +29,10 @@ const Input = ({ value, placeholder, iconSource }) => {
       </View>
     </View>
   );
-
 };
+
 /**
- * Styles used for ths component , includes the input style and lable for input 
+ * Styles used for ths component , includes the input style 
  */
 const styles = {
   containerStyle: {

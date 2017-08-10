@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Platform } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import WelcomeScreen from './WelcomeScreen';
 import LoginScreen from './LoginScreen';
@@ -35,7 +36,10 @@ class Navigator extends Component {
             tabBarOptions: {
               showIcon: true,
               upperCaseLabel: false,
-              activeTintColor: 'white',
+              activeTintColor: '#FFFFFF',
+              indicatorStyle: {
+                backgroundColor: 'white'
+              },
               labelStyle: {
                 fontSize: 10,
                 paddingBottom: 5
