@@ -6,7 +6,7 @@ import { View, Text, TextInput, Image, Dimensions } from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 
-const Input = ({ value, placeholder }) => {
+const Input = ({ placeholder }) => {
   const { containerStyle, inputStyle } = styles;
 
   return (
@@ -21,7 +21,6 @@ const Input = ({ value, placeholder }) => {
         placeholder={placeholder}
         placeholderTextColor='white'
         style={inputStyle}
-        value={value}
       //   onChangeText={onChangeText}
       />
 </View>
