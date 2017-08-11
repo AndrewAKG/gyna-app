@@ -78,15 +78,15 @@ class LoginScreen extends Component {
               fontWeight='bold'
               textStyle={{ textDecorationLine: 'underline' }}
             />
-            <View style={styles.containerViewStyle2}>
+            <View style={styles.CheckBoxViewStyle}>
               <View style={{ flex: 5, marginLeft: 6,alignItems:"flex-start" }}>
                 {this.renderCheckBox()}
               </View>
-              <View style={styles.buttonViewTextStyle}>
+              <View style={styles.forgetPasswordViewStyle}>
                 <Button
                   onPress={() => navigate('mainScreen')}
                   title="forger your passowrd?"
-                  buttonStyle={styles.buttonStyle2}
+                  buttonStyle={styles.forgerPasswordButtonStyle}
                   color='white'
                   fontWeight='600'
                   textStyle={styles.buttonTextStyle}
@@ -111,7 +111,7 @@ const styles = {
     height: 0.08 * SCREEN_HEIGHT,
     marginTop: 10
   },
-  buttonStyle2: {
+  forgerPasswordButtonStyle: {
     borderRadius: 0,
     backgroundColor: 'rgba(0,0,0,0)',
     width: 150,
@@ -123,12 +123,12 @@ const styles = {
     fontSize: 12,
     textAlign: "left",
   },
-  buttonViewTextStyle: {
+  forgetPasswordViewStyle: {
     flex: 5,
     marginTop: -10,
     marginRight: 20
   },
-  containerViewStyle2: {
+  CheckBoxViewStyle: {
     flexDirection: 'row',
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0)',
