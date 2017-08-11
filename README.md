@@ -1,4 +1,4 @@
-# Project X Application
+# Gyna Application
 
 ## Setup
 1. Clone this repo to your desktop `git clone https://github.com/TheDreamHunter/gyna-app.git`
