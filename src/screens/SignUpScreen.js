@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
 import BackgroundImage from '../components/BackgroundImage';
 import { Input } from '../components/Input';
+import { BirthdateInput } from '../components/BirthdateInput';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -57,9 +58,9 @@ class SignUpScreen extends Component {
               placeholder='Working address'
               Type='email-address'
             />
-            <Input
+            <BirthdateInput
               iconSource={require('../../assets/icons/14.png')}
-              placeholder='Anniversary date'
+        //      placeholder='Anniversary date'
             />
           </ScrollView>
         </View>
