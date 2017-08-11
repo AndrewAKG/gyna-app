@@ -9,7 +9,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class LoginScreen extends Component {
- 
+
   static navigationOptions = {
     title: 'login',
     headerBackTitle: 'Back',
@@ -19,13 +19,48 @@ class LoginScreen extends Component {
     },
     headerTitle: '',
   };
-constructor(props){
-  super(props);
-  this.state = { checked: false}
-}
- renderCheckBox(){
 
- }
+  constructor(props) {
+    super(props);
+    this.state = { checked: false }
+  }
+
+  renderCheckBox() {
+    if (this.state.checked === false) {
+      return (
+        <CheckBox
+          center
+          title='Remember Me'
+          checkedIcon='check-square-o'
+          uncheckedIcon='square-o'
+          checkedColor='white'
+          checked={this.state.checked}
+          onIconPress={() => this.onPress()}
+          containerStyle={styles.checkboxContainerStyle}
+          textStyle={{ color: 'white', fontWeight: "normal" }}
+        />
+      );
+    }
+    else {
+      return (
+        <CheckBox
+          center
+          title='Remember Me'
+          checkedIcon='check-square-o'
+          uncheckedIcon='square-o'
+          checkedColor='white'
+          checked={this.state.checked}
+          onIconPress={() => this.onPress()}
+          containerStyle={styles.checkboxContainerStyle}
+          textStyle={{ color: 'white', fontWeight: "normal" }}
+        />
+      );
+    }
+  }
+
+  onPress() {
+    this.setState({ checked: !(this.state.checked) })
+  }
 
   render() {
     const { navigate } = this.props.navigation;
@@ -58,32 +93,21 @@ constructor(props){
               buttonStyle={styles.buttonStyle}
               color='white'
               fontWeight='bold'
-              textStyle={{textDecorationLine: 'underline'}}
+              textStyle={{ textDecorationLine: 'underline' }}
             />
-            <View style={{
-              flexDirection: 'row', flex: 1,
-              backgroundColor: 'rgba(0,0,0,0)', margin: 15
-            }}>
-              <View style={{ flex: 5, marginLeft: 15 }}>
-                <CheckBox
-                  center
-                  title='Click Here'
-                  checkedIcon='check-square-o'
-                  uncheckedIcon='square-o'
-                  checkedColor='black'
-                  checked={this.state.checked}
-               // onIconPress= {this.checked()}
-                  containerStyle={{
-                    backgroundColor: 'rgba(0,0,0,0)',
-                    borderRadius: 0, borderWidth: 0
-                  }}
-                  textStyle={{ color: 'white' }}
-                />
+            <View style={styles.containerViewStyle2}>
+              <View style={{ flex: 5, marginLeft: 10 }}>
+                {this.renderCheckBox()}
               </View>
-              <View style={{ flex: 5, marginTop: 15 }}>
-                <Text style={{ color: 'white' }}>
-                  Forgot your password
-              </Text>
+              <View style={styles.buttonViewTextStyle}>
+                <Button
+                  onPress={() => navigate('mainScreen')}
+                  title="forger your passowrd?"
+                  buttonStyle={styles.buttonStyle2}
+                  color='white'
+                  fontWeight='600'
+                  textStyle={styles.buttonTextStyle}
+                />
               </View>
             </View>
           </ScrollView>
@@ -104,5 +128,32 @@ const styles = {
     height: 0.08 * SCREEN_HEIGHT,
     marginTop: 10
   },
+  buttonStyle2: {
+    borderRadius: 0,
+    backgroundColor: 'rgba(0,0,0,0)',
+    width: 200,
+    height: 100,
+    marginTop: -14,
+  },
+  buttonTextStyle: {
+    textDecorationLine: 'underline',
+    fontSize: 14
+  },
+  buttonViewTextStyle: {
+    flex: 5,
+    marginTop: -10,
+    marginRight: 20
+  },
+  containerViewStyle2: {
+    flexDirection: 'row',
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0)',
+    margin: 15
+  },
+  checkboxContainerStyle: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    borderRadius: 0,
+    borderWidth: 0
+  }
 };
 export default LoginScreen;

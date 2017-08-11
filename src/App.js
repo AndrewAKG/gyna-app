@@ -7,6 +7,7 @@ import Navigator from './screens/Navigator';
 import reducers from './reducers';
 import LoadingScreen from './screens/LoadingScreen';
 import configureStore from './state/Store';
+import Data from './Images.json';
 
 const assets = [
   require('../assets/icons/1.png'),
