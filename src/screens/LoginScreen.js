@@ -68,7 +68,8 @@ class LoginScreen extends Component {
             bounces={false}
           >
             <Image
-              source={require('../../assets/icons/4.png')}
+              source={require('../../assets/icons/4_1.png')}
+              style={{ width: 0.35 * SCREEN_WIDTH, height: 0.3 * SCREEN_HEIGHT, paddingTop: 10 }}
             />
             <Input
               iconSource={require('../../assets/icons/doc.png')}
@@ -97,7 +98,7 @@ class LoginScreen extends Component {
 
               <View style={forgetPasswordViewStyle}>
                 <Button
-                  onPress={() => navigate('mainScreen')}
+                  onPress={() => navigate('signUp')}
                   title="forget your password?"
                   buttonStyle={forgerPasswordButtonStyle}
                   color='white'
@@ -124,7 +125,7 @@ const styles = {
   },
   buttonStyle: {
     borderRadius: 20,
-    backgroundColor: '#4891DE',
+    backgroundColor: '#00C1FF',
     width: 0.9 * SCREEN_WIDTH,
     height: 60,
     margin: 10

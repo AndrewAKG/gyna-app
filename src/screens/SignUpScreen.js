@@ -93,7 +93,7 @@ const styles = {
   buttonStyle: {
     borderRadius: 20,
     height: 60,
-    backgroundColor: '#4891DE',
+    backgroundColor: '#00C1FF',
     width: 0.9 * SCREEN_WIDTH,
     margin: 10
   },

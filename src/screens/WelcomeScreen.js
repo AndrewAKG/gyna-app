@@ -17,20 +17,23 @@ class WelcomeScreen extends Component {
 
     return (
       <BackgroundImage>
-        <View style={{ flex: 1 }}>
-          <View style={viewStyle}>
-            <Image
-              style={{ width: 0.35 * width, height: 0.25 * height, paddingTop: 10 }}
-              source={require('../../assets/icons/4.png')}
 
+        <View style={{ flex: 1 }}>
+
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
+            <Image
+              style={{ width: 0.35 * width, height: 0.3 * height, paddingTop: 10 }}
+              source={require('../../assets/icons/4_1.png')}
             />
           </View>
-          <View style={viewStyle}>
+
+          <View style={{ flex: 1, alignItems: 'flex-end' }}>
             <Image
-              style={{ width: width, height: 0.30 * height }}
+              style={{ width: 0.94 * width, height: 0.36 * height }}
               source={require('../../assets/icons/2.png')}
             />
           </View>
+
           <View style={viewStyle}>
             <Button
               onPress={() => navigate('login')}
@@ -38,35 +41,12 @@ class WelcomeScreen extends Component {
               buttonStyle={buttonStyle}
               color='white'
               fontWeight='bold'
+              fontSize={18}
             />
           </View>
-          <View style={viewStyle}>
-            <Button
-              onPress={() => navigate('more')}
-              title="list"
-              buttonStyle={buttonStyle}
-              color='white'
-              fontWeight='bold'
-            />
-          </View>
-          <View style={viewStyle}>
-            <Button
-              onPress={() => navigate('mainScreen')}
-              title="to tab Screen"
-              buttonStyle={buttonStyle}
-              color='white'
-              fontWeight='bold'
-            />
-            <Button
 
-              onPress={() => navigate('signUp')}
-              title="sign up"
-              buttonStyle={buttonStyle}
-              color='white'
-              fontWeight='bold'
-            />
-          </View>
         </View>
+
       </BackgroundImage >
     );
   }
@@ -74,10 +54,10 @@ class WelcomeScreen extends Component {
 
 const styles = {
   buttonStyle: {
-    borderRadius: 25,
-    backgroundColor: '#4891DE',
+    borderRadius: 20,
+    backgroundColor: '#00C1FF',
     width: 0.7 * width,
-    height: 0.05 * height
+    height: 60
   },
   viewStyle: {
     flex: 1,
