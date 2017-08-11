@@ -37,7 +37,7 @@ class LoginScreen extends Component {
           checked={this.state.checked}
           onIconPress={() => this.onPress()}
           containerStyle={styles.checkboxContainerStyle}
-          textStyle={{ color: 'white', fontWeight: "normal" }}
+          textStyle={{ color: 'white', fontWeight: "normal",textAlign: "left",fontSize: 12 }}
         />
       );
     }
@@ -52,7 +52,7 @@ class LoginScreen extends Component {
           checked={this.state.checked}
           onIconPress={() => this.onPress()}
           containerStyle={styles.checkboxContainerStyle}
-          textStyle={{ color: 'white', fontWeight: "normal" }}
+          textStyle={{ color: 'white', fontWeight: "normal",textAlign: "left",fontSize:12 }}
         />
       );
     }
@@ -96,7 +96,7 @@ class LoginScreen extends Component {
               textStyle={{ textDecorationLine: 'underline' }}
             />
             <View style={styles.containerViewStyle2}>
-              <View style={{ flex: 5, marginLeft: 10 }}>
+              <View style={{ flex: 5, marginLeft: 6,alignItems:"flex-start" }}>
                 {this.renderCheckBox()}
               </View>
               <View style={styles.buttonViewTextStyle}>
@@ -131,13 +131,14 @@ const styles = {
   buttonStyle2: {
     borderRadius: 0,
     backgroundColor: 'rgba(0,0,0,0)',
-    width: 200,
+    width: 150,
     height: 100,
     marginTop: -14,
   },
   buttonTextStyle: {
     textDecorationLine: 'underline',
-    fontSize: 14
+    fontSize: 12,
+    textAlign: "left",
   },
   buttonViewTextStyle: {
     flex: 5,
