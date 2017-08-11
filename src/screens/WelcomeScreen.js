@@ -7,7 +7,8 @@ const { height, width } = Dimensions.get('window');
 
 class WelcomeScreen extends Component {
   static navigationOptions = {
-    title: 'welcome'
+    title: 'welcome',
+    header: null
   };
 
   render() {

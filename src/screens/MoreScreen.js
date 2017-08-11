@@ -5,6 +5,7 @@ import BackgroundImage from '../components/BackgroundImage';
 class MoreScreen extends Component {
   static navigationOptions = {
     tabBarLabel: 'More',
+    header: null,
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image

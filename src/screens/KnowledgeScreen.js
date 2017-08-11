@@ -5,6 +5,7 @@ import BackgroundImage from '../components/BackgroundImage';
 class KnowledgeScreen extends Component {
   static navigationOptions = {
     tabBarLabel: 'Knowledge',
+    header: null,
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image
