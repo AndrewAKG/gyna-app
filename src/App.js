@@ -25,7 +25,7 @@ const assets = [
   require('../assets/icons/knowledge.png'),
   require('../assets/icons/phone.png'),
   require('../assets/icons/life.png'),
-  require('../assets/icons/44.png')
+  require('../assets/icons/44.png'),
 ];
 
 const store = configureStore();
@@ -62,7 +62,7 @@ export default class App extends React.Component {
       require('../assets/icons/life.png'),
       require('../assets/icons/email.png'),
       require('../assets/icons/phone.png'),
-      require('../assets/icons/44.png')
+      require('../assets/icons/44.png'),
     ];
 
     for (let image of images) {

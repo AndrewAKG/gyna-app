@@ -4,6 +4,7 @@ import BackgroundImage from '../components/BackgroundImage';
 import { Button } from 'react-native-elements';
 import { Input } from '../components/Input';
 import { BirthdateInput } from '../components/BirthdateInput';
+import { InputPassword } from '../components/InputPassword';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -39,11 +40,7 @@ class SignUpScreen extends Component {
               placeholder='username'
               style={{ marginTop: 20 }}
             />
-            <Input
-              iconSource={require('../../assets/icons/locked.png')}
-              placeholder='password'
-              secure={true}
-            />
+            <InputPassword />
             <Input
               iconSource={require('../../assets/icons/email.png')}
               placeholder='E-mail'

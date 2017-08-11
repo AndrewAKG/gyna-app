@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
 import BackgroundImage from '../components/BackgroundImage';
 import { Input } from '../components/Input';
+import { InputPassword } from '../components/InputPassword';
 //import CheckBox from 'react-native-checkbox';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -65,11 +66,7 @@ class LoginScreen extends Component {
               placeholder='username'
               style={{ marginTop: 20 }}
             />
-            <Input
-              iconSource={require('../../assets/icons/locked.png')}
-              placeholder='password'
-              secure={true}
-            />
+            <InputPassword />
             <Button
               onPress={() => navigate('mainScreen')}
               title="login"
