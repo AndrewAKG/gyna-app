@@ -40,10 +40,27 @@ class WelcomeScreen extends Component {
               fontWeight='bold'
             />
           </View>
-           <View style={viewStyle}>
+          <View style={viewStyle}>
             <Button
               onPress={() => navigate('more')}
               title="list"
+              buttonStyle={buttonStyle}
+              color='white'
+              fontWeight='bold'
+            />
+          </View>
+          <View style={viewStyle}>
+            <Button
+              onPress={() => navigate('mainScreen')}
+              title="to tab Screen"
+              buttonStyle={buttonStyle}
+              color='white'
+              fontWeight='bold'
+            />
+            <Button
+
+              onPress={() => navigate('signUp')}
+              title="sign up"
               buttonStyle={buttonStyle}
               color='white'
               fontWeight='bold'

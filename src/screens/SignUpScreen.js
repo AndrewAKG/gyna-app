@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
 import BackgroundImage from '../components/BackgroundImage';
+import { Button } from 'react-native-elements';
 import { Input } from '../components/Input';
+import BirthDate from '../components/BirthDate';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -33,14 +35,14 @@ class SignUpScreen extends Component {
               style={{ width: 0.9 * SCREEN_WIDTH, height: 0.22 * SCREEN_HEIGHT }}
             />
             <Input
-              iconSource={require('../../assets/icons/f-doc.png')}
+              iconSource={require('../../assets/icons/doc.png')}
               placeholder='username'
               style={{ marginTop: 20 }}
             />
             <Input
               iconSource={require('../../assets/icons/locked.png')}
               placeholder='password'
-              secure
+              secure={true}
             />
             <Input
               iconSource={require('../../assets/icons/email.png')}
@@ -57,10 +59,17 @@ class SignUpScreen extends Component {
               placeholder='Working address'
               Type='email-address'
             />
-            <Input
-              iconSource={require('../../assets/icons/14.png')}
-              placeholder='Anniversary date'
-            />
+            <BirthDate/>
+            <View style={{ marginBottom: 20, paddingTop: 20 }}>
+              <Button
+                onPress={() => navigate('mainScreen')}
+                title="Register"
+                buttonStyle={styles.buttonStyle}
+                color='white'
+                fontWeight='bold'
+                textStyle={{ textDecorationLine: 'underline' }}
+              />
+            </View>
           </ScrollView>
         </View>
       </BackgroundImage>
@@ -72,7 +81,14 @@ const styles = {
   containerStyle: {
     paddingTop: 10,
     alignItems: 'center'
-  }
+  },
+  buttonStyle: {
+    borderRadius: 25,
+    backgroundColor: '#4891DE',
+    width: 0.9 * SCREEN_WIDTH,
+    height: 0.08 * SCREEN_HEIGHT,
+    marginTop: 10
+  },
 };
 
 export default SignUpScreen;
