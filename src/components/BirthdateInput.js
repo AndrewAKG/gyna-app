@@ -24,12 +24,12 @@ class BirthdateInput extends React.Component {
     let today = new Date().toDateString();
     return (
       <DatePicker
-        style={{ width: 0.91 * SCREEN_WIDTH, paddingTop: 20 }}
+        style={{ width: 0.81 * SCREEN_WIDTH, paddingTop: 20 }}
         mode="date"
         placeholder={'Aniversary Date'}
         format="MM-DD-YYYY"
         minDate="1930-01-01"
-        maxDate="2000-12-30"
+        maxDate={today}
         confirmBtnText="Confirm"
         cancelBtnText="Cancel"
         iconSource={require('../../assets/icons/14.png')}
@@ -68,39 +68,12 @@ class BirthdateInput extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={{ alignItems: 'center' }}>
         {this.renderPicker()}
       </View>
 
     );
   }
 };
-
-/**
- * Styles used for ths component , includes the input style 
- */
-const styles = {
-  containerStyle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 20,
-    borderWidth: 0.3,
-    borderColor: 'white',
-    backgroundColor: '#5c1634',
-    height: 60,
-    width: 0.9 * SCREEN_WIDTH,
-    margin: 10
-  },
-  inputStyle: {
-    paddingRight: 5,
-    paddingLeft: 5,
-    height: 50
-  },
-  imageStyle: {
-    width: 25,
-    height: 25,
-    margin: 15
-  }
-}
 
 export { BirthdateInput };

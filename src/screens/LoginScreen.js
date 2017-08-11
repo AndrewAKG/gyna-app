@@ -4,7 +4,6 @@ import { Button, CheckBox } from 'react-native-elements';
 import BackgroundImage from '../components/BackgroundImage';
 import { Input } from '../components/Input';
 import { InputPassword } from '../components/InputPassword';
-//import CheckBox from 'react-native-checkbox';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -18,7 +17,7 @@ class LoginScreen extends Component {
     headerStyle: {
       backgroundColor: '#5C1634'
     },
-    headerTitle: '',
+    headerTitle: ''
   };
 
   constructor(props) {
@@ -123,7 +122,7 @@ const styles = {
   buttonStyle: {
     borderRadius: 20,
     backgroundColor: '#00C1FF',
-    width: 0.9 * SCREEN_WIDTH,
+    width: 0.8 * SCREEN_WIDTH,
     height: 60,
     margin: 10
   },
