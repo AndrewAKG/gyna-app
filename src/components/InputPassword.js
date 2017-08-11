@@ -12,7 +12,7 @@ class InputPassword extends React.Component {
     state = { secured: true }
 
     onPressButton() {
-        this.setState({ secured: false })
+        this.setState({ secured: !(this.state.secured) })
     }
 
     render() {
