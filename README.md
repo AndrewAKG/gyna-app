@@ -28,8 +28,6 @@
 3. create a new branch and checkout this branch using this command `git checkout -b your-branch-name`.
 4. Branch naming convention should be descriptive for the feature no uppercase characters and words seperated by `-` not `_`
 5. Check branch is created successfully by running this command `git branch` you should see all the branches you have locally. you can verify this branch by seeing its name and a star beside it. 
-6. Go to [boards](https://gitlab.com/dormee/dormee-mobile/boards) and move the issue you are working on from To Do List to Doing List.
-7. Check the wireframe of this feature attached in the issue assigned to you.
 
 ### For Commits
 1. Please follow the Style guide in commiting your code. you find it [here](https://drive.google.com/file/d/0B2VFqW0FcrSdZmRnR3MzODJucHc/view?usp=sharing)
@@ -55,18 +53,8 @@
 5. Assign a reviewer for the task.
 6. Add the appropriate labels (needs-review) to the MR.
 
-## Boards flow
-We have 7 boards
-- **To Do** : issues in the backlog no progress yet.
-- **Doing** : issues you create a branch and started working on it. Move the issue from **To Do** to here when you start working on the task.
-- **needs-review** : Move the issue from **To Do** to here when you create a MR after you finish the task.
-- **in-review** : the reviewer will move the issue to here when he start reviewing the MR.
-- **needs-fixing** : the reviewer will move the issue to here when changes are requested on the MR. after the issue is moved to here you can start fixing and work on it again. After you are done move it to **needs-review** again.
-- **ready-to-merge** : the cycle of the last 3 boards will continue till everything goes fine. when the reviewer move the issue here, your task is done with this feature/task.
-- **closed**: the issue is moved here when it's merged by the reviewer or the team leader.
-
-
 ## Packages
+
 ### When Installing npm modules,  please check the following
 1. Check with the team leader why this package is important.
 2. Check the documentation and the code written. In many cases it's a simple trick. so you can rewrite it without installing the dependency.
