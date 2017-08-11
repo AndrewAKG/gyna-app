@@ -6,7 +6,7 @@ import ReduxThunk from 'redux-thunk';
 import Navigator from './screens/Navigator';
 import reducers from './reducers';
 import LoadingScreen from './screens/LoadingScreen';
-import rootReducer from './reducers/index';
+import configureStore from './state/Store';
 
 const assets = [
   require('../assets/icons/1.png'),
@@ -22,6 +22,9 @@ const assets = [
   require('../assets/icons/knowledge.png'),
   require('../assets/icons/life.png')
 ];
+
+const store = configureStore();
+
 export default class App extends React.Component {
 
   state = {
@@ -66,19 +69,7 @@ export default class App extends React.Component {
 
     this.setState({ appLoaded: true });
   }
- configureStore() {
-  const store = createStore(rootReducer);
-
-  if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('./reducers', () => {
-      const nextRootReducer = require('./reducers/index');
-      store.replaceReducer(nextRootReducer);
-    });
-  }
-
-  return store;
-}
+ 
   render() {
 
     if (!this.state.appLoaded) {
@@ -87,7 +78,7 @@ export default class App extends React.Component {
 
     return (
 
-      <Provider store={this.configureStore()}>
+      <Provider store={store}>
         <Navigator />
       </Provider>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Dimensions } from 'react-native';
+import { View, Text, Image, Dimensions, TextInput } from 'react-native';
 import { Button } from 'react-native-elements';
 import BackgroundImage from '../components/BackgroundImage';
 
@@ -34,6 +34,15 @@ class WelcomeScreen extends Component {
             <Button
               onPress={() => navigate('login')}
               title="Next"
+              buttonStyle={buttonStyle}
+              color='white'
+              fontWeight='bold'
+            />
+          </View>
+           <View style={viewStyle}>
+            <Button
+              onPress={() => navigate('more')}
+              title="list"
               buttonStyle={buttonStyle}
               color='white'
               fontWeight='bold'
