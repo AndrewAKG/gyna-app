@@ -27,20 +27,20 @@ class LoginScreen extends Component {
   }
 
   renderCheckBox() {
-      return (
-        <CheckBox
-          center
-          title='Remember Me'
-          checkedIcon='check-square-o'
-          uncheckedIcon='square-o'
-          checkedColor='white'
-          checked={this.state.checked}
-          onIconPress={() => this.onPress()}
-          containerStyle={styles.checkboxContainerStyle}
-          textStyle={{ color: 'white', fontWeight: "normal",textAlign: "left",fontSize: 12 }}
-        />
-      );
-    }
+    return (
+      <CheckBox
+        center
+        title='Remember Me'
+        checkedIcon='check-square-o'
+        uncheckedIcon='square-o'
+        checkedColor='white'
+        checked={this.state.checked}
+        onIconPress={() => this.onPress()}
+        containerStyle={styles.checkboxStyle}
+        textStyle={{ color: 'white', fontWeight: "normal", textAlign: "left", fontSize: 12 }}
+      />
+    );
+  }
 
   onPress() {
     this.setState({ checked: !(this.state.checked) })
@@ -48,18 +48,29 @@ class LoginScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
+    const {
+      containerStyle,
+      checkboxContainerStyle,
+      CheckBoxViewStyle,
+      buttonStyle,
+      buttonTextStyle,
+      forgetPasswordViewStyle,
+      forgerPasswordButtonStyle
+    } = styles;
 
     return (
       <BackgroundImage>
+
         <View style={{ flex: 1 }}>
+
           <ScrollView
-            contentContainerStyle={styles.containerStyle}
+            contentContainerStyle={containerStyle}
             scrollEnabled
             bounces={false}
           >
             <Image
-              source={require('../../assets/icons/4.png')}
-            // style={{ width: 0.4 * SCREEN_WIDTH }}
+              source={require('../../assets/icons/4_1.png')}
+              style={{ width: 0.35 * SCREEN_WIDTH, height: 0.3 * SCREEN_HEIGHT, paddingTop: 10 }}
             />
             <Input
               iconSource={require('../../assets/icons/doc.png')}
@@ -69,44 +80,52 @@ class LoginScreen extends Component {
             <InputPassword />
             <Button
               onPress={() => navigate('mainScreen')}
-              title="login"
-              buttonStyle={styles.buttonStyle}
+              title="Login"
+              buttonStyle={buttonStyle}
               color='white'
               fontWeight='bold'
-              textStyle={{ textDecorationLine: 'underline' }}
+              fontSize={18}
             />
-            <View style={styles.CheckBoxViewStyle}>
-              <View style={{ flex: 5, marginLeft: 6,alignItems:"flex-start" }}>
+
+            <View style={CheckBoxViewStyle}>
+
+              <View style={checkboxContainerStyle}>
                 {this.renderCheckBox()}
               </View>
-              <View style={styles.forgetPasswordViewStyle}>
+
+              <View style={forgetPasswordViewStyle}>
                 <Button
-                  onPress={() => navigate('mainScreen')}
-                  title="forger your passowrd?"
-                  buttonStyle={styles.forgerPasswordButtonStyle}
+                  onPress={() => navigate('signUp')}
+                  title="forget your password?"
+                  buttonStyle={forgerPasswordButtonStyle}
                   color='white'
                   fontWeight='600'
-                  textStyle={styles.buttonTextStyle}
+                  textStyle={buttonTextStyle}
                 />
               </View>
+
             </View>
+
           </ScrollView>
+
         </View>
+
       </BackgroundImage>
     );
   }
 }
+
 const styles = {
   containerStyle: {
     paddingTop: 10,
     alignItems: 'center'
   },
   buttonStyle: {
-    borderRadius: 25,
-    backgroundColor: '#4891DE',
+    borderRadius: 20,
+    backgroundColor: '#00C1FF',
     width: 0.9 * SCREEN_WIDTH,
-    height: 0.08 * SCREEN_HEIGHT,
-    marginTop: 10
+    height: 60,
+    margin: 10
   },
   forgerPasswordButtonStyle: {
     borderRadius: 0,
@@ -118,7 +137,7 @@ const styles = {
   buttonTextStyle: {
     textDecorationLine: 'underline',
     fontSize: 12,
-    textAlign: "left",
+    textAlign: 'left',
   },
   forgetPasswordViewStyle: {
     flex: 5,
@@ -132,9 +151,15 @@ const styles = {
     margin: 15
   },
   checkboxContainerStyle: {
+    flex: 5,
+    marginLeft: 6,
+    alignItems: 'flex-start'
+  },
+  checkboxStyle: {
     backgroundColor: 'rgba(0,0,0,0)',
     borderRadius: 0,
     borderWidth: 0
   }
 };
+
 export default LoginScreen;
