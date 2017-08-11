@@ -24,7 +24,9 @@ class SignUpScreen extends Component {
 
     return (
       <BackgroundImage>
+
         <View style={{ flex: 1 }}>
+
           <ScrollView
             contentContainerStyle={containerStyle}
             scrollEnabled
@@ -59,20 +61,25 @@ class SignUpScreen extends Component {
               placeholder='Working address'
               Type='email-address'
             />
-            <BirthdateInput
-            />
-            <View style={{ marginBottom: 20, paddingTop: 20 }}>
+            <BirthdateInput />
+
+            <View style={{ margin: 10 }}>
+
               <Button
                 onPress={() => navigate('mainScreen')}
                 title="Register"
                 buttonStyle={styles.buttonStyle}
                 color='white'
                 fontWeight='bold'
-                textStyle={{ textDecorationLine: 'underline' }}
+                fontSize={18}
+                containerViewStyle={{ margin: 10 }}
               />
             </View>
+
           </ScrollView>
+
         </View>
+
       </BackgroundImage>
     );
   }
@@ -84,11 +91,11 @@ const styles = {
     alignItems: 'center'
   },
   buttonStyle: {
-    borderRadius: 25,
+    borderRadius: 20,
+    height: 60,
     backgroundColor: '#4891DE',
     width: 0.9 * SCREEN_WIDTH,
-    height: 0.08 * SCREEN_HEIGHT,
-    marginTop: 10
+    margin: 10
   },
 };
 
