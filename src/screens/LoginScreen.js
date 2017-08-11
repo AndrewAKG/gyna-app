@@ -26,7 +26,6 @@ class LoginScreen extends Component {
   }
 
   renderCheckBox() {
-    if (this.state.checked === false) {
       return (
         <CheckBox
           center
@@ -41,22 +40,6 @@ class LoginScreen extends Component {
         />
       );
     }
-    else {
-      return (
-        <CheckBox
-          center
-          title='Remember Me'
-          checkedIcon='check-square-o'
-          uncheckedIcon='square-o'
-          checkedColor='white'
-          checked={this.state.checked}
-          onIconPress={() => this.onPress()}
-          containerStyle={styles.checkboxContainerStyle}
-          textStyle={{ color: 'white', fontWeight: "normal",textAlign: "left",fontSize:12 }}
-        />
-      );
-    }
-  }
 
   onPress() {
     this.setState({ checked: !(this.state.checked) })
