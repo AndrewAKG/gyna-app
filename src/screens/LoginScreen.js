@@ -66,10 +66,11 @@ class LoginScreen extends Component {
               color='white'
               fontWeight='bold'
               fontSize={18}
+              textStyle = {{ textDecorationLine: 'underline' }}
             />
 
             <RememberForgetPass
-              onButtonPress={() => console.log('forgetPass')}
+              onButtonPress={() => navigate('forgetPassowrd')}
               onCheckBoxPress={() => this.onPress()}
               checked={this.state.checked}
             />
@@ -98,27 +99,6 @@ const styles = {
     width: 0.8 * SCREEN_WIDTH,
     height: 60,
     margin: 10
-  },
-  b2: {
-    borderRadius: 0,
-    backgroundColor: 'rgba(0,0,0,0)',
-    width: 150,
-    height: 100,
-  },
-  ViewStyle2: {
-    flex: 2,
-    marginLeft: 20,
-    marginTop: -30,
-    alignItems: "flex-end"
-  },
-  buttonTextStyle: {
-    textDecorationLine: 'underline',
-    fontSize: 14,
-    marginLeft: 70,
-    textAlign: 'left',
-    marginTop: -23,
-    color: '#4169E1',
-    fontWeight: "400"
   },
 
 };

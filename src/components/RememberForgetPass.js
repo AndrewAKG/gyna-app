@@ -63,6 +63,7 @@ const styles = {
   textStyle: {
     fontSize: 12,
     textAlign: 'left',
+    textDecorationLine: 'underline',
   },
   forgetPassContainer: {
     flex: 5,

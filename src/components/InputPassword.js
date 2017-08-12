@@ -6,6 +6,7 @@ import { View, Text, TextInput, Image, Dimensions, TouchableWithoutFeedback } fr
 import { Entypo } from '@expo/vector-icons';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class InputPassword extends React.Component {
   state = { secured: true }
@@ -71,7 +72,7 @@ const styles = {
     borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5c1634',
-    height: 60,
+    height: 0.08 * SCREEN_HEIGHT,
     width: 0.8 * SCREEN_WIDTH,
     margin: 10
   },

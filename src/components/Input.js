@@ -5,6 +5,8 @@ import React from 'react';
 import { View, Text, TextInput, Image, Dimensions } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
+
 
 const Input = ({ value, placeholder, iconSource, style, Type, secure }) => {
   const { containerStyle, inputStyle, imageStyle } = styles;
@@ -44,7 +46,7 @@ const styles = {
     borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5c1634',
-    height: 60,
+    height: 0.08*SCREEN_HEIGHT,
     width: 0.8 * SCREEN_WIDTH,
     margin: 10
   },
