@@ -68,10 +68,10 @@ const styles = {
     marginLeft: 0.31 * SCREEN_WIDTH
   },
   buttonStyle: {
-    borderRadius: 20,
+    borderRadius: 0.05 * SCREEN_HEIGHT,
     backgroundColor: '#00C1FF',
     width: 0.8 * SCREEN_WIDTH,
-    height: 0.1 * SCREEN_HEIGHT,
+    height: 0.095 * SCREEN_HEIGHT,
     margin: 10,
   },
   containerStyle: {

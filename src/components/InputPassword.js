@@ -68,11 +68,11 @@ const styles = {
   containerStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 20,
+    borderRadius: 0.05 * SCREEN_HEIGHT,
     borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5c1634',
-    height: 0.1 * SCREEN_HEIGHT,
+    height: 0.095 * SCREEN_HEIGHT,
     width: 0.8 * SCREEN_WIDTH,
     margin: 10
   },

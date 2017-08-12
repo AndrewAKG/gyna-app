@@ -54,10 +54,10 @@ class WelcomeScreen extends Component {
 
 const styles = {
   buttonStyle: {
-    borderRadius: 20,
+    borderRadius: 0.05 * height,
     backgroundColor: '#00C1FF',
     width: 0.8 * width,
-    height: 0.1 * height
+    height: 0.095 * height
   },
   viewStyle: {
     flex: 1,

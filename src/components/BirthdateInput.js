@@ -45,9 +45,9 @@ class BirthdateInput extends React.Component {
           dateInput: {
             borderColor: 'white',
             backgroundColor: 'rgba(0,0,0,0)',
-            borderRadius: 20,
+            borderRadius: 0.05* SCREEN_HEIGHT,
             borderWidth: 0.3,
-            height: 0.1 * SCREEN_HEIGHT,
+            height: 0.095 * SCREEN_HEIGHT,
             backgroundColor: '#5c1634',
             alignItems: 'flex-start'
           },

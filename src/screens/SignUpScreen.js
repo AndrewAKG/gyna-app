@@ -86,8 +86,8 @@ const styles = {
     alignItems: 'center'
   },
   buttonStyle: {
-    borderRadius: 20,
-    height: 0.1 * SCREEN_HEIGHT,
+    borderRadius: 0.05 * SCREEN_HEIGHT,
+    height: 0.095 * SCREEN_HEIGHT,
     backgroundColor: '#00C1FF',
     width: 0.8 * SCREEN_WIDTH,
     margin: 10
