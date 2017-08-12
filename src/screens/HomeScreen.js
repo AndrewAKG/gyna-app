@@ -8,7 +8,7 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 class HomeScreen extends Component {
   static navigationOptions = {
     tabBarLabel: 'Home',
-    header: null,
+    headerLeft: null,
     headerStyle: {
       backgroundColor: '#5C1634'
     },
