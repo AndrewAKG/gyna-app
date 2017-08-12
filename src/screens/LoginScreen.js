@@ -5,12 +5,17 @@ import BackgroundImage from '../components/BackgroundImage';
 import { Input } from '../components/Input';
 import { InputPassword } from '../components/InputPassword';
 import RememberForgetPass from '../components/RememberForgetPass';
-import NoAccount from '../components/NoAccount';
+import SignUpAccount from '../components/SignUpAccount';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class LoginScreen extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { checked: false }
+  }
 
   static navigationOptions = {
     title: 'login',
@@ -22,6 +27,10 @@ class LoginScreen extends Component {
     headerTitle: '',
     headerLeft: null
   };
+
+  onPress() {
+    this.setState({ checked: !(this.state.checked) })
+  }
 
   render() {
     const { navigate } = this.props.navigation;
@@ -59,9 +68,16 @@ class LoginScreen extends Component {
               fontSize={18}
             />
 
-            <RememberForgetPass />
-            <NoAccount/>
-            
+            <RememberForgetPass
+              onButtonPress={() => console.log('forgetPass')}
+              onCheckBoxPress={() => this.onPress()}
+              checked={this.state.checked}
+            />
+
+            <SignUpAccount
+              onButtonPress={() => navigate('signUp')}
+            />
+
           </ScrollView>
 
         </View>
@@ -102,7 +118,7 @@ const styles = {
     textAlign: 'left',
     marginTop: -23,
     color: '#4169E1',
-    fontWeight:"400"
+    fontWeight: "400"
   },
 
 };

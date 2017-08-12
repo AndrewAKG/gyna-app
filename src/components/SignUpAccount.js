@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
 
-class NoAccount extends React.Component {
+class SignUpAccount extends React.Component {
     render() {
-        const { navigate } = this.props.navigation;
+        const { onButtonPress } = this.props;
         const {
             containerStyle,
             TextViewStyle,
@@ -16,15 +16,16 @@ class NoAccount extends React.Component {
 
         return (
             <View style={containerStyle}>
+
                 <View style={TextViewStyle}>
                     <Text style={noAccountTextStyle}>
                         Don't Have an account ?
-                </Text>
+                    </Text>
                 </View>
 
                 <View style={SignUpButtonViewStyle}>
                     <Button
-                        onPress={() => navigate('signUp')}
+                        onPress={onButtonPress}
                         title="Sign UP"
                         buttonStyle={SignUpButtonStyle}
                         color='white'
@@ -39,7 +40,6 @@ class NoAccount extends React.Component {
 }
 const styles = {
     containerStyle: {
-
         flexDirection: 'row',
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0)',
@@ -80,4 +80,4 @@ const styles = {
     }
 
 };
-export default NoAccount;
+export default SignUpAccount;
