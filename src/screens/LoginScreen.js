@@ -17,7 +17,8 @@ class LoginScreen extends Component {
     headerStyle: {
       backgroundColor: '#5C1634'
     },
-    headerTitle: ''
+    headerTitle: '',
+    headerLeft: null
   };
 
   constructor(props) {
