@@ -67,7 +67,7 @@ class SignUpScreen extends Component {
                 buttonStyle={styles.buttonStyle}
                 color='white'
                 fontWeight='bold'
-                fontSize={18}
+                fontSize={ 0.047 * SCREEN_WIDTH}
                 containerViewStyle={{ margin: 10 }}
               />
             </View>

@@ -1,6 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class RememberForgetPass extends React.Component {
 
@@ -60,7 +63,7 @@ const styles = {
     backgroundColor: 'rgba(0,0,0,0)'
   },
   textStyle: {
-    fontSize: 12
+    fontSize: 0.04 * SCREEN_WIDTH
   },
   forgetPassContainer: {
     flex: 5,
@@ -77,7 +80,7 @@ const styles = {
     color: 'white',
     fontWeight: 'normal',
     textAlign: 'left',
-    fontSize: 12
+    fontSize: 0.04 * SCREEN_WIDTH
   }
 }
 
