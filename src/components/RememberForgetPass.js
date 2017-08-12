@@ -24,12 +24,13 @@ class RememberForgetPass extends React.Component {
         checked={this.state.checked}
         onIconPress={() => this.onPress()}
         containerStyle={styles.checkboxStyle}
-        textStyle={{ color: 'white', fontWeight: "normal", textAlign: "left", fontSize: 12 }}
+        textStyle={{ color: 'white', fontWeight: "normal", textAlign: "left", fontSize: 12, paddingLeft: -5 }}
       />
     );
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     const {
       checkboxContainerStyle,
       CheckBoxViewStyle,
@@ -77,7 +78,8 @@ const styles = {
   forgetPasswordViewStyle: {
     flex: 5,
     marginTop: -10,
-    marginRight: 20
+    marginRight: 20,
+    alignItems:'center'
   },
   CheckBoxViewStyle: {
     flexDirection: 'row',
@@ -87,7 +89,6 @@ const styles = {
   },
   checkboxContainerStyle: {
     flex: 5,
-    marginLeft: 6,
     alignItems: 'flex-start'
   },
   checkboxStyle: {
