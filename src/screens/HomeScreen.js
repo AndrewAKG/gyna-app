@@ -23,22 +23,29 @@ class HomeScreen extends Component {
   };
 
   render() {
+    const {
+      bigZContainerStyle,
+      bigZStyle,
+      magestyContainerStyle,
+      magestyStyle
+     } = styles;
+
     return (
       <BackgroundImage>
 
         <View style={{ flex: 1 }}>
 
-          <View style={{ flex: 4, alignItems: 'center', justifyContent: 'flex-start', marginTop:20 }}>
+          <View style={bigZContainerStyle}>
             <Image
               source={require('../../assets/icons/bigZ.png')}
-              style={{ width: 0.35 * SCREEN_WIDTH, height: 0.3 * SCREEN_HEIGHT, paddingTop: 10 }}
+              style={bigZStyle}
             />
           </View>
 
-          <View style={{ flex: 6, alignItems: 'flex-end', justifyContent: 'flex-start' }}>
+          <View style={magestyContainerStyle}>
             <Image
               source={require('../../assets/icons/Welcome.png')}
-              style={{ width: 0.94 * SCREEN_WIDTH, height: 0.355 * SCREEN_HEIGHT }} />
+              style={magestyStyle} />
           </View>
 
         </View>
@@ -49,6 +56,26 @@ class HomeScreen extends Component {
 }
 
 const styles = {
+  bigZContainerStyle: {
+    flex: 4,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    marginTop: 20
+  },
+  bigZStyle: {
+    width: 0.35 * SCREEN_WIDTH,
+    height: 0.3 * SCREEN_HEIGHT,
+    paddingTop: 10
+  },
+  magestyContainerStyle: {
+    flex: 6,
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start'
+  },
+  magestyStyle: {
+    width: 0.94 * SCREEN_WIDTH,
+    height: 0.355 * SCREEN_HEIGHT
+  },
   icon: {
     width: 24,
     height: 24,
