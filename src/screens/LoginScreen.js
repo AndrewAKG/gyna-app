@@ -97,7 +97,7 @@ const styles = {
     borderRadius: 20,
     backgroundColor: '#00C1FF',
     width: 0.8 * SCREEN_WIDTH,
-    height: 60,
+    height: 0.08 * SCREEN_HEIGHT,
     margin: 10
   },
 
