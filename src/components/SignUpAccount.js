@@ -54,7 +54,8 @@ const styles = {
 	},
 	SignUpContainer: {
 		flex: 3,
-		alignItems: 'stretch'
+		alignItems: 'center',
+		marginTop: -11
 	},
 	buttonTextStyle: {
 		fontSize: 0.045 * SCREEN_WIDTH,
