@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
 
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
+
 class SignUpAccount extends React.Component {
 	render() {
 		const { onButtonPress } = this.props;
@@ -56,14 +59,14 @@ const styles = {
 		alignItems: 'stretch'
 	},
 	buttonTextStyle: {
-		fontSize: 14,
+		fontSize: 0.044 * SCREEN_WIDTH,
 		color: '#00C1FF',
 		textAlign: 'left',
 		fontWeight: 'normal'
 	},
 	noAccountTextStyle: {
 		color: 'white',
-		fontSize: 16,
+		fontSize: 0.043 * SCREEN_WIDTH,
 		fontWeight: '400'
 	},
 	TextViewStyle: {

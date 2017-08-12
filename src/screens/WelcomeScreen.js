@@ -41,7 +41,7 @@ class WelcomeScreen extends Component {
               buttonStyle={buttonStyle}
               color='white'
               fontWeight='bold'
-              fontSize={18}
+              fontSize={ 0.047 * width }
             />
           </View>
 
