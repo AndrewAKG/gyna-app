@@ -46,8 +46,6 @@ class LoginScreen extends Component {
 
           <ScrollView
             contentContainerStyle={containerStyle}
-            scrollEnabled
-            bounces={false}
           >
             <Image
               source={require('../../assets/icons/4_1.png')}
@@ -66,7 +64,6 @@ class LoginScreen extends Component {
               color='white'
               fontWeight='bold'
               fontSize={18}
-              textStyle = {{ textDecorationLine: 'underline' }}
             />
 
             <RememberForgetPass
@@ -97,7 +94,7 @@ const styles = {
     borderRadius: 20,
     backgroundColor: '#00C1FF',
     width: 0.8 * SCREEN_WIDTH,
-    height: 0.08 * SCREEN_HEIGHT,
+    height: 0.1 * SCREEN_HEIGHT,
     margin: 10
   },
 

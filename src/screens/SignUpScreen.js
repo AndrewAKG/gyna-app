@@ -30,8 +30,6 @@ class SignUpScreen extends Component {
 
           <ScrollView
             contentContainerStyle={containerStyle}
-            scrollEnabled
-            bounces={false}
           >
             <Image
               source={require('../../assets/icons/18.png')}
@@ -70,7 +68,6 @@ class SignUpScreen extends Component {
                 fontWeight='bold'
                 fontSize={18}
                 containerViewStyle={{ margin: 10 }}
-                textStyle = {{ textDecorationLine: 'underline' }}
               />
             </View>
 
@@ -90,7 +87,7 @@ const styles = {
   },
   buttonStyle: {
     borderRadius: 20,
-    height: 0.08 * SCREEN_HEIGHT,
+    height: 0.1 * SCREEN_HEIGHT,
     backgroundColor: '#00C1FF',
     width: 0.8 * SCREEN_WIDTH,
     margin: 10

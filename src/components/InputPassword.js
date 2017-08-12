@@ -40,7 +40,7 @@ class InputPassword extends React.Component {
           />
         </View>
 
-        <View style={{ flex: 3, alignItems: "flex-end", marginRight: 10 }}>
+        <View style={{ flex: 3, alignItems: 'flex-end', marginRight: 10 }}>
           <TouchableWithoutFeedback
             onPress={() => this.onPressButton()}
             style={{
@@ -72,7 +72,7 @@ const styles = {
     borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5c1634',
-    height: 0.08 * SCREEN_HEIGHT,
+    height: 0.1 * SCREEN_HEIGHT,
     width: 0.8 * SCREEN_WIDTH,
     margin: 10
   },

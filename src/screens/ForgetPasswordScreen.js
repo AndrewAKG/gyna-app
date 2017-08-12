@@ -7,7 +7,7 @@ import { Input } from '../components/Input';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-class ForgetPassword extends React.Component {
+class ForgetPasswordScreen extends React.Component {
   static navigationOptions = {
     title: 'forgetPassword',
     headerBackTitle: 'Back',
@@ -17,41 +17,49 @@ class ForgetPassword extends React.Component {
     },
     headerTitle: '',
   };
+
   render() {
     const { navigate } = this.props.navigation;
     const {
-       imageStyle,
+      imageStyle,
       buttonStyle,
       containerStyle
-    } = styles
+    } = styles;
+
     return (
       <BackgroundImage>
+
         <View style={{ flex: 1 }}>
+
           <Image
             source={require('../../assets/icons/4_1.png')}
-            style={ imageStyle }
+            style={imageStyle}
           />
+
           <View style={containerStyle}>
             <Input
               iconSource={require('../../assets/icons/email.png')}
               placeholder='E-mail Address'
               Type='email-address'
             />
+
             <Button
               onPress={() => navigate('mainScreen')}
-              title = "Send Instructions"
-              buttonStyle = { buttonStyle }
-              color = 'white'
-              fontWeight = '400'
-              fontSize = {18}
-              textStyle = {{ textDecorationLine: 'underline' }}
+              title="Send Instructions"
+              buttonStyle={buttonStyle}
+              color='white'
+              fontWeight='normal'
+              fontSize={16}
             />
           </View>
+
         </View>
+
       </BackgroundImage>
     );
   }
 }
+
 const styles = {
   imageStyle: {
     width: 0.35 * SCREEN_WIDTH,
@@ -63,12 +71,13 @@ const styles = {
     borderRadius: 20,
     backgroundColor: '#00C1FF',
     width: 0.8 * SCREEN_WIDTH,
-    height: 0.08*SCREEN_HEIGHT,
+    height: 0.1 * SCREEN_HEIGHT,
     margin: 10,
   },
   containerStyle: {
-    marginTop: 0.15 * SCREEN_HEIGHT, 
-    alignItems: 'center' 
+    marginTop: 0.15 * SCREEN_HEIGHT,
+    alignItems: 'center'
   }
 }
-export default ForgetPassword;
+
+export default ForgetPasswordScreen;

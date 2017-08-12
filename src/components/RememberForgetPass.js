@@ -60,8 +60,7 @@ const styles = {
     backgroundColor: 'rgba(0,0,0,0)'
   },
   textStyle: {
-    fontSize: 12,
-    textDecorationLine: 'underline'
+    fontSize: 12
   },
   forgetPassContainer: {
     flex: 5,

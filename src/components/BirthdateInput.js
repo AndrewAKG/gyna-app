@@ -13,6 +13,7 @@ import {
 import DatePicker from 'react-native-datepicker';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class BirthdateInput extends React.Component {
   onDateChange(date) {
@@ -36,28 +37,26 @@ class BirthdateInput extends React.Component {
         customStyles={{
           dateIcon: {
             position: 'absolute',
-            left: 20,
+            left: 10,
             top: 6,
-            marginLeft: 4,
             width: 25,
             height: 25
           },
           dateInput: {
-            marginLeft: 8,
             borderColor: 'white',
             backgroundColor: 'rgba(0,0,0,0)',
             borderRadius: 20,
             borderWidth: 0.3,
-            height: 60,
+            height: 0.1 * SCREEN_HEIGHT,
             backgroundColor: '#5c1634',
-            alignItems: "flex-start"
+            alignItems: 'flex-start'
           },
           placeholderText: {
             fontSize: 18,
             color: 'white',
-            fontWeight: "200",
-            textAlign: "left",
-            paddingLeft: 70,
+            fontWeight: '200',
+            textAlign: 'left',
+            paddingLeft: 53,
             backgroundColor: '#5c1634',
           }
         }}

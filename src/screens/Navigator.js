@@ -9,7 +9,7 @@ import KnowledgeScreen from './KnowledgeScreen';
 import LifeScreen from './LifeScreen';
 import NotificationsScreen from './NotificationsScreen';
 import MoreScreen from './MoreScreen';
-import ForgetPassowrd from './ForgetPassword';
+import ForgetPassowrdScreen from './ForgetPasswordScreen';
 
 class Navigator extends Component {
   render() {
@@ -24,7 +24,7 @@ class Navigator extends Component {
         screen: SignUpScreen
       },
       forgetPassowrd: {
-        screen: ForgetPassowrd
+        screen: ForgetPassowrdScreen
       },
       mainScreen: {
         screen: TabNavigator({

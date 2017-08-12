@@ -57,7 +57,7 @@ const styles = {
     borderRadius: 20,
     backgroundColor: '#00C1FF',
     width: 0.8 * width,
-    height: 0.08 * height
+    height: 0.1 * height
   },
   viewStyle: {
     flex: 1,
