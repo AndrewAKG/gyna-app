@@ -52,7 +52,7 @@ class BirthdateInput extends React.Component {
             alignItems: 'flex-start'
           },
           placeholderText: {
-            fontSize: 18,
+            fontSize: 0.055 * SCREEN_WIDTH,
             color: 'white',
             fontWeight: '200',
             textAlign: 'left',

@@ -57,14 +57,14 @@ const styles = {
 		alignItems: 'flex-end'
 	},
 	buttonTextStyle: {
-		fontSize: 0.044 * SCREEN_WIDTH,
+		fontSize: 0.045 * SCREEN_WIDTH,
 		color: '#00C1FF',
 		textAlign: 'left',
 		fontWeight: 'normal'
 	},
 	noAccountTextStyle: {
 		color: 'white',
-		fontSize: 0.043 * SCREEN_WIDTH,
+		fontSize: 0.047 * SCREEN_WIDTH,
 		fontWeight: '400'
 	},
 	TextViewStyle: {
