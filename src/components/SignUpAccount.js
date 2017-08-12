@@ -9,7 +9,7 @@ class SignUpAccount extends React.Component {
       containerStyle,
 			TextViewStyle,
 			noAccountTextStyle,
-			SignUpButtonViewStyle,
+			SignUpContainer,
 			SignUpButtonStyle,
 			buttonTextStyle
    } = styles;
@@ -23,61 +23,54 @@ class SignUpAccount extends React.Component {
           </Text>
 				</View>
 
-				<View style={SignUpButtonViewStyle}>
-					<Button
-						onPress={onButtonPress}
-						title="Sign UP"
-						buttonStyle={SignUpButtonStyle}
-						color='white'
-						fontWeight='600'
-						textStyle={buttonTextStyle}
-					/>
-				</View>
+				<Button
+					onPress={onButtonPress}
+					title="Sign UP"
+					buttonStyle={SignUpButtonStyle}
+					color='white'
+					fontWeight='normal'
+					textStyle={buttonTextStyle}
+					containerViewStyle={SignUpContainer}
+				/>
 
 			</View>
 		);
 	}
 }
+
 const styles = {
 	containerStyle: {
 		flexDirection: 'row',
 		flex: 1,
 		backgroundColor: 'rgba(0,0,0,0)',
-		margin: 15
+		margin: 10
 	},
 	SignUpButtonStyle: {
 		borderRadius: 0,
 		backgroundColor: 'rgba(0,0,0,0)',
-		width: 150,
-		height: 100,
+		width: null,
+		height: null
 	},
-	SignUpButtonViewStyle: {
+	SignUpContainer: {
 		flex: 2,
-		marginLeft: 20,
-		marginTop: -30,
-		alignItems: "flex-end"
+		alignItems: 'stretch'
 	},
 	buttonTextStyle: {
-		textDecorationLine: 'underline',
 		fontSize: 14,
-		marginLeft: 70,
+		color: '#00C1FF',
 		textAlign: 'left',
-		marginTop: -23,
-		color: '#4169E1',
-		fontWeight: "400"
+		fontWeight: 'normal'
 	},
 	noAccountTextStyle: {
 		color: 'white',
 		fontSize: 16,
-		fontWeight: '400',
-		backgroundColor: 'rgba(0,0,0,0)'
+		fontWeight: '400'
 	},
 	TextViewStyle: {
 		flex: 8,
-		marginLeft: 15,
-		backgroundColor: 'rgba(0,0,0,0)',
 		alignItems: 'flex-start'
 	}
 
 };
+
 export default SignUpAccount;
