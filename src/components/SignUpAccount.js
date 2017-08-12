@@ -28,7 +28,7 @@ class SignUpAccount extends React.Component {
 
 				<Button
 					onPress={onButtonPress}
-					title="Sign UP"
+					title="Sign Up"
 					buttonStyle={SignUpButtonStyle}
 					color='white'
 					fontWeight='normal'
@@ -53,8 +53,8 @@ const styles = {
 		backgroundColor: 'rgba(0,0,0,0)'
 	},
 	SignUpContainer: {
-		flex: 2,
-		alignItems: 'flex-end'
+		flex: 3,
+		alignItems: 'stretch'
 	},
 	buttonTextStyle: {
 		fontSize: 0.045 * SCREEN_WIDTH,
@@ -68,7 +68,7 @@ const styles = {
 		fontWeight: '400'
 	},
 	TextViewStyle: {
-		flex: 8,
+		flex: 7,
 		alignItems: 'center'
 	}
 };
