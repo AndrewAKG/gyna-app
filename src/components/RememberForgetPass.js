@@ -33,16 +33,15 @@ class RememberForgetPass extends React.Component {
 
         {this.renderCheckBox()}
 
-        <View style={forgetPassContainer}>
-          <Button
-            onPress={this.props.onButtonPress}
-            title="Forget your password?"
-            buttonStyle={forgetPassButton}
-            color='white'
-            fontWeight='600'
-            textStyle={textStyle}
-          />
-        </View>
+        <Button
+          onPress={this.props.onButtonPress}
+          title="Forget your password?"
+          buttonStyle={forgetPassButton}
+          color='white'
+          fontWeight='normal'
+          textStyle={textStyle}
+          containerViewStyle={forgetPassContainer}
+        />
 
       </View>
     );
@@ -61,12 +60,10 @@ const styles = {
     backgroundColor: 'rgba(0,0,0,0)'
   },
   textStyle: {
-    fontSize: 12,
-    textAlign: 'left',
+    fontSize: 12
   },
   forgetPassContainer: {
     flex: 5,
-    marginRight: 20,
     alignItems: 'flex-start'
   },
   checkboxContainerStyle: {
