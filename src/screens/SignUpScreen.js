@@ -70,6 +70,7 @@ class SignUpScreen extends Component {
                 fontWeight='bold'
                 fontSize={18}
                 containerViewStyle={{ margin: 10 }}
+                textStyle = {{ textDecorationLine: 'underline' }}
               />
             </View>
 
@@ -89,7 +90,7 @@ const styles = {
   },
   buttonStyle: {
     borderRadius: 20,
-    height: 60,
+    height: 0.08 * SCREEN_HEIGHT,
     backgroundColor: '#00C1FF',
     width: 0.8 * SCREEN_WIDTH,
     margin: 10

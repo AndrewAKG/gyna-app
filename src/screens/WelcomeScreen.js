@@ -56,8 +56,8 @@ const styles = {
   buttonStyle: {
     borderRadius: 20,
     backgroundColor: '#00C1FF',
-    width: 0.7 * width,
-    height: 60
+    width: 0.8 * width,
+    height: 0.08 * height
   },
   viewStyle: {
     flex: 1,
