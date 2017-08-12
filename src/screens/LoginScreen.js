@@ -53,10 +53,12 @@ class LoginScreen extends Component {
             />
             <Input
               iconSource={require('../../assets/icons/doc.png')}
-              placeholder='username'
+              placeholder='Username'
               style={{ marginTop: 20 }}
             />
+
             <InputPassword />
+            
             <Button
               onPress={() => navigate('mainScreen')}
               title="Login"

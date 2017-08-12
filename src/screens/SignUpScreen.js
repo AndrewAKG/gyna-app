@@ -21,6 +21,7 @@ class SignUpScreen extends Component {
   };
 
   render() {
+    const { navigate } = this.props.navigation;
     const { containerStyle } = styles;
 
     return (
@@ -37,7 +38,7 @@ class SignUpScreen extends Component {
             />
             <Input
               iconSource={require('../../assets/icons/doc.png')}
-              placeholder='username'
+              placeholder='Username'
               style={{ marginTop: 20 }}
             />
             <InputPassword />
@@ -61,7 +62,7 @@ class SignUpScreen extends Component {
             <View style={{ margin: 10 }}>
 
               <Button
-                onPress={() => navigate('mainScreen')}
+                onPress={() => navigate('login')}
                 title="Register"
                 buttonStyle={styles.buttonStyle}
                 color='white'

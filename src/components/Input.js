@@ -57,7 +57,8 @@ const styles = {
     fontSize: 18,
     lineHeight: 23,
     fontWeight: "200",
-    height: 50
+    height: 50,
+    width: 0.6 * SCREEN_WIDTH
   },
   imageStyle: {
     width: 25,

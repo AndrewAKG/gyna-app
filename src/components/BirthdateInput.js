@@ -45,7 +45,7 @@ class BirthdateInput extends React.Component {
           dateInput: {
             borderColor: 'white',
             backgroundColor: 'rgba(0,0,0,0)',
-            borderRadius: 0.05* SCREEN_HEIGHT,
+            borderRadius: 0.06 * SCREEN_HEIGHT,
             borderWidth: 0.3,
             height: 0.095 * SCREEN_HEIGHT,
             backgroundColor: '#5c1634',
@@ -67,7 +67,7 @@ class BirthdateInput extends React.Component {
 
   render() {
     return (
-      <View style={{ alignItems: 'center' }}>
+      <View style={{ flex: 1, alignItems: 'center' }}>
         {this.renderPicker()}
       </View>
 

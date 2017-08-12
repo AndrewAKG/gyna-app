@@ -47,13 +47,11 @@ const styles = {
 	},
 	SignUpButtonStyle: {
 		borderRadius: 0,
-		backgroundColor: 'rgba(0,0,0,0)',
-		width: null,
-		height: null
+		backgroundColor: 'rgba(0,0,0,0)'
 	},
 	SignUpContainer: {
 		flex: 2,
-		alignItems: 'stretch'
+		alignItems: 'flex-end'
 	},
 	buttonTextStyle: {
 		fontSize: 14,
@@ -68,9 +66,8 @@ const styles = {
 	},
 	TextViewStyle: {
 		flex: 8,
-		alignItems: 'flex-start'
+		alignItems: 'center'
 	}
-
 };
 
 export default SignUpAccount;
