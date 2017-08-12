@@ -42,35 +42,36 @@ class SignUpAccount extends React.Component {
 }
 
 const styles = {
-  containerStyle: {
-    flexDirection: 'row',
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0)',
-    margin: 10
-  },
-  SignUpButtonStyle: {
-    borderRadius: 0,
-    backgroundColor: 'rgba(0,0,0,0)'
-  },
-  SignUpContainer: {
-    flex: 3,
-    alignItems: 'stretch'
-  },
-  buttonTextStyle: {
-    fontSize: 0.045 * SCREEN_WIDTH,
-    color: '#00C1FF',
-    textAlign: 'left',
-    fontWeight: 'normal'
-  },
-  noAccountTextStyle: {
-    color: 'white',
-    fontSize: 0.047 * SCREEN_WIDTH,
-    fontWeight: '400'
-  },
-  TextViewStyle: {
-    flex: 7,
-    alignItems: 'center'
-  }
+	containerStyle: {
+		flexDirection: 'row',
+		flex: 1,
+		backgroundColor: 'rgba(0,0,0,0)',
+		margin: 10
+	},
+	SignUpButtonStyle: {
+		borderRadius: 0,
+		backgroundColor: 'rgba(0,0,0,0)'
+	},
+	SignUpContainer: {
+		flex: 3,
+		alignItems: 'center',
+		marginTop: -11
+	},
+	buttonTextStyle: {
+		fontSize: 0.045 * SCREEN_WIDTH,
+		color: '#00C1FF',
+		textAlign: 'left',
+		fontWeight: 'normal'
+	},
+	noAccountTextStyle: {
+		color: 'white',
+		fontSize: 0.047 * SCREEN_WIDTH,
+		fontWeight: '400'
+	},
+	TextViewStyle: {
+		flex: 7,
+		alignItems: 'center'
+	}
 };
 
 export default SignUpAccount;
