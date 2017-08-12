@@ -5,6 +5,7 @@ import BackgroundImage from '../components/BackgroundImage';
 import { Input } from '../components/Input';
 import { InputPassword } from '../components/InputPassword';
 import RememberForgetPass from '../components/RememberForgetPass';
+import NoAccount from '../components/NoAccount';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -59,7 +60,8 @@ class LoginScreen extends Component {
             />
 
             <RememberForgetPass />
-
+            <NoAccount/>
+            
           </ScrollView>
 
         </View>
@@ -80,7 +82,29 @@ const styles = {
     width: 0.8 * SCREEN_WIDTH,
     height: 60,
     margin: 10
-  }
+  },
+  b2: {
+    borderRadius: 0,
+    backgroundColor: 'rgba(0,0,0,0)',
+    width: 150,
+    height: 100,
+  },
+  ViewStyle2: {
+    flex: 2,
+    marginLeft: 20,
+    marginTop: -30,
+    alignItems: "flex-end"
+  },
+  buttonTextStyle: {
+    textDecorationLine: 'underline',
+    fontSize: 14,
+    marginLeft: 70,
+    textAlign: 'left',
+    marginTop: -23,
+    color: '#4169E1',
+    fontWeight:"400"
+  },
+
 };
 
 export default LoginScreen;
