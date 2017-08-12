@@ -8,6 +8,7 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 class HomeScreen extends Component {
   static navigationOptions = {
     tabBarLabel: 'Home',
+    header: null,
     headerStyle: {
       backgroundColor: '#5C1634'
     },
@@ -27,7 +28,7 @@ class HomeScreen extends Component {
 
         <View style={{ flex: 1 }}>
 
-          <View style={{ flex: 4, alignItems: 'center', justifyContent: 'flex-start' }}>
+          <View style={{ flex: 4, alignItems: 'center', justifyContent: 'flex-start', marginTop:20 }}>
             <Image
               source={require('../../assets/icons/bigZ.png')}
               style={{ width: 0.35 * SCREEN_WIDTH, height: 0.3 * SCREEN_HEIGHT, paddingTop: 10 }}
