@@ -4,6 +4,7 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER
 } from '../actions/types';
+import { NavigationActions } from 'react-navigation';
 
 const INITIAL_STATE = {
     email: '',
@@ -13,7 +14,6 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-    console.log(action);
     switch (action.type) {
         case EMAIL_CHANGED:
             return { ...state, email: action.payLoad };
@@ -22,10 +22,9 @@ export default (state = INITIAL_STATE, action) => {
         case LOGIN_USER:
             return { ...state, loading: true };
         case LOGIN_USER_SUCCESS:
-            return { ...state, ...INITIAL_STATE, user: action.result };
             console.log('SUCCESS', action.result);
+            return { ...state, ...INITIAL_STATE, user: action.result };
         default:
             return state;
     }
-
 };

@@ -20,7 +20,9 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false
+      checked: false,
+      email: '',
+      password: ''
     }
   }
 
@@ -40,15 +42,17 @@ class LoginScreen extends Component {
   }
 
   onEmailChange(text) {
+    this.setState({ email: text });
     this.props.emailChanged(text);
   }
 
   onPasswordChange(text) {
+    this.setState({ password: text });
     this.props.passwordChanged(text);
   }
 
   onButtonPress() {
-    const { email, password } = this.props;
+    const { email, password } = this.state;
 
     this.props.LoginUser({ email, password });
   }
@@ -92,7 +96,7 @@ class LoginScreen extends Component {
             />
 
             <Button
-              onPress={() => this.onButtonPress()}
+              onPress={this.onButtonPress.bind(this)}
               title="Login"
               buttonStyle={buttonStyle}
               color='white'
@@ -146,6 +150,6 @@ export default connect(mapStateToProps,
   {
     emailChanged,
     passwordChanged,
-    LoginUser,
+    LoginUser
   })
   (LoginScreen);

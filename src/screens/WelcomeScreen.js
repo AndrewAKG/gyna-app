@@ -13,14 +13,14 @@ class WelcomeScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    const { buttonStyle, viewStyle } = styles;
+    const { buttonStyle, viewStyle, picStyle } = styles;
 
     return (
       <BackgroundImage>
 
         <View style={{ flex: 1 }}>
 
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
+          <View style={picStyle}>
             <Image
               style={{ width: 0.35 * width, height: 0.3 * height, paddingTop: 10 }}
               source={require('../../assets/icons/4_1.png')}
@@ -63,6 +63,11 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  picStyle: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end'
   }
 };
 

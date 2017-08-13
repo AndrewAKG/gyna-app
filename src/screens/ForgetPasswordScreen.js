@@ -71,7 +71,7 @@ const styles = {
     backgroundColor: '#00C1FF',
     width: 0.8 * SCREEN_WIDTH,
     height: 0.095 * SCREEN_HEIGHT,
-    margin: 10,
+    margin: 10
   },
   containerStyle: {
     marginTop: 0.15 * SCREEN_HEIGHT,

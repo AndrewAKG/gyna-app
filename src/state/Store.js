@@ -5,7 +5,7 @@ import ReduxThunk from 'redux-thunk';
 
 
 export default function configureStore(initialState) {
-  const store = createStore(reducers,{},applyMiddleware(ReduxThunk))
+  const store = createStore(reducers, {}, applyMiddleware(ReduxThunk))
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
