@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform } from 'react-native';
-import { StackNavigator, TabNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator,  addNavigationHelpers } from 'react-navigation';
 import WelcomeScreen from './WelcomeScreen';
 import LoginScreen from './LoginScreen';
 import SignUpScreen from './SignUpScreen';
@@ -65,7 +65,6 @@ class Navigator extends Component {
       {
         headerMode: (Platform.OS === 'ios') ? 'float' : 'screen'
       });
-
     return (
       <MainNavigator />
     );

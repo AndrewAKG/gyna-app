@@ -53,8 +53,9 @@ class LoginScreen extends Component {
 
   onButtonPress() {
     const { email, password } = this.state;
-
+    
     this.props.LoginUser({ email, password });
+    this.props.navigation.navigate('mainScreen');
   }
 
   renderSpinner() {
@@ -89,7 +90,6 @@ class LoginScreen extends Component {
               onChangeText={this.onEmailChange.bind(this)}
               value={this.props.email}
             />
-
             <InputPassword
               onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password}
@@ -141,7 +141,7 @@ const styles = {
 
 const mapStateToProps = ({ auth }) => {
   const { email, password, loading } = auth;
-
+  console.log(email);
   return { email, password, loading };
 };
 

@@ -4,7 +4,6 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER
 } from './types';
-import { NavigationActions } from 'react-navigation';
 import axios from 'axios';
 
 export const emailChanged = (text) => {
@@ -41,7 +40,7 @@ export const LoginUser = ({ email, password }) => {
             body: formData
         }).then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: LOGIN_USER_SUCCESS, result: responseJson.result });
+                dispatch({ type: LOGIN_USER_SUCCESS, result: responseJson.message });
             });
     };
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
-import BackgroundImage from '../components/BackgroundImage';
+import { BackgroundImage } from '../components';
 
 class NotificationsScreen extends Component {
   static navigationOptions = {
