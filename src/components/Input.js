@@ -8,7 +8,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 
-const Input = ({ value, placeholder, iconSource, style, Type, secure }) => {
+const Input = ({ value, placeholder, iconSource, style, Type, secure, onChangeText }) => {
   const { containerStyle, inputStyle, imageStyle } = styles;
 
   return (
@@ -28,7 +28,7 @@ const Input = ({ value, placeholder, iconSource, style, Type, secure }) => {
           style={inputStyle}
           value={value}
           secureTextEntry={secure}
-        //   onChangeText={onChangeText}
+          onChangeText={onChangeText}
         />
       </View>
     </View>

@@ -6,6 +6,8 @@ import { Input } from '../components/Input';
 import { InputPassword } from '../components/InputPassword';
 import RememberForgetPass from '../components/RememberForgetPass';
 import SignUpAccount from '../components/SignUpAccount';
+import { emailChanged, passwordChanged, LoginUser } from '../actions';
+import {connect} from 'react-redux';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -14,7 +16,11 @@ class LoginScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { checked: false }
+    this.state = {
+      checked: false,
+      email: '',
+      password: ''
+    }
   }
 
   static navigationOptions = {
@@ -30,6 +36,21 @@ class LoginScreen extends Component {
 
   onPress() {
     this.setState({ checked: !(this.state.checked) })
+  }
+
+  onEmailChange(text) {
+    //this.state.email = text;
+    this.props.emailChanged(text);
+  }
+
+  onPasswordChange(text) {
+  //  this.state.password = text;
+    this.props.passwordChanged(text);
+  }
+
+  onButtonPress() {
+    const { email, password } = this.state;
+    this.props.LoginUser({ email, password });
   }
 
   render() {
@@ -55,17 +76,20 @@ class LoginScreen extends Component {
               iconSource={require('../../assets/icons/doc.png')}
               placeholder='Username'
               style={{ marginTop: 20 }}
+              onChangeText={this.onEmailChange.bind(this)}
             />
 
-            <InputPassword />
-            
+            <InputPassword 
+            onChangeText={this.onPasswordChange.bind(this)}
+            />
+
             <Button
-              onPress={() => navigate('mainScreen')}
+            onPress={() => this.onButtonPress.bind(this)}
               title="Login"
               buttonStyle={buttonStyle}
               color='white'
               fontWeight='bold'
-              fontSize={ 0.047 * SCREEN_WIDTH }
+              fontSize={0.047 * SCREEN_WIDTH}
             />
 
             <RememberForgetPass
@@ -102,4 +126,17 @@ const styles = {
 
 };
 
-export default LoginScreen;
+const mapStateToProps = ({ auth }) => {
+  const { email, password } = auth;
+
+  return { email, password };
+};
+
+
+export default connect(mapStateToProps,
+  {
+    emailChanged,
+    passwordChanged,
+    LoginUser
+  })
+  (LoginScreen);
