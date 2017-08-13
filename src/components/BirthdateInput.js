@@ -16,21 +16,23 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class BirthdateInput extends React.Component {
+  
   onDateChange(date) {
-    console.log(date);
-    //   this.props.dateChange(date);
+    this.props.onDateChange(date);
   }
 
   renderPicker() {
-    let today = new Date().toDateString();
+    let today = new Date();
     return (
       <DatePicker
         style={{ width: 0.81 * SCREEN_WIDTH, paddingTop: 20 }}
         mode="date"
+        date={this.props.date}
         placeholder={'Aniversary Date'}
         format="MM-DD-YYYY"
-        minDate="1930-01-01"
+        minDate="01-01-1930"
         maxDate={today}
+        androidMode='spinner'
         confirmBtnText="Confirm"
         cancelBtnText="Cancel"
         iconSource={require('../../assets/icons/14.png')}
@@ -49,7 +51,13 @@ class BirthdateInput extends React.Component {
             borderWidth: 0.3,
             height: 0.095 * SCREEN_HEIGHT,
             backgroundColor: '#5c1634',
-            alignItems: 'flex-start'
+            alignItems: 'flex-start',
+            paddingLeft: 53
+          },
+          dateText: {
+            fontSize: 0.055 * SCREEN_WIDTH,
+            color: 'white',
+            fontWeight: '200',
           },
           placeholderText: {
             fontSize: 0.055 * SCREEN_WIDTH,
@@ -60,7 +68,7 @@ class BirthdateInput extends React.Component {
             backgroundColor: '#5c1634',
           }
         }}
-        onDateChange={(date) => { console.log('date changed') }}
+        onDateChange={(date) => this.onDateChange(date)}
       />
     );
   }

@@ -10,6 +10,12 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class SignUpScreen extends Component {
+  constructor(props) {
+    super(props);
+    let today = new Date();
+    this.state = { date: today }
+  }
+
   static navigationOptions = {
     title: 'signUp',
     headerBackTitle: 'Back',
@@ -41,7 +47,9 @@ class SignUpScreen extends Component {
               placeholder='Username'
               style={{ marginTop: 20 }}
             />
+
             <InputPassword />
+
             <Input
               iconSource={require('../../assets/icons/email.png')}
               placeholder='E-mail'
@@ -57,7 +65,11 @@ class SignUpScreen extends Component {
               placeholder='Working address'
               Type='email-address'
             />
-            <BirthdateInput />
+
+            <BirthdateInput
+              date={this.state.date}
+              onDateChange={(date) => this.setState({ date: date })}
+            />
 
             <View style={{ margin: 10 }}>
 
@@ -67,7 +79,7 @@ class SignUpScreen extends Component {
                 buttonStyle={styles.buttonStyle}
                 color='white'
                 fontWeight='bold'
-                fontSize={ 0.047 * SCREEN_WIDTH}
+                fontSize={0.047 * SCREEN_WIDTH}
                 containerViewStyle={{ margin: 10 }}
               />
             </View>
