@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
 import { connect } from 'react-redux';
-import BackgroundImage from '../components/BackgroundImage';
-import { Input } from '../components/Input';
-import { InputPassword } from '../components/InputPassword';
-import RememberForgetPass from '../components/RememberForgetPass';
-import SignUpAccount from '../components/SignUpAccount';
+import {
+  Input,
+  BackgroundImage,
+  InputPassword,
+  RememberForgetPass,
+  SignUpAccount,
+  Spinner
+} from '../components';
 import { emailChanged, passwordChanged, LoginUser } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -50,6 +53,12 @@ class LoginScreen extends Component {
     this.props.LoginUser({ email, password });
   }
 
+  renderSpinner() {
+    if (this.props.loading) {
+      return <Spinner />
+    }
+  }
+
   render() {
     const { navigate } = this.props.navigation;
     const {
@@ -91,6 +100,8 @@ class LoginScreen extends Component {
               fontSize={0.047 * SCREEN_WIDTH}
             />
 
+            {this.renderSpinner()}
+
             <RememberForgetPass
               onButtonPress={() => navigate('forgetPassowrd')}
               onCheckBoxPress={() => this.onPress()}
@@ -125,9 +136,9 @@ const styles = {
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password } = auth;
+  const { email, password, loading } = auth;
 
-  return { email, password };
+  return { email, password, loading };
 };
 
 
@@ -135,6 +146,6 @@ export default connect(mapStateToProps,
   {
     emailChanged,
     passwordChanged,
-    LoginUser
+    LoginUser,
   })
   (LoginScreen);

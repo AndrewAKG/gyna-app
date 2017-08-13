@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Image, Dimensions, View } from 'react-native';
-import BackgroundImage from '../components/BackgroundImage';
-import Spinner from '../components/Spinner';
+import { BackgroundImage, Spinner } from '../components';
 
 const { height, width } = Dimensions.get('window');
 

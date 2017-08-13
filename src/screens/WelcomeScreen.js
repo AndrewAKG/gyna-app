@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, TextInput } from 'react-native';
 import { Button } from 'react-native-elements';
-import BackgroundImage from '../components/BackgroundImage';
+import { BackgroundImage } from '../components';
 
 const { height, width } = Dimensions.get('window');
 
@@ -41,7 +41,7 @@ class WelcomeScreen extends Component {
               buttonStyle={buttonStyle}
               color='white'
               fontWeight='bold'
-              fontSize={ 0.047 * width }
+              fontSize={0.047 * width}
             />
           </View>
 

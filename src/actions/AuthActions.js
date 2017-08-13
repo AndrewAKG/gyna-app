@@ -1,4 +1,9 @@
-import { EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER_SUCCESS } from './types';
+import {
+    EMAIL_CHANGED,
+    PASSWORD_CHANGED,
+    LOGIN_USER_SUCCESS,
+    LOGIN_USER
+} from './types';
 import axios from 'axios';
 
 export const emailChanged = (text) => {
@@ -18,13 +23,14 @@ export const passwordChanged = (text) => {
 
 export const LoginUser = ({ email, password }) => {
     return (dispatch) => {
+        dispatch({ type: LOGIN_USER });
+
         var formData = new FormData();
         formData.append('username', email);
         formData.append('password', password);
         formDate.append('device_token', 'ios');
         formDate.append('version', '10.3.2');
-        console.log(email);
-        console.log(password);
+
         fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/login', {
             method: 'POST',
             headers: {
@@ -34,7 +40,7 @@ export const LoginUser = ({ email, password }) => {
             body: formData
         }).then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: LOGIN_USER_SUCCESS, payload: responseJson });
+                dispatch({ type: LOGIN_USER_SUCCESS, result: responseJson.result });
             });
     };
 };

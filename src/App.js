@@ -9,6 +9,8 @@ import LoadingScreen from './screens/LoadingScreen';
 import configureStore from './state/Store';
 import Data from './Images.json';
 
+const store = configureStore();
+
 const assets = [
   require('../assets/icons/1.png'),
   require('../assets/icons/2.png'),
@@ -27,8 +29,6 @@ const assets = [
   require('../assets/icons/life.png'),
   require('../assets/icons/Welcome.png')
 ];
-
-const store = configureStore();
 
 export default class App extends React.Component {
 

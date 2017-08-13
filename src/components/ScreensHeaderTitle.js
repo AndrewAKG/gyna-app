@@ -37,4 +37,4 @@ const styles = {
   }
 }
 
-export default ScreensHeaderTitle;
+export { ScreensHeaderTitle };
