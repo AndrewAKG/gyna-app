@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
-import BackgroundImage from '../components/BackgroundImage';
 import { Button } from 'react-native-elements';
-import { Input } from '../components/Input';
-import { BirthdateInput } from '../components/BirthdateInput';
-import { InputPassword } from '../components/InputPassword';
+import {
+  Input,
+  BirthdateInput,
+  InputPassword,
+  BackgroundImage
+} from '../components';
+
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
-import BackgroundImage from '../components/BackgroundImage';
-import { Input } from '../components/Input';
+import { Input, BackgroundImage } from '../components';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;

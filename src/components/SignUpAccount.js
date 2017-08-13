@@ -6,39 +6,39 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class SignUpAccount extends React.Component {
-  render() {
-    const { onButtonPress } = this.props;
-    const {
+	render() {
+		const { onButtonPress } = this.props;
+		const {
       containerStyle,
-      TextViewStyle,
-      noAccountTextStyle,
-      SignUpContainer,
-      SignUpButtonStyle,
-      buttonTextStyle
+			TextViewStyle,
+			noAccountTextStyle,
+			SignUpContainer,
+			SignUpButtonStyle,
+			buttonTextStyle
    } = styles;
 
-    return (
-      <View style={containerStyle}>
+		return (
+			<View style={containerStyle}>
 
-        <View style={TextViewStyle}>
-          <Text style={noAccountTextStyle}>
-            Don't Have an account ?
+				<View style={TextViewStyle}>
+					<Text style={noAccountTextStyle}>
+						Don't Have an account ?
           </Text>
-        </View>
+				</View>
 
-          <Button
-            onPress={onButtonPress}
-            title="Sign Up"
-            buttonStyle={SignUpButtonStyle}
-            color='white'
-            fontWeight='normal'
-            textStyle={buttonTextStyle}
-            containerViewStyle={SignUpContainer}
-          />
-          
-      </View>
-    );
-  }
+				<Button
+					onPress={onButtonPress}
+					title="Sign Up"
+					buttonStyle={SignUpButtonStyle}
+					color='white'
+					fontWeight='normal'
+					textStyle={buttonTextStyle}
+					containerViewStyle={SignUpContainer}
+				/>
+
+			</View>
+		);
+	}
 }
 
 const styles = {
@@ -74,4 +74,4 @@ const styles = {
 	}
 };
 
-export default SignUpAccount;
+export { SignUpAccount };

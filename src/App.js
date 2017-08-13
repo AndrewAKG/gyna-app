@@ -10,7 +10,6 @@ import Data from './Images.json';
 import reducers from './reducers';
 
 const store = configureStore();
-
 const assets = [
   require('../assets/icons/1.png'),
   require('../assets/icons/2.png'),
@@ -29,7 +28,6 @@ const assets = [
   require('../assets/icons/life.png'),
   require('../assets/icons/Welcome.png')
 ];
-
 
 export default class App extends React.Component {
 

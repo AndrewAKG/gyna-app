@@ -84,4 +84,4 @@ const styles = {
   }
 }
 
-export default RememberForgetPass;
+export { RememberForgetPass };

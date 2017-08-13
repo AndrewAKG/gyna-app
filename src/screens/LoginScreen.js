@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
-import BackgroundImage from '../components/BackgroundImage';
-import { Input } from '../components/Input';
-import { InputPassword } from '../components/InputPassword';
-import RememberForgetPass from '../components/RememberForgetPass';
-import SignUpAccount from '../components/SignUpAccount';
-import { emailChanged, passwordChanged, LoginUser } from '../actions';
 import { connect } from 'react-redux';
+import {
+  Input,
+  BackgroundImage,
+  InputPassword,
+  RememberForgetPass,
+  SignUpAccount,
+  Spinner
+} from '../components';
+import { emailChanged, passwordChanged, LoginUser } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -17,9 +20,7 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false,
-      email: '',
-      password: ''
+      checked: false
     }
   }
 
@@ -39,25 +40,30 @@ class LoginScreen extends Component {
   }
 
   onEmailChange(text) {
-    //this.state.email = text;
     this.props.emailChanged(text);
   }
 
   onPasswordChange(text) {
-    //  this.state.password = text;
     this.props.passwordChanged(text);
   }
 
   onButtonPress() {
-    const { email, password } = this.props
+    const { email, password } = this.props;
+
     this.props.LoginUser({ email, password });
+  }
+
+  renderSpinner() {
+    if (this.props.loading) {
+      return <Spinner />
+    }
   }
 
   render() {
     const { navigate } = this.props.navigation;
     const {
       containerStyle,
-      buttonStyle,
+      buttonStyle
     } = styles;
 
     return (
@@ -94,6 +100,8 @@ class LoginScreen extends Component {
               fontSize={0.047 * SCREEN_WIDTH}
             />
 
+            {this.renderSpinner()}
+
             <RememberForgetPass
               onButtonPress={() => navigate('forgetPassowrd')}
               onCheckBoxPress={() => this.onPress()}
@@ -128,9 +136,9 @@ const styles = {
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password } = auth;
+  const { email, password, loading } = auth;
 
-  return { email, password };
+  return { email, password, loading };
 };
 
 

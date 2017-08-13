@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, Dimensions } from 'react-native';
-import BackgroundImage from '../components/BackgroundImage';
+import { BackgroundImage } from '../components';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
