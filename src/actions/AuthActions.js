@@ -21,9 +21,11 @@ export const LoginUser = ({ email, password }) => {
         var formData = new FormData();
         formData.append('username', email);
         formData.append('password', password);
+        formDate.append('device_token', 'ios');
+        formDate.append('version', '10.3.2');
         console.log(email);
         console.log(password);
-        fetch('http://bb.mypromoholiday.com/public_html/api_auth/login', {
+        fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -31,8 +33,8 @@ export const LoginUser = ({ email, password }) => {
             },
             body: formData
         }).then((response) => response.json())
-        .then((responseJson) => {
-            dispatch({ type: LOGIN_USER_SUCCESS, payload: responseJson });
-        });
+            .then((responseJson) => {
+                dispatch({ type: LOGIN_USER_SUCCESS, payload: responseJson });
+            });
     };
 };

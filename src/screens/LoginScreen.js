@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
+import { connect } from 'react-redux';
 import BackgroundImage from '../components/BackgroundImage';
 import { Input } from '../components/Input';
 import { InputPassword } from '../components/InputPassword';
 import RememberForgetPass from '../components/RememberForgetPass';
 import SignUpAccount from '../components/SignUpAccount';
 import { emailChanged, passwordChanged, LoginUser } from '../actions';
-import { connect } from 'react-redux';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -17,9 +17,7 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false,
-      email: '',
-      password: ''
+      checked: false
     }
   }
 
@@ -39,17 +37,16 @@ class LoginScreen extends Component {
   }
 
   onEmailChange(text) {
-    //this.state.email = text;
     this.props.emailChanged(text);
   }
 
   onPasswordChange(text) {
-    //  this.state.password = text;
     this.props.passwordChanged(text);
   }
 
   onButtonPress() {
-    const { email, password } = this.state;
+    const { email, password } = this.props;
+
     this.props.LoginUser({ email, password });
   }
 
@@ -57,7 +54,7 @@ class LoginScreen extends Component {
     const { navigate } = this.props.navigation;
     const {
       containerStyle,
-      buttonStyle,
+      buttonStyle
     } = styles;
 
     return (
@@ -77,14 +74,16 @@ class LoginScreen extends Component {
               placeholder='Username'
               style={{ marginTop: 20 }}
               onChangeText={this.onEmailChange.bind(this)}
+              value={this.props.email}
             />
 
             <InputPassword
               onChangeText={this.onPasswordChange.bind(this)}
+              value={this.props.password}
             />
 
             <Button
-              onPress={() => this.onButtonPress.bind(this)}
+              onPress={() => this.onButtonPress()}
               title="Login"
               buttonStyle={buttonStyle}
               color='white'

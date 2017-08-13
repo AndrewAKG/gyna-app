@@ -16,7 +16,7 @@ class InputPassword extends React.Component {
   }
 
   render() {
-    const { value,onChangeText } = this.props;
+    const { value, onChangeText } = this.props;
 
     return (
       <View style={styles.containerStyle}>
@@ -36,7 +36,7 @@ class InputPassword extends React.Component {
             style={styles.inputStyle}
             value={value}
             secureTextEntry={this.state.secured}
-           onChangeText={onChangeText}
+            onChangeText={onChangeText}
           />
         </View>
 
