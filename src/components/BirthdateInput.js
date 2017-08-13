@@ -30,7 +30,7 @@ class BirthdateInput extends React.Component {
         date={this.props.date}
         placeholder={'Aniversary Date'}
         format="MM-DD-YYYY"
-        minDate="1930-01-01"
+        minDate="01-01-1930"
         maxDate={today}
         androidMode='spinner'
         confirmBtnText="Confirm"
