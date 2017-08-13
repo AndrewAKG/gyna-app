@@ -77,7 +77,7 @@ class LoginScreen extends Component {
               placeholder='Username'
               style={{ marginTop: 20 }}
               onChangeText={this.onEmailChange.bind(this)}
-              value={this.props.username}
+              value={this.props.email}
             />
 
             <InputPassword

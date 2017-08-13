@@ -4,10 +4,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import Navigator from './screens/Navigator';
-import reducers from './reducers';
 import LoadingScreen from './screens/LoadingScreen';
 import configureStore from './state/Store';
 import Data from './Images.json';
+import reducers from './reducers';
+
+const store = configureStore();
 
 const assets = [
   require('../assets/icons/1.png'),
@@ -28,7 +30,6 @@ const assets = [
   require('../assets/icons/Welcome.png')
 ];
 
-const store = configureStore();
 
 export default class App extends React.Component {
 
@@ -87,8 +88,8 @@ export default class App extends React.Component {
 
     return (
 
-      <Provider store={store}>
-        <Navigator />
+      <Provider store ={store}>
+      <Navigator />
       </Provider>
     );
   }
