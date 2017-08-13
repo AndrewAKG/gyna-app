@@ -20,7 +20,9 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false
+      checked: false,
+      email: '',
+      password: ''
     }
   }
 
@@ -40,17 +42,21 @@ class LoginScreen extends Component {
   }
 
   onEmailChange(text) {
+    this.state.email=text;
     this.props.emailChanged(text);
+    console.log(this.props.email);
   }
 
   onPasswordChange(text) {
+   this.state.password=text;
     this.props.passwordChanged(text);
   }
 
   onButtonPress() {
-    const { email, password } = this.props;
-
+    const { email, password } = this.state;
+    //const { email, password } = this.props;
     this.props.LoginUser({ email, password });
+    this.props.navigation.navigate('mainScreen');
   }
 
   renderSpinner() {
@@ -85,14 +91,13 @@ class LoginScreen extends Component {
               onChangeText={this.onEmailChange.bind(this)}
               value={this.props.email}
             />
-
             <InputPassword
               onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password}
             />
 
             <Button
-              onPress={() => this.onButtonPress()}
+              onPress={this.onButtonPress.bind(this)}
               title="Login"
               buttonStyle={buttonStyle}
               color='white'
@@ -137,7 +142,7 @@ const styles = {
 
 const mapStateToProps = ({ auth }) => {
   const { email, password, loading } = auth;
-
+console.log(email);
   return { email, password, loading };
 };
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text,Image,FlatList } from 'react-native';
-import BackgroundImage from '../components/BackgroundImage';
+import { BackgroundImage } from '../components';
 
 class MoreScreen extends Component {
   static navigationOptions = {

@@ -4,6 +4,7 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER
 } from './types';
+import { NavigationActions } from 'react-navigation';
 import axios from 'axios';
 
 export const emailChanged = (text) => {
@@ -28,8 +29,10 @@ export const LoginUser = ({ email, password }) => {
         var formData = new FormData();
         formData.append('username', email);
         formData.append('password', password);
-        formDate.append('device_token', 'ios');
-        formDate.append('version', '10.3.2');
+        formData.append('device_token', 'ios');
+        formData.append('version', '10.3.2');
+
+        console.log(email);
 
         fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/login', {
             method: 'POST',
@@ -41,6 +44,8 @@ export const LoginUser = ({ email, password }) => {
         }).then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: LOGIN_USER_SUCCESS, result: responseJson.result });
+               // console.log('navigate ya puppyyy')
+                //dispatch(NavigationActions.navigate({ routeName: 'Route' }));
             });
     };
 };
