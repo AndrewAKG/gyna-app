@@ -7,7 +7,7 @@ import { InputPassword } from '../components/InputPassword';
 import RememberForgetPass from '../components/RememberForgetPass';
 import SignUpAccount from '../components/SignUpAccount';
 import { emailChanged, passwordChanged, LoginUser } from '../actions';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -44,7 +44,7 @@ class LoginScreen extends Component {
   }
 
   onPasswordChange(text) {
-  //  this.state.password = text;
+    //  this.state.password = text;
     this.props.passwordChanged(text);
   }
 
@@ -79,12 +79,12 @@ class LoginScreen extends Component {
               onChangeText={this.onEmailChange.bind(this)}
             />
 
-            <InputPassword 
-            onChangeText={this.onPasswordChange.bind(this)}
+            <InputPassword
+              onChangeText={this.onPasswordChange.bind(this)}
             />
 
             <Button
-            onPress={() => this.onButtonPress.bind(this)}
+              onPress={() => this.onButtonPress.bind(this)}
               title="Login"
               buttonStyle={buttonStyle}
               color='white'
@@ -122,8 +122,7 @@ const styles = {
     width: 0.8 * SCREEN_WIDTH,
     height: 0.095 * SCREEN_HEIGHT,
     margin: 10
-  },
-
+  }
 };
 
 const mapStateToProps = ({ auth }) => {

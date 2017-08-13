@@ -27,13 +27,12 @@ export const LoginUser = ({ email, password }) => {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'multipart/form-data',
-
+                'Content-Type': 'multipart/form-data'
             },
             body: formData
-        }).then((response) => response.json()).then((responseJson) => {
+        }).then((response) => response.json())
+        .then((responseJson) => {
             dispatch({ type: LOGIN_USER_SUCCESS, payload: responseJson });
-
         });
     };
 };
