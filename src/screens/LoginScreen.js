@@ -49,7 +49,7 @@ class LoginScreen extends Component {
   }
 
   onButtonPress() {
-    const { email, password } = this.state;
+    const { email, password } = this.props
     this.props.LoginUser({ email, password });
   }
 
@@ -77,14 +77,16 @@ class LoginScreen extends Component {
               placeholder='Username'
               style={{ marginTop: 20 }}
               onChangeText={this.onEmailChange.bind(this)}
+              value={this.props.username}
             />
 
             <InputPassword
               onChangeText={this.onPasswordChange.bind(this)}
+              value={this.props.password}
             />
 
             <Button
-              onPress={() => this.onButtonPress.bind(this)}
+              onPress={() => this.onButtonPress()}
               title="Login"
               buttonStyle={buttonStyle}
               color='white'
@@ -136,6 +138,6 @@ export default connect(mapStateToProps,
   {
     emailChanged,
     passwordChanged,
-    LoginUser
+    LoginUser,
   })
   (LoginScreen);
