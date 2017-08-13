@@ -13,7 +13,6 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-    console.log(action);
     switch (action.type) {
         case EMAIL_CHANGED:
             return { ...state, email: action.payLoad };
@@ -22,8 +21,8 @@ export default (state = INITIAL_STATE, action) => {
         case LOGIN_USER:
             return { ...state, loading: true };
         case LOGIN_USER_SUCCESS:
+            console.log(action.result);
             return { ...state, ...INITIAL_STATE, user: action.result };
-            console.log('SUCCESS', action.result);
         default:
             return state;
     }

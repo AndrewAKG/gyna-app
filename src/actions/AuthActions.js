@@ -43,7 +43,7 @@ export const LoginUser = ({ email, password }) => {
             body: formData
         }).then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: LOGIN_USER_SUCCESS, result: responseJson.result });
+                dispatch({ type: LOGIN_USER_SUCCESS, result: responseJson.message });
                // console.log('navigate ya puppyyy')
                 //dispatch(NavigationActions.navigate({ routeName: 'Route' }));
             });
