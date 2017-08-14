@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
-import { BackgroundImage } from '../components';
+import { BackgroundImage, ScreensHeaderTitle } from '../components';
 
 class LifeScreen extends Component {
   static navigationOptions = {
     tabBarLabel: 'your life',
-    header: null,
+    headerLeft: null,
+    headerStyle: {
+      backgroundColor: '#5C1634'
+    },
+    headerTitle:
+    <ScreensHeaderTitle
+      title="Your Life"
+      iconScource={require('../../assets/icons/Book.png')}
+    />,
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image

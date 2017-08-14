@@ -13,7 +13,8 @@ import {
   FORGET_PASSWORD,
   FORGET_PASSOWRD_SUCCESS
 } from './types';
-import axios from 'axios';
+import { Platform } from 'react-native';
+//import AuthPersistance from './AuthPersistance';
 
 export const emailChanged = (text) => {
   return {
@@ -64,30 +65,6 @@ export const nameChanged = (text) => {
   };
 };
 
-export const loginUser = ({ email, password }) => {
-  return (dispatch) => {
-    dispatch({ type: LOGIN_USER });
-
-    var formData = new FormData();
-    formData.append('username', email);
-    formData.append('password', password);
-    formData.append('device_token', 'ios');
-    formData.append('version', '10.3.2');
-
-    fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/login', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'multipart/form-data'
-      },
-      body: formData
-    }).then((response) => response.json())
-      .then((responseJson) => {
-        dispatch({ type: LOGIN_USER_SUCCESS, result: responseJson.message });
-      });
-  };
-};
-
 export const signUpUser = ({ username, password, email, phone, workingAddress, anniversaryDate, name }) => {
   return (dispatch) => {
     dispatch({ type: SIGNUP_USER });
@@ -135,4 +112,41 @@ export const forgetPassword = ({ email }) => {
         dispatch({ type: FORGET_PASSOWRD_SUCCESS, result: responseJson.message });
       });
   };
+    return {
+        type: PASSWORD_CHANGED,
+        payload: text
+    };
+};
+
+export const loginUser = ({ email, password, checked }) => {
+    return (dispatch) => {
+        dispatch({ type: LOGIN_USER });
+
+        var formData = new FormData();
+        formData.append('username', email);
+        formData.append('password', password);
+        if (Platform.OS === 'ios') {
+            formData.append('device_token', 'ios');
+            formData.append('version', parseInt(Platform.Version, 10));
+        }
+        else {
+            formData.append('device_token', 'android');
+            formData.append('version', Platform.Version);
+        }
+
+        fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/login', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data'
+            },
+            body: formData
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                //    AuthPersistance.saveItem('email', email),
+                //       AuthPersistance.saveItem('password', password),
+                //      AuthPersistance.saveItem('id_token', responseJson.message),
+                dispatch({ type: LOGIN_USER_SUCCESS, result: responseJson.message });
+            });
+    };
 };

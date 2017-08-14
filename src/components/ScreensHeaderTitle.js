@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text } from 'raect-native';
+import { View, Image, Text } from 'react-native';
 
 class ScreensHeaderTitle extends React.Component {
   render() {
@@ -8,13 +8,17 @@ class ScreensHeaderTitle extends React.Component {
 
     return (
       <View style={containerStyle}>
-        <Image
-          source={iconSource}
-          style={iconStyle}
-        />
-        <Text style={textStyle}>
-          {title}
-        </Text>
+        <View style={{ flex: 1, alignItems: 'center' }}>
+          <Image
+            source={iconSource}
+            style={iconStyle}
+          />
+        </View>
+        <View style={{ flex: 1, alignItems: 'center' }}>
+          <Text style={textStyle}>
+            {title}
+          </Text>
+        </View>
       </View>
     );
   }
@@ -22,18 +26,18 @@ class ScreensHeaderTitle extends React.Component {
 
 const styles = {
   containerStyle: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0)'
   },
   textStyle: {
-    fontSize: 15,
+    fontSize: 16,
     color: 'white'
   },
   iconStyle: {
-    width: 24,
-    height: 24,
-    margin: 5
+    width: 16,
+    height: 16
   }
 }
 
