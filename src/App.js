@@ -26,7 +26,16 @@ const assets = [
   require('../assets/icons/knowledge.png'),
   require('../assets/icons/phone.png'),
   require('../assets/icons/life.png'),
-  require('../assets/icons/Welcome.png')
+  require('../assets/icons/Welcome.png'),
+  require('../assets/icons/locked.png'),
+  require('../assets/icons/Book.png'),
+  require('../assets/icons/21.png'),
+  require('../assets/icons/22.png'),
+  require('../assets/icons/23.png'),
+  require('../assets/icons/24.png'),
+  require('../assets/icons/25.png'),
+  require('../assets/icons/26.png'),
+  require('../assets/icons/27.png')
 ];
 
 export default class App extends React.Component {
@@ -61,7 +70,16 @@ export default class App extends React.Component {
       require('../assets/icons/life.png'),
       require('../assets/icons/email.png'),
       require('../assets/icons/phone.png'),
-      require('../assets/icons/Welcome.png')
+      require('../assets/icons/Welcome.png'),
+      require('../assets/icons/locked.png'),
+      require('../assets/icons/Book.png'),
+      require('../assets/icons/21.png'),
+      require('../assets/icons/22.png'),
+      require('../assets/icons/23.png'),
+      require('../assets/icons/24.png'),
+      require('../assets/icons/25.png'),
+      require('../assets/icons/26.png'),
+      require('../assets/icons/27.png')
     ];
 
     for (let image of images) {
@@ -86,8 +104,8 @@ export default class App extends React.Component {
 
     return (
 
-      <Provider store ={store}>
-      <Navigator />
+      <Provider store={store}>
+        <Navigator />
       </Provider>
     );
   }

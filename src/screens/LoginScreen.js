@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
+import { View, Text, ScrollView, Image, Dimensions, AsyncStorage } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
 import { connect } from 'react-redux';
 import {
@@ -37,6 +37,33 @@ class LoginScreen extends Component {
     headerLeft: null
   };
 
+  /*
+    ComponentWillMount() {
+      AsyncStorage.getItem('email').then((email) => {
+        if (email !== null) {
+          this.setState({ email });
+          AsyncStorage.getItem('password').then((password) => {
+            if (password !== null) {
+              this.setState({ password });
+            }
+          })
+        }
+        else {
+          return;
+        }
+      })
+    }
+  
+    ComponentDidMount() {
+      const { email, password, checked } = this.state;
+      if (email !== null && password !== null) {
+        this.props.LoginUser({ email, password, checked });
+        this.props.navigation.navigate('mainScreen');
+      }
+      return;
+    }
+  */
+  
   onPress() {
     this.setState({ checked: !(this.state.checked) })
   }
@@ -52,9 +79,9 @@ class LoginScreen extends Component {
   }
 
   onButtonPress() {
-    const { email, password } = this.state;
-    
-    this.props.LoginUser({ email, password });
+    const { email, password, checked } = this.state;
+
+    this.props.LoginUser({ email, password, checked });
     this.props.navigation.navigate('mainScreen');
   }
 

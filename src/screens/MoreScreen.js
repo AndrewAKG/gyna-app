@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text,Image,FlatList } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { BackgroundImage } from '../components';
 
 class MoreScreen extends Component {
   static navigationOptions = {
     tabBarLabel: 'More',
-    header: null,
+    headerLeft: null,
+    headerStyle: {
+      backgroundColor: '#5C1634'
+    },
+    headerTitle: '',
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image
@@ -17,27 +21,7 @@ class MoreScreen extends Component {
 
   render() {
     return (
-      <BackgroundImage>
-        <View>
-         <FlatList
-          data={[
-            {key: 'Devin'},
-            {key: 'Jackson'},
-            {key: 'James'},
-            {key: 'Joel'},
-            {key: 'John'},
-            {key: 'Jillian'},
-            {key: 'Jimmy'},
-            {key: 'Julie'},
-          ]}
-          renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>
-          }
-            horizontal={false}
-            numColumns={ 3 }
-            columnWrapperStyle={{ backgroundColor: 'rgba(0,0,0,0)'}}
-        />
-        </View>
-      </BackgroundImage>
+      <BackgroundImage />
     );
   }
 }
