@@ -33,6 +33,7 @@ class ForgetPasswordScreen extends React.Component {
 
   onButtonPress() {
     const { email } = this.state;
+    console.log(this.state.email+'email');
     this.props.forgetPassword({ email });
     this.props.navigation.navigate('login');
   }
