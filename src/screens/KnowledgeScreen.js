@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
-import { BackgroundImage } from '../components';
+import { View, Image, ScrollView, Dimensions } from 'react-native';
+import { SearchBar } from 'react-native-elements';
+import { BackgroundImage, SearchInput } from '../components';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class KnowledgeScreen extends Component {
   static navigationOptions = {
@@ -9,7 +13,7 @@ class KnowledgeScreen extends Component {
     headerStyle: {
       backgroundColor: '#5C1634'
     },
-    headerTitle:'Your Knowledge',
+    headerTitle: 'Your Knowledge',
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image
@@ -20,12 +24,23 @@ class KnowledgeScreen extends Component {
   };
 
   render() {
+    const { scrollStyle, searchContainer, inputStyle } = styles;
+
     return (
       <BackgroundImage>
-        <View>
-          <Text>
-            Knowledge Screen
-        </Text>
+        <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <SearchInput
+              placeholder="Search"
+              iconSource={require('../../assets/icons/search.png')}
+              onIconPress={() => console.log('ICON PRESSED')}
+            //    value={this.props.value}
+            //     onChangeText={() => console.log()}
+            />
+          </View>
+          <View style={scrollStyle}>
+            <ScrollView />
+          </View>
         </View>
       </BackgroundImage>
     );
@@ -33,6 +48,9 @@ class KnowledgeScreen extends Component {
 }
 
 const styles = {
+  scrollStyle: {
+    flex: 9
+  },
   icon: {
     width: 24,
     height: 24,

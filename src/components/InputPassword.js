@@ -11,8 +11,12 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 class InputPassword extends React.Component {
   state = { secured: true }
 
-  onPressButton() {
-    this.setState({ secured: !(this.state.secured) })
+  onPressInButton() {
+    this.setState({ secured: false });
+  }
+
+  onPressOutButton() {
+    this.setState({ secured: true });
   }
 
   render() {
@@ -42,7 +46,8 @@ class InputPassword extends React.Component {
 
         <View style={{ flex: 3, alignItems: 'flex-end', marginRight: 10 }}>
           <TouchableWithoutFeedback
-            onPress={() => this.onPressButton()}
+            onPressIn={() => this.onPressInButton()}
+            onPressOut={() => this.onPressOutButton()}
             style={{
               backfaceVisibility: 'hidden',
               overflow: 'hidden'

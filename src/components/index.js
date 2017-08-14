@@ -6,3 +6,5 @@ export * from './RememberForgetPass';
 export * from './SignUpAccount';
 export * from './Spinner';
 export * from './ScreensHeaderTitle';
+export * from './SearchInput';
+
