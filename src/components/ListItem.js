@@ -3,22 +3,25 @@ import { View, Image, Text, TouchableWithoutFeedback } from 'react-native';
 
 class ListItem extends React.PureComponent {
   render() {
-    const { containerStyle } = styles;
+    const { containerStyle, textContainer, textStyle, iconContainer, iconStyle } = styles;
     return (
-      <TouchableWithoutFeedback>
-        <View>
+      <TouchableWithoutFeedback style={containerStyle}>
+        <View style={iconContainer}>
           <Image
             source={iconSource}
+            style={iconStyle}
           />
         </View>
-        <View>
-          <Text>{this.props.title}</Text>
+        <View style={textContainer}>
+          <Text style={textStyle}>
+            {this.props.title}
+          </Text>
         </View>
       </TouchableWithoutFeedback>
     );
   }
 }
-  
+
 const styles = {
   containerStyle: {
     backgroundColor: 'transparent',
