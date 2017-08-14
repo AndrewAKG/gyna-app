@@ -10,7 +10,7 @@ import {
   SignUpAccount,
   Spinner
 } from '../components';
-import { emailChanged, passwordChanged, LoginUser } from '../actions';
+import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -177,6 +177,6 @@ export default connect(mapStateToProps,
   {
     emailChanged,
     passwordChanged,
-    LoginUser
+    loginUser
   })
   (LoginScreen);

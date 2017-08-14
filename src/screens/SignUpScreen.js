@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {
   Input,
   BirthdateInput,
@@ -8,15 +10,35 @@ import {
   BackgroundImage
 } from '../components';
 
+import {
+  emailChanged,
+  passwordChanged,
+  userNameChanged,
+  addressChanged,
+  phoneChanged,
+  dateChanged,
+  nameChanged,
+  signUpUser
+} from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class SignUpScreen extends Component {
+
   constructor(props) {
     super(props);
     let today = new Date();
-    this.state = { date: today }
+    this.state = {
+      date: today,
+      email: '',
+      password: '',
+      username: '',
+      workingAddress: '',
+      phone: '',
+      anniversaryDate: '',
+      name: ''
+    }
   }
 
   static navigationOptions = {
@@ -28,6 +50,46 @@ class SignUpScreen extends Component {
     },
     headerTitle: ''
   };
+
+  onEmailChange(text) {
+    this.setState({ email: text });
+    this.props.emailChanged(text);
+  }
+
+  onPasswordChange(text) {
+    this.setState({ password: text });
+    this.props.passwordChanged(text);
+  }
+
+  onNameChange(text) {
+    this.setState({ name: text });
+    this.props.nameChanged(text);
+  }
+
+  onAddressChange(text) {
+    this.setState({ workingAddress: text });
+    this.props.addressChanged(text);
+  }
+
+  onPhoneChange(text) {
+    this.setState({ phone: text });
+    this.props.phoneChanged(text);
+  }
+
+  onDateChange(text) {
+    this.props.dateChanged(this.state.date);
+  }
+  onUserNameChange(text) {
+    this.setState({ username: text });
+    this.props.userNameChanged(text);
+  }
+
+  onButtonPress() {
+    const { username, password, email, phone, workingAddress, anniversaryDate, name } = this.state;
+    console.log(this.state.date);
+    this.props.signUpUser({ username, password, email, phone, workingAddress, anniversaryDate, name });
+    this.props.navigation.navigate('login');
+  }
 
   render() {
     const { navigate } = this.props.navigation;
@@ -49,35 +111,53 @@ class SignUpScreen extends Component {
               iconSource={require('../../assets/icons/doc.png')}
               placeholder='Username'
               style={{ marginTop: 20 }}
+              onChangeText={this.onUserNameChange.bind(this)}
+              value={this.props.username}
             />
 
-            <InputPassword />
+            <Input
+              iconSource={require('../../assets/icons/doc.png')}
+              placeholder='Name'
+              onChangeText={this.onNameChange.bind(this)}
+              value={this.props.name}
+            />
+
+            <InputPassword
+              onChange={this.onPasswordChange.bind(this)}
+              value={this.props.password}
+            />
 
             <Input
               iconSource={require('../../assets/icons/email.png')}
               placeholder='E-mail'
               Type='email-address'
+              onChangeText={this.onEmailChange.bind(this)}
+              value={this.props.email}
             />
             <Input
               iconSource={require('../../assets/icons/phone.png')}
               placeholder='Phone'
               Type='phone-pad'
+              onChangeText={this.onPhoneChange.bind(this)}
+              value={this.props.phone}
             />
             <Input
               iconSource={require('../../assets/icons/13.png')}
               placeholder='Working address'
-              Type='email-address'
+              onChangeText={this.onAddressChange.bind(this)}
+              value={this.props.workingAddress}
             />
 
             <BirthdateInput
               date={this.state.date}
               onDateChange={(date) => this.setState({ date: date })}
+
             />
 
             <View style={{ margin: 10 }}>
 
               <Button
-                onPress={() => navigate('login')}
+                onPress={this.onButtonPress.bind(this)}
                 title="Register"
                 buttonStyle={styles.buttonStyle}
                 color='white'
@@ -86,11 +166,8 @@ class SignUpScreen extends Component {
                 containerViewStyle={{ margin: 10 }}
               />
             </View>
-
           </ScrollView>
-
         </View>
-
       </BackgroundImage>
     );
   }
@@ -110,4 +187,20 @@ const styles = {
   },
 };
 
-export default SignUpScreen;
+const mapStateToProps = ({ auth }) => {
+  const { email, password, loading, name, username, workingAddress, anniversaryDate, phone } = auth;
+  return { email, password, loading, name, username, workingAddress, anniversaryDate, phone  };
+};
+
+export default connect(mapStateToProps,
+  {
+    emailChanged,
+    passwordChanged,
+    userNameChanged,
+    addressChanged,
+    phoneChanged,
+    dateChanged,
+    nameChanged,
+    signUpUser
+  })
+  (SignUpScreen);

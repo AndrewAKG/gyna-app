@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
 import { Input, BackgroundImage } from '../components';
+import { connect } from 'react-redux';
+import { forgetPassword, emailChanged } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -16,6 +18,25 @@ class ForgetPasswordScreen extends React.Component {
     },
     headerTitle: '',
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+    }
+  }
+
+  onEmailChange(text) {
+    this.setState({ email: text });
+    this.props.emailChanged(text);
+  }
+
+  onButtonPress() {
+    const { email } = this.state;
+    console.log(this.state.email+'email');
+    this.props.forgetPassword({ email });
+    this.props.navigation.navigate('login');
+  }
 
   render() {
     const { navigate } = this.props.navigation;
@@ -40,10 +61,12 @@ class ForgetPasswordScreen extends React.Component {
               iconSource={require('../../assets/icons/email.png')}
               placeholder='E-mail Address'
               Type='email-address'
+              onChangeText={this.onEmailChange.bind(this)}
+              value={this.props.email}
             />
 
             <Button
-              onPress={() => navigate('mainScreen')}
+              onPress={this.onButtonPress.bind(this)}
               title="Send Instructions"
               buttonStyle={buttonStyle}
               color='white'
@@ -79,4 +102,14 @@ const styles = {
   }
 }
 
-export default ForgetPasswordScreen;
+const mapStateToProps = ({ auth }) => {
+  const { email } = auth;
+  return { email };
+};
+
+export default connect(mapStateToProps,
+  {
+    forgetPassword,
+    emailChanged 
+  })
+  (ForgetPasswordScreen);
