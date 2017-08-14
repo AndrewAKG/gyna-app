@@ -29,6 +29,7 @@ const Input = ({ value, placeholder, iconSource, style, Type, secure, onChangeTe
           value={value}
           secureTextEntry={secure}
           onChangeText={onChangeText}
+       //   returnKeyType='next'
         />
       </View>
     </View>
