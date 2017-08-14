@@ -100,13 +100,13 @@ export const forgetPassword = ({ email }) => {
     var formData = new FormData();
     formData.append('email', email);
 
-    fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/forget-password', {
+    fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/forget-password?email='+email, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'multipart/form-data'
       },
-      params: formData
+    //  body: body
     }).then((response) => response.json())
       .then((responseJson) => {
         dispatch({ type: FORGET_PASSOWRD_SUCCESS, result: responseJson.message });
@@ -143,9 +143,6 @@ export const loginUser = ({ email, password, checked }) => {
             body: formData
         }).then((response) => response.json())
             .then((responseJson) => {
-                //    AuthPersistance.saveItem('email', email),
-                //       AuthPersistance.saveItem('password', password),
-                //      AuthPersistance.saveItem('id_token', responseJson.message),
                 dispatch({ type: LOGIN_USER_SUCCESS, result: responseJson.message });
             });
     };

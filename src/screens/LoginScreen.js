@@ -81,7 +81,7 @@ class LoginScreen extends Component {
   onButtonPress() {
     const { email, password, checked } = this.state;
 
-    this.props.LoginUser({ email, password, checked });
+    this.props.loginUser({ email, password, checked });
     this.props.navigation.navigate('mainScreen');
   }
 
