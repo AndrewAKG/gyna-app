@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Image, ScrollView, Dimensions } from 'react-native';
+import { View, Image, ScrollView, Dimensions, FlatList } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { BackgroundImage, SearchInput } from '../components';
+import ListItem from '../components/ListItem';
+import KnowledgeData from '../KnowledgeData.json';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -17,7 +19,7 @@ class KnowledgeScreen extends Component {
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image
-        source={require('../../assets/icons/knowledge.png')}
+        source={require('../../assets/icons/Tabs/knowledge.png')}
         style={[styles.icon, { tintColor }]}
       />
     )
@@ -39,7 +41,18 @@ class KnowledgeScreen extends Component {
             />
           </View>
           <View style={scrollStyle}>
-            <ScrollView />
+            <ScrollView>
+              <FlatList
+                data={KnowledgeData}
+                numColumns={3}
+                renderItem={({ item }) =>
+                  <ListItem
+                    title={item.title}
+                    iconType={item.key}
+                  />
+                }
+              />
+            </ScrollView>
           </View>
         </View>
       </BackgroundImage>

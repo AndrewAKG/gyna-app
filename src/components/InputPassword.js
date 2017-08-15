@@ -28,7 +28,7 @@ class InputPassword extends React.Component {
         <View style={{ flex: 2 }}>
           <Image
             style={styles.imageStyle}
-            source={require('../../assets/icons/locked.png')}
+            source={require('../../assets/icons/Forms/locked.png')}
           />
         </View>
 

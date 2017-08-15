@@ -140,7 +140,7 @@ class LoginScreen extends Component {
               style={{ width: 0.35 * SCREEN_WIDTH, height: 0.3 * SCREEN_HEIGHT, paddingTop: 10 }}
             />
             <Input
-              iconSource={require('../../assets/icons/doc.png')}
+              iconSource={require('../../assets/icons/Forms/doc.png')}
               placeholder='Username'
               style={{ marginTop: 20 }}
               onChangeText={this.onEmailChange.bind(this)}

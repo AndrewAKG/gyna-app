@@ -13,7 +13,7 @@ class NotificationsScreen extends Component {
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image
-        source={require('../../assets/icons/noti.png')}
+        source={require('../../assets/icons/Tabs/noti.png')}
         style={[styles.icon, { tintColor }]}
       />
     )
