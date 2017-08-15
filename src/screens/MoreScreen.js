@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ScrollView, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
-import { BackgroundImage, Input } from '../components';
+import { BackgroundImage, Input, Buttons } from '../components';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -25,47 +25,52 @@ class MoreScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
+    const {
+      containerStyle,
+      getProfileStyle,
+      imageViewStyle,
+      imageStyle,
+      textViewStyle,
+      textStyle,
+     } = styles;
     return (
       <BackgroundImage>
         <View style={{ flex: 1 }}>
           <ScrollView
-           contentContainerStyle={styles.containerStyle}
+            contentContainerStyle={containerStyle}
           >
-            <View style={{
-              flexDirection: 'row',
-              flex: 1,
-              backgroundColor: 'rgba(0,0,0,0)',
-              marginTop: 20,
-              marginLeft: 20,
-              marginBottom: 20,
-              alignItems:'center'
-            }}>
-            <View style={{ flex: 4,alignItems: 'flex-end',marginRight: 20}}>
-              <Image
-                style={{
-                  width: 55,
-                  height: 55,
-                }}
-                source={require('../../assets/icons/Forms/locked.png')} />
-                </View>
-                <View style={{flex: 6, alignItems:'flex-start'}}>
-                  <Text style={{ color: 'white',backgroundColor: 'rgba(0,0,0,0)', fontSize: 16}}>
-                    DR/ZOZO
+            <View style={getProfileStyle}>
+              <View style={imageViewStyle}>
+                <Image
+                  style={imageStyle}
+                  source={require('../../assets/icons/Forms/locked.png')} />
+              </View>
+              <View style={textViewStyle}>
+                <Text style={textStyle}>
+                  DR/ZOZO
                   </Text>
-                </View>
+              </View>
             </View>
-            <View style={styles.viewStyle}>
-            <Button
+            <Buttons
               onPress={() => navigate('editProfile')}
-              title="view/edit profile"
-              buttonStyle={styles.buttonStyle}
-              color='white'
-              fontWeight='500'
-              fontSize={0.047 * SCREEN_WIDTH}
+              title='view/edit Profile'
             />
-          </View>
-
-
+            <Buttons
+              onPress={() => navigate('changePassword')}
+              title='Change Password'
+            />
+            <Buttons
+              onPress={() => navigate('contactUs')}
+              title='Contact us'
+            />
+            <Buttons
+              onPress={() => navigate('helpDesk')}
+              title='Help Desk'
+            />
+            <Buttons
+              onPress={() => navigate('logout')}
+              title='logout'
+            />
           </ScrollView>
 
         </View>
@@ -75,34 +80,41 @@ class MoreScreen extends Component {
 }
 
 const styles = {
+  containerStyle: {
+    paddingTop: 10,
+    alignItems: 'center'
+  },
   icon: {
     width: 24,
     height: 24,
     marginTop: 6
   },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
+  imageStyle: {
+    width: 55,
+    height: 55,
   },
-  containerStyle: {
-    paddingTop: 10,
-    alignItems: 'center'
-  },
-  buttonStyle: {
-    borderRadius: 0.05 * SCREEN_HEIGHT,
-    borderWidth: 0.3,
-    borderColor: 'white',
-    backgroundColor: 'rgba(0,0,0,0)',
-    width: 0.7 * SCREEN_WIDTH,
-    height: 0.08 * SCREEN_HEIGHT,
-    margin: 10
-  },
-  viewStyle: {
+  getProfileStyle: {
+    flexDirection: 'row',
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0)',
+    marginTop: 20,
+    marginLeft: 20,
+    marginBottom: 15,
     alignItems: 'center'
   },
+  imageViewStyle: {
+    flex: 4,
+    alignItems: 'flex-end',
+    marginRight: 20
+  },
+  textStyle: {
+    color: 'white', backgroundColor: 'rgba(0,0,0,0)', fontSize: 16
+  },
+  textViewStyle: {
+    flex: 6,
+    alignItems: 'flex-start'
+  }
+
 };
 
 export default MoreScreen;
