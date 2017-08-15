@@ -21,10 +21,6 @@ const resetAction = NavigationActions.reset({
   actions: [NavigationActions.navigate({ routeName: 'login' })],
 });
 
-const backAction = NavigationActions.back({
-  key: 'login'
-})
-
 class LoginScreen extends Component {
 
   constructor(props) {
@@ -98,7 +94,7 @@ class LoginScreen extends Component {
   }
 
   onAuthComplete(props) {
-   /* if (props.success) {
+    if (props.success) {
       this.props.navigation.navigate('mainScreen');
     }
     else {
@@ -110,15 +106,11 @@ class LoginScreen extends Component {
           return <View />
         }
         else {
-          this.props.navigation.navigate('login');
+          if (props.success === false) {
+            this.props.navigation.dispatch(resetAction)
+          }
         }
       }
-    }*/
-    if(props.success){
-      this.props.navigation.navigate('mainScreen'); 
-    }
-    else{
-      this.props.navigation.dispatch(resetAction)      
     }
   }
 
@@ -204,9 +196,8 @@ const styles = {
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { success } = auth;
-  //  console.log(email);
-  return { success };
+  const { success, loading, user } = auth;
+  return { success, loading, user };
 };
 
 
