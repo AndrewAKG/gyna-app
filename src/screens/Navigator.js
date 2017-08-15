@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform } from 'react-native';
-import { StackNavigator, TabNavigator,  addNavigationHelpers } from 'react-navigation';
+import { StackNavigator, TabNavigator, addNavigationHelpers } from 'react-navigation';
 import WelcomeScreen from './WelcomeScreen';
 import LoginScreen from './LoginScreen';
 import SignUpScreen from './SignUpScreen';
@@ -10,6 +10,11 @@ import LifeScreen from './LifeScreen';
 import NotificationsScreen from './NotificationsScreen';
 import MoreScreen from './MoreScreen';
 import ForgetPassowrdScreen from './ForgetPasswordScreen';
+import ChangePassword from './ChangePasswordScreen';
+import ContactUs from './ContactUsScreen';
+import HelpDesk from './HelpDeskScreen';
+import EditProfile from './EditProfileScreen';
+import Logout from './LogoutScreen';
 
 class Navigator extends Component {
   render() {
@@ -25,6 +30,21 @@ class Navigator extends Component {
       },
       forgetPassowrd: {
         screen: ForgetPassowrdScreen
+      },
+      logout: {
+        screen: Logout
+      },
+      helpDesk: {
+        screen: HelpDesk
+      },
+      editProfile: {
+        screen: EditProfile
+      },
+      contactUs: {
+        screen: ContactUs
+      },
+      changePassword: {
+        screen: ChangePassword
       },
       mainScreen: {
         screen: TabNavigator({
