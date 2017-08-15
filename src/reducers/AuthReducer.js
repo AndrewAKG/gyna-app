@@ -11,7 +11,8 @@ import {
   DATE_CHANGED,
   NAME_CHANGED,
   FORGET_PASSWORD,
-  FORGET_PASSOWRD_SUCCESS
+  FORGET_PASSOWRD_SUCCESS,
+  LOGIN_USER_FAILED
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -39,6 +40,9 @@ export default (state = INITIAL_STATE, action) => {
     case LOGIN_USER_SUCCESS:
       console.log(action.result);
       return { ...state, ...INITIAL_STATE, user: action.result, success: true };
+    case LOGIN_USER_FAILED:
+      console.log(action.result);
+      return { ...state, user: null, success: false, email: '', password: '', loading: false };
     case NAME_CHANGED:
       return { ...state, name: action.payLoad };
     case PHONE_CHANGED:

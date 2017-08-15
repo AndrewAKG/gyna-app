@@ -11,7 +11,8 @@ import {
   DATE_CHANGED,
   NAME_CHANGED,
   FORGET_PASSWORD,
-  FORGET_PASSOWRD_SUCCESS
+  FORGET_PASSOWRD_SUCCESS,
+  LOGIN_USER_FAILED
 } from './types';
 import { Platform } from 'react-native';
 //import AuthPersistance from './AuthPersistance';
@@ -100,50 +101,54 @@ export const forgetPassword = ({ email }) => {
     var formData = new FormData();
     formData.append('email', email);
 
-    fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/forget-password?email='+email, {
+    fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/forget-password?email=' + email, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'multipart/form-data'
       },
-    //  body: body
+      //  body: body
     }).then((response) => response.json())
       .then((responseJson) => {
         dispatch({ type: FORGET_PASSOWRD_SUCCESS, result: responseJson.message });
       });
   };
-    return {
-        type: PASSWORD_CHANGED,
-        payload: text
-    };
+  return {
+    type: PASSWORD_CHANGED,
+    payload: text
+  };
 };
 
 export const loginUser = ({ email, password, checked }) => {
-    return (dispatch) => {
-        dispatch({ type: LOGIN_USER });
+  return (dispatch) => {
+    dispatch({ type: LOGIN_USER });
 
-        var formData = new FormData();
-        formData.append('username', email);
-        formData.append('password', password);
-        if (Platform.OS === 'ios') {
-            formData.append('device_token', 'ios');
-            formData.append('version', parseInt(Platform.Version, 10));
-        }
-        else {
-            formData.append('device_token', 'android');
-            formData.append('version', Platform.Version);
-        }
+    var formData = new FormData();
+    formData.append('username', email);
+    formData.append('password', password);
+    if (Platform.OS === 'ios') {
+      formData.append('device_token', 'ios');
+      formData.append('version', parseInt(Platform.Version, 10));
+    }
+    else {
+      formData.append('device_token', 'android');
+      formData.append('version', Platform.Version);
+    }
 
-        fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/login', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'multipart/form-data'
-            },
-            body: formData
-        }).then((response) => response.json())
-            .then((responseJson) => {
-                dispatch({ type: LOGIN_USER_SUCCESS, result: responseJson.message });
-            });
-    };
+    fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'multipart/form-data'
+      },
+      body: formData
+    }).then((response) => response.json())
+      .then((responseJson) => {
+        if (responseJson.result === true) {
+          dispatch({ type: LOGIN_USER_SUCCESS, result: responseJson.message });
+        } else {
+          dispatch({ type: LOGIN_USER_FAILED, result: responseJson.message });
+        }
+      });
+  };
 };
