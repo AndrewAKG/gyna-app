@@ -108,7 +108,9 @@ const styles = {
     marginRight: 20
   },
   textStyle: {
-    color: 'white', backgroundColor: 'rgba(0,0,0,0)', fontSize: 16
+    color: 'white',
+    backgroundColor: 'rgba(0,0,0,0)',
+    fontSize: 16
   },
   textViewStyle: {
     flex: 6,
