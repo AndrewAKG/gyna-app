@@ -11,3 +11,4 @@ export const DATE_CHANGED = 'date_changed';
 export const NAME_CHANGED = 'name_changed';
 export const FORGET_PASSWORD = 'forget_password';
 export const FORGET_PASSOWRD_SUCCESS = 'forget_password_success';
+export const LOGIN_USER_FAILED = 'login_user_failed';

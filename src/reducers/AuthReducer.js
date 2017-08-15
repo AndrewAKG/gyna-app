@@ -23,7 +23,8 @@ const INITIAL_STATE = {
   phone: '',
   workingAddress: '',
   username: '',
-  anniversaryDate: ''
+  anniversaryDate: '',
+  success: false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -36,7 +37,8 @@ export default (state = INITIAL_STATE, action) => {
     case LOGIN_USER:
       return { ...state, loading: true };
     case LOGIN_USER_SUCCESS:
-      return { ...state, ...INITIAL_STATE, user: action.result };
+      console.log(action.result);
+      return { ...state, ...INITIAL_STATE, user: action.result, success: true };
     case NAME_CHANGED:
       return { ...state, name: action.payLoad };
     case PHONE_CHANGED:
@@ -52,9 +54,9 @@ export default (state = INITIAL_STATE, action) => {
     case SIGNUP_USER_SUCCESS:
       console.log(action.result);
       return { ...state, ...INITIAL_STATE, user: action.result };
-      case FORGET_PASSWORD:
+    case FORGET_PASSWORD:
       return { ...state, email: action.payLoad };
-      case FORGET_PASSOWRD_SUCCESS:
+    case FORGET_PASSOWRD_SUCCESS:
       console.log(action.result);
       return { ...state, ...INITIAL_STATE };
     default:

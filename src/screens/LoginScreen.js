@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, Dimensions, AsyncStorage } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
+import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import {
   Input,
@@ -15,6 +16,15 @@ import { emailChanged, passwordChanged, loginUser } from '../actions';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
+const resetAction = NavigationActions.reset({
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: 'login' })],
+});
+
+const backAction = NavigationActions.back({
+  key: 'login'
+})
+
 class LoginScreen extends Component {
 
   constructor(props) {
@@ -22,7 +32,7 @@ class LoginScreen extends Component {
     this.state = {
       checked: false,
       email: '',
-      password: ''
+      password: '',
     }
   }
 
@@ -63,7 +73,11 @@ class LoginScreen extends Component {
       return;
     }
   */
-  
+
+  componentWillReceiveProps(nextProps) {
+    this.onAuthComplete(nextProps);
+  }
+
   onPress() {
     this.setState({ checked: !(this.state.checked) })
   }
@@ -80,9 +94,32 @@ class LoginScreen extends Component {
 
   onButtonPress() {
     const { email, password, checked } = this.state;
+    this.props.loginUser({ email, password, checked })
+  }
 
-    this.props.loginUser({ email, password, checked });
-    this.props.navigation.navigate('mainScreen');
+  onAuthComplete(props) {
+   /* if (props.success) {
+      this.props.navigation.navigate('mainScreen');
+    }
+    else {
+      if (props.loading) {
+        return <Spinner />
+      }
+      else {
+        if (props.loading === false) {
+          return <View />
+        }
+        else {
+          this.props.navigation.navigate('login');
+        }
+      }
+    }*/
+    if(props.success){
+      this.props.navigation.navigate('mainScreen'); 
+    }
+    else{
+      this.props.navigation.dispatch(resetAction)      
+    }
   }
 
   renderSpinner() {
@@ -167,9 +204,9 @@ const styles = {
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, loading } = auth;
-  console.log(email);
-  return { email, password, loading };
+  const { success } = auth;
+  //  console.log(email);
+  return { success };
 };
 
 
