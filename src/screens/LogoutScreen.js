@@ -5,7 +5,6 @@ import { BackgroundImage } from '../components';
 class LogoutScreen extends Component {
     
   static navigationOptions = {
-    headerLeft: null,
     headerStyle: {
       backgroundColor: '#5C1634'
     },

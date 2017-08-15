@@ -15,6 +15,7 @@ class LifeScreen extends Component {
     headerStyle: {
       backgroundColor: '#5C1634'
     },
+    headerTintColor: 'white',
     headerTitle: 'Your Life',
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon

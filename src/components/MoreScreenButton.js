@@ -5,25 +5,24 @@ import { Button } from 'react-native-elements';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-const Buttons = ({ onPress, title }) => {
-    const { buttonStyle, viewStyle } = styles;
-  
-    return (
-        <View style={viewStyle}>
-        <Button
-          onPress={onPress}
-          title={title}
-          buttonStyle={buttonStyle}
-          color='white'
-          fontWeight='500'
-          fontSize={0.047 * SCREEN_WIDTH}
-        />
-      </View>
+const MoreScreenButton = ({ onPress, title }) => {
+  const { buttonStyle, viewStyle } = styles;
 
-    );
-  };
-  
-  const styles = {
+  return (
+    <View style={viewStyle}>
+      <Button
+        onPress={onPress}
+        title={title}
+        buttonStyle={buttonStyle}
+        color='white'
+        fontWeight='500'
+        fontSize={0.047 * SCREEN_WIDTH}
+      />
+    </View>
+  );
+};
+
+const styles = {
   buttonStyle: {
     borderRadius: 0.05 * SCREEN_HEIGHT,
     borderWidth: 0.3,
@@ -39,4 +38,5 @@ const Buttons = ({ onPress, title }) => {
     alignItems: 'center'
   }
 }
-export { Buttons }
+
+export { MoreScreenButton };

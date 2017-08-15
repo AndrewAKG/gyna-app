@@ -6,7 +6,6 @@ class EditProfileScreen extends Component {
     
   static navigationOptions = {
     title: 'editProfile',
-    headerLeft: null,
     headerTintColor: 'white',
     headerStyle: {
       backgroundColor: '#5C1634'

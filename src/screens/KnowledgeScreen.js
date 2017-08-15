@@ -12,6 +12,7 @@ class KnowledgeScreen extends Component {
   static navigationOptions = {
     tabBarLabel: 'Knowledge',
     headerLeft: null,
+    headerTintColor: 'white',
     headerStyle: {
       backgroundColor: '#5C1634'
     },

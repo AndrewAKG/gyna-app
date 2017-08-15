@@ -5,10 +5,10 @@ import { BackgroundImage } from '../components';
 class ContactUsScreen extends Component {
     
   static navigationOptions = {
-    headerLeft: null,
     headerStyle: {
       backgroundColor: '#5C1634'
     },
+    headerTintColor: 'white',
     headerTitle: 'Contact Us',
   };
 

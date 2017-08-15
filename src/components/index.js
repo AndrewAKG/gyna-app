@@ -7,5 +7,5 @@ export * from './SignUpAccount';
 export * from './Spinner';
 export * from './ScreensHeaderTitle';
 export * from './SearchInput';
-export * from './Buttons';
+export * from './MoreScreenButton';
 

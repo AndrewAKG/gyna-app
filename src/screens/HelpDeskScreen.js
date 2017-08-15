@@ -3,12 +3,12 @@ import { View, Text, Image } from 'react-native';
 import { BackgroundImage } from '../components';
 
 class HelpDeskScreen extends Component {
-    
+
   static navigationOptions = {
-    headerLeft: null,
     headerStyle: {
       backgroundColor: '#5C1634'
     },
+    headerTintColor: 'white',
     headerTitle: 'Help Desk',
   };
 

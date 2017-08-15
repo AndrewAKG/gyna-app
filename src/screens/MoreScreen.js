@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ScrollView, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
-import { BackgroundImage, Input, Buttons } from '../components';
+import { BackgroundImage, Input, MoreScreenButton } from '../components';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -10,6 +10,7 @@ class MoreScreen extends Component {
   static navigationOptions = {
     tabBarLabel: 'More',
     headerLeft: null,
+    headerBackTitle: 'Back',
     headerStyle: {
       backgroundColor: '#5C1634'
     },
@@ -33,42 +34,48 @@ class MoreScreen extends Component {
       textViewStyle,
       textStyle,
      } = styles;
+
     return (
       <BackgroundImage>
         <View style={{ flex: 1 }}>
+
           <ScrollView
             contentContainerStyle={containerStyle}
           >
             <View style={getProfileStyle}>
+
               <View style={imageViewStyle}>
                 <Image
                   style={imageStyle}
                   source={require('../../assets/icons/Forms/locked.png')} />
               </View>
+
               <View style={textViewStyle}>
                 <Text style={textStyle}>
                   DR/ZOZO
-                  </Text>
+                </Text>
               </View>
+
             </View>
-            <Buttons
+
+            <MoreScreenButton
               onPress={() => navigate('editProfile')}
               title='view/edit Profile'
             />
-            <Buttons
+            <MoreScreenButton
               onPress={() => navigate('changePassword')}
               title='Change Password'
             />
-            <Buttons
+            <MoreScreenButton
               onPress={() => navigate('contactUs')}
               title='Contact us'
             />
-            <Buttons
+            <MoreScreenButton
               onPress={() => navigate('helpDesk')}
               title='Help Desk'
             />
-            <Buttons
-              onPress={() => navigate('logout')}
+            <MoreScreenButton
+              onPress={() => console.log('logout')}
               title='logout'
             />
           </ScrollView>
