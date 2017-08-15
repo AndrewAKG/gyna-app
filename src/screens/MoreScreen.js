@@ -104,9 +104,7 @@ const styles = {
     flexDirection: 'row',
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0)',
-    marginTop: 20,
-    marginLeft: 20,
-    marginBottom: 15,
+    margin: 15,
     alignItems: 'center'
   },
   imageViewStyle: {

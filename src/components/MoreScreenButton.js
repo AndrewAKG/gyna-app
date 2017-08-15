@@ -24,7 +24,7 @@ const MoreScreenButton = ({ onPress, title }) => {
 
 const styles = {
   buttonStyle: {
-    borderRadius: 0.05 * SCREEN_HEIGHT,
+    borderRadius: 0.04 * SCREEN_HEIGHT,
     borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5C1634',
