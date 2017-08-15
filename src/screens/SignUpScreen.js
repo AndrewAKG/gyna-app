@@ -108,7 +108,7 @@ class SignUpScreen extends Component {
               style={{ width: 0.9 * SCREEN_WIDTH, height: 0.22 * SCREEN_HEIGHT }}
             />
             <Input
-              iconSource={require('../../assets/icons/doc.png')}
+              iconSource={require('../../assets/icons/Forms/doc.png')}
               placeholder='Username'
               style={{ marginTop: 20 }}
               onChangeText={this.onUserNameChange.bind(this)}
@@ -116,7 +116,7 @@ class SignUpScreen extends Component {
             />
 
             <Input
-              iconSource={require('../../assets/icons/doc.png')}
+              iconSource={require('../../assets/icons/Forms/doc.png')}
               placeholder='Name'
               onChangeText={this.onNameChange.bind(this)}
               value={this.props.name}
@@ -128,21 +128,21 @@ class SignUpScreen extends Component {
             />
 
             <Input
-              iconSource={require('../../assets/icons/email.png')}
+              iconSource={require('../../assets/icons/Forms/email.png')}
               placeholder='E-mail'
               Type='email-address'
               onChangeText={this.onEmailChange.bind(this)}
               value={this.props.email}
             />
             <Input
-              iconSource={require('../../assets/icons/phone.png')}
+              iconSource={require('../../assets/icons/Forms/phone.png')}
               placeholder='Phone'
               Type='phone-pad'
               onChangeText={this.onPhoneChange.bind(this)}
               value={this.props.phone}
             />
             <Input
-              iconSource={require('../../assets/icons/13.png')}
+              iconSource={require('../../assets/icons/Forms/13.png')}
               placeholder='Working address'
               onChangeText={this.onAddressChange.bind(this)}
               value={this.props.workingAddress}

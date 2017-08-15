@@ -35,7 +35,7 @@ class BirthdateInput extends React.Component {
         androidMode='spinner'
         confirmBtnText="Confirm"
         cancelBtnText="Cancel"
-        iconSource={require('../../assets/icons/14.png')}
+        iconSource={require('../../assets/icons/Forms/14.png')}
         customStyles={{
           dateIcon: {
             position: 'absolute',

@@ -19,7 +19,7 @@ class KnowledgeScreen extends Component {
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image
-        source={require('../../assets/icons/knowledge.png')}
+        source={require('../../assets/icons/Tabs/knowledge.png')}
         style={[styles.icon, { tintColor }]}
       />
     )
@@ -44,10 +44,12 @@ class KnowledgeScreen extends Component {
             <ScrollView>
               <FlatList
                 data={KnowledgeData}
-                renderItem={({ item }) => 
-                <ListItem
-                title={item.title}
-                iconSource={item.source} />
+                numColumns={3}
+                renderItem={({ item }) =>
+                  <ListItem
+                    title={item.title}
+                    iconType={item.key}
+                  />
                 }
               />
             </ScrollView>

@@ -13,7 +13,7 @@ class MoreScreen extends Component {
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image
-        source={require('../../assets/icons/more.png')}
+        source={require('../../assets/icons/Tabs/more.png')}
         style={[styles.icon, { tintColor }]}
       />
     )

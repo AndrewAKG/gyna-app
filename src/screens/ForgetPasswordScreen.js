@@ -58,7 +58,7 @@ class ForgetPasswordScreen extends React.Component {
 
           <View style={containerStyle}>
             <Input
-              iconSource={require('../../assets/icons/email.png')}
+              iconSource={require('../../assets/icons/Forms/email.png')}
               placeholder='E-mail Address'
               Type='email-address'
               onChangeText={this.onEmailChange.bind(this)}

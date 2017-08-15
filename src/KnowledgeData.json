@@ -1,30 +1,30 @@
 [
   {
-    "title": "Guidlines",
-    "source": "require('../../assets/icons/21.png')"
+    "key": 1,
+    "title": "Guidlines"
   },
   {
-    "title": "Medical articles",
-    "source": "require('../../assets/icons/22.png')"
+    "key": 2,
+    "title": "Medical articles"
   },
   {
-    "title": "Trainings",
-    "source": "require('../../assets/icons/23.png')"
+    "key": 3,
+    "title": "Trainings"
   },
   {
-    "title": "Workshop vedios",
-    "source": "require('../../assets/icons/24.png')"
+    "key": 4,
+    "title": "Workshop vedios"
   },
   {
-    "title": "Quick Tips",
-    "source": "require('../../assets/icons/25.png')"
+    "key": 5,
+    "title": "Quick Tips"
   },
   {
-    "title": "Gyna Global Society",
-    "source": "require('../../assets/icons/26.png')"
+    "key": 6,
+    "title": "Gyna Global Society"
   },
   {
-    "title": "Video of the week",
-    "source": "require('../../assets/icons/27.png')"
-  },
+    "key": 7,
+    "title": "Video of the week"
+  }
 ]
