@@ -14,7 +14,6 @@ import ChangePassword from './ChangePasswordScreen';
 import ContactUs from './ContactUsScreen';
 import HelpDesk from './HelpDeskScreen';
 import EditProfile from './EditProfileScreen';
-import Logout from './LogoutScreen';
 
 class Navigator extends Component {
   render() {
@@ -30,9 +29,6 @@ class Navigator extends Component {
       },
       forgetPassowrd: {
         screen: ForgetPassowrdScreen
-      },
-      logout: {
-        screen: Logout
       },
       helpDesk: {
         screen: HelpDesk
