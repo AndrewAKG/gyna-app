@@ -112,6 +112,7 @@ class LoginScreen extends Component {
         }
       }
     }
+    console.log(props.user);
   }
 
   renderSpinner() {

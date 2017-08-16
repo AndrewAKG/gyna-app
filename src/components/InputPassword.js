@@ -20,7 +20,7 @@ class InputPassword extends React.Component {
   }
 
   render() {
-    const { value, onChange, onKeyPress } = this.props;
+    const { value, onChange, onKeyPress, placeholder, style } = this.props;
 
     return (
       <View style={styles.containerStyle}>
