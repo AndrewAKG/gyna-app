@@ -125,7 +125,7 @@ class SignUpScreen extends Component {
             <InputPassword
               placeholder='Password'
               style={inputStyle}
-              onChange={this.onPasswordChange.bind(this)}
+              onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password}
             />
 
