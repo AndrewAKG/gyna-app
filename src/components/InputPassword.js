@@ -41,8 +41,8 @@ class InputPassword extends React.Component {
             value={value}
             secureTextEntry={this.state.secured}
             onChangeText={onChangeText}
-         //   returnKeyType='go'
-         //   onKeyPress={onKeyPress}
+          //   returnKeyType='go'
+          //   onKeyPress={onKeyPress}
           />
         </View>
 
@@ -82,15 +82,6 @@ const styles = {
     height: 0.095 * SCREEN_HEIGHT,
     width: 0.8 * SCREEN_WIDTH,
     margin: 10
-  },
-  inputStyle: {
-    color: 'white',
-    paddingRight: 5,
-    paddingLeft: 5,
-    fontSize: 0.055 * SCREEN_WIDTH,
-    lineHeight: 23,
-    fontWeight: "200",
-    height: 50
   },
   imageStyle: {
     width: 25,

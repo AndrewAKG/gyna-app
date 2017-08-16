@@ -51,7 +51,7 @@ const styles = {
     color: 'white',
     paddingRight: 5,
     paddingLeft: 10,
-    fontSize: 0.04 * SCREEN_WIDTH,
+    fontSize: 0.043 * SCREEN_WIDTH,
     lineHeight: 23,
     fontWeight: "200",
     height: 50,

@@ -9,4 +9,5 @@ export * from './ScreensHeaderTitle';
 export * from './SearchInput';
 export * from './MoreScreenButton';
 export * from './InputMoreScreen';
+export * from './ListDataItem';
 

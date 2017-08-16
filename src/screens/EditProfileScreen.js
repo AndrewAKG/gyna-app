@@ -118,21 +118,21 @@ const styles = {
     color: 'white',
     backgroundColor: 'rgba(0,0,0,0)',
     fontSize: 16,
-    marginRight: 230,
+    marginRight: 0.47 * SCREEN_WIDTH,
     fontWeight: '500'
   },
   emailPhoneStyle: {
     color: 'white',
     backgroundColor: 'rgba(0,0,0,0)',
     fontSize: 16,
-    marginRight: 250,
+    marginRight: 0.55 * SCREEN_WIDTH,
     fontWeight: '500'
   },
   dateStyle: {
     color: 'white',
     backgroundColor: 'rgba(0,0,0,0)',
     fontSize: 16,
-    marginRight: 180,
+    marginRight: 0.33 * SCREEN_WIDTH,
     fontWeight: '500'
   }
 

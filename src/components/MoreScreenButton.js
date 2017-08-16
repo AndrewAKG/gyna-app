@@ -28,7 +28,7 @@ const styles = {
     borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5C1634',
-    width: 0.7 * SCREEN_WIDTH,
+    width: 0.75 * SCREEN_WIDTH,
     height: 0.08 * SCREEN_HEIGHT,
     margin: 18
   },
