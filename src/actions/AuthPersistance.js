@@ -6,6 +6,7 @@ class AuthPersistance extends React.Component {
   async saveItem(item, selectedValue) {
     try {
       await AsyncStorage.setItem(item, selectedValue);
+      console.log('TOKEN WASAL: ', selectedValue);
     } catch (error) {
       console.error('AsyncStorage error: ' + error.message);
     }

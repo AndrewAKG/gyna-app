@@ -14,8 +14,8 @@ import {
   FORGET_PASSOWRD_SUCCESS,
   LOGIN_USER_FAILED
 } from './types';
-import { Platform } from 'react-native';
-//import AuthPersistance from './AuthPersistance';
+import { Platform, AsyncStorage } from 'react-native';
+import AuthPersistance from './AuthPersistance';
 
 export const emailChanged = (text) => {
   return {
@@ -107,7 +107,6 @@ export const forgetPassword = ({ email }) => {
         'Accept': 'application/json',
         'Content-Type': 'multipart/form-data'
       },
-      //  body: body
     }).then((response) => response.json())
       .then((responseJson) => {
         dispatch({ type: FORGET_PASSOWRD_SUCCESS, result: responseJson.message });
@@ -144,11 +143,21 @@ export const loginUser = ({ email, password, checked }) => {
       body: formData
     }).then((response) => response.json())
       .then((responseJson) => {
-        if (responseJson.result === true) {
-          dispatch({ type: LOGIN_USER_SUCCESS, result: responseJson.message });
+        if (responseJson.result) {
+          try {
+            let token = responseJson.message;
+            AsyncStorage.setItem('token', token, loginSuccess(dispatch, token));
+          } catch (error) {
+            console.error('AsyncStorage error: ' + error.message);
+          }
         } else {
           dispatch({ type: LOGIN_USER_FAILED, result: responseJson.message });
         }
       });
   };
+};
+
+const loginSuccess = (dispatch, token) => {
+  console.log('TOKEN WASAL: ', token);
+  dispatch({ type: LOGIN_USER_SUCCESS, result: token });
 };

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
-import { BackgroundImage } from '../components';
+import { View, Text, Image, FlatList, ScrollView } from 'react-native';
+import { connect } from 'react-redux';
+import { BackgroundImage, Spinner } from '../components';
+import { fetchNotifications } from '../actions';
 
 class NotificationsScreen extends Component {
   static navigationOptions = {
@@ -9,6 +11,7 @@ class NotificationsScreen extends Component {
     headerStyle: {
       backgroundColor: '#5C1634'
     },
+    headerTintColor: 'white',
     headerTitle: 'Notifications',
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
@@ -19,14 +22,30 @@ class NotificationsScreen extends Component {
     )
   };
 
+  componentWillMount() {
+    this.props.fetchNotifications();
+  }
+
+  renderSpinner() {
+    if (this.props.loading) {
+      return (
+        <Spinner />
+      );
+    }
+  }
+
   render() {
     return (
       <BackgroundImage>
-        <View>
-          <Text>
-            Notifications Screen
-        </Text>
-        </View>
+        <ScrollView>
+          <FlatList
+            data={this.props.notifications}
+            renderItem={({ item }) => <Text>{item.name}</Text>}
+          />
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            {this.renderSpinner()}
+          </View>
+        </ScrollView>
       </BackgroundImage>
     );
   }
@@ -40,4 +59,15 @@ const styles = {
   }
 };
 
-export default NotificationsScreen;
+const mapStateToProps = ({ noti }) => {
+  const { notifications, loading } = noti;
+  return { notifications, loading };
+};
+
+
+export default connect(mapStateToProps,
+  {
+    fetchNotifications
+  })
+  (NotificationsScreen);
+
