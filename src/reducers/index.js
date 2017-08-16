@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import AuthReducer from './AuthReducer';
-import MoreReducer from './MoreReducer';
+import ChangePasswordReducer from './ChangePasswordReducer';
 
 export default combineReducers({
   auth: AuthReducer,
-  more: MoreReducer
+  more: ChangePasswordReducer
 });
