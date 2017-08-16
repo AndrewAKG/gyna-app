@@ -42,7 +42,7 @@ class ChangePasswordScreen extends Component {
               style={inputStyle}
             />
             <Button
-            onPress={() => console.log('change password')}
+              onPress={() => console.log('change password')}
               title="Save"
               buttonStyle={buttonStyle}
               color='white'
