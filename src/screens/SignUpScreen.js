@@ -93,7 +93,7 @@ class SignUpScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    const { containerStyle } = styles;
+    const { containerStyle, inputStyle } = styles;
 
     return (
       <BackgroundImage>
@@ -123,6 +123,8 @@ class SignUpScreen extends Component {
             />
 
             <InputPassword
+              placeholder='Password'
+              style={inputStyle}
               onChange={this.onPasswordChange.bind(this)}
               value={this.props.password}
             />
@@ -185,11 +187,20 @@ const styles = {
     width: 0.8 * SCREEN_WIDTH,
     margin: 10
   },
+  inputStyle: {
+    color: 'white',
+    paddingRight: 5,
+    paddingLeft: 5,
+    fontSize: 0.055 * SCREEN_WIDTH,
+    lineHeight: 23,
+    fontWeight: "200",
+    height: 50
+  },
 };
 
 const mapStateToProps = ({ auth }) => {
   const { email, password, loading, name, username, workingAddress, anniversaryDate, phone } = auth;
-  return { email, password, loading, name, username, workingAddress, anniversaryDate, phone  };
+  return { email, password, loading, name, username, workingAddress, anniversaryDate, phone };
 };
 
 export default connect(mapStateToProps,
