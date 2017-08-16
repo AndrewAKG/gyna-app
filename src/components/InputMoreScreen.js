@@ -7,7 +7,6 @@ import { View, Text, TextInput, Image, Dimensions } from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-
 const InputMoreScreen = ({ value, placeholder, style, Type, secure, onChangeText }) => {
   const { containerStyle, inputStyle, imageStyle } = styles;
 

@@ -35,6 +35,7 @@ export const confirmPasswordChanged = (text) => {
 export const changePassword = ({ oldPassword, newPassword, token }) => {
   return (dispatch) => {
     dispatch({ type: CHANGE_PASSWORD });
+    
     AsyncStorage.getItem('token', (err, token) => {
       if (err) {
         console.log(err);
@@ -45,7 +46,7 @@ export const changePassword = ({ oldPassword, newPassword, token }) => {
         var formData = new FormData();
         formData.append('old_password', oldPassword);
         formData.append('new_password', newPassword);
-        formData.append('api_key', token)
+        formData.append('api_key', token);
         
         fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/change_my_password', {
           method: 'POST',
@@ -56,7 +57,7 @@ export const changePassword = ({ oldPassword, newPassword, token }) => {
           body: formData
         }).then((response) => response.json())
           .then((responseJson) => {
-            if (responseJson.result === true) {
+            if (responseJson.result) {
               dispatch({ type: CHANGE_PASSWORD_SUCESS, result: responseJson.message });
             } else {
               dispatch({ type: CHANGE_PASSWORD_FAILED, result: responseJson.message });

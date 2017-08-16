@@ -34,6 +34,7 @@ class EditProfileScreen extends Component {
       emailPhoneStyle,
       dateStyle
      } = styles;
+
     return (
       <BackgroundImage>
         <View style={{ flex: 1 }}>
@@ -47,7 +48,7 @@ class EditProfileScreen extends Component {
               placeholder='Username'
             />
             <Text style={emailPhoneStyle}>
-              E.mail
+              E-mail
           </Text>
             <InputMoreScreen
               placeholder='E.mail'
@@ -135,8 +136,6 @@ const styles = {
     marginRight: 0.33 * SCREEN_WIDTH,
     fontWeight: '500'
   }
-
-
 };
 
 export default EditProfileScreen;

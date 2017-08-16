@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ScrollView, Dimensions } from 'react-native';
-import { BackgroundImage, InputPassword, Spinner } from '../components';
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
-import { oldPasswordChanged, newPasswordChanged, changePassword, confirmPasswordChanged } from '../actions';
+import {
+  oldPasswordChanged,
+  newPasswordChanged,
+  changePassword,
+  confirmPasswordChanged
+} from '../actions';
+import { BackgroundImage, InputPassword, Spinner } from '../components';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
