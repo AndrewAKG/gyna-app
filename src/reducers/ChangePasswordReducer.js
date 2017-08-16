@@ -6,10 +6,10 @@ import {
     CONFIRM_PASSOWRD_CHANGED,
     CHANGE_PASSWORD_FAILED
 }
-from './types';
+from '../actions/types';
 
 const INITIAL_STATE = {
-    oldPassword: '',
+    oldPassowrd: '',
     newPassword: '',
     success: false,
     loading: false,

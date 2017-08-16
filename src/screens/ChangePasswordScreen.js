@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ScrollView, Dimensions } from 'react-native';
-import { BackgroundImage, InputPassword } from '../components';
+import { BackgroundImage, InputPassword, Spinner } from '../components';
+import { NavigationActions } from 'react-navigation';
+import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
+import { oldPasswordChanged, newPasswordChanged, changePassword, confirmPasswordChanged  } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
+const resetAction = NavigationActions.reset({
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: 'changePassword' })],
+});
+
 class ChangePasswordScreen extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+     oldPassword: '',
+     newPassword: ''
+    }
+  }
 
   static navigationOptions = {
     headerStyle: {
@@ -15,6 +31,51 @@ class ChangePasswordScreen extends Component {
     headerTintColor: 'white',
     headerTitle: 'Change Password',
   };
+
+  componentWillReceiveProps(nextProps) {
+    this.onChangeComplete(nextProps);
+  }
+
+  onOldPasswordChanged(text) {
+    this.setState({ oldPassword: text });
+    this.props.oldPasswordChanged(text);
+  }
+
+  onConfirmPasswordChanged(text) {
+    this.props.confirmPasswordChanged(text);
+  }
+
+  onChangeComplete(props){
+    if (props.success) {
+      this.props.navigation.navigate('login');
+    }
+    else {
+      if (props.loading) {
+        return <Spinner />
+      }
+      else {
+        if (props.loading === false) {
+          return <View />
+        }
+        else {
+          if (props.success === false) {
+            this.props.navigation.dispatch(resetAction)
+          }
+        }
+      }
+    }
+    console.log(props.message);
+  }
+
+  onNewPasswordChanged(text) {
+    this.setState({ newPassword: text });
+    this.props.newPasswordChanged(text);
+  }
+
+  onButtonPress() {
+    const { oldPassword, newPassword} = this.state;
+    this.props.changePassword({ oldPassword, newPassword})
+  }
 
   render() {
     const {
@@ -32,17 +93,24 @@ class ChangePasswordScreen extends Component {
             <InputPassword
               placeholder='Old Password'
               style={inputStyle}
+              onChangeText={this.onOldPasswordChanged.bind(this)}
+              value={this.props.oldPassowrd}
+              
             />
             <InputPassword
               placeholder='New Password'
               style={inputStyle}
+              onChangeText={this.onNewPasswordChanged.bind(this)}
+              value={this.props.newPassword}
             />
             <InputPassword
               placeholder='confirm password'
               style={inputStyle}
+              onChangeText={this.onConfirmPasswordChanged.bind(this)}
+              value={this.props.confirmPassword}
             />
             <Button
-              onPress={() => console.log('change password')}
+              onPress={this.onButtonPress.bind(this)}
               title="Save"
               buttonStyle={buttonStyle}
               color='white'
@@ -84,11 +152,24 @@ const styles = {
     color: 'white',
     paddingRight: 5,
     paddingLeft: 5,
-    fontSize: 0.046 * SCREEN_WIDTH,
+    fontSize: 0.035 * SCREEN_WIDTH,
     lineHeight: 23,
     fontWeight: "200",
     height: 50
   },
 };
 
-export default ChangePasswordScreen;
+const mapStateToProps = ({ changePassword }) => {
+  const { success, loading, message } = changePassword;
+  return { success, loading, message };
+};
+
+
+export default connect(mapStateToProps,
+  {
+    oldPasswordChanged,
+    newPasswordChanged,
+    changePassword,
+    confirmPasswordChanged
+  })
+  (ChangePasswordScreen);

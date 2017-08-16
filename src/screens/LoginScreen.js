@@ -125,7 +125,8 @@ class LoginScreen extends Component {
     const { navigate } = this.props.navigation;
     const {
       containerStyle,
-      buttonStyle
+      buttonStyle,
+      inputStyle
     } = styles;
 
     return (
@@ -148,6 +149,8 @@ class LoginScreen extends Component {
               value={this.props.email}
             />
             <InputPassword
+              placeholder='Password'
+              style={inputStyle}
               onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password}
             />
@@ -193,7 +196,16 @@ const styles = {
     width: 0.8 * SCREEN_WIDTH,
     height: 0.095 * SCREEN_HEIGHT,
     margin: 10
-  }
+  },
+  inputStyle: {
+    color: 'white',
+    paddingRight: 5,
+    paddingLeft: 5,
+    fontSize: 0.055 * SCREEN_WIDTH,
+    lineHeight: 23,
+    fontWeight: "200",
+    height: 50
+  },
 };
 
 const mapStateToProps = ({ auth }) => {

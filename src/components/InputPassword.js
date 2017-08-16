@@ -20,7 +20,7 @@ class InputPassword extends React.Component {
   }
 
   render() {
-    const { value, onChange, onKeyPress, placeholder, style } = this.props;
+    const { value, onChange, onKeyPress, placeholder, style, onChangeText } = this.props;
 
     return (
       <View style={styles.containerStyle}>
@@ -35,13 +35,12 @@ class InputPassword extends React.Component {
         <View style={{ flex: 5 }}>
           <TextInput
             autoCorrect={false}
-            placeholder="Password"
+            placeholder={placeholder}
             placeholderTextColor='white'
-            style={styles.inputStyle}
+            style={style}
             value={value}
             secureTextEntry={this.state.secured}
-            onChangeText={(value) => onChange(value)}
-            {...this.props}
+            onChangeText={onChangeText}
          //   returnKeyType='go'
          //   onKeyPress={onKeyPress}
           />
