@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, FlatList, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-import { BackgroundImage, Spinner } from '../components';
+import { BackgroundImage, Spinner, ListDataItem } from '../components';
 import { fetchNotifications } from '../actions';
 
 class NotificationsScreen extends Component {
@@ -40,7 +40,12 @@ class NotificationsScreen extends Component {
         <ScrollView>
           <FlatList
             data={this.props.notifications}
-            renderItem={({ item }) => <Text>{item.name}</Text>}
+            renderItem={({ item }) =>
+              <ListDataItem
+                title={item.name}
+              />
+            }
+            keyExtractor={(item, index) => index}
           />
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             {this.renderSpinner()}
