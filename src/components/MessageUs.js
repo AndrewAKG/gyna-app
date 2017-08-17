@@ -122,6 +122,8 @@ const styles = {
     fontSize: 0.043 * SCREEN_WIDTH,
     lineHeight: 23,
     fontWeight: "200",
+    height: 50,
+    width: 0.8 * SCREEN_WIDTH
   },
   saveButtonStyle: {
     borderRadius: 0.03 * SCREEN_HEIGHT,
