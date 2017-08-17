@@ -14,6 +14,7 @@ import ChangePassword from './ChangePasswordScreen';
 import ContactUs from './ContactUsScreen';
 import HelpDesk from './HelpDeskScreen';
 import EditProfile from './EditProfileScreen';
+import DataListScreen from './DataListScreen';
 
 class Navigator extends Component {
   render() {
@@ -41,6 +42,9 @@ class Navigator extends Component {
       },
       changePassword: {
         screen: ChangePassword
+      },
+      dataList: {
+        screen: DataListScreen
       },
       mainScreen: {
         screen: TabNavigator({

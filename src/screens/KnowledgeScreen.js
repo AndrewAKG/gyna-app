@@ -17,6 +17,7 @@ class KnowledgeScreen extends Component {
       backgroundColor: '#5C1634'
     },
     headerTitle: 'Your Knowledge',
+    headerBackTitle: 'Back',
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image
@@ -28,6 +29,7 @@ class KnowledgeScreen extends Component {
 
   render() {
     const { scrollStyle, searchContainer, inputStyle } = styles;
+    const { navigate } = this.props.navigation;
 
     return (
       <BackgroundImage>
@@ -50,6 +52,7 @@ class KnowledgeScreen extends Component {
                   <ListItem
                     title={item.title}
                     iconType={item.key}
+                    onPress={() => navigate('dataList', { category: item.category, title: item.title })}
                   />
                 }
               />

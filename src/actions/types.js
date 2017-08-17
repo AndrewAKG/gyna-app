@@ -1,4 +1,4 @@
-                                  /** Auth Types **/
+/** Auth Types **/
 /** Login Types **/
 export const EMAIL_CHANGED = 'email_changed';
 export const PASSWORD_CHANGED = 'password_changed';
@@ -24,9 +24,13 @@ export const CHANGE_PASSWORD = 'change_password';
 export const CHANGE_PASSWORD_SUCESS = 'change_password_success';
 export const OLD_PASSOWRD_CHANGED = 'old_password_changed';
 export const NEW_PASSOWRD_CHANGED = 'new_password_changed';
-export const CONFIRM_PASSOWRD_CHANGED =  'confirm_password_changed';
+export const CONFIRM_PASSOWRD_CHANGED = 'confirm_password_changed';
 export const CHANGE_PASSWORD_FAILED = 'change_password_failed';
 
-                                  /** Notifications Types **/
+/** Notifications Types **/
 export const NOTIFICATIONS_FETCH = 'noti_fetch';
 export const NOTIFICATIONS_FETCH_SUCCESS = 'noti_fetch_success';
+
+/** DataLists Types **/
+export const DATA_FETCH = 'data_fetch';
+export const DATA_FETCH_SUCCESS = 'data_fetch_success';

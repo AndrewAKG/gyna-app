@@ -15,6 +15,7 @@ class LifeScreen extends Component {
     headerStyle: {
       backgroundColor: '#5C1634'
     },
+    headerBackTitle: 'Back',
     headerTintColor: 'white',
     headerTitle: 'Your Life',
     tabBarIcon: ({ tintColor }) => (
@@ -28,6 +29,7 @@ class LifeScreen extends Component {
 
   render() {
     const { scrollStyle, searchContainer, inputStyle } = styles;
+    const { navigate } = this.props.navigation;
 
     return (
       <BackgroundImage>
@@ -50,6 +52,7 @@ class LifeScreen extends Component {
                   <ListItem
                     title={item.title}
                     iconType={item.key}
+                    onPress={() => navigate('dataList', { category: item.category, title: item.title })}
                   />
                 }
               />

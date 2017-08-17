@@ -8,7 +8,6 @@ class ListItem extends React.PureComponent {
 
   render() {
     const { containerStyle, textContainer, textStyle, iconContainer, iconStyle } = styles;
-
     let iconPath;
 
     switch (this.props.iconType) {
@@ -49,7 +48,7 @@ class ListItem extends React.PureComponent {
     }
 
     return (
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={this.props.onPress}>
         <View style={containerStyle}>
           <View style={iconContainer}>
             <Image

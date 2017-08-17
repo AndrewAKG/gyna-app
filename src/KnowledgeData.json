@@ -1,30 +1,37 @@
 [
   {
     "key": 1,
+    "category": "guidelines",
     "title": "Guidlines"
   },
   {
     "key": 2,
+    "category": "medical_articles",
     "title": "Medical articles"
   },
   {
     "key": 3,
+    "category": "trainings",
     "title": "Trainings"
   },
   {
     "key": 4,
-    "title": "Workshop vedios"
+    "category": "workshop_videos",
+    "title": "Workshop videos"
   },
   {
     "key": 5,
+    "category": "quick_tips",
     "title": "Quick Tips"
   },
   {
     "key": 6,
+    "category": "gyna_global_society",
     "title": "Gyna Global Society"
   },
   {
     "key": 7,
+    "category": "video_of_the_week",
     "title": "Video of the week"
   }
 ]
