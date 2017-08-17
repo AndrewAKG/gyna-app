@@ -32,7 +32,7 @@ class EditProfileScreen extends Component {
       inputStyle,
       userNameStyle,
       emailPhoneStyle,
-      dateStyle
+      dateStyle,
      } = styles;
 
     return (
@@ -46,6 +46,7 @@ class EditProfileScreen extends Component {
           </Text>
             <InputMoreScreen
               placeholder='Username'
+              style={inputStyle}
             />
             <Text style={emailPhoneStyle}>
               E-mail
@@ -53,6 +54,7 @@ class EditProfileScreen extends Component {
             <InputMoreScreen
               placeholder='E.mail'
               Type='email-address'
+              style={inputStyle}
             />
             <Text style={emailPhoneStyle}>
               Phone
@@ -60,12 +62,14 @@ class EditProfileScreen extends Component {
             <InputMoreScreen
               placeholder='Phone'
               Type='phone-pad'
+              style={inputStyle}
             />
             <Text style={dateStyle}>
               Working Address
           </Text>
             <InputMoreScreen
               placeholder='Working Address'
+              style={inputStyle}
             />
             <Text style={dateStyle}>
               Anniversary Date
@@ -135,6 +139,16 @@ const styles = {
     fontSize: 16,
     marginRight: 0.33 * SCREEN_WIDTH,
     fontWeight: '500'
+  },
+  inputStyle: {
+    color: 'white',
+    paddingRight: 5,
+    paddingLeft: 10,
+    fontSize: 0.043 * SCREEN_WIDTH,
+    lineHeight: 23,
+    fontWeight: "200",
+    height: 50,
+    width: 0.6 * SCREEN_WIDTH,
   }
 };
 
