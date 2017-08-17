@@ -8,17 +8,17 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 const InputMoreScreen = ({ value, placeholder, style, Type, secure, onChangeText }) => {
-  const { containerStyle, inputStyle, imageStyle } = styles;
+  const { containerStyle, imageStyle } = styles;
 
   return (
-    <View style={[containerStyle, style]}>
+    <View style={containerStyle}>
       <View style={{ flex: 1, alignItems:'flex-start' }}>
         <TextInput
           keyboardType={Type}
           autoCorrect={false}
           placeholder={placeholder}
           placeholderTextColor='white'
-          style={inputStyle}
+          style={style}
           value={value}
           secureTextEntry={secure}
           onChangeText={onChangeText}
@@ -45,16 +45,6 @@ const styles = {
     marginHorizontal: 20,
     marginBottom: 20,
     marginTop: 5
-  },
-  inputStyle: {
-    color: 'white',
-    paddingRight: 5,
-    paddingLeft: 10,
-    fontSize: 0.043 * SCREEN_WIDTH,
-    lineHeight: 23,
-    fontWeight: "200",
-    height: 50,
-    width: 0.6 * SCREEN_WIDTH,
   }
 }
 

@@ -10,4 +10,8 @@ export * from './SearchInput';
 export * from './MoreScreenButton';
 export * from './InputMoreScreen';
 export * from './ListDataItem';
-
+export * from './InputMessage';
+export * from './MessageUs';
+export * from './Address';
+export * from './AnotherIssue';
+export * from './FAQs';

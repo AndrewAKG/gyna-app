@@ -80,8 +80,10 @@ class ChangePasswordScreen extends Component {
   }
 
   onButtonPress() {
-    const { oldPassword, newPassword } = this.state;
-    this.props.changePassword({ oldPassword, newPassword })
+    const { oldPassword, newPassword, confirmPassword } = this.state;
+    if (newPassword === confirmPassword) {
+      this.props.changePassword({ oldPassword, newPassword })
+    }
   }
 
   render() {

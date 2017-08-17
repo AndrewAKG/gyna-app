@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
-import { BackgroundImage } from '../components';
+import { View, Text, Image, Dimensions, TouchableWithoutFeedback } from 'react-native';
+import {
+  BackgroundImage,
+  AnotherIssue,
+  FAQs
+} from '../components';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class HelpDeskScreen extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      issueButtonPressed: false,
+      FAQsButtonPressed: true
+    }
+  }
 
   static navigationOptions = {
     headerStyle: {
@@ -12,10 +27,40 @@ class HelpDeskScreen extends Component {
     headerTitle: 'Help Desk',
   };
 
+  onIssueButtonPressed() {
+    console.log("d5l al method");
+    this.setState({ issueButtonPressed: true, FAQsButtonPressed: false })
+  }
+
+  onFAQSButtonPressed() {
+    this.setState({ issueButtonPressed: false, FAQsButtonPressed: true })
+  }
+
   render() {
-    return (
-      <BackgroundImage />
-    );
+    if (this.state.issueButtonPressed === false || this.FAQsButtonPressed === true) {
+      return (
+        <BackgroundImage>
+          <View style={{ flex: 1 }}>
+            <FAQs
+              onFAQSButtonPressed={() => this.onFAQSButtonPressed()}
+              onIssueButtonPressed={() => this.onIssueButtonPressed()}
+            />
+          </View>
+        </BackgroundImage>
+      );
+    } else {
+      return (
+        <BackgroundImage>
+          <View style={{ flex: 1 }}>
+            <AnotherIssue
+              onFAQSButtonPressed={() => this.onFAQSButtonPressed()}
+              onIssueButtonPressed={() => this.onIssueButtonPressed()}
+            />
+
+          </View>
+        </BackgroundImage>
+      );
+    }
   }
 }
 
@@ -29,7 +74,7 @@ const styles = {
     padding: 10,
     fontSize: 18,
     height: 44,
-  },
+  }
 };
 
 export default HelpDeskScreen;
