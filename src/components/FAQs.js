@@ -22,11 +22,14 @@ class FAQs extends React.Component {
       loginViewStyle,
       iconStyle,
       textStyle
-       } = styles;
+    } = styles;
+
     return (
       <BackgroundImage>
         <View style={{ flex: 1 }}>
+
           <View style={viewStyle}>
+
             <View style={{ flex: 1, alignItems: 'center' }}>
               <MoreScreenButton
                 buttonStyle={FAQSButtonStyle}
@@ -35,6 +38,7 @@ class FAQs extends React.Component {
                 fontSize={0.037 * SCREEN_WIDTH}
               />
             </View>
+
             <View style={{ flex: 1, alignItems: 'flex-start' }}>
               <MoreScreenButton
                 buttonStyle={issueButtonStyle}
@@ -43,7 +47,9 @@ class FAQs extends React.Component {
                 fontSize={0.037 * SCREEN_WIDTH}
               />
             </View>
+
           </View>
+
           <TouchableWithoutFeedback
             onPress={() => console.log('ooooo')}
             style={{
@@ -52,12 +58,15 @@ class FAQs extends React.Component {
             }}
           >
             <View style={{ flex: 1 }}>
+
               <View style={loginViewStyle}>
+
                 <View style={{ flex: 6.5, alignItems: 'center' }}>
                   <Text style={textStyle}>
                     Login Trouble
-                </Text>
+                  </Text>
                 </View>
+
                 <View style={iconStyle}>
                   <MaterialIcons
                     name='navigate-next'
@@ -65,10 +74,14 @@ class FAQs extends React.Component {
                     size={33}
                   />
                 </View>
+
               </View>
+
             </View>
           </TouchableWithoutFeedback>
+
           <View style={{ flex: 8 }} />
+
         </View>
       </BackgroundImage>
     );
@@ -117,7 +130,6 @@ const styles = {
     marginRight: 15,
     marginTop: -5
   }
-
 }
 
 export { FAQs };

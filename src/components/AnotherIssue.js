@@ -29,10 +29,12 @@ class AnotherIssue extends React.Component {
     return (
       <BackgroundImage>
         <View style={{ flex: 1 }}>
+
           <ScrollView
             contentContainerStyle={containerStyle}
           >
             <View style={viewButtonsStyle}>
+
               <View style={{ flex: 1, alignItems: 'center' }}>
                 <MoreScreenButton
                   buttonStyle={messageButtonStyle}
@@ -41,6 +43,7 @@ class AnotherIssue extends React.Component {
                   fontSize={0.037 * SCREEN_WIDTH}
                 />
               </View>
+
               <View style={{ flex: 1, alignItems: 'flex-start' }}>
                 <MoreScreenButton
                   buttonStyle={addressButtonStyle}
@@ -49,7 +52,9 @@ class AnotherIssue extends React.Component {
                   fontSize={0.037 * SCREEN_WIDTH}
                 />
               </View>
+
             </View>
+
             <Text style={emailPhoneStyle}>
               Name
             </Text>
@@ -57,6 +62,7 @@ class AnotherIssue extends React.Component {
               placeholder=''
               style={inputStyle}
             />
+
             <Text style={emailPhoneStyle}>
               E-mail
             </Text>
@@ -65,6 +71,7 @@ class AnotherIssue extends React.Component {
               Type='email-address'
               style={inputStyle}
             />
+
             <Text style={dateStyle}>
               Issue title
             </Text>
@@ -72,6 +79,7 @@ class AnotherIssue extends React.Component {
               placeholder=''
               style={inputStyle}
             />
+
             <Text style={dateStyle}>
               Description
             </Text>
@@ -79,13 +87,16 @@ class AnotherIssue extends React.Component {
               placeholder=''
               style={inputStyle}
             />
+
             <MoreScreenButton
               buttonStyle={saveButtonStyle}
               onPress={() => console.log('Sent')}
               title='Send'
               fontSize={0.04 * SCREEN_WIDTH}
             />
+
           </ScrollView>
+          
         </View>
       </BackgroundImage>
     );
@@ -162,7 +173,7 @@ const styles = {
     height: 0.07 * SCREEN_HEIGHT,
     margin: 15,
     backgroundColor: '#00C1FF'
-  },
+  }
 }
 
 export { AnotherIssue };

@@ -63,6 +63,6 @@ const styles = {
     height: 0.06 * SCREEN_WIDTH,
     margin: 15
   }
-}
+};
 
 export { SearchInput };

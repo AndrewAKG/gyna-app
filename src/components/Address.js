@@ -27,10 +27,13 @@ class Address extends React.Component {
       networkImageStyle,
       locationTextStyle,
      } = styles;
+
     return (
       <BackgroundImage>
         <View style={{ flex: 1 }}>
+
           <View style={viewStyle}>
+
             <View style={{ flex: 1, alignItems: 'center' }}>
               <MoreScreenButton
                 buttonStyle={addressButtonStyle}
@@ -39,6 +42,7 @@ class Address extends React.Component {
                 fontSize={0.04 * SCREEN_WIDTH}
               />
             </View>
+
             <View style={{ flex: 1, alignItems: 'flex-start' }}>
               <MoreScreenButton
                 buttonStyle={messageButtonStyle}
@@ -47,8 +51,11 @@ class Address extends React.Component {
                 fontSize={0.04 * SCREEN_WIDTH}
               />
             </View>
+
           </View>
+
           <View style={{ flex: 1, flexDirection: 'row', marginTop: 20 }}>
+
             <View style={locationImageStyle}>
               <Entypo
                 name='location-pin'
@@ -56,13 +63,17 @@ class Address extends React.Component {
                 size={33}
               />
             </View>
+
             <View style={viewTextStyle}>
               <Text style={locationTextStyle}>
                 Tabuk Pharmaceuticals Manufacturing Co. P.O. Box 28170, Riyadh 11437, KSA
-          </Text>
+              </Text>
             </View>
+
           </View>
-          <View style={{ flex: 1, flexDirection: 'row', }}>
+
+          <View style={{ flex: 1, flexDirection: 'row' }}>
+
             <View style={telephoneFaxStyle}>
               <Foundation
                 name='telephone'
@@ -70,13 +81,17 @@ class Address extends React.Component {
                 size={33}
               />
             </View>
+
             <View style={viewTextStyle}>
               <Text style={textStyle}>
                 011 47 749 46
-          </Text>
+              </Text>
             </View>
+
           </View>
+
           <View style={{ flex: 1, flexDirection: 'row' }}>
+
             <View style={telephoneFaxStyle}>
               <FontAwesome
                 name='fax'
@@ -84,13 +99,17 @@ class Address extends React.Component {
                 size={33}
               />
             </View>
+
             <View style={viewTextStyle}>
               <Text style={textStyle}>
                 011 47 836 86
-            </Text>
+              </Text>
             </View>
+
           </View>
+
           <View style={{ flex: 1, flexDirection: 'row' }}>
+
             <View style={networkImageStyle}>
               <Entypo
                 name='network'
@@ -98,6 +117,7 @@ class Address extends React.Component {
                 size={33}
               />
             </View>
+
             <TouchableWithoutFeedback
               onPress={this.props.onUrlPressed}
               style={{
@@ -108,11 +128,13 @@ class Address extends React.Component {
               <View style={viewTextStyle}>
                 <Text style={textStyle}>
                   www.tabukpharmaceuticals.com
-            </Text>
+                </Text>
               </View>
             </TouchableWithoutFeedback>
           </View>
+          
           <View style={{ flex: 4.5 }} />
+
         </View>
       </BackgroundImage>
     );
@@ -121,7 +143,6 @@ class Address extends React.Component {
 }
 
 const styles = {
-
   containerStyle: {
     paddingTop: 20,
     alignItems: 'center',

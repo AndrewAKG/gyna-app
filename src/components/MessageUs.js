@@ -28,10 +28,12 @@ class MessageUs extends React.Component {
     return (
       <BackgroundImage>
         <View style={{ flex: 1 }}>
+
           <ScrollView
             contentContainerStyle={containerStyle}
           >
             <View style={viewButtonsStyle}>
+
               <View style={{ flex: 1, alignItems: 'center' }}>
                 <MoreScreenButton
                   buttonStyle={messageButtonStyle}
@@ -40,6 +42,7 @@ class MessageUs extends React.Component {
                   fontSize={0.04 * SCREEN_WIDTH}
                 />
               </View>
+
               <View style={{ flex: 1, alignItems: 'flex-start' }}>
                 <MoreScreenButton
                   buttonStyle={addressButtonStyle}
@@ -48,7 +51,9 @@ class MessageUs extends React.Component {
                   fontSize={0.04 * SCREEN_WIDTH}
                 />
               </View>
+
             </View>
+
             <Text style={emailPhoneStyle}>
               Name
             </Text>
@@ -56,6 +61,7 @@ class MessageUs extends React.Component {
               placeholder=''
               style={inputStyle}
             />
+
             <Text style={emailPhoneStyle}>
               E-mail
             </Text>
@@ -64,6 +70,7 @@ class MessageUs extends React.Component {
               Type='email-address'
               style={inputStyle}
             />
+
             <Text style={emailPhoneStyle}>
               Subject
             </Text>
@@ -71,6 +78,7 @@ class MessageUs extends React.Component {
               placeholder=''
               style={inputStyle}
             />
+
             <Text style={emailPhoneStyle}>
               Message
             </Text>
@@ -78,12 +86,14 @@ class MessageUs extends React.Component {
               placeholder=''
               style={inputStyle}
             />
+
             <MoreScreenButton
               buttonStyle={saveButtonStyle}
               onPress={() => console.log('Sent')}
               title='Send'
               fontSize={0.04 * SCREEN_WIDTH}
             />
+
           </ScrollView>
         </View>
       </BackgroundImage>
@@ -93,7 +103,6 @@ class MessageUs extends React.Component {
 }
 
 const styles = {
-
   containerStyle: {
     paddingTop: 10,
     alignItems: 'center'
@@ -155,7 +164,7 @@ const styles = {
     height: 0.07 * SCREEN_HEIGHT,
     margin: 15,
     backgroundColor: '#00C1FF'
-  },
+  }
 }
 
 export { MessageUs };
