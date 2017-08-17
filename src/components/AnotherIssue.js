@@ -23,7 +23,9 @@ class AnotherIssue extends React.Component {
       emailPhoneStyle,
       saveButtonStyle,
       viewButtonsStyle,
-      dateStyle
+      dateStyle,
+      inputMessageStyle,
+      buttonViewStyle
      } = styles;
 
     return (
@@ -40,16 +42,16 @@ class AnotherIssue extends React.Component {
                   buttonStyle={messageButtonStyle}
                   onPress={this.props.onFAQSButtonPressed}
                   title='FAQs'
-                  fontSize={0.037 * SCREEN_WIDTH}
+                  fontSize={0.042 * SCREEN_WIDTH}
                 />
               </View>
 
-              <View style={{ flex: 1, alignItems: 'flex-start' }}>
+              <View style={buttonViewStyle}>
                 <MoreScreenButton
                   buttonStyle={addressButtonStyle}
                   onPress={this.props.onIssueButtonPressed}
                   title='Another Issue'
-                  fontSize={0.037 * SCREEN_WIDTH}
+                  fontSize={0.042 * SCREEN_WIDTH}
                 />
               </View>
 
@@ -91,7 +93,7 @@ class AnotherIssue extends React.Component {
             </Text>
             <InputMessage
               placeholder=''
-              style={inputStyle}
+              style={inputMessageStyle}
               onChangeText={this.props.onChangeTextMessage}
               value={this.props.valueMessage}
             />
@@ -104,7 +106,7 @@ class AnotherIssue extends React.Component {
             />
 
           </ScrollView>
-          
+
         </View>
       </BackgroundImage>
     );
@@ -151,6 +153,16 @@ const styles = {
     height: 50,
     width: 0.8 * SCREEN_WIDTH
   },
+  inputMessageStyle: {
+    color: 'white',
+    paddingRight: 5,
+    paddingLeft: 10,
+    fontSize: 0.043 * SCREEN_WIDTH,
+    lineHeight: 23,
+    fontWeight: "200",
+    height: 0.2 * SCREEN_HEIGHT,
+    width: 0.8 * SCREEN_WIDTH
+  },
   saveButtonStyle: {
     borderRadius: 0.03 * SCREEN_HEIGHT,
     borderWidth: 0.3,
@@ -170,18 +182,24 @@ const styles = {
     borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5C1634',
-    width: 0.35 * SCREEN_WIDTH,
+    width: 0.4 * SCREEN_WIDTH,
     height: 0.07 * SCREEN_HEIGHT,
     margin: 15
   },
   addressButtonStyle: {
     borderRadius: 0.03 * SCREEN_HEIGHT,
     borderWidth: 0.3,
-    width: 0.35 * SCREEN_WIDTH,
+    width: 0.4 * SCREEN_WIDTH,
     height: 0.07 * SCREEN_HEIGHT,
     margin: 15,
     backgroundColor: '#00C1FF'
+  },
+  buttonViewStyle: {
+    flex: 1,
+    alignItems: 'flex-start',
+    marginRight: 15
   }
+
 }
 
 export { AnotherIssue };

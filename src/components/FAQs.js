@@ -21,7 +21,8 @@ class FAQs extends React.Component {
       issueButtonStyle,
       loginViewStyle,
       iconStyle,
-      textStyle
+      textStyle,
+      issueButtonViewStyle
     } = styles;
 
     return (
@@ -35,16 +36,16 @@ class FAQs extends React.Component {
                 buttonStyle={FAQSButtonStyle}
                 onPress={this.props.onFAQSButtonPressed}
                 title='FAQS'
-                fontSize={0.037 * SCREEN_WIDTH}
+                fontSize={0.042 * SCREEN_WIDTH}
               />
             </View>
 
-            <View style={{ flex: 1, alignItems: 'flex-start' }}>
+            <View style={issueButtonViewStyle}>
               <MoreScreenButton
                 buttonStyle={issueButtonStyle}
                 onPress={this.props.onIssueButtonPressed}
                 title='Another issue'
-                fontSize={0.037 * SCREEN_WIDTH}
+                fontSize={0.042 * SCREEN_WIDTH}
               />
             </View>
 
@@ -94,14 +95,14 @@ const styles = {
     borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5C1634',
-    width: 0.35 * SCREEN_WIDTH,
+    width: 0.4 * SCREEN_WIDTH,
     height: 0.07 * SCREEN_HEIGHT,
     margin: 15
   },
   FAQSButtonStyle: {
     borderRadius: 0.03 * SCREEN_HEIGHT,
     borderWidth: 0.3,
-    width: 0.35 * SCREEN_WIDTH,
+    width: 0.4 * SCREEN_WIDTH,
     height: 0.07 * SCREEN_HEIGHT,
     margin: 15,
     backgroundColor: '#00C1FF'
@@ -129,6 +130,11 @@ const styles = {
     alignItems: 'flex-end',
     marginRight: 15,
     marginTop: -5
+  },
+  issueButtonViewStyle: {
+    flex: 1,
+    alignItems: 'flex-start',
+    marginRight: 15
   }
 }
 

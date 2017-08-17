@@ -22,6 +22,7 @@ const InputMessage = ({ value, placeholder, style, Type, secure, onChangeText })
                     value={value}
                     secureTextEntry={secure}
                     onChangeText={onChangeText}
+                    multiline={true}
                 //   returnKeyType='next'
                 />
             </View>

@@ -44,9 +44,9 @@ class HelpDeskScreen extends Component {
     this.onIssueSent(nextProps);
   }
 
-  onIssueSent(props){
+  onIssueSent(props) {
     if (props.success) {
-      this.setState({onIssueButtonPressed: true})
+      this.setState({ onIssueButtonPressed: true })
       this.props.navigation.navigate('helpDesk');
     }
     else {
@@ -69,11 +69,11 @@ class HelpDeskScreen extends Component {
 
   onIssueButtonPressed() {
     console.log("d5l al method");
-    this.setState({ issueButtonPressed: true, FAQsButtonPressed: false })
+    this.setState({ issueButtonPressed: true })
   }
 
   onFAQSButtonPressed() {
-    this.setState({ issueButtonPressed: false, FAQsButtonPressed: true })
+    this.setState({ issueButtonPressed: false })
   }
 
   onButtonPress() {
@@ -102,7 +102,7 @@ class HelpDeskScreen extends Component {
   }
 
   render() {
-    if (!this.state.issueButtonPressed || this.FAQsButtonPressed) {
+    if (!this.state.issueButtonPressed) {
       return (
         <BackgroundImage>
           <View style={{ flex: 1 }}>

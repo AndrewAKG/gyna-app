@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, Linking, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import { Entypo, Foundation, FontAwesome } from '@expo/vector-icons';
-import { BackgroundImage, MessageUs, Address,Spinner } from '../components';
+import { BackgroundImage, MessageUs, Address, Spinner } from '../components';
 import { connect } from 'react-redux';
 import {
   senderNameChanged,
@@ -20,7 +20,6 @@ class ContactUsScreen extends Component {
     super(props);
     this.state = {
       messageUsButtonPressed: false,
-      addressButtonPressed: true,
       name: '',
       subject: '',
       message: '',
@@ -41,9 +40,9 @@ class ContactUsScreen extends Component {
     this.onMessageSent(nextProps);
   }
 
-  onMessageSent(props){
+  onMessageSent(props) {
     if (props.success) {
-      this.setState({onMessageButtonPressed: true})
+      this.setState({ onMessageButtonPressed: true })
       this.props.navigation.navigate('contactUs');
     }
     else {
@@ -71,12 +70,12 @@ class ContactUsScreen extends Component {
 
   onMessageButtonPressed() {
     console.log("d5l al method");
-    this.setState({ messageUsButtonPressed: true, addressButtonPressed: false });
+    this.setState({ messageUsButtonPressed: true });
     console.log(this.state.messageUsButtonPressed);
   }
 
   onAddressButtonPressed() {
-    this.setState({ messageUsButtonPressed: false, addressButtonPressed: true })
+    this.setState({ messageUsButtonPressed: false });
   }
 
   onButtonPress() {
@@ -105,7 +104,7 @@ class ContactUsScreen extends Component {
   }
 
   render() {
-    if (!this.state.messageUsButtonPressed || this.addressButtonPressed) {
+    if (!this.state.messageUsButtonPressed) {
       return (
         <BackgroundImage>
           <View style={{ flex: 1 }}>
@@ -149,10 +148,10 @@ const mapStateToProps = ({ message }) => {
 
 export default connect(mapStateToProps,
   {
-   senderEmailChanged,
-   senderNameChanged,
-   subjectChanged,
-   messageChanged,
-   sendMessage
+    senderEmailChanged,
+    senderNameChanged,
+    subjectChanged,
+    messageChanged,
+    sendMessage
   })
   (ContactUsScreen);

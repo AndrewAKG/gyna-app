@@ -22,7 +22,9 @@ class MessageUs extends React.Component {
       inputStyle,
       emailPhoneStyle,
       saveButtonStyle,
-      viewButtonsStyle
+      viewButtonsStyle,
+      inputMessageStyle,
+      buttonViewStyle
      } = styles;
 
     return (
@@ -39,16 +41,16 @@ class MessageUs extends React.Component {
                   buttonStyle={messageButtonStyle}
                   onPress={this.props.onAddressButtonPressed}
                   title='Address'
-                  fontSize={0.04 * SCREEN_WIDTH}
+                  fontSize={0.0472 * SCREEN_WIDTH}
                 />
               </View>
 
-              <View style={{ flex: 1, alignItems: 'flex-start' }}>
+              <View style={buttonViewStyle}>
                 <MoreScreenButton
                   buttonStyle={addressButtonStyle}
                   onPress={this.props.onMessageButtonPressed}
                   title='Message us'
-                  fontSize={0.04 * SCREEN_WIDTH}
+                  fontSize={0.0472 * SCREEN_WIDTH}
                 />
               </View>
 
@@ -90,7 +92,7 @@ class MessageUs extends React.Component {
             </Text>
             <InputMessage
               placeholder=''
-              style={inputStyle}
+              style={inputMessageStyle}
               onChangeText={this.props.onChangeTextMessage}
               value={this.props.valueMessage}
             />
@@ -119,7 +121,7 @@ const styles = {
     borderRadius: 0.05 * SCREEN_HEIGHT,
     backgroundColor: '#00C1FF',
     width: 0.8 * SCREEN_WIDTH,
-    height: 0.095 * SCREEN_HEIGHT,
+    height: 0.08 * SCREEN_HEIGHT,
     marginHorizontal: 20,
     marginBottom: 20,
     marginTop: 40
@@ -129,7 +131,6 @@ const styles = {
     backgroundColor: 'rgba(0,0,0,0)',
     fontSize: 16,
     marginRight: 0.55 * SCREEN_WIDTH,
-   // marginLeft: 0.1 * SCREEN_WIDTH,
     fontWeight: '500'
   },
   inputStyle: {
@@ -161,17 +162,32 @@ const styles = {
     borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5C1634',
-    width: 0.35 * SCREEN_WIDTH,
+    width: 0.4 * SCREEN_WIDTH,
     height: 0.07 * SCREEN_HEIGHT,
     margin: 15
   },
   addressButtonStyle: {
     borderRadius: 0.03 * SCREEN_HEIGHT,
     borderWidth: 0.3,
-    width: 0.35 * SCREEN_WIDTH,
+    width: 0.4 * SCREEN_WIDTH,
     height: 0.07 * SCREEN_HEIGHT,
     margin: 15,
     backgroundColor: '#00C1FF'
+  },
+  inputMessageStyle: {
+    color: 'white',
+    paddingRight: 5,
+    paddingLeft: 10,
+    fontSize: 0.043 * SCREEN_WIDTH,
+    lineHeight: 3,
+    fontWeight: "200",
+    height: 0.2 * SCREEN_HEIGHT,
+    width: 0.8 * SCREEN_WIDTH
+  },
+  buttonViewStyle: {
+    flex: 1,
+    alignItems: 'flex-start',
+    marginRight: 15
   }
 }
 

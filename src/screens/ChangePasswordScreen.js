@@ -161,10 +161,11 @@ const styles = {
     color: 'white',
     paddingRight: 5,
     paddingLeft: 5,
-    fontSize: 0.038 * SCREEN_WIDTH,
+    fontSize: 0.047 * SCREEN_WIDTH,
     lineHeight: 23,
     fontWeight: "200",
-    height: 50
+    height:  0.095 * SCREEN_HEIGHT,
+    width:  0.8 * SCREEN_WIDTH
   },
 };
 
