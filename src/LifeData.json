@@ -1,38 +1,47 @@
 [
   {
     "key": 11,
+    "category": "fashion_tips",
     "title": "Fashion Tips"
   },
   {
     "key": 22,
+    "category": "beauty_tips",
     "title": "Beauty Tips"
   },
   {
     "key": 33,
+    "category": "nutrition_tips",
     "title": "Nutrition Tips"
   },
   {
     "key": 44,
+    "category": "day's_recipe",
     "title": "Day's Recipe"
   },
   {
     "key": 55,
+    "category": "family_tips",    
     "title": "Family Tips"
   },
   {
     "key": 66,
+    "category": "home_tips",    
     "title": "Home Tips"
   },
   {
     "key": 77,
+    "category": "work_life_balance",    
     "title": "Work/Life Balance"
   },
   {
     "key": 88,
+    "category": "articles",    
     "title": "Articles"
   },
   {
     "key": 99,
+    "category": "todat's_quote",    
     "title": "Today's Quote"
   }
 ]
