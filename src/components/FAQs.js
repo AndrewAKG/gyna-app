@@ -16,9 +16,12 @@ class FAQs extends React.Component {
 
   render() {
     const {
-        viewStyle,
+      viewStyle,
       FAQSButtonStyle,
       issueButtonStyle,
+      loginViewStyle,
+      iconStyle,
+      textStyle
        } = styles;
     return (
       <BackgroundImage>
@@ -29,7 +32,7 @@ class FAQs extends React.Component {
                 buttonStyle={FAQSButtonStyle}
                 onPress={this.props.onFAQSButtonPressed}
                 title='FAQS'
-                fontSize={0.04 * SCREEN_WIDTH}
+                fontSize={0.037 * SCREEN_WIDTH}
               />
             </View>
             <View style={{ flex: 1, alignItems: 'flex-start' }}>
@@ -37,7 +40,7 @@ class FAQs extends React.Component {
                 buttonStyle={issueButtonStyle}
                 onPress={this.props.onIssueButtonPressed}
                 title='Another issue'
-                fontSize={0.04 * SCREEN_WIDTH}
+                fontSize={0.037 * SCREEN_WIDTH}
               />
             </View>
           </View>
@@ -49,13 +52,13 @@ class FAQs extends React.Component {
             }}
           >
             <View style={{ flex: 1 }}>
-              <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0)', marginLeft: 0.2 * SCREEN_WIDTH, flexDirection: 'row' }}>
+              <View style={loginViewStyle}>
                 <View style={{ flex: 6.5, alignItems: 'center' }}>
-                  <Text style={{ color: 'white', fontSize: 0.043 * SCREEN_WIDTH, fontWeight: '400' }}>
+                  <Text style={textStyle}>
                     Login Trouble
                 </Text>
                 </View>
-                <View style={{ flex: 3.5, alignItems: 'flex-end', marginRight: 15, marginTop: -5 }}>
+                <View style={iconStyle}>
                   <MaterialIcons
                     name='navigate-next'
                     color="white"
@@ -96,6 +99,23 @@ const styles = {
     backgroundColor: 'rgba(0,0,0,0)',
     marginTop: 20,
     marginBottom: 30
+  },
+  loginViewStyle: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0)',
+    marginLeft: 0.2 * SCREEN_WIDTH,
+    flexDirection: 'row'
+  },
+  textStyle: {
+    color: 'white',
+    fontSize: 0.043 * SCREEN_WIDTH,
+    fontWeight: '400'
+  },
+  iconStyle: {
+    flex: 3.5,
+    alignItems: 'flex-end',
+    marginRight: 15,
+    marginTop: -5
   }
 
 }

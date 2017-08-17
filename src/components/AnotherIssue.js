@@ -22,7 +22,8 @@ class AnotherIssue extends React.Component {
       inputStyle,
       emailPhoneStyle,
       saveButtonStyle,
-      viewButtonsStyle
+      viewButtonsStyle,
+      dateStyle
      } = styles;
 
     return (
@@ -37,7 +38,7 @@ class AnotherIssue extends React.Component {
                   buttonStyle={messageButtonStyle}
                   onPress={this.props.onFAQSButtonPressed}
                   title='FAQs'
-                  fontSize={0.04 * SCREEN_WIDTH}
+                  fontSize={0.037 * SCREEN_WIDTH}
                 />
               </View>
               <View style={{ flex: 1, alignItems: 'flex-start' }}>
@@ -45,7 +46,7 @@ class AnotherIssue extends React.Component {
                   buttonStyle={addressButtonStyle}
                   onPress={this.props.onIssueButtonPressed}
                   title='Another Issue'
-                  fontSize={0.04 * SCREEN_WIDTH}
+                  fontSize={0.037 * SCREEN_WIDTH}
                 />
               </View>
             </View>
@@ -64,14 +65,14 @@ class AnotherIssue extends React.Component {
               Type='email-address'
               style={inputStyle}
             />
-            <Text style={emailPhoneStyle}>
+            <Text style={dateStyle}>
               Issue title
             </Text>
             <InputMoreScreen
               placeholder=''
               style={inputStyle}
             />
-            <Text style={emailPhoneStyle}>
+            <Text style={dateStyle}>
               Description
             </Text>
             <InputMessage
@@ -112,6 +113,13 @@ const styles = {
     backgroundColor: 'rgba(0,0,0,0)',
     fontSize: 16,
     marginRight: 0.55 * SCREEN_WIDTH,
+    fontWeight: '500'
+  },
+  dateStyle: {
+    color: 'white',
+    backgroundColor: 'rgba(0,0,0,0)',
+    fontSize: 16,
+    marginRight: 0.5 * SCREEN_WIDTH,
     fontWeight: '500'
   },
   inputStyle: {
