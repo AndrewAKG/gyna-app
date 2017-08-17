@@ -59,8 +59,8 @@ const styles = {
     width: 0.6 * SCREEN_WIDTH
   },
   imageStyle: {
-    width: 0.04 * SCREEN_WIDTH,
-    height: 0.04 * SCREEN_WIDTH,
+    width: 0.06 * SCREEN_WIDTH,
+    height: 0.06 * SCREEN_WIDTH,
     margin: 15
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, Text, ScrollView, Dimensions, FlatList } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { BackgroundImage, SearchInput, Spinner } from '../components';
+import { BackgroundImage, SearchInput, Spinner, ListDataItem } from '../components';
 import ListItem from '../components/ListItem';
 import KnowledgeData from '../KnowledgeData.json';
 import { searchContent, searchWordChanged } from '../actions';
@@ -31,7 +31,16 @@ class KnowledgeScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { search: false };
+    this.state = { search: false, keyword: '', searchData: [], data: KnowledgeData };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ searchData: nextProps.searchData });
+  }
+
+  onWordChange(text) {
+    this.setState({ keyword: text });
+    this.props.searchWordChanged(text);
   }
 
   renderContent() {
@@ -40,7 +49,7 @@ class KnowledgeScreen extends Component {
         <View style={styles.scrollStyle}>
           <ScrollView>
             <FlatList
-              data={KnowledgeData}
+              data={this.state.data}
               numColumns={3}
               renderItem={({ item }) =>
                 <ListItem
@@ -49,6 +58,8 @@ class KnowledgeScreen extends Component {
                   onPress={() => navigate('dataList', { category: item.category, title: item.title })}
                 />
               }
+              keyExtractor={(item, index) => item.key}
+              extraData={this.state.data}
             />
           </ScrollView>
         </View>
@@ -71,17 +82,20 @@ class KnowledgeScreen extends Component {
         );
       } else {
         return (
-          <ScrollView style={styles.scrollStyle}>
-            <FlatList
-              data={this.props.searchData}
-              renderItem={({ item }) =>
-                <ListDataItem
-                  title={item.name}
-                />
-              }
-              keyExtractor={(item, index) => index}
-            />
-          </ScrollView>
+          <View style={{ flex: 9 }}>
+            <ScrollView>
+              <FlatList
+                data={this.props.searchData}
+                renderItem={({ item }) =>
+                  <ListDataItem
+                    title={item.name}
+                  />
+                }
+                keyExtractor={(item, index) => index}
+                extraData={this.state.searchData}
+              />
+            </ScrollView>
+          </View>
         );
       }
     }
@@ -105,7 +119,7 @@ class KnowledgeScreen extends Component {
                 (!this.state.search) ?
                   () => {
                     console.log('WENAK YABNY');
-                    const { keyword } = this.props;
+                    const { keyword } = this.state;
                     this.setState({ search: true });
                     this.props.searchContent({ keyword });
                   }
@@ -115,7 +129,7 @@ class KnowledgeScreen extends Component {
                   }
               }
               value={this.props.keyword}
-              onChangeText={this.props.searchWordChanged.bind(this)}
+              onChangeText={this.onWordChange.bind(this)}
             />
           </View>
           {this.renderContent()}
