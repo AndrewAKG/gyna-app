@@ -34,3 +34,9 @@ export const NOTIFICATIONS_FETCH_SUCCESS = 'noti_fetch_success';
 /** DataLists Types **/
 export const DATA_FETCH = 'data_fetch';
 export const DATA_FETCH_SUCCESS = 'data_fetch_success';
+
+/** Search Types **/
+export const SEARCH_WORD_CHANGED = 'search_word';
+export const SEARCH_FETCH = 'search_fetch';
+export const SEARCH_FETCH_SUCCESS = 'search_fetch_success';
+
