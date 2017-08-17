@@ -37,8 +37,8 @@ const styles = {
     containerStyle: {
         flexDirection: 'row',
         alignItems: 'center',
-        borderRadius: 0.03 * SCREEN_HEIGHT,
-        borderWidth: 0.2,
+        borderRadius: 0.05 * SCREEN_HEIGHT,
+        borderWidth: 0.3,
         borderColor: 'white',
         backgroundColor: '#5c1634',
         height: 0.2 * SCREEN_HEIGHT,

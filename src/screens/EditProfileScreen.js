@@ -47,7 +47,7 @@ class EditProfileScreen extends Component {
               Username
             </Text>
             <InputMoreScreen
-              placeholder='Username'
+              placeholder=''
               style={inputStyle}
             />
 
@@ -55,7 +55,7 @@ class EditProfileScreen extends Component {
               E-mail
             </Text>
             <InputMoreScreen
-              placeholder='E-mail'
+              placeholder=''
               Type='email-address'
               style={inputStyle}
             />
@@ -64,7 +64,7 @@ class EditProfileScreen extends Component {
               Phone
             </Text>
             <InputMoreScreen
-              placeholder='Phone'
+              placeholder=''
               Type='phone-pad'
               style={inputStyle}
             />
@@ -73,7 +73,7 @@ class EditProfileScreen extends Component {
               Working Address
             </Text>
             <InputMoreScreen
-              placeholder='Working Address'
+              placeholder=''
               style={inputStyle}
             />
 
@@ -151,13 +151,13 @@ const styles = {
   inputStyle: {
     color: 'white',
     paddingRight: 5,
-    paddingLeft: 10,
-    fontSize: 0.043 * SCREEN_WIDTH,
+    paddingLeft: 5,
+    fontSize: 0.055 * SCREEN_WIDTH,
     lineHeight: 23,
     fontWeight: "200",
     height: 50,
-    width: 0.6 * SCREEN_WIDTH,
-  }
+    width: 0.6 * SCREEN_WIDTH
+  },
 };
 
 export default EditProfileScreen;

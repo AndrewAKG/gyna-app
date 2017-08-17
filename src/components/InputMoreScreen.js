@@ -40,7 +40,7 @@ const styles = {
     borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5c1634',
-    height: 0.08 * SCREEN_HEIGHT,
+    height: 0.095 * SCREEN_HEIGHT,
     width: 0.8 * SCREEN_WIDTH,
     marginHorizontal: 20,
     marginBottom: 20,
