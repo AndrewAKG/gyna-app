@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, Linking, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import { Entypo, Foundation, FontAwesome } from '@expo/vector-icons';
-import {
-  BackgroundImage,
-  MoreScreenButton,
-  InputMoreScreen,
-  InputMessage,
-  MessageUs,
-  Address
-} from '../components';
+import { BackgroundImage, MessageUs, Address } from '../components';
 
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
