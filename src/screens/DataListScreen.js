@@ -19,8 +19,14 @@ class DataListScreen extends Component {
     this.props.fetchData({ category });
   }
 
-  renderText() {
-    if (this.props.data.length == 0) {
+  renderContent() {
+    if (this.props.loading) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Spinner />
+        </View>
+      );
+    } else if (this.props.data.length == 0) {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
@@ -28,20 +34,8 @@ class DataListScreen extends Component {
           </Text>
         </View>
       );
-    }
-  }
-
-  renderSpinner() {
-    if (this.props.loading) {
+    } else {
       return (
-        <Spinner />
-      );
-    }
-  }
-
-  render() {
-    return (
-      <BackgroundImage>
         <ScrollView>
           <FlatList
             data={this.props.data}
@@ -52,13 +46,15 @@ class DataListScreen extends Component {
             }
             keyExtractor={(item, index) => index}
           />
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            {this.renderSpinner()}
-          </View>
-          <View>
-            {this.renderText()}
-          </View>
         </ScrollView>
+      );
+    }
+  }
+
+  render() {
+    return (
+      <BackgroundImage>
+        {this.renderContent()}
       </BackgroundImage>
     );
   }
