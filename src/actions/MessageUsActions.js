@@ -5,7 +5,10 @@ import {
   SEND_MESSAGE_SUCCESS,
   SEND_MESSAGE_FAILED,
   SENDER_NAME_CHANGED,
-  SENDER_EMAIL_CHANGED
+  SENDER_EMAIL_CHANGED,
+  SEND_ISSUE,
+  SEND_ISSUE_SUCCESS,
+  SEND_ISSUE_FAILED
 }
   from './types';
 import { Platform, AsyncStorage } from 'react-native';
@@ -55,7 +58,7 @@ export const sendMessage = ({ name, subject, message }) => {
         formData.append('message', message);
         formData.append('api_key', token);
         
-        fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/message', {
+        fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/contact', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -68,6 +71,43 @@ export const sendMessage = ({ name, subject, message }) => {
               dispatch({ type: SEND_MESSAGE_SUCCESS, result: responseJson.result });
             } else {
               dispatch({ type: SEND_MESSAGE_FAILED, result: responseJson.result });
+            }
+          });
+      }
+    });
+};
+};
+
+export const sendIssue = ({ name, subject, message }) => {
+  console.log('gh hna');
+  return (dispatch) => {
+    dispatch({ type: SEND_ISSUE});
+    
+    AsyncStorage.getItem('token', (err, token) => {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        
+        var formData = new FormData();
+        formData.append('name', name);
+        formData.append('subject', subject);
+        formData.append('message', message);
+        formData.append('api_key', token);
+        
+        fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/message', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'multipart/form-data'
+          },
+          body: formData
+        }).then((response) => response.json())
+          .then((responseJson) => {
+            if (responseJson.result) {
+              dispatch({ type: SEND_ISSUE_SUCCESS, result: responseJson.result });
+            } else {
+              dispatch({ type: SEND_ISSUE_FAILED, result: responseJson.result });
             }
           });
       }

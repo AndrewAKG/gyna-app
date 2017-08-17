@@ -61,6 +61,8 @@ class AnotherIssue extends React.Component {
             <InputMoreScreen
               placeholder=''
               style={inputStyle}
+              onChangeText={this.props.onChangeTextName}
+              value={this.props.valueName}
             />
 
             <Text style={emailPhoneStyle}>
@@ -70,6 +72,8 @@ class AnotherIssue extends React.Component {
               placeholder=''
               Type='email-address'
               style={inputStyle}
+              onChangeText={this.props.onChangeTextEmail}
+              value={this.props.valueEmail}
             />
 
             <Text style={dateStyle}>
@@ -78,6 +82,8 @@ class AnotherIssue extends React.Component {
             <InputMoreScreen
               placeholder=''
               style={inputStyle}
+              onChangeText={this.props.onChangeTextSubject}
+              value={this.props.valueSubject}
             />
 
             <Text style={dateStyle}>
@@ -86,11 +92,13 @@ class AnotherIssue extends React.Component {
             <InputMessage
               placeholder=''
               style={inputStyle}
+              onChangeText={this.props.onChangeTextMessage}
+              value={this.props.valueMessage}
             />
 
             <MoreScreenButton
               buttonStyle={saveButtonStyle}
-              onPress={() => console.log('Sent')}
+              onPress={this.props.onButtonPress}
               title='Send'
               fontSize={0.04 * SCREEN_WIDTH}
             />
