@@ -33,6 +33,7 @@ class MoreScreen extends Component {
       imageStyle,
       textViewStyle,
       textStyle,
+      buttonStyle
      } = styles;
 
     return (
@@ -59,24 +60,34 @@ class MoreScreen extends Component {
             </View>
 
             <MoreScreenButton
+              buttonStyle={buttonStyle}
               onPress={() => navigate('editProfile')}
               title='view/edit Profile'
+              fontSize={0.047*SCREEN_WIDTH}
             />
             <MoreScreenButton
+              buttonStyle={buttonStyle}
               onPress={() => navigate('changePassword')}
               title='Change Password'
+              fontSize={0.047*SCREEN_WIDTH}
             />
             <MoreScreenButton
+              buttonStyle={buttonStyle}
               onPress={() => navigate('contactUs')}
               title='Contact us'
+              fontSize={0.047*SCREEN_WIDTH}
             />
             <MoreScreenButton
+              buttonStyle={buttonStyle}
               onPress={() => navigate('helpDesk')}
               title='Help Desk'
+              fontSize={0.047*SCREEN_WIDTH}
             />
             <MoreScreenButton
+              buttonStyle={buttonStyle}
               onPress={() => console.log('logout')}
               title='logout'
+              fontSize={0.047*SCREEN_WIDTH}
             />
           </ScrollView>
 
@@ -120,7 +131,16 @@ const styles = {
   textViewStyle: {
     flex: 6,
     alignItems: 'flex-start'
-  }
+  },
+  buttonStyle: {
+    borderRadius: 0.04 * SCREEN_HEIGHT,
+    borderWidth: 0.3,
+    borderColor: 'white',
+    backgroundColor: '#5C1634',
+    width: 0.75 * SCREEN_WIDTH,
+    height: 0.08 * SCREEN_HEIGHT,
+    margin: 18
+  },
 
 };
 
