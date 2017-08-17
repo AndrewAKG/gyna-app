@@ -34,3 +34,12 @@ export const NOTIFICATIONS_FETCH_SUCCESS = 'noti_fetch_success';
 /** DataLists Types **/
 export const DATA_FETCH = 'data_fetch';
 export const DATA_FETCH_SUCCESS = 'data_fetch_success';
+
+/** Message Actions */
+export const SENDER_NAME_CHANGED = 'sender_name_changed';
+export const SENDER_EMAIL_CHANGED = 'sender_email_changed';
+export const SUBJECT_CHANGED = 'subject_changed';
+export const MESSAGE_CHANGED = 'message_changed';
+export const SEND_MESSAGE = 'send_message';
+export const SEND_MESSAGE_SUCCESS = 'send_message_success';
+export const SEND_MESSAGE_FAILED = 'send_message_failed';
