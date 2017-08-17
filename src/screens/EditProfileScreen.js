@@ -38,39 +38,45 @@ class EditProfileScreen extends Component {
     return (
       <BackgroundImage>
         <View style={{ flex: 1 }}>
+
           <ScrollView
             contentContainerStyle={containerStyle}
           >
+
             <Text style={userNameStyle}>
               Username
-          </Text>
+            </Text>
             <InputMoreScreen
               placeholder='Username'
               style={inputStyle}
             />
+
             <Text style={emailPhoneStyle}>
               E-mail
-          </Text>
+            </Text>
             <InputMoreScreen
-              placeholder='E.mail'
+              placeholder='E-mail'
               Type='email-address'
               style={inputStyle}
             />
+
             <Text style={emailPhoneStyle}>
               Phone
-          </Text>
+            </Text>
             <InputMoreScreen
               placeholder='Phone'
               Type='phone-pad'
               style={inputStyle}
             />
+
             <Text style={dateStyle}>
               Working Address
-          </Text>
+            </Text>
             <InputMoreScreen
               placeholder='Working Address'
               style={inputStyle}
             />
+
             <Text style={dateStyle}>
               Anniversary Date
             </Text>
@@ -78,6 +84,7 @@ class EditProfileScreen extends Component {
               date={this.state.date}
               onDateChange={(date) => this.setState({ date: date })}
             />
+
             <Button
               onPress={() => console.log('change edit profile')}
               title="Save"
@@ -86,6 +93,7 @@ class EditProfileScreen extends Component {
               fontWeight='bold'
               fontSize={0.047 * SCREEN_WIDTH}
             />
+            
           </ScrollView>
 
         </View>

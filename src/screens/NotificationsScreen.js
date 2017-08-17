@@ -26,17 +26,23 @@ class NotificationsScreen extends Component {
     this.props.fetchNotifications();
   }
 
-  renderSpinner() {
+  renderContent() {
     if (this.props.loading) {
       return (
-        <Spinner />
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Spinner />
+        </View>
       );
-    }
-  }
-
-  render() {
-    return (
-      <BackgroundImage>
+    } else if (this.props.notifications.length == 0) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            No Notifications at the moment
+          </Text>
+        </View>
+      );
+    } else {
+      return (
         <ScrollView>
           <FlatList
             data={this.props.notifications}
@@ -47,10 +53,15 @@ class NotificationsScreen extends Component {
             }
             keyExtractor={(item, index) => index}
           />
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            {this.renderSpinner()}
-          </View>
         </ScrollView>
+      );
+    }
+  }
+
+  render() {
+    return (
+      <BackgroundImage>
+        {this.renderContent()}
       </BackgroundImage>
     );
   }

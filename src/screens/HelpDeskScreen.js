@@ -37,7 +37,7 @@ class HelpDeskScreen extends Component {
   }
 
   render() {
-    if (this.state.issueButtonPressed === false || this.FAQsButtonPressed === true) {
+    if (!this.state.issueButtonPressed || this.FAQsButtonPressed) {
       return (
         <BackgroundImage>
           <View style={{ flex: 1 }}>
@@ -56,7 +56,6 @@ class HelpDeskScreen extends Component {
               onFAQSButtonPressed={() => this.onFAQSButtonPressed()}
               onIssueButtonPressed={() => this.onIssueButtonPressed()}
             />
-
           </View>
         </BackgroundImage>
       );

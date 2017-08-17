@@ -28,10 +28,12 @@ class MessageUs extends React.Component {
     return (
       <BackgroundImage>
         <View style={{ flex: 1 }}>
+
           <ScrollView
             contentContainerStyle={containerStyle}
           >
             <View style={viewButtonsStyle}>
+
               <View style={{ flex: 1, alignItems: 'center' }}>
                 <MoreScreenButton
                   buttonStyle={messageButtonStyle}
@@ -40,6 +42,7 @@ class MessageUs extends React.Component {
                   fontSize={0.04 * SCREEN_WIDTH}
                 />
               </View>
+
               <View style={{ flex: 1, alignItems: 'flex-start' }}>
                 <MoreScreenButton
                   buttonStyle={addressButtonStyle}
@@ -48,7 +51,9 @@ class MessageUs extends React.Component {
                   fontSize={0.04 * SCREEN_WIDTH}
                 />
               </View>
+
             </View>
+
             <Text style={emailPhoneStyle}>
               Name
             </Text>
@@ -58,6 +63,7 @@ class MessageUs extends React.Component {
               onChangeText={this.props.onChangeTextName}
               value={this.props.valueName}
             />
+
             <Text style={emailPhoneStyle}>
               E-mail
             </Text>
@@ -68,6 +74,7 @@ class MessageUs extends React.Component {
               onChangeText={this.props.onChangeTextEmail}
               value={this.props.valueEmail}
             />
+
             <Text style={emailPhoneStyle}>
               Subject
             </Text>
@@ -77,6 +84,7 @@ class MessageUs extends React.Component {
               onChangeText={this.props.onChangeTextSubject}
               value={this.props.valueSubject}
             />
+
             <Text style={emailPhoneStyle}>
               Message
             </Text>
@@ -86,12 +94,14 @@ class MessageUs extends React.Component {
               onChangeText={this.props.onChangeTextMessage}
               value={this.props.valueMessage}
             />
+
             <MoreScreenButton
               buttonStyle={saveButtonStyle}
               onPress={this.props.onButtonPress}
               title='Send'
               fontSize={0.04 * SCREEN_WIDTH}
             />
+
           </ScrollView>
         </View>
       </BackgroundImage>
@@ -101,7 +111,6 @@ class MessageUs extends React.Component {
 }
 
 const styles = {
-
   containerStyle: {
     paddingTop: 10,
     alignItems: 'center'
@@ -163,7 +172,7 @@ const styles = {
     height: 0.07 * SCREEN_HEIGHT,
     margin: 15,
     backgroundColor: '#00C1FF'
-  },
+  }
 }
 
 export { MessageUs };

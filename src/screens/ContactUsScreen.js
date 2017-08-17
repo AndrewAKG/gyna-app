@@ -65,12 +65,13 @@ class ContactUsScreen extends Component {
   }
 
   onPress() {
-    Linking.openURL('http://www.tabukpharmaceuticals.com/').catch(err => console.error('An error occurred', err));
+    Linking.openURL('http://www.tabukpharmaceuticals.com/')
+      .catch(err => console.error('An error occurred', err));
   }
 
   onMessageButtonPressed() {
     console.log("d5l al method");
-    this.setState({ messageUsButtonPressed: true, addressButtonPressed: false })
+    this.setState({ messageUsButtonPressed: true, addressButtonPressed: false });
     console.log(this.state.messageUsButtonPressed);
   }
 
@@ -104,7 +105,7 @@ class ContactUsScreen extends Component {
   }
 
   render() {
-    if (this.state.messageUsButtonPressed === false || this.addressButtonPressed === true) {
+    if (!this.state.messageUsButtonPressed || this.addressButtonPressed) {
       return (
         <BackgroundImage>
           <View style={{ flex: 1 }}>

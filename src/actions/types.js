@@ -43,3 +43,8 @@ export const MESSAGE_CHANGED = 'message_changed';
 export const SEND_MESSAGE = 'send_message';
 export const SEND_MESSAGE_SUCCESS = 'send_message_success';
 export const SEND_MESSAGE_FAILED = 'send_message_failed';
+/** Search Types **/
+export const SEARCH_WORD_CHANGED = 'search_word';
+export const SEARCH_FETCH = 'search_fetch';
+export const SEARCH_FETCH_SUCCESS = 'search_fetch_success';
+

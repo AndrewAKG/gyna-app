@@ -59,10 +59,10 @@ const styles = {
     width: 0.6 * SCREEN_WIDTH
   },
   imageStyle: {
-    width: 22,
-    height: 22,
+    width: 0.06 * SCREEN_WIDTH,
+    height: 0.06 * SCREEN_WIDTH,
     margin: 15
   }
-}
+};
 
 export { SearchInput };
