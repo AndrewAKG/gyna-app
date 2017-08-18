@@ -147,12 +147,17 @@ class LoginScreen extends Component {
               style={{ marginTop: 20 }}
               onChangeText={this.onEmailChange.bind(this)}
               value={this.props.email}
+              returnKeyType={"next"}
+              onSubmit={(event) => {
+                this.refs.password.focus.bind(this);
+              }}
             />
             <InputPassword
               placeholder='Password'
               style={inputStyle}
               onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password}
+              returnKeyType={"go"}
             />
 
             <Button

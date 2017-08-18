@@ -8,33 +8,49 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 
-const Input = ({ value, placeholder, iconSource, style, Type, secure, onChangeText }) => {
-  const { containerStyle, inputStyle, imageStyle } = styles;
+class Input extends React.Component {
+  render() {
+    const {
+      value,
+      placeholder,
+      iconSource,
+      style,
+      Type,
+      secure,
+      onChangeText,
+      returnKeyType,
+      onSubmit
+    } = this.props;
+    const { containerStyle, inputStyle, imageStyle } = styles;
 
-  return (
-    <View style={[containerStyle, style]}>
-      <View style={{ flex: 2 }}>
-        <Image
-          style={imageStyle}
-          source={iconSource}
-        />
+    return (
+      <View style={[containerStyle, style]}>
+        <View style={{ flex: 2 }}>
+          <Image
+            style={imageStyle}
+            source={iconSource}
+          />
+        </View>
+        <View style={{ flex: 8 }}>
+          <TextInput
+            {...this.props}
+            ref={'textInput'}
+            returnKeyType={returnKeyType}
+            keyboardType={Type}
+            autoCorrect={false}
+            placeholder={placeholder}
+            placeholderTextColor='white'
+            style={inputStyle}
+            value={value}
+            secureTextEntry={secure}
+            onChangeText={onChangeText}
+            onSubmitEditing={onSubmit}
+          />
+        </View>
       </View>
-      <View style={{ flex: 8 }}>
-        <TextInput
-          keyboardType={Type}
-          autoCorrect={false}
-          placeholder={placeholder}
-          placeholderTextColor='white'
-          style={inputStyle}
-          value={value}
-          secureTextEntry={secure}
-          onChangeText={onChangeText}
-       //   returnKeyType='next'
-        />
-      </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 /**
  * Styles used for ths component , includes the input style 
