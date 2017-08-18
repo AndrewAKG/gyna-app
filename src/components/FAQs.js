@@ -52,7 +52,7 @@ class FAQs extends React.Component {
 
           </View>
 
-          <View style={{ flex: 8 }}>
+          <View style={{ flex: 9 }}>
 
             <TouchableWithoutFeedback
               onPress={() => console.log('ooooo')}
@@ -64,7 +64,7 @@ class FAQs extends React.Component {
             >
               <View style={loginViewStyle}>
 
-                <View style={{ flex: 7, alignItems: 'center' }}>
+                <View style={{ flex: 1, alignItems: 'center' }}>
                   <Text style={textStyle}>
                     Login Trouble
                   </Text>
@@ -80,17 +80,20 @@ class FAQs extends React.Component {
 
               </View>
             </TouchableWithoutFeedback>
+            <View style={{ flex: 9.5 }}>
+              <Divider style={{ backgroundColor: 'white' }} />
+            </View>
           </View>
 
         </View>
       </BackgroundImage>
-    );
+        );
   }
 }
 
 const styles = {
-  issueButtonStyle: {
-    borderRadius: 0.03 * SCREEN_HEIGHT,
+          issueButtonStyle: {
+          borderRadius: 0.03 * SCREEN_HEIGHT,
     borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5C1634',
@@ -99,7 +102,7 @@ const styles = {
     margin: 15
   },
   FAQSButtonStyle: {
-    borderRadius: 0.03 * SCREEN_HEIGHT,
+          borderRadius: 0.03 * SCREEN_HEIGHT,
     borderWidth: 0.3,
     width: 0.4 * SCREEN_WIDTH,
     height: 0.07 * SCREEN_HEIGHT,
@@ -107,39 +110,39 @@ const styles = {
     backgroundColor: '#00C1FF'
   },
   viewStyle: {
-    flexDirection: 'row',
-    flex: 2,
+          flexDirection: 'row',
+    flex: 1,
     backgroundColor: 'rgba(0,0,0,0)',
     marginTop: 20,
     marginBottom: 30
   },
   loginViewStyle: {
-    flex: 9,
+          flex: 1,
     backgroundColor: 'rgba(0,0,0,0)',
     marginLeft: 0.2 * SCREEN_WIDTH,
     flexDirection: 'row'
   },
   textStyle: {
-    color: 'white',
+          color: 'white',
     fontSize: 0.043 * SCREEN_WIDTH,
     fontWeight: '400'
   },
   iconStyle: {
-    flex: 3,
+          flex: 0.5,
     alignItems: 'flex-end',
     marginRight: 15,
     marginTop: -5
   },
   issueButtonViewStyle: {
-    flex: 1,
+          flex: 1,
     alignItems: 'flex-start',
     marginRight: 15
   },
   divider: {
-    backgroundColor: 'white',
+          backgroundColor: 'white',
     marginTop: 10,
     marginHorizontal: 5
   }
 }
 
-export { FAQs };
+export {FAQs};
