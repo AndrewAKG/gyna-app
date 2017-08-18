@@ -52,24 +52,22 @@ class FAQs extends React.Component {
 
           </View>
 
-          <TouchableWithoutFeedback
-            onPress={() => console.log('ooooo')}
-            style={{
-              backfaceVisibility: 'hidden',
-              overflow: 'hidden'
-            }}
-          >
-            <View style={{ flex: 1 }}>
+          <View style={{ flex: 8 }}>
 
+            <TouchableWithoutFeedback
+              onPress={() => console.log('ooooo')}
+              style={{
+                backfaceVisibility: 'hidden',
+                overflow: 'hidden',
+                flex: 1
+              }}
+            >
               <View style={loginViewStyle}>
 
-                <View style={{ flex: 6.5, alignItems: 'center' }}>
+                <View style={{ flex: 7, alignItems: 'center' }}>
                   <Text style={textStyle}>
                     Login Trouble
                   </Text>
-                  <View style={{flex: 1}}>
-                  <Divider style={divider} />
-                  </View>
                 </View>
 
                 <View style={iconStyle}>
@@ -81,11 +79,8 @@ class FAQs extends React.Component {
                 </View>
 
               </View>
-
-            </View>
-          </TouchableWithoutFeedback>
-
-          <View style={{ flex: 8 }} />
+            </TouchableWithoutFeedback>
+          </View>
 
         </View>
       </BackgroundImage>
@@ -113,13 +108,13 @@ const styles = {
   },
   viewStyle: {
     flexDirection: 'row',
-    flex: 1,
+    flex: 2,
     backgroundColor: 'rgba(0,0,0,0)',
     marginTop: 20,
     marginBottom: 30
   },
   loginViewStyle: {
-    flex: 1,
+    flex: 9,
     backgroundColor: 'rgba(0,0,0,0)',
     marginLeft: 0.2 * SCREEN_WIDTH,
     flexDirection: 'row'
@@ -130,7 +125,7 @@ const styles = {
     fontWeight: '400'
   },
   iconStyle: {
-    flex: 3.5,
+    flex: 3,
     alignItems: 'flex-end',
     marginRight: 15,
     marginTop: -5
@@ -142,8 +137,9 @@ const styles = {
   },
   divider: {
     backgroundColor: 'white',
-    margin: 50
-  },
+    marginTop: 10,
+    marginHorizontal: 5
+  }
 }
 
 export { FAQs };
