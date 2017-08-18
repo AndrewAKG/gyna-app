@@ -43,9 +43,21 @@ class KnowledgeScreen extends Component {
     this.props.searchWordChanged(text);
   }
 
+  fetchType(item) {
+    if (item.attach) {
+      return { icon: true, type: 'picture-as-pdf' };
+    }
+    else if (item.images.length !== 0) {
+      return { icon: false, image: item.images[0] };
+    }
+    else if (item.link) {
+      return { icon: true, type: 'ondemand-video' };
+    }
+  }
+
   renderContent() {
     const { navigate } = this.props.navigation;
-    
+
     if (!this.state.search) {
       return (
         <View style={styles.scrollStyle}>
@@ -90,7 +102,8 @@ class KnowledgeScreen extends Component {
                 data={this.props.searchData}
                 renderItem={({ item }) =>
                   <ListDataItem
-                    title={item.name}
+                    title={(item.title) ? item.title : item.name}
+                    iconType={this.fetchType(item)}
                   />
                 }
                 keyExtractor={(item, index) => index}
@@ -120,7 +133,6 @@ class KnowledgeScreen extends Component {
               onIconPress={
                 (!this.state.search) ?
                   () => {
-                    console.log('WENAK YABNY');
                     const { keyword } = this.state;
                     this.setState({ search: true });
                     this.props.searchContent({ keyword });

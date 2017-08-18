@@ -13,24 +13,26 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class ListDataItem extends React.Component {
   renderIcon() {
-    const { type, icon, image } = this.props.iconType;
-    if (icon) {
-      return (
-        <Icon
-          iconStyle={styles.pdfIcon}
-          name={type}
-          color='white'
-          size={0.2 * SCREEN_WIDTH}
-        />
-      );
-    }
-    else {
-      return (
-        <Image
-          source={{ uri: image }}
-          style={styles.pdfIcon}
-        />
-      )
+    if (this.props.iconType) {
+      const { type, icon, image } = this.props.iconType;
+      if (icon) {
+        return (
+          <Icon
+            iconStyle={styles.pdfIcon}
+            name={type}
+            color='white'
+            size={0.2 * SCREEN_WIDTH}
+          />
+        );
+      }
+      else {
+        return (
+          <Image
+            source={{ uri: image }}
+            style={styles.pdfIcon}
+          />
+        )
+      }
     }
   }
 
