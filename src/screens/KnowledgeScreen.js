@@ -44,6 +44,8 @@ class KnowledgeScreen extends Component {
   }
 
   renderContent() {
+    const { navigate } = this.props.navigation;
+    
     if (!this.state.search) {
       return (
         <View style={styles.scrollStyle}>

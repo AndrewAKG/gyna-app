@@ -12,6 +12,28 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class ListDataItem extends React.Component {
+  renderIcon() {
+    const { type, icon, image } = this.props.iconType;
+    if (icon) {
+      return (
+        <Icon
+          iconStyle={styles.pdfIcon}
+          name={type}
+          color='white'
+          size={0.2 * SCREEN_WIDTH}
+        />
+      );
+    }
+    else {
+      return (
+        <Image
+          source={{ uri: image }}
+          style={styles.pdfIcon}
+        />
+      )
+    }
+  }
+
   render() {
     const {
       containerStyle,
@@ -37,12 +59,7 @@ class ListDataItem extends React.Component {
       <View style={{ flex: 1, margin: 10 }}>
         <View style={containerStyle}>
           <View style={pdfPicContainer}>
-            <Icon
-              iconStyle={pdfIcon}
-              name='picture-as-pdf'
-              color='white'
-              size={0.2 * SCREEN_WIDTH}
-            />
+            {this.renderIcon()}
           </View>
           <View style={textContainer}>
             <Text style={textStyle}>

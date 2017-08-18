@@ -19,6 +19,18 @@ class DataListScreen extends Component {
     this.props.fetchData({ category });
   }
 
+  fetchType(item) {
+    if (item.attach) {
+      return { icon: true, type: 'picture-as-pdf' };
+    }
+    else if (item.images.length !== 0) {
+      return { icon: false, image: item.images[0] };
+    }
+    else if (item.link) {
+      return { icon: true, type: 'ondemand-video' };
+    }
+  }
+
   renderContent() {
     if (this.props.loading) {
       return (
@@ -41,7 +53,8 @@ class DataListScreen extends Component {
             data={this.props.data}
             renderItem={({ item }) =>
               <ListDataItem
-                title={item.name}
+                title={(item.title) ? item.title : item.name}
+                iconType={this.fetchType(item)}
               />
             }
             keyExtractor={(item, index) => index}
