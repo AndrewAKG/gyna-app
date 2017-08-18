@@ -67,7 +67,9 @@ class FAQs extends React.Component {
                   <Text style={textStyle}>
                     Login Trouble
                   </Text>
+                  <View style={{flex: 1}}>
                   <Divider style={divider} />
+                  </View>
                 </View>
 
                 <View style={iconStyle}>
