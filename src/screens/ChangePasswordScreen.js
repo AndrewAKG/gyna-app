@@ -113,7 +113,7 @@ class ChangePasswordScreen extends Component {
               value={this.props.newPassword}
             />
             <InputPassword
-              placeholder='confirm password'
+              placeholder='Confirm Password'
               style={inputStyle}
               onChangeText={this.onConfirmPasswordChanged.bind(this)}
               value={this.props.confirmPassword}

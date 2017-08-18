@@ -45,20 +45,14 @@ class ContactUsScreen extends Component {
       this.setState({ onMessageButtonPressed: true })
       this.props.navigation.navigate('contactUs');
     }
-    else {
-      if (props.loading) {
-        return <Spinner />
-      }
-      else {
-        if (props.loading === false) {
-          return <View />
-        }
-        else {
-          if (props.success === false) {
-            this.props.navigation.navigate('login');
-          }
-        }
-      }
+    else if (props.loading) {
+      return <Spinner />;
+    }
+    else if (!props.loading) {
+      return <View />;
+    }
+    else if (!props.success) {
+      this.props.navigation.navigate('login');
     }
     console.log(props.serverMessage);
   }

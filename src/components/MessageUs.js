@@ -177,12 +177,13 @@ const styles = {
   inputMessageStyle: {
     color: 'white',
     paddingRight: 5,
-    paddingLeft: 10,
+    paddingLeft: 5,
     fontSize: 0.043 * SCREEN_WIDTH,
     lineHeight: 3,
     fontWeight: "200",
     height: 0.2 * SCREEN_HEIGHT,
-    width: 0.8 * SCREEN_WIDTH
+    width: 0.74 * SCREEN_WIDTH,
+    margin: 10
   },
   buttonViewStyle: {
     flex: 1,
