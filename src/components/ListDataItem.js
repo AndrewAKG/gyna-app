@@ -70,9 +70,9 @@ class ListDataItem extends React.Component {
           </View>
           <Icon
             iconStyle={arrowIcon}
-            name='keyboard-arrow-right'
+            name='navigate-next'
             color='white'
-            size={0.05 * SCREEN_WIDTH}
+            size={0.1 * SCREEN_WIDTH}
             containerStyle={arrowContainer}
           />
         </View>
@@ -99,7 +99,7 @@ const styles = {
     height: 0.2 * SCREEN_WIDTH
   },
   textContainer: {
-    flex: 6,
+    flex: 5,
     alignItems: 'flex-start',
     justifyContent: 'center',
     backgroundColor: 'transparent'
@@ -111,13 +111,11 @@ const styles = {
     fontWeight: '400'
   },
   arrowContainer: {
-    flex: 1,
+    flex: 2,
     alignItems: 'center',
     justifyContent: 'center'
   },
   arrowIcon: {
-    width: 0.04 * SCREEN_WIDTH,
-    height: 0.04 * SCREEN_WIDTH,
     margin: 5
   },
   DividerStyle: {
