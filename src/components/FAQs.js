@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, Dimensions, TouchableWithoutFeedback } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button, Divider } from 'react-native-elements';
 import {
   BackgroundImage,
   MoreScreenButton,
@@ -22,7 +22,8 @@ class FAQs extends React.Component {
       loginViewStyle,
       iconStyle,
       textStyle,
-      issueButtonViewStyle
+      issueButtonViewStyle,
+      divider
     } = styles;
 
     return (
@@ -66,6 +67,7 @@ class FAQs extends React.Component {
                   <Text style={textStyle}>
                     Login Trouble
                   </Text>
+                  <Divider style={divider} />
                 </View>
 
                 <View style={iconStyle}>
@@ -135,7 +137,11 @@ const styles = {
     flex: 1,
     alignItems: 'flex-start',
     marginRight: 15
-  }
+  },
+  divider: {
+    backgroundColor: 'white',
+    margin: 50
+  },
 }
 
 export { FAQs };
