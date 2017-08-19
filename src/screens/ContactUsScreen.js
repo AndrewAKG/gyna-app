@@ -100,11 +100,18 @@ class ContactUsScreen extends Component {
   renderButtons() {
 
     return (
-      <View style={this.state.messageUsButtonPressed === false ? styles.viewStyle : styles.viewButtonsStyle}>
+      <View style={
+        (!this.state.messageUsButtonPressed) ?
+          styles.viewStyle : styles.viewButtonsStyle
+      }
+      >
 
-        <View style={{ flex: 1, alignItems: 'center' }}>
+        <View style={{ flex: 1, alignItems: 'flex-start' }}>
           <MoreScreenButton
-            buttonStyle={(!this.state.messageUsButtonPressed) ? styles.addressButtonStyle : styles.messageButtonStyle}
+            buttonStyle={
+              (!this.state.messageUsButtonPressed) ?
+                styles.addressButtonStyle : styles.messageButtonStyle
+            }
             onPress={() => this.onAddressButtonPressed()}
             title='Address'
             fontSize={0.042 * SCREEN_WIDTH}
@@ -113,7 +120,10 @@ class ContactUsScreen extends Component {
 
         <View style={styles.messageButtonViewStyle}>
           <MoreScreenButton
-            buttonStyle={(this.state.messageUsButtonPressed) ? styles.addressButtonStyle : styles.messageButtonStyle}
+            buttonStyle={
+              (this.state.messageUsButtonPressed) ?
+                styles.addressButtonStyle : styles.messageButtonStyle
+            }
             onPress={() => this.onMessageButtonPressed()}
             title='Message Us'
             fontSize={0.042 * SCREEN_WIDTH}
