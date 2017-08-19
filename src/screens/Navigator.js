@@ -16,6 +16,7 @@ import HelpDesk from './HelpDeskScreen';
 import EditProfile from './EditProfileScreen';
 import DataListScreen from './DataListScreen';
 import LoginTrouble from './LoginTrouble';
+import PDFsScreen from './PDFsScreen';
 
 class Navigator extends Component {
   render() {
@@ -49,6 +50,9 @@ class Navigator extends Component {
       },
       trouble: {
         screen: LoginTrouble
+      },
+      pdfScreen:{
+        screen: PDFsScreen
       },
       mainScreen: {
         screen: TabNavigator({

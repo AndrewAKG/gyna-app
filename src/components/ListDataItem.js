@@ -48,15 +48,6 @@ class ListDataItem extends React.Component {
       DividerStyle
     } = styles;
 
-    /*
-    let iconPath;
-    switch(iconType){
-      case true:
-        iconPath = require('../../assets/icons/pdfIcon.png'); 
-      default:
-    }
-    */
-
     return (
       <View style={{ flex: 1, margin: 10 }}>
         <View style={containerStyle}>
@@ -74,6 +65,7 @@ class ListDataItem extends React.Component {
             color='white'
             size={0.1 * SCREEN_WIDTH}
             containerStyle={arrowContainer}
+            onPress={this.props.onArrowPress}
           />
         </View>
         <View style={{ flex: 1 }}>
