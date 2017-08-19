@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image, Dimensions, TouchableWithoutFeedback } from 'react-native';
-import { Button, CheckBox, Divider } from 'react-native-elements';
-import { Input, BackgroundImage } from '../components';
+import { View, Text, Image, Dimensions, TouchableWithoutFeedback } from 'react-native';
+import { BackgroundImage } from '../components';
 import { connect } from 'react-redux';
-import { forgetPassword, emailChanged } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -23,27 +21,31 @@ class LoginTrouble extends React.Component {
     const { navigate } = this.props.navigation;
     const {
       imageStyle,
-      buttonStyle,
-      containerStyle
+      imageViewStyle,
+      dataViewStyle,
+      troubleTextStyle,
+      textStyle,
+      recogniseStyle,
+      problemsStyle
     } = styles;
 
     return (
 
       <BackgroundImage>
         <View style={{ flex: 1 }}>
-          <View style={{ flex: 3, alignItems: 'center', backgroundColor: 'rgba(0,0,0,0)' }}>
+          <View style={imageViewStyle}>
             <Image
               source={require('../../assets/icons/ask.png')}
               style={imageStyle}
             />
           </View>
-          <View style={{ flex: 3, alignItems: 'flex-start', backgroundColor: 'rgba(0,0,0,0)', marginHorizontal: 25 }}>
+          <View style={dataViewStyle}>
             <View style={{ flex: 2 }}>
-              <Text style={{ color: 'white', marginBottom: 20, fontWeight: '500', fontSize: 18 }}>
+              <Text style={troubleTextStyle}>
                 Having trouble logging in ?
            </Text>
 
-              <Text style={{ color: 'white', marginBottom: 20 }}>
+              <Text style={problemsStyle}>
                 Here are some problems and our recommendations for solving them :-
               </Text>
 
@@ -55,21 +57,21 @@ class LoginTrouble extends React.Component {
                 }}
               >
                 <View style={{ flex: 0.5 }}>
-                  <Text style={{ color: 'white', textDecorationLine: 'underline', fontSize: 16 }}>
-                    If You forget your password
+                  <Text style={textStyle}>
+                    You forget your password ?
                  </Text>
                 </View>
               </TouchableWithoutFeedback>
 
               <TouchableWithoutFeedback
-                onPress={() => this.props.navigation.navigate('signUp')}
+                onPress={() => this.props.navigation.navigate('contactUs')}
                 style={{
                   backfaceVisibility: 'hidden',
                   overflow: 'hidden',
                 }}
               >
                 <View style={{ flex: 0.5 }}>
-                  <Text style={{ color: 'white', textDecorationLine: 'underline', fontSize: 16 }}>
+                  <Text style={textStyle}>
                     You forget your email ?
                  </Text>
                 </View>
@@ -83,7 +85,7 @@ class LoginTrouble extends React.Component {
                 }}
               >
                 <View style={{ flex: 0.5 }}>
-                  <Text style={{ color: 'white', textDecorationLine: 'underline', fontSize: 16, marginBottom: 10 }}>
+                  <Text style={recogniseStyle}>
                     We didn't recognise your Email ?
                  </Text>
                 </View>
@@ -104,17 +106,39 @@ const styles = {
     backgroundColor: 'rgba(0,0,0,0)',
     marginBottom: 0.04 * SCREEN_HEIGHT
   },
-  buttonStyle: {
-    borderRadius: 0.05 * SCREEN_HEIGHT,
-    backgroundColor: '#00C1FF',
-    width: 0.8 * SCREEN_WIDTH,
-    height: 0.095 * SCREEN_HEIGHT,
-    margin: 10
+  imageViewStyle: {
+    flex: 3,
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0)'
   },
-  containerStyle: {
-    marginTop: 0.15 * SCREEN_HEIGHT,
-    alignItems: 'center'
+  dataViewStyle: {
+    flex: 3,
+    alignItems: 'flex-start',
+    backgroundColor: 'rgba(0,0,0,0)',
+    marginHorizontal: 25
+  },
+  troubleTextStyle: {
+    color: 'white',
+    marginBottom: 20,
+    fontWeight: '500',
+    fontSize: 18
+  },
+  textStyle: {
+    color: 'white',
+    textDecorationLine: 'underline',
+    fontSize: 16
+  },
+  recogniseStyle: {
+    color: 'white',
+    textDecorationLine: 'underline',
+    fontSize: 16,
+    marginBottom: 10
+  },
+  problemsStyle: {
+    color: 'white',
+    marginBottom: 20
   }
+
 }
 
 
