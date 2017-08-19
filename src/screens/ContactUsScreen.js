@@ -98,55 +98,30 @@ class ContactUsScreen extends Component {
   }
 
   renderButtons() {
-    if (!this.state.messageUsButtonPressed) {
-      return (
-        <View style={styles.viewStyle}>
 
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <MoreScreenButton
-              buttonStyle={styles.addressButtonStyle}
-              onPress={() => this.onAddressButtonPressed()}
-              title='Address'
-              fontSize={0.0472 * SCREEN_WIDTH}
-            />
-          </View>
+    return (
+      <View style={this.state.messageUsButtonPressed === false ? styles.viewStyle : styles.viewButtonsStyle}>
 
-          <View style={styles.messageButtonViewStyle}>
-            <MoreScreenButton
-              buttonStyle={styles.messageButtonStyle}
-              onPress={() => this.onMessageButtonPressed()}
-              title='Message us'
-              fontSize={0.0472 * SCREEN_WIDTH}
-            />
-          </View>
-
+        <View style={{ flex: 1, alignItems: 'center' }}>
+          <MoreScreenButton
+            buttonStyle={(!this.state.messageUsButtonPressed) ? styles.addressButtonStyle : styles.messageButtonStyle}
+            onPress={() => this.onAddressButtonPressed()}
+            title='Address'
+            fontSize={0.042 * SCREEN_WIDTH}
+          />
         </View>
-      );
-    } else {
-      return (
-        <View style={styles.viewButtonsStyle}>
 
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <MoreScreenButton
-              buttonStyle={styles.messageButtonStyle}
-              onPress={() => this.onAddressButtonPressed()}
-              title='Address'
-              fontSize={0.0472 * SCREEN_WIDTH}
-            />
-          </View>
-
-          <View style={styles.messageButtonViewStyle}>
-            <MoreScreenButton
-              buttonStyle={styles.addressButtonStyle}
-              onPress={() => this.onMessageButtonPressed()}
-              title='Message us'
-              fontSize={0.0472 * SCREEN_WIDTH}
-            />
-          </View>
-
+        <View style={styles.messageButtonViewStyle}>
+          <MoreScreenButton
+            buttonStyle={(this.state.messageUsButtonPressed) ? styles.addressButtonStyle : styles.messageButtonStyle}
+            onPress={() => this.onMessageButtonPressed()}
+            title='Message Us'
+            fontSize={0.042 * SCREEN_WIDTH}
+          />
         </View>
-      );
-    }
+
+      </View>
+    );
   }
 
   render() {

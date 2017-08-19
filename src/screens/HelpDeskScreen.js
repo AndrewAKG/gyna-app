@@ -103,57 +103,29 @@ class HelpDeskScreen extends Component {
   }
 
   renderButtons() {
-    if (!this.state.issueButtonPressed) {
-      return (
-        <View style={styles.viewStyle}>
+    return (
+      <View style={this.state.issueButtonPressed === false ? styles.viewStyle : styles.viewButtonsStyle}>
 
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <MoreScreenButton
-              buttonStyle={styles.FAQSButtonStyle}
-              onPress={() => this.onFAQSButtonPressed()}
-              title='FAQS'
-              fontSize={0.042 * SCREEN_WIDTH}
-            />
-          </View>
-
-          <View style={styles.issueButtonViewStyle}>
-            <MoreScreenButton
-              buttonStyle={styles.issueButtonStyle}
-              onPress={() => this.onIssueButtonPressed()}
-              title='Another issue'
-              fontSize={0.042 * SCREEN_WIDTH}
-            />
-          </View>
-
+        <View style={{ flex: 1, alignItems: 'center' }}>
+          <MoreScreenButton
+            buttonStyle={this.state.issueButtonPressed === false ? styles.FAQSButtonStyle : styles.issueButtonStyle}
+            onPress={() => this.onFAQSButtonPressed()}
+            title='FAQS'
+            fontSize={0.042 * SCREEN_WIDTH}
+          />
         </View>
-      );
-    } else {
-      return (
-        <View style={styles.viewButtonsStyle}>
 
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <MoreScreenButton
-              buttonStyle={styles.issueButtonStyle}
-              onPress={() => this.onFAQSButtonPressed()}
-              title='FAQs'
-              fontSize={0.042 * SCREEN_WIDTH}
-            />
-          </View>
-
-          <View style={styles.issueButtonViewStyle}>
-
-            <MoreScreenButton
-              buttonStyle={styles.FAQSButtonStyle}
-              onPress={() => this.onIssueButtonPressed()}
-              title='Another Issue'
-              fontSize={0.042 * SCREEN_WIDTH}
-            />
-
-          </View>
-
+        <View style={styles.issueButtonViewStyle}>
+          <MoreScreenButton
+            buttonStyle={(this.state.issueButtonPressed) ? styles.FAQSButtonStyle : styles.issueButtonStyle}
+            onPress={() => this.onIssueButtonPressed()}
+            title='Another issue'
+            fontSize={0.042 * SCREEN_WIDTH}
+          />
         </View>
-      );
-    }
+
+      </View>
+    );
   }
 
   render() {

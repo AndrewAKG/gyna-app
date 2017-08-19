@@ -23,9 +23,11 @@ class MessageUs extends React.Component {
 
     return (
       <View style={{ flex: 1, alignItems: 'center' }}>
+        
         <Text style={emailPhoneStyle}>
           Name
-            </Text>
+        </Text>
+
         <InputMoreScreen
           placeholder=''
           style={inputStyle}
