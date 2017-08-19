@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, TouchableWithoutFeedback } from 'react-native';
 import { BackgroundImage } from '../components';
-import { connect } from 'react-redux';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
