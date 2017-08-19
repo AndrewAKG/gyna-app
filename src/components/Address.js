@@ -16,44 +16,16 @@ class Address extends React.Component {
 
   render() {
     const {
-      buttonStyle,
-      viewStyle,
-      messageButtonStyle,
-      addressButtonStyle,
       locationImageStyle,
       viewTextStyle,
       textStyle,
       telephoneFaxStyle,
       networkImageStyle,
       locationTextStyle,
-      messageButtonViewStyle
      } = styles;
 
     return (
-      <BackgroundImage>
-        <View style={{ flex: 1 }}>
-
-          <View style={viewStyle}>
-
-            <View style={{ flex: 1, alignItems: 'center' }}>
-              <MoreScreenButton
-                buttonStyle={addressButtonStyle}
-                onPress={this.props.onAddressButtonPressed}
-                title='Address'
-                fontSize={0.0472 * SCREEN_WIDTH}
-              />
-            </View>
-
-            <View style={messageButtonViewStyle}>
-              <MoreScreenButton
-                buttonStyle={messageButtonStyle}
-                onPress={this.props.onMessageButtonPressed}
-                title='Message us'
-                fontSize={0.0472 * SCREEN_WIDTH}
-              />
-            </View>
-
-          </View>
+        <View style={{ flex: 8 }}>
 
           <View style={{ flex: 1, flexDirection: 'row', marginTop: 20 }}>
 
@@ -137,7 +109,6 @@ class Address extends React.Component {
           <View style={{ flex: 4.5 }} />
 
         </View>
-      </BackgroundImage>
     );
 
   }
@@ -159,29 +130,7 @@ const styles = {
     fontSize: 18,
     height: 44,
   },
-  viewStyle: {
-    flexDirection: 'row',
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0)',
-    marginVertical: 20
-  },
-  messageButtonStyle: {
-    borderRadius: 0.03 * SCREEN_HEIGHT,
-    borderWidth: 0.3,
-    borderColor: 'white',
-    backgroundColor: '#5C1634',
-    width: 0.4 * SCREEN_WIDTH,
-    height: 0.07 * SCREEN_HEIGHT,
-    margin: 15
-  },
-  addressButtonStyle: {
-    borderRadius: 0.03 * SCREEN_HEIGHT,
-    borderWidth: 0.3,
-    width: 0.4 * SCREEN_WIDTH,
-    height: 0.07 * SCREEN_HEIGHT,
-    margin: 15,
-    backgroundColor: '#00C1FF'
-  },
+ 
   locationImageStyle: {
     alignItems: 'center',
     flex: 1.5,
@@ -217,11 +166,6 @@ const styles = {
     backgroundColor: 'rgba(0,0,0,0)',
     marginHorizontal: 15,
     marginTop: -5
-  },
-  messageButtonViewStyle: {
-    flex: 1,
-    alignItems: 'flex-start',
-    marginRight: 15
   }
 };
 

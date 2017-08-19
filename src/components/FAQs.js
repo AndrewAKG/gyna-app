@@ -16,133 +16,73 @@ class FAQs extends React.Component {
 
   render() {
     const {
-      viewStyle,
-      FAQSButtonStyle,
-      issueButtonStyle,
       loginViewStyle,
       iconStyle,
       textStyle,
-      issueButtonViewStyle,
       divider
     } = styles;
 
     return (
-      <BackgroundImage>
-        <View style={{ flex: 1 }}>
+      <View style={{ flex: 9 }}>
 
-          <View style={viewStyle}>
+        <TouchableWithoutFeedback
+          onPress={() => console.log('ooooo')}
+          style={{
+            backfaceVisibility: 'hidden',
+            overflow: 'hidden',
+            flex: 1
+          }}
+        >
+          <View style={loginViewStyle}>
 
             <View style={{ flex: 1, alignItems: 'center' }}>
-              <MoreScreenButton
-                buttonStyle={FAQSButtonStyle}
-                onPress={this.props.onFAQSButtonPressed}
-                title='FAQS'
-                fontSize={0.042 * SCREEN_WIDTH}
-              />
-            </View>
-
-            <View style={issueButtonViewStyle}>
-              <MoreScreenButton
-                buttonStyle={issueButtonStyle}
-                onPress={this.props.onIssueButtonPressed}
-                title='Another issue'
-                fontSize={0.042 * SCREEN_WIDTH}
-              />
-            </View>
-
-          </View>
-
-          <View style={{ flex: 9 }}>
-
-            <TouchableWithoutFeedback
-              onPress={() => console.log('ooooo')}
-              style={{
-                backfaceVisibility: 'hidden',
-                overflow: 'hidden',
-                flex: 1
-              }}
-            >
-              <View style={loginViewStyle}>
-
-                <View style={{ flex: 1, alignItems: 'center' }}>
-                  <Text style={textStyle}>
-                    Login Trouble
+              <Text style={textStyle}>
+                Login Trouble
                   </Text>
-                </View>
-
-                <View style={iconStyle}>
-                  <MaterialIcons
-                    name='navigate-next'
-                    color="white"
-                    size={33}
-                  />
-                </View>
-
-              </View>
-            </TouchableWithoutFeedback>
-            <View style={{ flex: 9.5 }}>
-              <Divider style={{ backgroundColor: 'white' }} />
             </View>
-          </View>
 
+            <View style={iconStyle}>
+              <MaterialIcons
+                name='navigate-next'
+                color="white"
+                size={33}
+              />
+            </View>
+
+          </View>
+        </TouchableWithoutFeedback>
+        <View style={{ flex: 9.7 }}>
+          <Divider style={{ backgroundColor: 'white' }} />
         </View>
-      </BackgroundImage>
-        );
+      </View>
+    );
   }
 }
 
 const styles = {
-          issueButtonStyle: {
-          borderRadius: 0.03 * SCREEN_HEIGHT,
-    borderWidth: 0.3,
-    borderColor: 'white',
-    backgroundColor: '#5C1634',
-    width: 0.4 * SCREEN_WIDTH,
-    height: 0.07 * SCREEN_HEIGHT,
-    margin: 15
-  },
-  FAQSButtonStyle: {
-          borderRadius: 0.03 * SCREEN_HEIGHT,
-    borderWidth: 0.3,
-    width: 0.4 * SCREEN_WIDTH,
-    height: 0.07 * SCREEN_HEIGHT,
-    margin: 15,
-    backgroundColor: '#00C1FF'
-  },
-  viewStyle: {
-          flexDirection: 'row',
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0)',
-    marginTop: 20,
-    marginBottom: 30
-  },
+
   loginViewStyle: {
-          flex: 1,
+    flex: 0.8,
     backgroundColor: 'rgba(0,0,0,0)',
     marginLeft: 0.2 * SCREEN_WIDTH,
     flexDirection: 'row'
   },
   textStyle: {
-          color: 'white',
+    color: 'white',
     fontSize: 0.043 * SCREEN_WIDTH,
     fontWeight: '400'
   },
   iconStyle: {
-          flex: 0.5,
+    flex: 0.5,
     alignItems: 'flex-end',
     marginRight: 15,
     marginTop: -5
   },
-  issueButtonViewStyle: {
-          flex: 1,
-    alignItems: 'flex-start',
-    marginRight: 15
-  },
   divider: {
-          backgroundColor: 'white',
+    backgroundColor: 'white',
     marginTop: 10,
     marginHorizontal: 5
   }
 }
 
-export {FAQs};
+export { FAQs };

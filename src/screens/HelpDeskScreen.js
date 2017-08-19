@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Dimensions, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, Image, Dimensions, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import {
   BackgroundImage,
   AnotherIssue,
   FAQs,
-  Spinner
+  Spinner,
+  MoreScreenButton
 } from '../components';
 import { connect } from 'react-redux';
 import {
@@ -101,15 +102,73 @@ class HelpDeskScreen extends Component {
     this.props.senderEmailChanged(text);
   }
 
+  renderButtons() {
+    if (!this.state.issueButtonPressed) {
+      return (
+        <View style={styles.viewStyle}>
+
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <MoreScreenButton
+              buttonStyle={styles.FAQSButtonStyle}
+              onPress={() => this.onFAQSButtonPressed()}
+              title='FAQS'
+              fontSize={0.042 * SCREEN_WIDTH}
+            />
+          </View>
+
+          <View style={styles.issueButtonViewStyle}>
+            <MoreScreenButton
+              buttonStyle={styles.issueButtonStyle}
+              onPress={() => this.onIssueButtonPressed()}
+              title='Another issue'
+              fontSize={0.042 * SCREEN_WIDTH}
+            />
+          </View>
+
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.viewButtonsStyle}>
+
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <MoreScreenButton
+              buttonStyle={styles.issueButtonStyle}
+              onPress={() => this.onFAQSButtonPressed()}
+              title='FAQs'
+              fontSize={0.042 * SCREEN_WIDTH}
+            />
+          </View>
+
+          <View style={styles.issueButtonViewStyle}>
+
+            <MoreScreenButton
+              buttonStyle={styles.FAQSButtonStyle}
+              onPress={() => this.onIssueButtonPressed()}
+              title='Another Issue'
+              fontSize={0.042 * SCREEN_WIDTH}
+            />
+
+          </View>
+
+        </View>
+      );
+    }
+  }
+
   render() {
     if (!this.state.issueButtonPressed) {
       return (
         <BackgroundImage>
           <View style={{ flex: 1 }}>
+
+            {this.renderButtons()}
+
             <FAQs
               onFAQSButtonPressed={() => this.onFAQSButtonPressed()}
               onIssueButtonPressed={() => this.onIssueButtonPressed()}
             />
+
           </View>
         </BackgroundImage>
       );
@@ -117,19 +176,29 @@ class HelpDeskScreen extends Component {
       return (
         <BackgroundImage>
           <View style={{ flex: 1 }}>
-            <AnotherIssue
-              onFAQSButtonPressed={() => this.onFAQSButtonPressed()}
-              onIssueButtonPressed={() => this.onIssueButtonPressed()}
-              onButtonPress={() => this.onButtonPress()}
-              onChangeTextName={this.onNameChanged.bind(this)}
-              valueName={this.props.name}
-              onChangeTextEmail={this.onEmailChanged.bind(this)}
-              valueEmail={this.props.email}
-              onChangeTextSubject={this.onSubjectChanged.bind(this)}
-              valueSubject={this.props.subject}
-              onChangeTextMessage={this.onMessageChanged.bind(this)}
-              valueMessage={this.props.message}
-            />
+
+            <ScrollView
+              contentContainerStyle={styles.containerStyle}
+            >
+
+              {this.renderButtons()}
+
+              <AnotherIssue
+                onFAQSButtonPressed={() => this.onFAQSButtonPressed()}
+                onIssueButtonPressed={() => this.onIssueButtonPressed()}
+                onButtonPress={() => this.onButtonPress()}
+                onChangeTextName={this.onNameChanged.bind(this)}
+                valueName={this.props.name}
+                onChangeTextEmail={this.onEmailChanged.bind(this)}
+                valueEmail={this.props.email}
+                onChangeTextSubject={this.onSubjectChanged.bind(this)}
+                valueSubject={this.props.subject}
+                onChangeTextMessage={this.onMessageChanged.bind(this)}
+                valueMessage={this.props.message}
+              />
+
+            </ScrollView>
+
           </View>
         </BackgroundImage>
       );
@@ -138,6 +207,10 @@ class HelpDeskScreen extends Component {
 }
 
 const styles = {
+  containerStyle: {
+    paddingTop: 10,
+    alignItems: 'center'
+  },
   icon: {
     width: 24,
     height: 24,
@@ -147,6 +220,41 @@ const styles = {
     padding: 10,
     fontSize: 18,
     height: 44,
+  },
+  issueButtonStyle: {
+    borderRadius: 0.03 * SCREEN_HEIGHT,
+    borderWidth: 0.3,
+    borderColor: 'white',
+    backgroundColor: '#5C1634',
+    width: 0.4 * SCREEN_WIDTH,
+    height: 0.07 * SCREEN_HEIGHT,
+    margin: 15
+  },
+  FAQSButtonStyle: {
+    borderRadius: 0.03 * SCREEN_HEIGHT,
+    borderWidth: 0.3,
+    width: 0.4 * SCREEN_WIDTH,
+    height: 0.07 * SCREEN_HEIGHT,
+    margin: 15,
+    backgroundColor: '#00C1FF'
+  },
+  viewStyle: {
+    flexDirection: 'row',
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0)',
+    marginTop: 20,
+    marginBottom: 30
+  },
+  issueButtonViewStyle: {
+    flex: 1,
+    alignItems: 'flex-start',
+    marginRight: 15
+  },
+  viewButtonsStyle: {
+    flexDirection: 'row',
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0)',
+    marginBottom: 20
   }
 };
 

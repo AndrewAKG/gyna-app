@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, Linking, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import { Entypo, Foundation, FontAwesome } from '@expo/vector-icons';
-import { BackgroundImage, MessageUs, Address, Spinner } from '../components';
+import { BackgroundImage, MessageUs, Address, Spinner, MoreScreenButton } from '../components';
 import { connect } from 'react-redux';
 import {
   senderNameChanged,
@@ -97,16 +97,72 @@ class ContactUsScreen extends Component {
     this.props.senderEmailChanged(text);
   }
 
+  renderButtons() {
+    if (!this.state.messageUsButtonPressed) {
+      return (
+        <View style={styles.viewStyle}>
+
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <MoreScreenButton
+              buttonStyle={styles.addressButtonStyle}
+              onPress={() => this.onAddressButtonPressed()}
+              title='Address'
+              fontSize={0.0472 * SCREEN_WIDTH}
+            />
+          </View>
+
+          <View style={styles.messageButtonViewStyle}>
+            <MoreScreenButton
+              buttonStyle={styles.messageButtonStyle}
+              onPress={() => this.onMessageButtonPressed()}
+              title='Message us'
+              fontSize={0.0472 * SCREEN_WIDTH}
+            />
+          </View>
+
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.viewButtonsStyle}>
+
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <MoreScreenButton
+              buttonStyle={styles.messageButtonStyle}
+              onPress={() => this.onAddressButtonPressed()}
+              title='Address'
+              fontSize={0.0472 * SCREEN_WIDTH}
+            />
+          </View>
+
+          <View style={styles.messageButtonViewStyle}>
+            <MoreScreenButton
+              buttonStyle={styles.addressButtonStyle}
+              onPress={() => this.onMessageButtonPressed()}
+              title='Message us'
+              fontSize={0.0472 * SCREEN_WIDTH}
+            />
+          </View>
+
+        </View>
+      );
+    }
+  }
+
   render() {
     if (!this.state.messageUsButtonPressed) {
       return (
         <BackgroundImage>
           <View style={{ flex: 1 }}>
+
+            {this.renderButtons()}
+
             <Address
               onAddressButtonPressed={() => this.onAddressButtonPressed()}
               onMessageButtonPressed={() => this.onMessageButtonPressed()}
               onUrlPressed={() => this.onPress()}
             />
+
           </View>
         </BackgroundImage>
       );
@@ -114,19 +170,29 @@ class ContactUsScreen extends Component {
       return (
         <BackgroundImage>
           <View style={{ flex: 1 }}>
-            <MessageUs
-              onAddressButtonPressed={() => this.onAddressButtonPressed()}
-              onMessageButtonPressed={() => this.onMessageButtonPressed()}
-              onButtonPress={() => this.onButtonPress()}
-              onChangeTextName={this.onNameChanged.bind(this)}
-              valueName={this.props.name}
-              onChangeTextEmail={this.onEmailChanged.bind(this)}
-              valueEmail={this.props.email}
-              onChangeTextSubject={this.onSubjectChanged.bind(this)}
-              valueSubject={this.props.subject}
-              onChangeTextMessage={this.onMessageChanged.bind(this)}
-              valueMessage={this.props.message}
-            />
+
+            <ScrollView
+              contentContainerStyle={{ paddingTop: 10, alignItems: 'center' }}
+            >
+
+              {this.renderButtons()}
+
+              <MessageUs
+                onAddressButtonPressed={() => this.onAddressButtonPressed()}
+                onMessageButtonPressed={() => this.onMessageButtonPressed()}
+                onButtonPress={() => this.onButtonPress()}
+                onChangeTextName={this.onNameChanged.bind(this)}
+                valueName={this.props.name}
+                onChangeTextEmail={this.onEmailChanged.bind(this)}
+                valueEmail={this.props.email}
+                onChangeTextSubject={this.onSubjectChanged.bind(this)}
+                valueSubject={this.props.subject}
+                onChangeTextMessage={this.onMessageChanged.bind(this)}
+                valueMessage={this.props.message}
+              />
+
+            </ScrollView>
+
           </View>
         </BackgroundImage>
       )
@@ -134,6 +200,42 @@ class ContactUsScreen extends Component {
   }
 }
 
+const styles = {
+  viewStyle: {
+    flexDirection: 'row',
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0)',
+    marginVertical: 20
+  },
+  messageButtonStyle: {
+    borderRadius: 0.03 * SCREEN_HEIGHT,
+    borderWidth: 0.3,
+    borderColor: 'white',
+    backgroundColor: '#5C1634',
+    width: 0.4 * SCREEN_WIDTH,
+    height: 0.07 * SCREEN_HEIGHT,
+    margin: 15
+  },
+  addressButtonStyle: {
+    borderRadius: 0.03 * SCREEN_HEIGHT,
+    borderWidth: 0.3,
+    width: 0.4 * SCREEN_WIDTH,
+    height: 0.07 * SCREEN_HEIGHT,
+    margin: 15,
+    backgroundColor: '#00C1FF'
+  },
+  messageButtonViewStyle: {
+    flex: 1,
+    alignItems: 'flex-start',
+    marginRight: 15
+  },
+  viewButtonsStyle: {
+    flexDirection: 'row',
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0)',
+    marginBottom: 20
+  }
+}
 const mapStateToProps = ({ message }) => {
   const { success, loading, serverMessage } = message;
   return { success, loading, serverMessage };
