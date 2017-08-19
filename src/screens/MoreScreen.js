@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ScrollView, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
+import { connect } from 'react-redux';
 import { BackgroundImage, Input, MoreScreenButton } from '../components';
+import { userData } from '../actions';
+
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -23,6 +26,10 @@ class MoreScreen extends Component {
       />
     )
   };
+
+  componentWillMount() {
+    this.props.userData();
+  }
 
   render() {
     const { navigate } = this.props.navigation;
@@ -53,7 +60,7 @@ class MoreScreen extends Component {
 
               <View style={textViewStyle}>
                 <Text style={textStyle}>
-                  DR/ZOZO
+                  DR/{' '}{this.props.username}
                 </Text>
               </View>
 
@@ -63,31 +70,31 @@ class MoreScreen extends Component {
               buttonStyle={buttonStyle}
               onPress={() => navigate('editProfile')}
               title='view/edit Profile'
-              fontSize={0.047*SCREEN_WIDTH}
+              fontSize={0.047 * SCREEN_WIDTH}
             />
             <MoreScreenButton
               buttonStyle={buttonStyle}
               onPress={() => navigate('changePassword')}
               title='Change Password'
-              fontSize={0.047*SCREEN_WIDTH}
+              fontSize={0.047 * SCREEN_WIDTH}
             />
             <MoreScreenButton
               buttonStyle={buttonStyle}
               onPress={() => navigate('contactUs')}
               title='Contact us'
-              fontSize={0.047*SCREEN_WIDTH}
+              fontSize={0.047 * SCREEN_WIDTH}
             />
             <MoreScreenButton
               buttonStyle={buttonStyle}
               onPress={() => navigate('helpDesk')}
               title='Help Desk'
-              fontSize={0.047*SCREEN_WIDTH}
+              fontSize={0.047 * SCREEN_WIDTH}
             />
             <MoreScreenButton
               buttonStyle={buttonStyle}
               onPress={() => console.log('logout')}
               title='logout'
-              fontSize={0.047*SCREEN_WIDTH}
+              fontSize={0.047 * SCREEN_WIDTH}
             />
           </ScrollView>
 
@@ -144,4 +151,14 @@ const styles = {
 
 };
 
-export default MoreScreen;
+const mapStateToProps = ({ data }) => {
+  const { username, loading } = data;
+  return { username, loading };
+};
+
+
+export default connect(mapStateToProps,
+  {
+    userData
+  })
+  (MoreScreen);

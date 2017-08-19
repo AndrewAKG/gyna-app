@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ScrollView, Dimensions } from 'react-native';
 import { BackgroundImage, InputMoreScreen, BirthdateInput } from '../components';
+import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
+import { userData, editUsername, editAddress, editDate, editEmail, editPhone, editProfile } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -21,10 +23,46 @@ class EditProfileScreen extends Component {
     super(props);
     let today = new Date();
     this.state = {
-      date: today,
+      date: this.props.date,
+      username: this.props.username,
+      email: this.props.email,
+      mobile: this.props.mobile,
+      address: this.props.address,
     }
   }
 
+  componentWillMount() {
+    this.props.userData();
+  }
+
+  onUserNameChanged(text) {
+   this.setState({username: text})
+    this.props.editUsername(text)
+  }
+
+  onAddressChanged(text) {
+   this.setState({address: text})
+    this.props.editAddress(text)
+  }
+
+  onEmailChanged(text) {
+    this.setState({email: text})
+    this.props.editEmail(text)
+  }
+
+  onPhoneChanged(text) {
+    this.setState({mobile: text})
+    this.props.editPhone(text)
+  }
+
+  onDateChange(text) {
+    this.props.editDate(this.state.date);
+  }
+
+  onButtonPress() {
+    const { username, email, address, mobile, date } = this.state;
+    this.props.editProfile({ username, email, address, mobile, date })
+  }
   render() {
     const {
       containerStyle,
@@ -49,6 +87,8 @@ class EditProfileScreen extends Component {
             <InputMoreScreen
               placeholder=''
               style={inputStyle}
+              value={this.props.username}
+              onChangeText={this.onUserNameChanged.bind(this)}
             />
 
             <Text style={emailPhoneStyle}>
@@ -58,6 +98,8 @@ class EditProfileScreen extends Component {
               placeholder=''
               Type='email-address'
               style={inputStyle}
+              value={this.props.email}
+              onChangeText={this.onEmailChanged.bind(this)}
             />
 
             <Text style={emailPhoneStyle}>
@@ -67,6 +109,8 @@ class EditProfileScreen extends Component {
               placeholder=''
               Type='phone-pad'
               style={inputStyle}
+              value={this.props.mobile}
+              onChangeText={this.onPhoneChanged.bind(this)}
             />
 
             <Text style={dateStyle}>
@@ -75,6 +119,8 @@ class EditProfileScreen extends Component {
             <InputMoreScreen
               placeholder=''
               style={inputStyle}
+              value={this.props.address}
+              onChangeText={this.onAddressChanged.bind(this)}
             />
 
             <Text style={dateStyle}>
@@ -86,14 +132,14 @@ class EditProfileScreen extends Component {
             />
 
             <Button
-              onPress={() => console.log('change edit profile')}
+              onPress={this.onButtonPress.bind(this)}
               title="Save"
               buttonStyle={buttonStyle}
               color='white'
               fontWeight='bold'
               fontSize={0.047 * SCREEN_WIDTH}
             />
-            
+
           </ScrollView>
 
         </View>
@@ -160,4 +206,20 @@ const styles = {
   },
 };
 
-export default EditProfileScreen;
+const mapStateToProps = ({ data }) => {
+  const { username, email, mobile, address, date, loading } = data;
+  return { username, email, mobile, address, date, loading };
+};
+
+
+export default connect(mapStateToProps,
+  {
+    userData,
+    editAddress,
+    editDate,
+    editPhone,
+    editEmail,
+    editUsername,
+    editProfile
+  })
+  (EditProfileScreen);

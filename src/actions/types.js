@@ -46,8 +46,24 @@ export const SEND_MESSAGE_FAILED = 'send_message_failed';
 export const SEND_ISSUE = 'send_issue';
 export const SEND_ISSUE_SUCCESS = 'send_issue_success';
 export const SEND_ISSUE_FAILED = 'send_issue_failed';
+
 /** Search Types **/
 export const SEARCH_WORD_CHANGED = 'search_word';
 export const SEARCH_FETCH = 'search_fetch';
 export const SEARCH_FETCH_SUCCESS = 'search_fetch_success';
+
+/** Edit profile Actions */
+export const EDIT_USERNAME = 'edit_username';
+export const EDIT_EMAIL = 'edit_email';
+export const EDIT_PHONE = 'edit_phone';
+export const EDIT_ADDRESS = 'edit_address';
+export const EDIT_DATE = 'edit_address';
+export const EDIT_PROFILE = 'edit_profile';
+export const EDIT_PROFILE_SUCCESS = 'edit_profile_success';
+export const EDIT_PROFILE_FAILED = 'edit_profile_failed';
+export const FETCH_USERDATA_SUCCESS = 'fetch_userdate_success';
+export const FETCH_USERDATA_FAILED = 'fetch_userdate_failed';
+export const FETCH_USERDATA = 'fetch_userdata';
+
+
 
