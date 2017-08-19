@@ -47,7 +47,8 @@ const assets = [
   require('../assets/icons/Life/66.png'),
   require('../assets/icons/Life/77.png'),
   require('../assets/icons/Life/88.png'),
-  require('../assets/icons/Life/99.png')
+  require('../assets/icons/Life/99.png'),
+  require('../assets/icons/ask.png')
 ];
 
 export default class App extends React.Component {

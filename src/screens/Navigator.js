@@ -15,6 +15,7 @@ import ContactUs from './ContactUsScreen';
 import HelpDesk from './HelpDeskScreen';
 import EditProfile from './EditProfileScreen';
 import DataListScreen from './DataListScreen';
+import LoginTrouble from './LoginTrouble';
 
 class Navigator extends Component {
   render() {
@@ -45,6 +46,9 @@ class Navigator extends Component {
       },
       dataList: {
         screen: DataListScreen
+      },
+      trouble: {
+        screen: LoginTrouble
       },
       mainScreen: {
         screen: TabNavigator({

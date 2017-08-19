@@ -90,7 +90,7 @@ const styles = {
   inputStyle: {
     color: 'white',
     paddingRight: 5,
-    paddingLeft: 10,
+    marginLeft: 10,
     fontSize: 0.043 * SCREEN_WIDTH,
     lineHeight: 23,
     fontWeight: "200",
@@ -109,7 +109,7 @@ const styles = {
   inputMessageStyle: {
     color: 'white',
     paddingRight: 5,
-    paddingLeft: 5,
+    marginLeft: 10,
     fontSize: 0.043 * SCREEN_WIDTH,
     lineHeight: 3,
     fontWeight: "200",

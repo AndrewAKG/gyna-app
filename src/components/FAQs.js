@@ -26,7 +26,7 @@ class FAQs extends React.Component {
       <View style={{ flex: 9 }}>
 
         <TouchableWithoutFeedback
-          onPress={() => console.log('ooooo')}
+          onPress={this.props.onButtonPress}
           style={{
             backfaceVisibility: 'hidden',
             overflow: 'hidden',

@@ -104,11 +104,11 @@ class HelpDeskScreen extends Component {
 
   renderButtons() {
     return (
-      <View style={this.state.issueButtonPressed === false ? styles.viewStyle : styles.viewButtonsStyle}>
+      <View style={(!this.state.issueButtonPressed) ? styles.viewStyle : styles.viewButtonsStyle}>
 
         <View style={{ flex: 1, alignItems: 'center' }}>
           <MoreScreenButton
-            buttonStyle={this.state.issueButtonPressed === false ? styles.FAQSButtonStyle : styles.issueButtonStyle}
+            buttonStyle={(!this.state.issueButtonPressed) ? styles.FAQSButtonStyle : styles.issueButtonStyle}
             onPress={() => this.onFAQSButtonPressed()}
             title='FAQS'
             fontSize={0.042 * SCREEN_WIDTH}
@@ -139,6 +139,7 @@ class HelpDeskScreen extends Component {
             <FAQs
               onFAQSButtonPressed={() => this.onFAQSButtonPressed()}
               onIssueButtonPressed={() => this.onIssueButtonPressed()}
+              onButtonPress={()=> this.props.navigation.navigate('trouble')}
             />
 
           </View>

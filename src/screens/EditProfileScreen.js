@@ -197,7 +197,7 @@ const styles = {
   inputStyle: {
     color: 'white',
     paddingRight: 5,
-    paddingLeft: 5,
+    marginLeft: 10,
     fontSize: 0.055 * SCREEN_WIDTH,
     lineHeight: 23,
     fontWeight: "200",
