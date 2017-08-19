@@ -51,16 +51,17 @@ class FAQs extends React.Component {
 
           </View>
         </TouchableWithoutFeedback>
+
         <View style={{ flex: 9.7 }}>
-          <Divider style={{ backgroundColor: 'white' }} />
+          <Divider style={divider} />
         </View>
+        
       </View>
     );
   }
 }
 
 const styles = {
-
   loginViewStyle: {
     flex: 0.8,
     backgroundColor: 'rgba(0,0,0,0)',
@@ -80,8 +81,7 @@ const styles = {
   },
   divider: {
     backgroundColor: 'white',
-    marginTop: 10,
-    marginHorizontal: 5
+    marginHorizontal: 15
   }
 }
 
