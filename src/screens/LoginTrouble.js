@@ -29,20 +29,22 @@ class LoginTrouble extends React.Component {
     } = styles;
 
     return (
-
       <BackgroundImage>
         <View style={{ flex: 1 }}>
+
           <View style={imageViewStyle}>
             <Image
               source={require('../../assets/icons/ask.png')}
               style={imageStyle}
             />
           </View>
+
           <View style={dataViewStyle}>
+
             <View style={{ flex: 2 }}>
               <Text style={troubleTextStyle}>
                 Having trouble logging in ?
-           </Text>
+              </Text>
 
               <Text style={problemsStyle}>
                 Here are some problems and our recommendations for solving them :-
@@ -58,7 +60,7 @@ class LoginTrouble extends React.Component {
                 <View style={{ flex: 0.5 }}>
                   <Text style={textStyle}>
                     You forget your password ?
-                 </Text>
+                  </Text>
                 </View>
               </TouchableWithoutFeedback>
 
@@ -72,7 +74,7 @@ class LoginTrouble extends React.Component {
                 <View style={{ flex: 0.5 }}>
                   <Text style={textStyle}>
                     You forget your email ?
-                 </Text>
+                  </Text>
                 </View>
               </TouchableWithoutFeedback>
 
@@ -86,11 +88,14 @@ class LoginTrouble extends React.Component {
                 <View style={{ flex: 0.5 }}>
                   <Text style={recogniseStyle}>
                     We didn't recognise your Email ?
-                 </Text>
+                  </Text>
                 </View>
               </TouchableWithoutFeedback>
+
             </View>
+
           </View>
+
         </View>
       </BackgroundImage>
     );
@@ -137,9 +142,6 @@ const styles = {
     color: 'white',
     marginBottom: 20
   }
-
 }
-
-
 
 export default LoginTrouble;
