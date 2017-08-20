@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { BackgroundImage, SearchInput, Spinner, ListDataItem } from '../components';
 import ListItem from '../components/ListItem';
 import KnowledgeData from '../KnowledgeData.json';
-import { searchContent, searchWordChanged } from '../actions';
+import { searchContent, searchWordChanged, emptySearchWord } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -72,6 +72,7 @@ class KnowledgeScreen extends Component {
                   onPress={() => navigate('dataList', { category: item.category, title: item.title })}
                 />
               }
+              key={this.state.search}
               keyExtractor={(item, index) => item.key}
               extraData={this.state.data}
             />
@@ -106,6 +107,7 @@ class KnowledgeScreen extends Component {
                     iconType={this.fetchType(item)}
                   />
                 }
+                key={this.state.search}
                 keyExtractor={(item, index) => index}
                 extraData={this.state.searchData}
               />
@@ -140,6 +142,7 @@ class KnowledgeScreen extends Component {
                   :
                   () => {
                     this.setState({ search: false });
+                    this.props.emptySearchWord();
                   }
               }
               value={this.props.keyword}
@@ -169,4 +172,9 @@ const mapStateToProps = ({ dataList }) => {
   return { loading, searchData, keyword };
 };
 
-export default connect(mapStateToProps, { searchContent, searchWordChanged })(KnowledgeScreen);
+export default connect(mapStateToProps,
+  {
+    searchContent,
+    searchWordChanged,
+    emptySearchWord
+  })(KnowledgeScreen);

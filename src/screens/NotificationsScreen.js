@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, FlatList, ScrollView } from 'react-native';
+import { View, Text, Image, FlatList, ScrollView, Linking } from 'react-native';
 import { connect } from 'react-redux';
 import { BackgroundImage, Spinner, ListDataItem } from '../components';
 import { fetchNotifications } from '../actions';
@@ -42,8 +42,8 @@ class NotificationsScreen extends Component {
     const { navigate } = this.props.navigation;
 
     if (item.attach) {
-      return () => navigate('pdfScreen',
-       { pdfLink: item.attach, title: item.title });
+      return () => navigate('pdfScreen', { pdfLink: item.attach, title: item.title });
+      //Linking.openURL(item.attach).catch(err => console.error('An error occurred', err));
     }
     else if (item.images.length !== 0) {
       console.log('faks now');

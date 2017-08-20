@@ -1,38 +1,11 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, Dimensions } from 'react-native';
-import PDFView from 'react-native-pdf-view';
-import RNFS from 'react-native-fs';
+import { View, WebView, Text, TouchableHighlight, Dimensions } from 'react-native';
+import { BackgroundImage, Spinner } from '../components';
+//import Pdf from 'react-native-pdf';
 
 const pdfDownloadURL = 'http://image.tianjimedia.com/imagelist/2009/190/caq4z56jadof.pdf';
 
 class PDFsScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isPdfDownload: false,
-    };
-    this.pdfView = null;
-    this.pdfPath = RNFS.DocumentDirectoryPath + '/test.pdf'
-  }
-
-  componentDidMount() {
-    const options = {
-      fromUrl: pdfDownloadURL,
-      toFile: this.pdfPath
-    };
-    RNFS.downloadFile(options).promise.then(res => {
-      this.setState({ isPdfDownload: true });
-    }).catch(err => {
-      console.log(err);
-    });
-  }
-
-  zoom(val = 2.1) {
-    this.pdfView && setTimeout(() => {
-      this.pdfView.setNativeProps({ zoom: val });
-    }, 3000);
-  }
-
   static navigationOptions = ({ navigation }) => ({
     title: 'pdfScreen',
     headerStyle: {
@@ -42,39 +15,41 @@ class PDFsScreen extends React.Component {
     headerTitle: navigation.state.params.title
   });
 
+  constructor(props) {
+    super(props);
+  }
+
+  renderSpinner() {
+    return (
+      <View style={styles.container}>
+        <Spinner />
+      </View>
+    );
+  }
+
   render() {
     const { pdfLink } = this.props.navigation.state.params;
+    let source = { uri: 'http://image.tianjimedia.com/imagelist/2009/190/caq4z56jadof.pdf', cache: true };
     console.log('PDF LINK', pdfLink);
 
-    if (!this.state.isPdfDownload) {
-      return (
-        <View style={styles.container}>
-          <Text>Downloading</Text>
-        </View>
-      );
-    }
     return (
-      <PDFView
-        ref={(pdf) => { this.pdfView = pdf; }}
-        key="sop"
-        path={this.pdfPath}
-        onLoadComplete={(pageCount) => {
-          console.log(`total page count: ${pageCount}`);
-          this.zoom();
-        }}
-        style={styles.pdf}
-      />
-    )
+      <BackgroundImage>
+        <WebView
+          renderLoading={() => this.renderSpinner()}
+          style={styles.container}
+          source={{ uri: pdfLink }}
+        />
+      </BackgroundImage>);
   }
 }
 
 const styles = {
   container: {
     flex: 1,
-    justifyContent: 'flex-start'
-  },
-  pdf: {
-    flex: 1
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginTop: 25,
+    backgroundColor: 'transparent'
   }
 };
 

@@ -3,7 +3,8 @@ import {
   DATA_FETCH_SUCCESS,
   SEARCH_FETCH,
   SEARCH_FETCH_SUCCESS,
-  SEARCH_WORD_CHANGED
+  SEARCH_WORD_CHANGED,
+  EMPTY_SEARCH_WORD
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -30,6 +31,9 @@ export default (state = INITIAL_STATE, action) => {
 
     case SEARCH_FETCH_SUCCESS:
       return { ...state, loading: false, searchData: action.payload };
+
+    case EMPTY_SEARCH_WORD:
+      return { ...state, keyword: ''};
 
     default:
       return state;

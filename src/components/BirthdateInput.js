@@ -16,7 +16,10 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class BirthdateInput extends React.Component {
-  
+  constructor(props){
+    super(props);
+  }
+
   onDateChange(date) {
     this.props.onDateChange(date);
   }
@@ -25,7 +28,7 @@ class BirthdateInput extends React.Component {
     let today = new Date();
     return (
       <DatePicker
-        style={{ width: 0.81 * SCREEN_WIDTH, paddingTop: 20 }}
+        style={styles.pickerStyle}
         mode="date"
         date={this.props.date}
         placeholder={'Aniversary Date'}
@@ -49,7 +52,7 @@ class BirthdateInput extends React.Component {
             backgroundColor: 'rgba(0,0,0,0)',
             borderRadius: 0.06 * SCREEN_HEIGHT,
             borderWidth: 0.3,
-            height: 0.095 * SCREEN_HEIGHT,
+            height: [0.095 * SCREEN_HEIGHT, this.props.height],
             backgroundColor: '#5c1634',
             alignItems: 'flex-start',
             paddingLeft: 53
@@ -80,6 +83,13 @@ class BirthdateInput extends React.Component {
       </View>
 
     );
+  }
+};
+
+const styles = {
+  pickerStyle: {
+    width: [0.81 * SCREEN_WIDTH, this.props.width],
+    paddingTop: 20
   }
 };
 

@@ -51,6 +51,7 @@ export const SEND_ISSUE_FAILED = 'send_issue_failed';
 export const SEARCH_WORD_CHANGED = 'search_word';
 export const SEARCH_FETCH = 'search_fetch';
 export const SEARCH_FETCH_SUCCESS = 'search_fetch_success';
+export const EMPTY_SEARCH_WORD = 'empty_search_word';
 
 /** Edit profile Actions */
 export const EDIT_USERNAME = 'edit_username';

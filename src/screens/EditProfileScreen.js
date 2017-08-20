@@ -36,22 +36,22 @@ class EditProfileScreen extends Component {
   }
 
   onUserNameChanged(text) {
-   this.setState({username: text})
+    this.setState({ username: text })
     this.props.editUsername(text)
   }
 
   onAddressChanged(text) {
-   this.setState({address: text})
+    this.setState({ address: text })
     this.props.editAddress(text)
   }
 
   onEmailChanged(text) {
-    this.setState({email: text})
+    this.setState({ email: text })
     this.props.editEmail(text)
   }
 
   onPhoneChanged(text) {
-    this.setState({mobile: text})
+    this.setState({ mobile: text })
     this.props.editPhone(text)
   }
 
@@ -127,6 +127,8 @@ class EditProfileScreen extends Component {
               Anniversary Date
             </Text>
             <BirthdateInput
+              width={0.75 * SCREEN_WIDTH}
+              height={0.08 * SCREEN_HEIGHT}
               date={this.state.date}
               onDateChange={(date) => this.setState({ date: date })}
             />

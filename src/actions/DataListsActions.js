@@ -3,7 +3,8 @@ import {
   DATA_FETCH_SUCCESS,
   SEARCH_FETCH,
   SEARCH_FETCH_SUCCESS,
-  SEARCH_WORD_CHANGED
+  SEARCH_WORD_CHANGED,
+  EMPTY_SEARCH_WORD
 } from './types';
 import { AsyncStorage } from 'react-native';
 
@@ -11,6 +12,12 @@ export const searchWordChanged = (text) => {
   return {
     type: SEARCH_WORD_CHANGED,
     payload: text
+  };
+};
+
+export const emptySearchWord = () => {
+  return {
+    type: EMPTY_SEARCH_WORD
   };
 };
 

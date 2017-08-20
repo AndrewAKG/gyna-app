@@ -71,7 +71,7 @@ class ForgetPasswordScreen extends React.Component {
               buttonStyle={buttonStyle}
               color='white'
               fontWeight='normal'
-              fontSize={16}
+              fontSize={18}
             />
           </View>
 
