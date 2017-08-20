@@ -1,9 +1,4 @@
 import {
-  EDIT_USERNAME,
-  EDIT_ADDRESS,
-  EDIT_DATE,
-  EDIT_EMAIL,
-  EDIT_PHONE,
   EDIT_PROFILE,
   EDIT_PROFILE_FAILED,
   EDIT_PROFILE_SUCCESS,
@@ -12,41 +7,6 @@ import {
   FETCH_USERDATA_SUCCESS
 } from './types';
 import { AsyncStorage } from 'react-native';
-
-export const editUsername = (text) => {
-  return {
-    type: EDIT_USERNAME,
-    payload: text
-  };
-};
-
-export const editPhone = (text) => {
-  return {
-    type: EDIT_PHONE,
-    payload: text
-  };
-};
-
-export const editAddress = (text) => {
-  return {
-    type: EDIT_ADDRESS,
-    payload: text
-  };
-};
-
-export const editEmail = (text) => {
-  return {
-    type: EDIT_EMAIL,
-    payload: text
-  };
-};
-
-export const editDate = (text) => {
-  return {
-    type: EDIT_DATE,
-    payload: text
-  };
-};
 
 export const userData = () => {
   return (dispatch) => {
@@ -57,10 +17,6 @@ export const userData = () => {
         console.log(err);
       }
       else {
-
-        var formData = new FormData();
-        formData.append('api_key', token);
-
         fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/get_user_details?api_key=' + token, {
           method: 'GET',
           headers: {
@@ -69,7 +25,7 @@ export const userData = () => {
           },
         }).then((response) => response.json())
           .then((responseJson) => {
-            if (!(responseJson === null)) {
+            if (responseJson) {
               dispatch({ type: FETCH_USERDATA_SUCCESS, result: responseJson });
             } else {
               dispatch({ type: FETCH_USERDATA_FAILED, result: null });
@@ -80,7 +36,7 @@ export const userData = () => {
   };
 };
 
-export const editProfile = ({ username, mobile, token, address, date, email}) => {
+export const editProfile = ({ username, mobile, token, address, date, email }) => {
   return (dispatch) => {
     dispatch({ type: EDIT_PROFILE });
 

@@ -52,7 +52,7 @@ class BirthdateInput extends React.Component {
             backgroundColor: 'rgba(0,0,0,0)',
             borderRadius: 0.06 * SCREEN_HEIGHT,
             borderWidth: 0.3,
-            height: [0.095 * SCREEN_HEIGHT, this.props.height],
+            height: 0.095 * SCREEN_HEIGHT,
             backgroundColor: '#5c1634',
             alignItems: 'flex-start',
             paddingLeft: 53
@@ -88,7 +88,7 @@ class BirthdateInput extends React.Component {
 
 const styles = {
   pickerStyle: {
-    width: [0.81 * SCREEN_WIDTH, this.props.width],
+    width: 0.81 * SCREEN_WIDTH,
     paddingTop: 20
   }
 };

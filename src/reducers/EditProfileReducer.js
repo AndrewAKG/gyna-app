@@ -1,9 +1,4 @@
 import {
-  EDIT_USERNAME,
-  EDIT_ADDRESS,
-  EDIT_DATE,
-  EDIT_EMAIL,
-  EDIT_PHONE,
   EDIT_PROFILE,
   EDIT_PROFILE_FAILED,
   EDIT_PROFILE_SUCCESS,
@@ -20,6 +15,7 @@ const INITIAL_STATE = {
   date: '',
   loading: false
 };
+
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
@@ -36,21 +32,6 @@ export default (state = INITIAL_STATE, action) => {
     case FETCH_USERDATA_FAILED:
       console.log(action.result);
       return { ...state, ...INITIAL_STATE };
-
-    case EDIT_USERNAME:
-      return { ...state, username: action.payLoad };
-
-    case EDIT_ADDRESS:
-      return { ...state, address: action.payLoad };
-
-    case EDIT_EMAIL:
-      return { ...state, email: action.payLoad };
-
-    case EDIT_PHONE:
-      return { ...state, mobile: action.payLoad };
-
-    case EDIT_DATE:
-      return { ...state, date: action.payLoad };
 
     case EDIT_PROFILE:
       return { ...state, loading: true };

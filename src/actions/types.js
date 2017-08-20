@@ -54,11 +54,6 @@ export const SEARCH_FETCH_SUCCESS = 'search_fetch_success';
 export const EMPTY_SEARCH_WORD = 'empty_search_word';
 
 /** Edit profile Actions */
-export const EDIT_USERNAME = 'edit_username';
-export const EDIT_EMAIL = 'edit_email';
-export const EDIT_PHONE = 'edit_phone';
-export const EDIT_ADDRESS = 'edit_address';
-export const EDIT_DATE = 'edit_address';
 export const EDIT_PROFILE = 'edit_profile';
 export const EDIT_PROFILE_SUCCESS = 'edit_profile_success';
 export const EDIT_PROFILE_FAILED = 'edit_profile_failed';
