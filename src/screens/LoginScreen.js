@@ -26,9 +26,7 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false,
-      email: '',
-      password: '',
+      checked: false
     }
   }
 
@@ -79,18 +77,17 @@ class LoginScreen extends Component {
   }
 
   onEmailChange(text) {
-    this.setState({ email: text });
     this.props.userNameChanged(text);
   }
 
   onPasswordChange(text) {
-    this.setState({ password: text });
     this.props.passwordChanged(text);
   }
 
   onButtonPress() {
-    const { email, password, checked } = this.state;
-    this.props.loginUser({ email, password, checked })
+    const { username, password } = this.props;
+    const { checked } = this.state;
+    this.props.loginUser({ username, password, checked });
   }
 
   onAuthComplete(props) {

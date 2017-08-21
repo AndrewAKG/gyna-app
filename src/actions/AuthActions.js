@@ -28,14 +28,14 @@ export const emailChanged = (text) => {
 export const passwordChanged = (text) => {
   return {
     type: PASSWORD_CHANGED,
-    payload: text
+    password: text
   };
 };
 
 export const userNameChanged = (text) => {
   return {
     type: USERNAME_CHANGED,
-    payload: text
+    username: text
   };
 };
 
@@ -84,7 +84,6 @@ export const signUpUser = ({ username, password, email, phone, workingAddress, a
     }).then((response) => response.json())
       .then((responseJson) => {
         if (responseJson.result) {
-          console.log(responseJson.result);
           try {
             let token = responseJson.api_key;
             AsyncStorage.setItem('token', token, signUpSuccess(dispatch, token));
@@ -132,12 +131,12 @@ export const forgetPassword = ({ email }) => {
   };
 };
 
-export const loginUser = ({ email, password, checked }) => {
+export const loginUser = ({ username, password, checked }) => {
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
 
     var formData = new FormData();
-    formData.append('username', email);
+    formData.append('username', username);
     formData.append('password', password);
     if (Platform.OS === 'ios') {
       formData.append('device_token', 'ios');

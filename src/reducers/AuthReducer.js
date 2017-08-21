@@ -34,17 +34,15 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, email: action.payLoad };
 
     case PASSWORD_CHANGED:
-      return { ...state, password: action.payLoad };
+      return { ...state, password: action.password };
 
     case LOGIN_USER:
       return { ...state, loading: true };
 
     case LOGIN_USER_SUCCESS:
-      console.log(action.result);
       return { ...state, ...INITIAL_STATE, user: action.result, success: true };
 
     case LOGIN_USER_FAILED:
-      console.log(action.result);
       return { ...state, user: null, success: false, email: '', password: '', loading: false, error: 'Login_Failed' };
 
     case NAME_CHANGED:
@@ -57,7 +55,7 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, date: action.payLoad };
 
     case USERNAME_CHANGED:
-      return { ...state, username: action.payLoad };
+      return { ...state, username: action.username };
 
     case SIGNUP_USER:
       return { ...state, loading: true };
