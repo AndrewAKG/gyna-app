@@ -9,6 +9,7 @@ import {
   PHONE_CHANGED,
   DATE_CHANGED,
   NAME_CHANGED,
+  ADDRESS_CHANGED,
   LOGIN_USER_FAILED,
   SIGNUP_USER_FAILED
 } from '../actions/types';
@@ -21,9 +22,10 @@ const INITIAL_STATE = {
   name: '',
   phone: '',
   username: '',
+  address: '',
   anniversaryDate: '',
-  success: false,
-  signUpSuccess: false,
+  success: '',
+  signUpSuccess: '',
   error: ''
 };
 
@@ -31,44 +33,45 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
     case EMAIL_CHANGED:
-      return { ...state, email: action.payLoad };
+      return { ...state, email: action.email };
 
     case PASSWORD_CHANGED:
-      return { ...state, password: action.payLoad };
+      return { ...state, password: action.password };
 
     case LOGIN_USER:
       return { ...state, loading: true };
 
     case LOGIN_USER_SUCCESS:
-      console.log(action.result);
-      return { ...state, ...INITIAL_STATE, user: action.result, success: true };
+      return { ...state, ...INITIAL_STATE, user: action.result, success: 'true' };
 
     case LOGIN_USER_FAILED:
-      console.log(action.result);
-      return { ...state, user: null, success: false, email: '', password: '', loading: false, error: 'Login_Failed' };
+      return { ...state, ...INITIAL_STATE, success: 'false', error: action.error };
 
     case NAME_CHANGED:
-      return { ...state, name: action.payLoad };
+      return { ...state, name: action.name };
+
+    case ADDRESS_CHANGED:
+      return { ...state, address: action.address };
 
     case PHONE_CHANGED:
-      return { ...state, phone: action.payLoad };
+      return { ...state, phone: action.phone };
 
     case DATE_CHANGED:
-      return { ...state, date: action.payLoad };
+      return { ...state, date: action.date };
 
     case USERNAME_CHANGED:
-      return { ...state, username: action.payLoad };
+      return { ...state, username: action.username };
 
     case SIGNUP_USER:
       return { ...state, loading: true };
 
     case SIGNUP_USER_SUCCESS:
       console.log(action.result);
-      return { ...state, ...INITIAL_STATE, user: action.result, signUpSuccess: true };
+      return { ...state, ...INITIAL_STATE, user: action.result, signUpSuccess: 'true' };
 
     case SIGNUP_USER_FAILED:
       console.log(action.result);
-      return { ...state, signUpSuccess: false, loading: false, error: 'SignUp_Failed' };
+      return { ...state, signUpSuccess: 'false', loading: false, error: action.error };
 
     default:
       return state;

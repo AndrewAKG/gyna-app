@@ -1,11 +1,12 @@
 import {
   DATA_FETCH,
   DATA_FETCH_SUCCESS,
+  DATA_FETCH_FAILED,
   SEARCH_FETCH,
   SEARCH_FETCH_SUCCESS,
+  SEARCH_FETCH_FAILED,
   SEARCH_WORD_CHANGED,
-  EMPTY_SEARCH_WORD,
-  SEARCH_FETCH_FAILED
+  EMPTY_SEARCH_WORD
 } from './types';
 import { AsyncStorage } from 'react-native';
 
@@ -42,12 +43,11 @@ export const searchContent = ({ keyword }) => {
             }
           }).then((response) => response.json())
           .then((responseJson) => {
-            console.log(responseJson);
-            if (responseJson) {
+            if (responseJson.result) {
               dispatch({ type: SEARCH_FETCH_SUCCESS, payload: responseJson.returns.data });
             }
             else {
-              dispatch({ type: SEARCH_FETCH_FAILED, payload: null });              
+              dispatch({ type: SEARCH_FETCH_FAILED, error: responseJson.returns });
             }
           });
       }
@@ -72,8 +72,12 @@ export const fetchData = ({ category }) => {
           }
         }).then((response) => response.json())
           .then((responseJson) => {
-            console.log(responseJson);
-            dispatch({ type: DATA_FETCH_SUCCESS, payload: responseJson.returns.data });
+            if (responseJson.result) {
+              dispatch({ type: DATA_FETCH_SUCCESS, payload: responseJson.returns.data });
+            }
+            else {
+              dispatch({ type: DATA_FETCH_FAILED, error: responseJson.returns });
+            }
           });
       }
     });

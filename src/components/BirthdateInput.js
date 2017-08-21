@@ -16,7 +16,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class BirthdateInput extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
@@ -55,7 +55,8 @@ class BirthdateInput extends React.Component {
             height: 0.095 * SCREEN_HEIGHT,
             backgroundColor: '#5c1634',
             alignItems: 'flex-start',
-            paddingLeft: 53
+            paddingLeft: 53,
+            marginBottom: 10
           },
           dateText: {
             fontSize: 0.055 * SCREEN_WIDTH,

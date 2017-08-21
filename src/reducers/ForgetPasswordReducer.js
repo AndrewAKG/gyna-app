@@ -2,12 +2,12 @@ import {
   EMAIL_CHANGED,
   FORGET_PASSWORD,
   FORGET_PASSOWRD_SUCCESS,
-  FORGET_PASSOWRD_FAILED,
+  FORGET_PASSOWRD_FAILED
 } from '../actions/types';
 const INITIAL_STATE = {
   email: '',
   loading: false,
-  forgetPasswordSucess: false,
+  forgetPasswordSuccess: false,
   error: ''
 };
 
@@ -15,19 +15,17 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
     case EMAIL_CHANGED:
-      return { ...state, email: action.payLoad };
+      return { ...state, email: action.email };
 
     case FORGET_PASSWORD:
-      return { ...state, email: action.payLoad, loading: true };
+      return { ...state, loading: true, error: '' };
 
     case FORGET_PASSOWRD_SUCCESS:
-      console.log(action.result);
-      return { ...state, ...INITIAL_STATE, forgetPasswordSucess: true, loading: false };
+      return { ...state, ...INITIAL_STATE, forgetPasswordSuccess: true };
 
 
     case FORGET_PASSOWRD_FAILED:
-      console.log(action.result);
-      return { ...state, forgetPasswordSucess: false, loading: false, error: 'Password_Failed' };
+      return { ...state, forgetPasswordSuccess: false, loading: false, error: action.error };
 
     default:
       return state;

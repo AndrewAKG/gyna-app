@@ -16,19 +16,12 @@ import { userNameChanged, passwordChanged, loginUser } from '../actions';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-const resetAction = NavigationActions.reset({
-  index: 0,
-  actions: [NavigationActions.navigate({ routeName: 'login' })],
-});
-
 class LoginScreen extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      checked: false,
-      email: '',
-      password: '',
+      checked: false
     }
   }
 
@@ -79,45 +72,37 @@ class LoginScreen extends Component {
   }
 
   onEmailChange(text) {
-    this.setState({ email: text });
     this.props.userNameChanged(text);
   }
 
   onPasswordChange(text) {
-    this.setState({ password: text });
     this.props.passwordChanged(text);
   }
 
   onButtonPress() {
-    const { email, password, checked } = this.state;
-    this.props.loginUser({ email, password, checked })
+    const { username, password } = this.props;
+    const { checked } = this.state;
+    this.props.loginUser({ username, password, checked });
   }
 
   onAuthComplete(props) {
-    if (props.success) {
+    if (props.success === 'true') {
       this.props.navigation.navigate('mainScreen');
     }
-    else {
-      if (props.loading) {
-        return <Spinner />
-      }
-      else {
-        if (props.loading === false) {
-          return <View />
-        }
-        else {
-          if (props.success === false) {
-            this.props.navigation.dispatch(resetAction)
-          }
-        }
-      }
-    }
-    console.log(props.user);
   }
 
   renderSpinner() {
     if (this.props.loading) {
       return <Spinner />
+    }
+    else if (this.props.success === 'false') {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            {this.props.error}
+          </Text>
+        </View>
+      );
     }
   }
 
@@ -211,11 +196,17 @@ const styles = {
     fontWeight: "200",
     height: 50
   },
+  feedbackStyle: {
+    flex: 1,
+    alignItems: 'center',
+    marginVertical: 10,
+    justifyContent: 'center'
+  }
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { success, loading, user, username, password } = auth;
-  return { success, loading, user, username, password };
+  const { success, loading, user, username, password, error } = auth;
+  return { success, loading, user, username, password, error };
 };
 
 

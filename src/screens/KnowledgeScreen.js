@@ -87,31 +87,42 @@ class KnowledgeScreen extends Component {
             <Spinner />
           </View>
         );
-      } else if (this.props.searchData.length == 0) {
+      } else if (this.props.success) {
+        if (this.props.searchData.length == 0) {
+          return (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+                No Data matched ur search word
+            </Text>
+            </View>
+          );
+        } else {
+          return (
+            <View style={{ flex: 9 }}>
+              <ScrollView>
+                <FlatList
+                  data={this.props.searchData}
+                  renderItem={({ item }) =>
+                    <ListDataItem
+                      title={(item.title) ? item.title : item.name}
+                      iconType={this.fetchType(item)}
+                    />
+                  }
+                  key={this.state.search}
+                  keyExtractor={(item, index) => index}
+                  extraData={this.state.searchData}
+                />
+              </ScrollView>
+            </View>
+          );
+        }
+      }
+      else {
         return (
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
-              No Data matched ur search word
+              {this.props.errorMsg}
             </Text>
-          </View>
-        );
-      } else {
-        return (
-          <View style={{ flex: 9 }}>
-            <ScrollView>
-              <FlatList
-                data={this.props.searchData}
-                renderItem={({ item }) =>
-                  <ListDataItem
-                    title={(item.title) ? item.title : item.name}
-                    iconType={this.fetchType(item)}
-                  />
-                }
-                key={this.state.search}
-                keyExtractor={(item, index) => index}
-                extraData={this.state.searchData}
-              />
-            </ScrollView>
           </View>
         );
       }
@@ -168,8 +179,8 @@ const styles = {
 };
 
 const mapStateToProps = ({ dataList }) => {
-  const { loading, searchData, keyword } = dataList;
-  return { loading, searchData, keyword };
+  const { loading, searchData, keyword, success, errorMsg } = dataList;
+  return { loading, searchData, keyword, success, errorMsg };
 };
 
 export default connect(mapStateToProps,
