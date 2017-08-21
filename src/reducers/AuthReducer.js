@@ -31,7 +31,7 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
     case EMAIL_CHANGED:
-      return { ...state, email: action.payLoad };
+      return { ...state, email: action.email };
 
     case PASSWORD_CHANGED:
       return { ...state, password: action.password };
@@ -46,13 +46,13 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, user: null, success: false, email: '', password: '', loading: false, error: 'Login_Failed' };
 
     case NAME_CHANGED:
-      return { ...state, name: action.payLoad };
+      return { ...state, name: action.name };
 
     case PHONE_CHANGED:
-      return { ...state, phone: action.payLoad };
+      return { ...state, phone: action.phone };
 
     case DATE_CHANGED:
-      return { ...state, date: action.payLoad };
+      return { ...state, date: action.date };
 
     case USERNAME_CHANGED:
       return { ...state, username: action.username };

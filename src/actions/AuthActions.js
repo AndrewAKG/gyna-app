@@ -21,7 +21,7 @@ import AuthPersistance from './AuthPersistance';
 export const emailChanged = (text) => {
   return {
     type: EMAIL_CHANGED,
-    payload: text
+    email: text
   };
 };
 
@@ -42,21 +42,21 @@ export const userNameChanged = (text) => {
 export const phoneChanged = (text) => {
   return {
     type: PHONE_CHANGED,
-    payload: text
+    phone: text
   };
 };
 
 export const dateChanged = (text) => {
   return {
     type: DATE_CHANGED,
-    payload: text
+    date: text
   };
 };
 
 export const nameChanged = (text) => {
   return {
     type: NAME_CHANGED,
-    payload: text
+    name: text
   };
 };
 

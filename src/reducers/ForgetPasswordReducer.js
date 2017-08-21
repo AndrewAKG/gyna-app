@@ -15,10 +15,10 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
     case EMAIL_CHANGED:
-      return { ...state, email: action.payLoad };
+      return { ...state, email: action.email };
 
     case FORGET_PASSWORD:
-      return { ...state, email: action.payLoad, loading: true };
+      return { ...state, loading: true };
 
     case FORGET_PASSOWRD_SUCCESS:
       console.log(action.result);

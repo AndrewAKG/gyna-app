@@ -28,25 +28,22 @@ class ForgetPasswordScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      email: '',
-    }
   }
 
   onEmailChange(text) {
-    this.setState({ email: text });
     this.props.emailChanged(text);
   }
 
   onButtonPress() {
-    const { email } = this.state;
-    console.log(this.state.email + 'email');
+    const { email } = this.props;
+    console.log(this.props.email + 'email');
     this.props.forgetPassword({ email });
   }
 
   componentWillReceiveProps(nextProps) {
     this.onProcessComplete(nextProps);
   }
+  
   onProcessComplete(props) {
     if (props.forgetPasswordSucess) {
       this.props.navigation.dispatch(resetAction)
