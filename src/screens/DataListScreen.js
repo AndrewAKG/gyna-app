@@ -38,28 +38,39 @@ class DataListScreen extends Component {
           <Spinner />
         </View>
       );
-    } else if (this.props.data.length == 0) {
+    } else if (this.props.success) {
+      if (this.props.data.length == 0) {
+        return (
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+              No Data Found in this Category
+            </Text>
+          </View>
+        );
+      } else {
+        return (
+          <ScrollView>
+            <FlatList
+              data={this.props.data}
+              renderItem={({ item }) =>
+                <ListDataItem
+                  title={(item.title) ? item.title : item.name}
+                  iconType={this.fetchType(item)}
+                />
+              }
+              keyExtractor={(item, index) => index}
+            />
+          </ScrollView>
+        );
+      }
+    }
+    else {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
-            No Data Found in this Category
+            {this.props.errorMsg}
           </Text>
         </View>
-      );
-    } else {
-      return (
-        <ScrollView>
-          <FlatList
-            data={this.props.data}
-            renderItem={({ item }) =>
-              <ListDataItem
-                title={(item.title) ? item.title : item.name}
-                iconType={this.fetchType(item)}
-              />
-            }
-            keyExtractor={(item, index) => index}
-          />
-        </ScrollView>
       );
     }
   }
@@ -82,8 +93,8 @@ const styles = {
 };
 
 const mapStateToProps = ({ dataList }) => {
-  const { data, loading } = dataList;
-  return { data, loading };
+  const { data, loading, success, errorMsg } = dataList;
+  return { data, loading, success, errorMsg };
 };
 
 
