@@ -7,7 +7,7 @@ import {
 const INITIAL_STATE = {
   email: '',
   loading: false,
-  forgetPasswordSucess: false,
+  forgetPasswordSuccess: false,
   error: ''
 };
 
@@ -21,13 +21,12 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: true };
 
     case FORGET_PASSOWRD_SUCCESS:
-      console.log(action.result);
-      return { ...state, ...INITIAL_STATE, forgetPasswordSucess: true, loading: false };
+      return { ...state, ...INITIAL_STATE, forgetPasswordSuccess: true };
 
 
     case FORGET_PASSOWRD_FAILED:
-      console.log(action.result);
-      return { ...state, forgetPasswordSucess: false, loading: false, error: 'Password_Failed' };
+      console.log(action.error);
+      return { ...state, forgetPasswordSuccess: false, loading: false, error: action.error };
 
     default:
       return state;

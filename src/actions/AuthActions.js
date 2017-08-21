@@ -121,7 +121,7 @@ export const forgetPassword = ({ email }) => {
         if (responseJson.result) {
           dispatch({ type: FORGET_PASSOWRD_SUCCESS, result: responseJson.message });
         } else {
-          dispatch({ type: FORGET_PASSOWRD_FAILED, result: responseJson.message });
+          dispatch({ type: FORGET_PASSOWRD_FAILED, error: responseJson.message });
         }
       });
   };

@@ -36,34 +36,37 @@ class ForgetPasswordScreen extends React.Component {
 
   onButtonPress() {
     const { email } = this.props;
-    console.log(this.props.email + 'email');
     this.props.forgetPassword({ email });
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.onProcessComplete(nextProps);
-  }
-  
-  onProcessComplete(props) {
-    if (props.forgetPasswordSucess) {
-      this.props.navigation.dispatch(resetAction)
+  renderProcessComplete() {
+    if (this.props.loading) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', marginVertical: 10 }}>
+          <Spinner />
+        </View>
+      )
     }
-    else {
-      if (props.loading) {
-        return <Spinner />
-      }
-      else {
-        if (props.loading === false) {
-          return <View />
-        }
-        else {
-          if (props.forgetPasswordSucess === false) {
-            this.props.navigation.navigate('forgetPassword');
-          }
-        }
-      }
+    else if (this.props.forgetPasswordSuccess) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            Instructions sent, check your email
+          </Text>
+        </View>
+      );
+    }
+    else if (!this.props.forgetPasswordSuccess) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            {this.props.error}
+          </Text>
+        </View>
+      );
     }
   }
+
 
   render() {
     const { navigate } = this.props.navigation;
@@ -102,6 +105,8 @@ class ForgetPasswordScreen extends React.Component {
             />
           </View>
 
+          {this.renderProcessComplete()}
+
         </View>
 
       </BackgroundImage>
@@ -127,11 +132,11 @@ const styles = {
     marginTop: 0.15 * SCREEN_HEIGHT,
     alignItems: 'center'
   }
-}
+};
 
 const mapStateToProps = ({ forget }) => {
-  const { email, forgetPasswordSucess, loading } = forget;
-  return { email, forgetPasswordSucess, loading };
+  const { email, forgetPasswordSuccess, loading, error } = forget;
+  return { email, forgetPasswordSuccess, loading, error };
 };
 
 export default connect(mapStateToProps,
