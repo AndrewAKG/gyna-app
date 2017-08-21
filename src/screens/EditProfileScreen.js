@@ -209,8 +209,8 @@ const styles = {
 };
 
 const mapStateToProps = ({ data }) => {
-  const { username, email, mobile, address, date, loading } = data;
-  return { username, email, mobile, address, date, loading };
+  const { username, email, mobile, address, date, loading, success } = data;
+  return { username, email, mobile, address, date, loading, success };
 };
 
 

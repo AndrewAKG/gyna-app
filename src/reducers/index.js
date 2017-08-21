@@ -5,6 +5,7 @@ import NotificationsReducer from './NotificationsReducer';
 import DataListsReducer from './DataListsReducer';
 import MessageUsReducer from './MessageUsReducer';
 import EdirProfileReducer from './EditProfileReducer';
+import ForgetPasswordReducer from './ForgetPasswordReducer';
 
 export default combineReducers({
   auth: AuthReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   noti: NotificationsReducer,
   dataList: DataListsReducer,
   message: MessageUsReducer,
-  data: EdirProfileReducer
+  data: EdirProfileReducer,
+  forget : ForgetPasswordReducer
 });

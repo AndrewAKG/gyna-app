@@ -6,7 +6,6 @@ import {
   SIGNUP_USER,
   SIGNUP_USER_SUCCESS,
   USERNAME_CHANGED,
-  ADDRESS_CHANGED,
   PHONE_CHANGED,
   DATE_CHANGED,
   NAME_CHANGED,
@@ -36,13 +35,6 @@ export const passwordChanged = (text) => {
 export const userNameChanged = (text) => {
   return {
     type: USERNAME_CHANGED,
-    payload: text
-  };
-};
-
-export const addressChanged = (text) => {
-  return {
-    type: ADDRESS_CHANGED,
     payload: text
   };
 };

@@ -13,14 +13,15 @@ const INITIAL_STATE = {
   mobile: '',
   address: '',
   date: '',
-  loading: false
+  loading: false,
+  success: false
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
     case FETCH_USERDATA:
-      return { ...state, loading: true };
+      return { ...state,loading:false };
 
     case FETCH_USERDATA_SUCCESS:
       console.log(action.result);
@@ -37,14 +38,14 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: true };
 
     case EDIT_PROFILE_SUCCESS:
-    console.log(action.result);
+      console.log(action.result);
       return {
-        ...state, loading: false
+        ...state, loading: false, success: true
       };
 
     case EDIT_PROFILE_FAILED:
       console.log(action.result);
-      return {...state, loading: false };
+      return { ...state, loading: false };
 
     default:
       return state;

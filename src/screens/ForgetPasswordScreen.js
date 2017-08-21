@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
-import { Input, BackgroundImage } from '../components';
+import { Input, BackgroundImage, Spinner } from '../components';
 import { connect } from 'react-redux';
 import { forgetPassword, emailChanged } from '../actions';
+import { NavigationActions } from 'react-navigation';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
+
+const resetAction = NavigationActions.reset({
+  index: 0,
+  actions: [NavigationActions.navigate({ routeName: 'login' })],
+});
+
 
 class ForgetPasswordScreen extends React.Component {
   static navigationOptions = {
@@ -33,9 +40,32 @@ class ForgetPasswordScreen extends React.Component {
 
   onButtonPress() {
     const { email } = this.state;
-    console.log(this.state.email+'email');
+    console.log(this.state.email + 'email');
     this.props.forgetPassword({ email });
-    this.props.navigation.navigate('login');
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.onProcessComplete(nextProps);
+  }
+  onProcessComplete(props) {
+    if (props.forgetPasswordSucess) {
+      this.props.navigation.dispatch(resetAction)
+    }
+    else {
+      if (props.loading) {
+        return <Spinner />
+      }
+      else {
+        if (props.loading === false) {
+          return <View />
+        }
+        else {
+          if (props.forgetPasswordSucess === false) {
+            this.props.navigation.navigate('forgetPassword');
+          }
+        }
+      }
+    }
   }
 
   render() {
@@ -102,14 +132,14 @@ const styles = {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
-  const { email } = auth;
-  return { email };
+const mapStateToProps = ({ forget }) => {
+  const { email, forgetPasswordSucess, loading } = forget;
+  return { email, forgetPasswordSucess, loading };
 };
 
 export default connect(mapStateToProps,
   {
     forgetPassword,
-    emailChanged 
+    emailChanged
   })
   (ForgetPasswordScreen);

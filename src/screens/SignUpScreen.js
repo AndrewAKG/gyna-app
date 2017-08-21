@@ -3,6 +3,7 @@ import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
 import { Button } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 import {
   Input,
   BirthdateInput,
@@ -15,7 +16,6 @@ import {
   emailChanged,
   passwordChanged,
   userNameChanged,
-  addressChanged,
   phoneChanged,
   dateChanged,
   nameChanged,
@@ -92,11 +92,6 @@ class SignUpScreen extends Component {
     this.props.nameChanged(text);
   }
 
-  onAddressChange(text) {
-    this.setState({ workingAddress: text });
-    this.props.addressChanged(text);
-  }
-
   onPhoneChange(text) {
     this.setState({ phone: text });
     this.props.phoneChanged(text);
@@ -170,8 +165,8 @@ class SignUpScreen extends Component {
             <Input
               iconSource={require('../../assets/icons/Forms/13.png')}
               placeholder='Working address'
-              onChangeText={this.onAddressChange.bind(this)}
-              value={this.props.workingAddress}
+              onChangeText={(text) => this.setState({ workingAddress: text })}
+              value={this.state.workingAddress}
             />
 
             <BirthdateInput
@@ -223,8 +218,8 @@ const styles = {
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, loading, name, username, workingAddress, anniversaryDate, phone, signUpSuccess } = auth;
-  return { email, password, loading, name, username, workingAddress, anniversaryDate, phone, signUpSuccess };
+  const { email, password, loading, name, username,  anniversaryDate, phone, signUpSuccess } = auth;
+  return { email, password, loading, name, username,  anniversaryDate, phone, signUpSuccess };
 };
 
 export default connect(mapStateToProps,
@@ -232,7 +227,6 @@ export default connect(mapStateToProps,
     emailChanged,
     passwordChanged,
     userNameChanged,
-    addressChanged,
     phoneChanged,
     dateChanged,
     nameChanged,

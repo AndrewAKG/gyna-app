@@ -11,7 +11,7 @@ import {
   SignUpAccount,
   Spinner
 } from '../components';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import { userNameChanged, passwordChanged, loginUser } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -80,7 +80,7 @@ class LoginScreen extends Component {
 
   onEmailChange(text) {
     this.setState({ email: text });
-    this.props.emailChanged(text);
+    this.props.userNameChanged(text);
   }
 
   onPasswordChange(text) {
@@ -146,7 +146,7 @@ class LoginScreen extends Component {
               placeholder='Username'
               style={{ marginTop: 20 }}
               onChangeText={this.onEmailChange.bind(this)}
-              value={this.props.email}
+              value={this.props.username}
               returnKeyType={"next"}
               onSubmit={(event) => {
                 this.refs.password.focus.bind(this);
@@ -214,14 +214,14 @@ const styles = {
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { success, loading, user } = auth;
-  return { success, loading, user };
+  const { success, loading, user, username, password } = auth;
+  return { success, loading, user, username, password };
 };
 
 
 export default connect(mapStateToProps,
   {
-    emailChanged,
+    userNameChanged,
     passwordChanged,
     loginUser
   })
