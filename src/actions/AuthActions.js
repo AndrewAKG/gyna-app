@@ -12,7 +12,9 @@ import {
   NAME_CHANGED,
   FORGET_PASSWORD,
   FORGET_PASSOWRD_SUCCESS,
-  LOGIN_USER_FAILED
+  LOGIN_USER_FAILED,
+  FORGET_PASSOWRD_FAILED,
+  SIGNUP_USER_FAILED
 } from './types';
 import { Platform, AsyncStorage } from 'react-native';
 import AuthPersistance from './AuthPersistance';
@@ -89,9 +91,25 @@ export const signUpUser = ({ username, password, email, phone, workingAddress, a
       body: formData
     }).then((response) => response.json())
       .then((responseJson) => {
-        dispatch({ type: SIGNUP_USER_SUCCESS, result: responseJson.message });
+        if (responseJson.result) {
+          console.log(responseJson.result);
+          try {
+            let token = responseJson.api_key;
+            AsyncStorage.setItem('token', token, signUpSuccess(dispatch, token));
+          } catch (error) {
+            console.error('AsyncStorage error: ' + error.message);
+          }
+        }
+        else {
+          dispatch({ type: SIGNUP_USER_FAILED, result: responseJson.message });
+        }
       });
   };
+};
+
+const signUpSuccess = (dispatch, token) => {
+  console.log('TOKEN WASAL: ', token);
+  dispatch({ type: SIGNUP_USER_SUCCESS, result: token });
 };
 
 export const forgetPassword = ({ email }) => {
@@ -109,7 +127,11 @@ export const forgetPassword = ({ email }) => {
       },
     }).then((response) => response.json())
       .then((responseJson) => {
-        dispatch({ type: FORGET_PASSOWRD_SUCCESS, result: responseJson.message });
+        if (responseJson.result) {
+          dispatch({ type: FORGET_PASSOWRD_SUCCESS, result: responseJson.message });
+        } else {
+          dispatch({ type: FORGET_PASSOWRD_FAILED, result: responseJson.message });
+        }
       });
   };
   return {

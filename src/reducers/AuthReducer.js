@@ -12,7 +12,9 @@ import {
   NAME_CHANGED,
   FORGET_PASSWORD,
   FORGET_PASSOWRD_SUCCESS,
-  LOGIN_USER_FAILED
+  LOGIN_USER_FAILED,
+  FORGET_PASSOWRD_FAILED,
+  SIGNUP_USER_FAILED
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -25,7 +27,10 @@ const INITIAL_STATE = {
   workingAddress: '',
   username: '',
   anniversaryDate: '',
-  success: false
+  success: false,
+  signUpSuccess: false,
+  forgetPasswordSucess: false,
+  error: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -46,8 +51,8 @@ export default (state = INITIAL_STATE, action) => {
 
     case LOGIN_USER_FAILED:
       console.log(action.result);
-      return { ...state, user: null, success: false, email: '', password: '', loading: false };
-      
+      return { ...state, user: null, success: false, email: '', password: '', loading: false, error: 'Login_Failed' };
+
     case NAME_CHANGED:
       return { ...state, name: action.payLoad };
 
@@ -68,15 +73,23 @@ export default (state = INITIAL_STATE, action) => {
 
     case SIGNUP_USER_SUCCESS:
       console.log(action.result);
-      return { ...state, ...INITIAL_STATE, user: action.result };
+      return { ...state, ...INITIAL_STATE, user: action.result, signUpSuccess: true };
 
     case FORGET_PASSWORD:
       return { ...state, email: action.payLoad };
 
     case FORGET_PASSOWRD_SUCCESS:
       console.log(action.result);
-      return { ...state, ...INITIAL_STATE };
-      
+      return { ...state, ...INITIAL_STATE, forgetPasswordSucess: true };
+
+    case SIGNUP_USER_FAILED:
+      console.log(action.result);
+      return { ...state, signUpSuccess: false, loading: false, error: 'SignUp_Failed' };
+
+    case FORGET_PASSOWRD_FAILED:
+      console.log(action.result);
+      return { ...state, signUpSuccess: false, loading: false, error: 'Password_Failed' };
+
     default:
       return state;
   }

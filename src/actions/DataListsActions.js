@@ -4,7 +4,8 @@ import {
   SEARCH_FETCH,
   SEARCH_FETCH_SUCCESS,
   SEARCH_WORD_CHANGED,
-  EMPTY_SEARCH_WORD
+  EMPTY_SEARCH_WORD,
+  SEARCH_FETCH_FAILED
 } from './types';
 import { AsyncStorage } from 'react-native';
 
@@ -42,7 +43,12 @@ export const searchContent = ({ keyword }) => {
           }).then((response) => response.json())
           .then((responseJson) => {
             console.log(responseJson);
-            dispatch({ type: SEARCH_FETCH_SUCCESS, payload: responseJson.returns.data });
+            if (responseJson) {
+              dispatch({ type: SEARCH_FETCH_SUCCESS, payload: responseJson.returns.data });
+            }
+            else {
+              dispatch({ type: SEARCH_FETCH_FAILED, payload: null });              
+            }
           });
       }
     });

@@ -7,7 +7,8 @@ import {
   Input,
   BirthdateInput,
   InputPassword,
-  BackgroundImage
+  BackgroundImage,
+  Spinner
 } from '../components';
 
 import {
@@ -51,6 +52,31 @@ class SignUpScreen extends Component {
     headerTitle: ''
   };
 
+  componentWillReceiveProps(nextProps) {
+    this.onSignUpComplete(nextProps);
+  }
+
+  onSignUpComplete(props) {
+    if (props.signUpSuccess) {
+      this.props.navigation.navigate('mainScreen');
+    }
+    else {
+      if (props.loading) {
+        return <Spinner />
+      }
+      else {
+        if (props.loading === false) {
+          return <View />
+        }
+        else {
+          if (props.signUpSuccess === false) {
+            this.props.navigation.navigate('signUp');
+          }
+        }
+      }
+    }
+  }
+
   onEmailChange(text) {
     this.setState({ email: text });
     this.props.emailChanged(text);
@@ -86,9 +112,7 @@ class SignUpScreen extends Component {
 
   onButtonPress() {
     const { username, password, email, phone, workingAddress, anniversaryDate, name } = this.state;
-    console.log(this.state.date);
     this.props.signUpUser({ username, password, email, phone, workingAddress, anniversaryDate, name });
-    this.props.navigation.navigate('login');
   }
 
   render() {
@@ -199,8 +223,8 @@ const styles = {
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, loading, name, username, workingAddress, anniversaryDate, phone } = auth;
-  return { email, password, loading, name, username, workingAddress, anniversaryDate, phone };
+  const { email, password, loading, name, username, workingAddress, anniversaryDate, phone, signUpSuccess } = auth;
+  return { email, password, loading, name, username, workingAddress, anniversaryDate, phone, signUpSuccess };
 };
 
 export default connect(mapStateToProps,

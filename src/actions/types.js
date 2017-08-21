@@ -14,10 +14,12 @@ export const DATE_CHANGED = 'date_changed';
 export const NAME_CHANGED = 'name_changed';
 export const SIGNUP_USER = 'signup_user';
 export const SIGNUP_USER_SUCCESS = 'signup_user_success';
+export const SIGNUP_USER_FAILED = 'signup_user_failed';
 
 /** Forget Password Types **/
 export const FORGET_PASSWORD = 'forget_password';
 export const FORGET_PASSOWRD_SUCCESS = 'forget_password_success';
+export const FORGET_PASSOWRD_FAILED = 'forget_password_failed';
 
 /**Change Password Types */
 export const CHANGE_PASSWORD = 'change_password';
@@ -52,6 +54,7 @@ export const SEARCH_WORD_CHANGED = 'search_word';
 export const SEARCH_FETCH = 'search_fetch';
 export const SEARCH_FETCH_SUCCESS = 'search_fetch_success';
 export const EMPTY_SEARCH_WORD = 'empty_search_word';
+export const SEARCH_FETCH_FAILED = 'search_fetch_failed';
 
 /** Edit profile Actions */
 export const EDIT_PROFILE = 'edit_profile';
