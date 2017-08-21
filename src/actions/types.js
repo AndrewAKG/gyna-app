@@ -65,5 +65,7 @@ export const FETCH_USERDATA_SUCCESS = 'fetch_userdate_success';
 export const FETCH_USERDATA_FAILED = 'fetch_userdate_failed';
 export const FETCH_USERDATA = 'fetch_userdata';
 
+export const CLEAR_STATE = 'clear_state';
+
 
 

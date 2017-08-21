@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image, Dimensions, AsyncStorage } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  Dimensions,
+  AsyncStorage,
+  Modal
+} from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -11,7 +19,7 @@ import {
   SignUpAccount,
   Spinner
 } from '../components';
-import { userNameChanged, passwordChanged, loginUser } from '../actions';
+import { userNameChanged, passwordChanged, loginUser, clear } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -21,7 +29,8 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false
+      checked: false,
+      modal: false
     }
   }
 
@@ -89,21 +98,40 @@ class LoginScreen extends Component {
     if (props.success === 'true') {
       this.props.navigation.navigate('mainScreen');
     }
+    else if (props.success === 'false') {
+      this.setState({ modal: true });
+      this.props.clear();
+    }
   }
 
   renderSpinner() {
     if (this.props.loading) {
       return <Spinner />
     }
-    else if (this.props.success === 'false') {
-      return (
+  }
+
+  renderModal() {
+    return (
+      <Modal
+        animationType={'fade'}
+        visible={this.state.modal}
+        presentationStyle={'overFullScreen'}
+      >
         <View style={styles.feedbackStyle}>
           <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
             {this.props.error}
           </Text>
+          <Button
+            onPress={() => this.setState({ modal: false })}
+            title="Ok"
+            buttonStyle={styles.okStyle}
+            color='white'
+            fontWeight='bold'
+            fontSize={0.047 * SCREEN_WIDTH}
+          />
         </View>
-      );
-    }
+      </Modal>
+    );
   }
 
   render() {
@@ -145,6 +173,8 @@ class LoginScreen extends Component {
               returnKeyType={"go"}
             />
 
+            {this.renderSpinner()}
+
             <Button
               onPress={this.onButtonPress.bind(this)}
               title="Login"
@@ -154,7 +184,7 @@ class LoginScreen extends Component {
               fontSize={0.047 * SCREEN_WIDTH}
             />
 
-            {this.renderSpinner()}
+            {this.renderModal()}
 
             <RememberForgetPass
               onButtonPress={() => navigate('forgetPassowrd')}
@@ -187,6 +217,13 @@ const styles = {
     height: 0.095 * SCREEN_HEIGHT,
     margin: 10
   },
+  okStyle: {
+    borderRadius: 0.05 * SCREEN_HEIGHT,
+    backgroundColor: '#00C1FF',
+    width: 0.5 * SCREEN_WIDTH,
+    height: 0.095 * SCREEN_HEIGHT,
+    margin: 20
+  },
   inputStyle: {
     color: 'white',
     paddingRight: 5,
@@ -200,7 +237,8 @@ const styles = {
     flex: 1,
     alignItems: 'center',
     marginVertical: 10,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: '#5C1634'
   }
 };
 
@@ -214,6 +252,7 @@ export default connect(mapStateToProps,
   {
     userNameChanged,
     passwordChanged,
-    loginUser
+    loginUser,
+    clear
   })
   (LoginScreen);

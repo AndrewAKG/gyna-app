@@ -1,4 +1,5 @@
 import {
+  CLEAR_STATE,
   EMAIL_CHANGED,
   PASSWORD_CHANGED,
   LOGIN_USER_SUCCESS,
@@ -31,6 +32,9 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+
+    case CLEAR_STATE:
+      return { ...INITIAL_STATE, error: state.error };
 
     case EMAIL_CHANGED:
       return { ...state, email: action.email };
