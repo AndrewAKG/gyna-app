@@ -36,7 +36,7 @@ class EditProfileScreen extends Component {
     this.props.userData();
   }
 
-  componentWillReceiveProps(nextProps) {
+ /* componentWillReceiveProps(nextProps) {
     this.onEditComplete(nextProps);
   }
 
@@ -49,13 +49,14 @@ class EditProfileScreen extends Component {
         date: props.date,
         email: props.email
       })
-    }
-    }
-  
+    } 
+  }
+*/
   onButtonPress() {
     const { username, email, address, mobile, date } = this.state;
     this.props.editProfile({ username, email, address, mobile, date });
     this.props.userData();
+   
   }
 
   renderSpinner() {
