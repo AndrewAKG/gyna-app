@@ -28,6 +28,7 @@ class EditProfileScreen extends Component {
       email: this.props.email,
       mobile: this.props.mobile,
       address: this.props.address,
+      loading: false
     }
   }
 
@@ -36,15 +37,21 @@ class EditProfileScreen extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      username: nextProps.username,
-      mobile: nextProps.mobile,
-      date: nextProps.date,
-      email: nextProps.email,
-      address: nextProps.address
-    })
+    this.onEditComplete(nextProps);
   }
 
+  onEditComplete(props) {
+    if (props.success) {
+      this.setState({
+        username: props.username,
+        address: props.address,
+        mobile: props.mobile,
+        date: props.date,
+        email: props.email
+      })
+    }
+    }
+  
   onButtonPress() {
     const { username, email, address, mobile, date } = this.state;
     this.props.editProfile({ username, email, address, mobile, date });
