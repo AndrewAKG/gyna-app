@@ -102,11 +102,27 @@ class LoginScreen extends Component {
       this.setState({ modal: true });
       this.props.clear();
     }
+    else if (props.loading) {
+      this.setState({ modal: true });
+    }
   }
 
-  renderSpinner() {
+  renderContent() {
     if (this.props.loading) {
-      return <Spinner />
+      return (
+        <View style={styles.feedbackStyle}>
+          <Spinner />
+        </View>
+      );
+    }
+    else {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            {this.props.error}
+          </Text>
+        </View>
+      );
     }
   }
 
@@ -115,21 +131,11 @@ class LoginScreen extends Component {
       <Modal
         animationType={'fade'}
         visible={this.state.modal}
+        transparent={true}
         presentationStyle={'overFullScreen'}
+        onShow={() => setInterval(() => this.setState({ modal: false }), 5000)}
       >
-        <View style={styles.feedbackStyle}>
-          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
-            {this.props.error}
-          </Text>
-          <Button
-            onPress={() => this.setState({ modal: false })}
-            title="Ok"
-            buttonStyle={styles.okStyle}
-            color='white'
-            fontWeight='bold'
-            fontSize={0.047 * SCREEN_WIDTH}
-          />
-        </View>
+        {this.renderContent()}
       </Modal>
     );
   }
@@ -173,8 +179,6 @@ class LoginScreen extends Component {
               returnKeyType={"go"}
             />
 
-            {this.renderSpinner()}
-
             <Button
               onPress={this.onButtonPress.bind(this)}
               title="Login"
@@ -217,20 +221,13 @@ const styles = {
     height: 0.095 * SCREEN_HEIGHT,
     margin: 10
   },
-  okStyle: {
-    borderRadius: 0.05 * SCREEN_HEIGHT,
-    backgroundColor: '#00C1FF',
-    width: 0.5 * SCREEN_WIDTH,
-    height: 0.095 * SCREEN_HEIGHT,
-    margin: 20
-  },
   inputStyle: {
     color: 'white',
     paddingRight: 5,
     paddingLeft: 5,
     fontSize: 0.055 * SCREEN_WIDTH,
     lineHeight: 23,
-    fontWeight: "200",
+    fontWeight: '200',
     height: 50
   },
   feedbackStyle: {
@@ -238,7 +235,7 @@ const styles = {
     alignItems: 'center',
     marginVertical: 10,
     justifyContent: 'center',
-    backgroundColor: '#5C1634'
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
   }
 };
 
