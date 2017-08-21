@@ -19,6 +19,7 @@ import {
   phoneChanged,
   dateChanged,
   nameChanged,
+  addressChanged,
   signUpUser
 } from '../actions';
 
@@ -31,14 +32,7 @@ class SignUpScreen extends Component {
     super(props);
     let today = new Date();
     this.state = {
-      date: today,
-      email: '',
-      password: '',
-      username: '',
-      workingAddress: '',
-      phone: '',
-      anniversaryDate: '',
-      name: ''
+      date: today
     }
   }
 
@@ -52,62 +46,59 @@ class SignUpScreen extends Component {
     headerTitle: ''
   };
 
-  componentWillReceiveProps(nextProps) {
-    this.onSignUpComplete(nextProps);
-  }
-
-  onSignUpComplete(props) {
-    if (props.signUpSuccess) {
+  renderSignUpComplete() {
+    if (this.props.loading) {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Spinner />
+        </View>
+      )
+    }
+    else if (this.props.signUpSuccess) {
       this.props.navigation.navigate('mainScreen');
     }
-    else {
-      if (props.loading) {
-        return <Spinner />
-      }
-      else {
-        if (props.loading === false) {
-          return <View />
-        }
-        else {
-          if (props.signUpSuccess === false) {
-            this.props.navigation.navigate('signUp');
-          }
-        }
-      }
+    else if (!this.props.signUpSuccess) {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            {this.props.error}
+          </Text>
+        </View>
+      );
     }
   }
 
   onEmailChange(text) {
-    this.setState({ email: text });
     this.props.emailChanged(text);
   }
 
   onPasswordChange(text) {
-    this.setState({ password: text });
     this.props.passwordChanged(text);
   }
 
   onNameChange(text) {
-    this.setState({ name: text });
     this.props.nameChanged(text);
   }
 
   onPhoneChange(text) {
-    this.setState({ phone: text });
     this.props.phoneChanged(text);
+  }
+
+  onAddressChange(text) {
+    this.props.addressChanged(text);
   }
 
   onDateChange(text) {
     this.props.dateChanged(this.state.date);
   }
   onUserNameChange(text) {
-    this.setState({ username: text });
     this.props.userNameChanged(text);
   }
 
   onButtonPress() {
-    const { username, password, email, phone, workingAddress, anniversaryDate, name } = this.state;
-    this.props.signUpUser({ username, password, email, phone, workingAddress, anniversaryDate, name });
+    const { username, password, email, phone, address, name } = this.props;
+    const { anniversaryDate } = this.state;
+    this.props.signUpUser({ username, password, email, phone, address, anniversaryDate, name });
   }
 
   render() {
@@ -165,28 +156,27 @@ class SignUpScreen extends Component {
             <Input
               iconSource={require('../../assets/icons/Forms/13.png')}
               placeholder='Working address'
-              onChangeText={(text) => this.setState({ workingAddress: text })}
-              value={this.state.workingAddress}
+              onChangeText={this.onAddressChange.bind(this)}
+              value={this.props.address}
             />
 
             <BirthdateInput
               date={this.state.date}
               onDateChange={(date) => this.setState({ date: date })}
-
             />
 
-            <View style={{ margin: 10 }}>
+            {this.renderSignUpComplete()}
 
-              <Button
-                onPress={this.onButtonPress.bind(this)}
-                title="Register"
-                buttonStyle={styles.buttonStyle}
-                color='white'
-                fontWeight='bold'
-                fontSize={0.047 * SCREEN_WIDTH}
-                containerViewStyle={{ margin: 10 }}
-              />
-            </View>
+            <Button
+              onPress={this.onButtonPress.bind(this)}
+              title="Register"
+              buttonStyle={styles.buttonStyle}
+              color='white'
+              fontWeight='bold'
+              fontSize={0.047 * SCREEN_WIDTH}
+              containerViewStyle={{ marginHorizontal: 10, marginBottom: 10 }}
+            />
+
           </ScrollView>
         </View>
       </BackgroundImage>
@@ -215,11 +205,28 @@ const styles = {
     fontWeight: "200",
     height: 50
   },
+  feedbackStyle: {
+    flex: 1,
+    alignItems: 'center',
+    marginVertical: 10,
+    justifyContent: 'center'
+  }
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { email, password, loading, name, username,  anniversaryDate, phone, signUpSuccess } = auth;
-  return { email, password, loading, name, username,  anniversaryDate, phone, signUpSuccess };
+  const {
+    email,
+    password,
+    loading,
+    name,
+    username,
+    error,
+    phone,
+    address,
+    signUpSuccess
+  } = auth;
+
+  return { email, password, loading, address, name, username, error, phone, signUpSuccess };
 };
 
 export default connect(mapStateToProps,
@@ -230,6 +237,7 @@ export default connect(mapStateToProps,
     phoneChanged,
     dateChanged,
     nameChanged,
+    addressChanged,
     signUpUser
   })
   (SignUpScreen);

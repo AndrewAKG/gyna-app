@@ -9,6 +9,7 @@ import {
   PHONE_CHANGED,
   DATE_CHANGED,
   NAME_CHANGED,
+  ADDRESS_CHANGED,
   LOGIN_USER_FAILED,
   SIGNUP_USER_FAILED
 } from '../actions/types';
@@ -21,6 +22,7 @@ const INITIAL_STATE = {
   name: '',
   phone: '',
   username: '',
+  address: '',
   anniversaryDate: '',
   success: false,
   signUpSuccess: false,
@@ -48,6 +50,9 @@ export default (state = INITIAL_STATE, action) => {
     case NAME_CHANGED:
       return { ...state, name: action.name };
 
+    case ADDRESS_CHANGED:
+      return { ...state, address: action.address };
+
     case PHONE_CHANGED:
       return { ...state, phone: action.phone };
 
@@ -66,7 +71,7 @@ export default (state = INITIAL_STATE, action) => {
 
     case SIGNUP_USER_FAILED:
       console.log(action.result);
-      return { ...state, signUpSuccess: false, loading: false, error: 'SignUp_Failed' };
+      return { ...state, signUpSuccess: false, loading: false, error: action.error };
 
     default:
       return state;

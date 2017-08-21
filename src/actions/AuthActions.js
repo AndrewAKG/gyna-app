@@ -3,16 +3,18 @@ import {
   PASSWORD_CHANGED,
   LOGIN_USER_SUCCESS,
   LOGIN_USER,
+  LOGIN_USER_FAILED,
   SIGNUP_USER,
   SIGNUP_USER_SUCCESS,
   USERNAME_CHANGED,
   PHONE_CHANGED,
   DATE_CHANGED,
   NAME_CHANGED,
+  ADDRESS_CHANGED,
   FORGET_PASSWORD,
   FORGET_PASSOWRD_SUCCESS,
-  LOGIN_USER_FAILED,
   FORGET_PASSOWRD_FAILED,
+  FORGET_COMPLETE,
   SIGNUP_USER_FAILED
 } from './types';
 import { Platform, AsyncStorage } from 'react-native';
@@ -60,7 +62,14 @@ export const nameChanged = (text) => {
   };
 };
 
-export const signUpUser = ({ username, password, email, phone, workingAddress, anniversaryDate, name }) => {
+export const addressChanged = (text) => {
+  return {
+    type: ADDRESS_CHANGED,
+    address: text
+  };
+};
+
+export const signUpUser = ({ username, password, email, phone, address, anniversaryDate, name }) => {
   return (dispatch) => {
     dispatch({ type: SIGNUP_USER });
     console.log(email + 'email');
@@ -72,7 +81,7 @@ export const signUpUser = ({ username, password, email, phone, workingAddress, a
     formData.append('name', name);
     formData.append('mobile', phone);
     formData.append('anniversary_date', anniversaryDate);
-    formData.append('address', workingAddress);
+    formData.append('address', address);
 
     fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/register', {
       method: 'POST',
@@ -92,7 +101,7 @@ export const signUpUser = ({ username, password, email, phone, workingAddress, a
           }
         }
         else {
-          dispatch({ type: SIGNUP_USER_FAILED, result: responseJson.message });
+          dispatch({ type: SIGNUP_USER_FAILED, error: responseJson.message });
         }
       });
   };
@@ -124,10 +133,6 @@ export const forgetPassword = ({ email }) => {
           dispatch({ type: FORGET_PASSOWRD_FAILED, error: responseJson.message });
         }
       });
-  };
-  return {
-    type: PASSWORD_CHANGED,
-    payload: text
   };
 };
 

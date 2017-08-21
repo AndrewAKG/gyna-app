@@ -10,6 +10,7 @@ export const LOGIN_USER_FAILED = 'login_user_failed';
 export const USERNAME_CHANGED = 'username_changed';
 export const PHONE_CHANGED = 'phone_changed';
 export const DATE_CHANGED = 'date_changed';
+export const ADDRESS_CHANGED = 'address-changed';
 export const NAME_CHANGED = 'name_changed';
 export const SIGNUP_USER = 'signup_user';
 export const SIGNUP_USER_SUCCESS = 'signup_user_success';
