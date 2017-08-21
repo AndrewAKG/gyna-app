@@ -169,7 +169,7 @@ export const loginUser = ({ username, password, checked }) => {
             console.error('AsyncStorage error: ' + error.message);
           }
         } else {
-          dispatch({ type: LOGIN_USER_FAILED, result: responseJson.message });
+          dispatch({ type: LOGIN_USER_FAILED, error: responseJson.message });
         }
       });
   };

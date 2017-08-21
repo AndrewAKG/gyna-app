@@ -24,8 +24,8 @@ const INITIAL_STATE = {
   username: '',
   address: '',
   anniversaryDate: '',
-  success: false,
-  signUpSuccess: false,
+  success: '',
+  signUpSuccess: '',
   error: ''
 };
 
@@ -42,10 +42,10 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: true };
 
     case LOGIN_USER_SUCCESS:
-      return { ...state, ...INITIAL_STATE, user: action.result, success: true };
+      return { ...state, ...INITIAL_STATE, user: action.result, success: 'true' };
 
     case LOGIN_USER_FAILED:
-      return { ...state, user: null, success: false, email: '', password: '', loading: false, error: 'Login_Failed' };
+      return { ...state, ...INITIAL_STATE, success: 'false', error: action.error };
 
     case NAME_CHANGED:
       return { ...state, name: action.name };
@@ -67,11 +67,11 @@ export default (state = INITIAL_STATE, action) => {
 
     case SIGNUP_USER_SUCCESS:
       console.log(action.result);
-      return { ...state, ...INITIAL_STATE, user: action.result, signUpSuccess: true };
+      return { ...state, ...INITIAL_STATE, user: action.result, signUpSuccess: 'true' };
 
     case SIGNUP_USER_FAILED:
       console.log(action.result);
-      return { ...state, signUpSuccess: false, loading: false, error: action.error };
+      return { ...state, signUpSuccess: 'false', loading: false, error: action.error };
 
     default:
       return state;

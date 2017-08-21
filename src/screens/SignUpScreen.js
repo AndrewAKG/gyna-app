@@ -46,7 +46,11 @@ class SignUpScreen extends Component {
     headerTitle: ''
   };
 
-  renderSignUpComplete() {
+  componentWillReceiveProps(nextProps) {
+    this.onSignUpComplete(nextProps);
+  }
+
+  renderFeedback() {
     if (this.props.loading) {
       return (
         <View style={styles.feedbackStyle}>
@@ -54,10 +58,7 @@ class SignUpScreen extends Component {
         </View>
       )
     }
-    else if (this.props.signUpSuccess) {
-      this.props.navigation.navigate('mainScreen');
-    }
-    else if (!this.props.signUpSuccess) {
+    else if (this.props.signUpSuccess === 'false') {
       return (
         <View style={styles.feedbackStyle}>
           <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
@@ -91,8 +92,15 @@ class SignUpScreen extends Component {
   onDateChange(text) {
     this.props.dateChanged(this.state.date);
   }
+
   onUserNameChange(text) {
     this.props.userNameChanged(text);
+  }
+
+  onSignUpComplete(props) {
+    if (props.success === 'true') {
+      this.props.navigation.navigate('mainScreen');
+    }
   }
 
   onButtonPress() {
@@ -165,7 +173,7 @@ class SignUpScreen extends Component {
               onDateChange={(date) => this.setState({ date: date })}
             />
 
-            {this.renderSignUpComplete()}
+            {this.renderFeedback()}
 
             <Button
               onPress={this.onButtonPress.bind(this)}
@@ -174,7 +182,7 @@ class SignUpScreen extends Component {
               color='white'
               fontWeight='bold'
               fontSize={0.047 * SCREEN_WIDTH}
-              containerViewStyle={{ marginHorizontal: 10, marginBottom: 10 }}
+              containerViewStyle={{ margin: 10 }}
             />
 
           </ScrollView>
