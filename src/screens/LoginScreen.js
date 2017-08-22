@@ -101,7 +101,7 @@ class LoginScreen extends Component {
     }
     else if (props.success === 'false') {
       this.setState({ modal: true });
-      this.props.clear();
+      setTimeout(() => this.props.clear(), 3000);
     }
     else if (props.loading) {
       this.setState({ modal: true });

@@ -46,7 +46,7 @@ class ForgetPasswordScreen extends React.Component {
     }
     else if (props.forgetPasswordSuccess === 'false') {
       this.setState({ modal: true });
-      setInterval(() => this.props.clear(), 5000);
+      setTimeout(() => this.props.clear(), 3000);
     }
   }
 
