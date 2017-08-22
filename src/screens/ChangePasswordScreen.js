@@ -23,11 +23,6 @@ class ChangePasswordScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      oldPassword: '',
-      newPassword: '',
-      confirmPassword: ''
-    }
   }
 
   static navigationOptions = {
@@ -43,18 +38,15 @@ class ChangePasswordScreen extends Component {
   }
 
   onOldPasswordChanged(text) {
-    this.setState({ oldPassword: text });
     this.props.oldPasswordChanged(text);
   }
 
   onConfirmPasswordChanged(text) {
-    this.setState({ confirmPassword: text })
     this.props.confirmPasswordChanged(text);
   }
 
   onChangeComplete(props) {
-    if (props.success) {
-      this.props.navigation.navigate('login');
+    if (props.success === 'true') {
     }
     else {
       if (props.loading) {
@@ -65,7 +57,7 @@ class ChangePasswordScreen extends Component {
           return <View />
         }
         else {
-          if (props.success === false) {
+          if (props.success === 'false') {
             this.props.navigation.dispatch(resetAction)
           }
         }
@@ -75,12 +67,11 @@ class ChangePasswordScreen extends Component {
   }
 
   onNewPasswordChanged(text) {
-    this.setState({ newPassword: text });
     this.props.newPasswordChanged(text);
   }
 
   onButtonPress() {
-    const { oldPassword, newPassword, confirmPassword } = this.state;
+    const { oldPassword, newPassword, confirmPassword } = this.props;
     if (newPassword === confirmPassword) {
       this.props.changePassword({ oldPassword, newPassword })
     }
@@ -103,7 +94,7 @@ class ChangePasswordScreen extends Component {
               placeholder='Old Password'
               style={inputStyle}
               onChangeText={this.onOldPasswordChanged.bind(this)}
-              value={this.props.oldPassowrd}
+              value={this.props.oldPassword}
 
             />
             <InputPassword
@@ -164,14 +155,15 @@ const styles = {
     fontSize: 0.047 * SCREEN_WIDTH,
     lineHeight: 23,
     fontWeight: "200",
-    height:  0.095 * SCREEN_HEIGHT,
-    width:  0.8 * SCREEN_WIDTH
+    height: 0.095 * SCREEN_HEIGHT,
+    width: 0.8 * SCREEN_WIDTH
   },
 };
 
 const mapStateToProps = ({ changePassword }) => {
-  const { success, loading, message } = changePassword;
-  return { success, loading, message };
+  const { success, loading, message, oldPassword, newPassword, confirmPassword } = changePassword;
+  return { success, loading, message, oldPassword, newPassword, confirmPassword };
+
 };
 
 

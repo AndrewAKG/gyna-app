@@ -16,7 +16,7 @@ const INITIAL_STATE = {
   name: '',
   email: '',
   subject: '',
-  success: false,
+  success: '',
   message: '',
   serverMessage: '',
   loading: false
@@ -26,38 +26,38 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
     case SENDER_NAME_CHANGED:
-      return { ...state, name: action.payLoad };
+      return { ...state, name: action.senderName };
 
     case SENDER_EMAIL_CHANGED:
-      return { ...state, email: action.payLoad };
+      return { ...state, email: action.senderEmail };
 
     case SUBJECT_CHANGED:
-      return { ...state, subject: action.payLoad };
+      return { ...state, subject: action.senderSubject };
 
     case MESSAGE_CHANGED:
-      return { ...state, message: action.payLoad };
+      return { ...state, message: action.senderMessage };
 
     case SEND_MESSAGE:
       return { ...state, loading: true };
 
     case SEND_MESSAGE_SUCCESS:
-      console.log(action.result+'success');
-      return { ...state, ...INITIAL_STATE, serverMessage: action.result, success: true };
+      console.log(action.result + 'success');
+      return { ...state, ...INITIAL_STATE, serverMessage: action.result, success: 'true' };
 
     case SEND_MESSAGE_FAILED:
-      console.log(action.result+'failed');
-      return { ...state, ...INITIAL_STATE };
+      console.log(action.result + 'failed');
+      return { ...state, ...INITIAL_STATE, success: 'false' };
 
-      case SEND_ISSUE:
+    case SEND_ISSUE:
       return { ...state, loading: true };
 
     case SEND_ISSUE_SUCCESS:
-      console.log(action.result+'success');
-      return { ...state, ...INITIAL_STATE, serverMessage: action.result, success: true };
+      console.log(action.result + 'success');
+      return { ...state, ...INITIAL_STATE, serverMessage: action.result, success: 'true' };
 
     case SEND_ISSUE_FAILED:
-      console.log(action.result+'failed');
-      return { ...state, ...INITIAL_STATE };
+      console.log(action.result + 'failed');
+      return { ...state, ...INITIAL_STATE, success:'false' };
 
     default:
       return state;

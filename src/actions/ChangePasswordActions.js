@@ -14,21 +14,21 @@ import {
 export const oldPasswordChanged = (text) => {
   return {
     type: OLD_PASSOWRD_CHANGED,
-    payload: text
+    oldPassword: text
   };
 }
 
 export const newPasswordChanged = (text) => {
   return {
     type: NEW_PASSOWRD_CHANGED,
-    payload: text
+    newPassword: text
   };
 }
 
 export const confirmPasswordChanged = (text) => {
   return {
     type: CONFIRM_PASSOWRD_CHANGED,
-    payload: text
+    confirmPassword: text
   };
 }
 

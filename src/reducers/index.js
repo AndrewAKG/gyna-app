@@ -12,7 +12,7 @@ export default combineReducers({
   changePassword: ChangePasswordReducer,
   noti: NotificationsReducer,
   dataList: DataListsReducer,
-  message: MessageUsReducer,
+  messageSending: MessageUsReducer,
   data: EdirProfileReducer,
   forget : ForgetPasswordReducer
 });

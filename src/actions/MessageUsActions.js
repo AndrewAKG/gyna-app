@@ -17,32 +17,32 @@ import AuthPersistance from './AuthPersistance';
 export const senderNameChanged = (text) => {
   return {
     type: SENDER_NAME_CHANGED,
-    payload: text
+    senderName: text
   };
 }
 
 export const senderEmailChanged = (text) => {
   return {
     type: SENDER_EMAIL_CHANGED,
-    payload: text
+    senderEmail: text
   };
 }
 
 export const subjectChanged = (text) => {
   return {
     type: SUBJECT_CHANGED,
-    payload: text
+    senderSubject: text
   };
 }
 
 export const messageChanged = (text) => {
   return {
     type: MESSAGE_CHANGED,
-    payload: text
+    senderMessage: text
   };
 }
 
-export const sendMessage = ({ name, subject, message }) => {
+export const sendMessage = ({ name, subject, message, email }) => {
   return (dispatch) => {
     dispatch({ type: SEND_MESSAGE });
     
@@ -57,6 +57,11 @@ export const sendMessage = ({ name, subject, message }) => {
         formData.append('subject', subject);
         formData.append('message', message);
         formData.append('api_key', token);
+        formData.append('email',email);
+        console.log(name + ' name');
+        console.log(subject + ' subjecct');
+        console.log(email + ' email');
+        console.log(message+' message');
         
         fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/contact', {
           method: 'POST',

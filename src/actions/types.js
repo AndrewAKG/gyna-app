@@ -49,6 +49,7 @@ export const SEND_MESSAGE_FAILED = 'send_message_failed';
 export const SEND_ISSUE = 'send_issue';
 export const SEND_ISSUE_SUCCESS = 'send_issue_success';
 export const SEND_ISSUE_FAILED = 'send_issue_failed';
+export const CLEAR_STATE_MESSAGE = 'clear_state_message';
 
 /** Search Types **/
 export const SEARCH_WORD_CHANGED = 'search_word';

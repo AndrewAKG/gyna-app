@@ -20,10 +20,6 @@ class ContactUsScreen extends Component {
     super(props);
     this.state = {
       messageUsButtonPressed: false,
-      name: '',
-      subject: '',
-      message: '',
-      email: ''
     }
   }
 
@@ -43,7 +39,7 @@ class ContactUsScreen extends Component {
   onMessageSent(props) {
     if (props.success) {
       this.setState({ onMessageButtonPressed: true })
-      this.props.navigation.navigate('contactUs');
+      //  this.props.navigation.navigate('contactUs');
     }
     else if (props.loading) {
       return <Spinner />;
@@ -73,27 +69,27 @@ class ContactUsScreen extends Component {
   }
 
   onButtonPress() {
-    const { name, subject, message } = this.state;
-    this.props.sendMessage({ name, subject, message })
+    const { name, subject, message, email } = this.props;
+    this.props.sendMessage({ name, subject, message, email })
   }
 
   onNameChanged(text) {
-    this.setState({ name: text });
+    // this.setState({ name: text });
     this.props.senderNameChanged(text);
   }
 
   onSubjectChanged(text) {
-    this.setState({ subject: text });
+    //this.setState({ subject: text });
     this.props.subjectChanged(text);
   }
 
   onMessageChanged(text) {
-    this.setState({ message: text });
+    //this.setState({ message: text });
     this.props.messageChanged(text);
   }
 
   onEmailChanged(text) {
-    this.setState({ email: text });
+    //this.setState({ email: text });
     this.props.senderEmailChanged(text);
   }
 
@@ -221,9 +217,9 @@ const styles = {
     marginBottom: 20
   }
 }
-const mapStateToProps = ({ message }) => {
-  const { success, loading, serverMessage } = message;
-  return { success, loading, serverMessage };
+const mapStateToProps = ({ messageSending }) => {
+  const { success, loading, serverMessage, name, email, message, subject } = messageSending;
+  return { success, loading, serverMessage, name, email, message, subject };
 };
 
 
