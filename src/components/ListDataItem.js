@@ -4,7 +4,8 @@ import {
   Image,
   TouchableWithoutFeedback,
   Text,
-  Dimensions
+  Dimensions,
+  TouchableOpacity
 } from 'react-native';
 import { Divider, Icon } from 'react-native-elements';
 
@@ -38,7 +39,7 @@ class ListDataItem extends React.Component {
       else {
 
         let iconPath;
-        console.log(name);
+
         switch (name) {
           case 'guidelines':
             iconPath = require('../../assets/icons/Knowledge/21.png'); break;
@@ -72,6 +73,16 @@ class ListDataItem extends React.Component {
             iconPath = require('../../assets/icons/Life/88.png'); break;
           case 'taday_quotes':
             iconPath = require('../../assets/icons/Life/99.png'); break;
+          case 'clothes':
+            iconPath = require('../../assets/icons/Life/clothes.png'); break;
+          case 'shoes':
+            iconPath = require('../../assets/icons/Life/shoes.png'); break;
+          case 'bags':
+            iconPath = require('../../assets/icons/Life/bags.png'); break;
+          case 'watches':
+            iconPath = require('../../assets/icons/Life/watches.png'); break;
+          case 'accessories':
+            iconPath = require('../../assets/icons/Life/accessories.png'); break;
           default:
             iconPath = require('../../assets/icons/x.png'); break;
         }
@@ -109,14 +120,15 @@ class ListDataItem extends React.Component {
               {this.props.title}
             </Text>
           </View>
-          <Icon
-            iconStyle={arrowIcon}
-            name='navigate-next'
-            color='white'
-            size={0.1 * SCREEN_WIDTH}
-            containerStyle={arrowContainer}
-            onPress={this.props.onArrowPress}
-          />
+          <TouchableOpacity onPress={this.props.onArrowPress}>
+            <Icon
+              iconStyle={arrowIcon}
+              name='navigate-next'
+              color='white'
+              size={0.1 * SCREEN_WIDTH}
+              containerStyle={arrowContainer}
+            />
+          </TouchableOpacity>
         </View>
         <View style={{ flex: 1 }}>
           <Divider style={DividerStyle} />

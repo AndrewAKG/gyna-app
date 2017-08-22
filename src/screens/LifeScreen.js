@@ -65,7 +65,7 @@ class LifeScreen extends Component {
 
     if (item.type === 'category') {
       var oldName = item.name;
-      var newName = oldName.replace('-','_');
+      var newName = oldName.replace('-', '_');
       return () => navigate('dataList', { category: newName, title: item.title });
     }
     else if (item.type === 'post') {
@@ -73,9 +73,18 @@ class LifeScreen extends Component {
     }
   }
 
-  renderContent() {
+  navigateLife(item) {
     const { navigate } = this.props.navigation;
 
+    if (item.category === 'fashion_tips') {
+      return () => navigate('fashion', { category: item.category, title: item.title })
+    }
+    else {
+      return () => navigate('dataList', { category: item.category, title: item.title })
+    }
+  }
+
+  renderContent() {
     if (!this.state.search) {
       return (
         <View style={styles.scrollStyle}>
@@ -87,7 +96,7 @@ class LifeScreen extends Component {
                 <ListItem
                   title={item.title}
                   iconType={item.key}
-                  onPress={() => navigate('dataList', { category: item.category, title: item.title })}
+                  onPress={this.navigateLife(item)}
                 />
               }
               key={this.state.search}

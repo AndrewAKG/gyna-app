@@ -1,0 +1,27 @@
+[
+  {
+    "key": 1,
+    "category": "clothes",
+    "title": "Clothes"
+  },
+  {
+    "key": 2,
+    "category": "shoes",
+    "title": "Shoes"
+  },
+  {
+    "key": 3,
+    "category": "bags",
+    "title": "Bags"
+  },
+  {
+    "key": 4,
+    "category": "watches",
+    "title": "Workshop videos"
+  },
+  {
+    "key": 5,
+    "category": "accessories",
+    "title": "Accessories"
+  }
+]

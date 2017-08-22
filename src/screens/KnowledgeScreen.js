@@ -65,7 +65,7 @@ class KnowledgeScreen extends Component {
 
     if (item.type === 'category') {
       var oldName = item.name;
-      var newName = oldName.replace('-','_');
+      var newName = oldName.replace('-', '_');
       return () => navigate('dataList', { category: newName, title: item.title });
     }
     else if (item.type === 'post') {
@@ -116,7 +116,7 @@ class KnowledgeScreen extends Component {
           );
         } else {
           return (
-            <View style={{ flex: 9 }}>
+            <View style={styles.scrollStyle}>
               <ScrollView>
                 <FlatList
                   data={this.props.searchData}

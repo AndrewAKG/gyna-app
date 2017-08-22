@@ -15,6 +15,7 @@ import ContactUs from './ContactUsScreen';
 import HelpDesk from './HelpDeskScreen';
 import EditProfile from './EditProfileScreen';
 import DataListScreen from './DataListScreen';
+import FashionScreen from './FashionScreen';
 import LoginTrouble from './LoginTrouble';
 import PDFsScreen from './PDFsScreen';
 import VideosScreen from './VideosScreen';
@@ -61,6 +62,9 @@ class Navigator extends Component {
       },
       webviewScreen: {
         screen: WebViewScreen
+      },
+      fashion:{
+        screen: FashionScreen
       },
       mainScreen: {
         screen: TabNavigator({
