@@ -65,7 +65,11 @@ export const EDIT_PROFILE_FAILED = 'edit_profile_failed';
 export const FETCH_USERDATA_SUCCESS = 'fetch_userdate_success';
 export const FETCH_USERDATA_FAILED = 'fetch_userdate_failed';
 export const FETCH_USERDATA = 'fetch_userdata';
-
+export const EDIT_USERNAME = 'edit_username';
+export const EDIT_EMAIL = 'edit_email';
+export const EDIT_PHONE = 'edit_phone';
+export const EDIT_ADDRESS = 'edit_address';
+export const CLEAR_PROPS = 'clear_props';
 export const CLEAR_STATE = 'clear_state';
 
 

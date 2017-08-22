@@ -46,9 +46,9 @@ class HelpDeskScreen extends Component {
   }
 
   onIssueSent(props) {
-    if (props.success) {
+    if (props.success === 'true') {
       this.setState({ onIssueButtonPressed: true })
-      this.props.navigation.navigate('helpDesk');
+    //  this.props.navigation.navigate('helpDesk');
     }
     else {
       if (props.loading) {
@@ -59,7 +59,7 @@ class HelpDeskScreen extends Component {
           return <View />
         }
         else {
-          if (props.success === false) {
+          if (props.success === 'false') {
             this.props.navigation.navigate('more');
           }
         }
@@ -78,27 +78,27 @@ class HelpDeskScreen extends Component {
   }
 
   onButtonPress() {
-    const { name, subject, message } = this.state;
-    this.props.sendIssue({ name, subject, message })
+    const { name, subject, message, email } = this.props;
+    this.props.sendIssue({ name, subject, message, email })
   }
 
   onNameChanged(text) {
-    this.setState({ name: text });
+    //  this.setState({ name: text });
     this.props.senderNameChanged(text);
   }
 
   onSubjectChanged(text) {
-    this.setState({ subject: text });
+    // this.setState({ subject: text });
     this.props.subjectChanged(text);
   }
 
   onMessageChanged(text) {
-    this.setState({ message: text });
+    //this.setState({ message: text });
     this.props.messageChanged(text);
   }
 
   onEmailChanged(text) {
-    this.setState({ email: text });
+    //  this.setState({ email: text });
     this.props.senderEmailChanged(text);
   }
 
@@ -139,7 +139,7 @@ class HelpDeskScreen extends Component {
             <FAQs
               onFAQSButtonPressed={() => this.onFAQSButtonPressed()}
               onIssueButtonPressed={() => this.onIssueButtonPressed()}
-              onButtonPress={()=> this.props.navigation.navigate('trouble')}
+              onButtonPress={() => this.props.navigation.navigate('trouble')}
             />
 
           </View>
@@ -231,9 +231,9 @@ const styles = {
   }
 };
 
-const mapStateToProps = ({ message }) => {
-  const { success, loading, serverMessage } = message;
-  return { success, loading, serverMessage };
+const mapStateToProps = ({ messageSending }) => {
+  const { success, loading, serverMessage, name, email, subject, message } = messageSending;
+  return { success, loading, serverMessage, name, email, subject, message };
 };
 
 

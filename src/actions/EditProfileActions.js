@@ -1,12 +1,49 @@
 import {
+  EDIT_USERNAME,
+  EDIT_ADDRESS,
+  EDIT_EMAIL,
+  EDIT_PHONE,
   EDIT_PROFILE,
   EDIT_PROFILE_FAILED,
   EDIT_PROFILE_SUCCESS,
   FETCH_USERDATA,
   FETCH_USERDATA_FAILED,
-  FETCH_USERDATA_SUCCESS
+  FETCH_USERDATA_SUCCESS,
+  CLEAR_PROPS
 } from './types';
 import { AsyncStorage } from 'react-native';
+
+export const clearProps = () => {
+  return { type: CLEAR_PROPS };
+}
+
+export const editUsername = (text) => {
+  return {
+    type: EDIT_USERNAME,
+    editUsername: text
+  };
+};
+
+export const editPhone = (text) => {
+  return {
+    type: EDIT_PHONE,
+    editPhone: text
+  };
+};
+
+export const editAddress = (text) => {
+  return {
+    type: EDIT_ADDRESS,
+    editAddress: text
+  };
+};
+
+export const editEmail = (text) => {
+  return {
+    type: EDIT_EMAIL,
+    editEmail: text
+  };
+};
 
 export const userData = () => {
   return (dispatch) => {
