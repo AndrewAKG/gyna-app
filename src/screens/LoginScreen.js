@@ -95,7 +95,6 @@ class LoginScreen extends Component {
   }
 
   onAuthComplete(props) {
-    console.log(props.success);
     if (props.success === 'true') {
       this.props.navigation.navigate('mainScreen');
     }

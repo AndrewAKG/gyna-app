@@ -44,14 +44,32 @@ class LifeScreen extends Component {
   }
 
   fetchType(item) {
-    if (item.attach) {
-      return { icon: true, type: 'picture-as-pdf' };
+    if (item.type === 'post') {
+      if (item.attach) {
+        return { category: false, icon: true, type: 'picture-as-pdf' };
+      }
+      else if (item.images.length !== 0) {
+        return { category: false, icon: false, image: item.images[0] };
+      }
+      else if (item.link) {
+        return { category: false, icon: true, type: 'ondemand-video' };
+      }
     }
-    else if (item.images.length !== 0) {
-      return { icon: false, image: item.images[0] };
+    else if (item.type === 'category') {
+      return { category: true, name: item.name };
     }
-    else if (item.link) {
-      return { icon: true, type: 'ondemand-video' };
+  }
+
+  onSearchResultPress(item) {
+    const { navigate } = this.props.navigation;
+
+    if (item.type === 'category') {
+      var oldName = item.name;
+      var newName = oldName.replace('-','_');
+      return () => navigate('dataList', { category: newName, title: item.title });
+    }
+    else if (item.type === 'post') {
+      return () => console.log('post');
     }
   }
 
@@ -106,6 +124,7 @@ class LifeScreen extends Component {
                     <ListDataItem
                       title={(item.title) ? item.title : item.name}
                       iconType={this.fetchType(item)}
+                      onArrowPress={this.onSearchResultPress(item)}
                     />
                   }
                   key={this.state.search}

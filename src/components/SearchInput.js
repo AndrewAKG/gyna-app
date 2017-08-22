@@ -2,7 +2,7 @@
  * this component is used whenever i want to take a text field as input from user
  */
 import React from 'react';
-import { View, Text, TextInput, Image, Dimensions, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, TextInput, Image, Dimensions, TouchableOpacity } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -23,12 +23,12 @@ const SearchInput = ({ value, placeholder, iconSource, onIconPress, onChangeText
         />
       </View>
       <View style={{ flex: 2 }}>
-        <TouchableWithoutFeedback onPress={onIconPress}>
+        <TouchableOpacity onPress={onIconPress}>
           <Image
             style={imageStyle}
             source={iconSource}
           />
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
       </View>
     </View>
   );

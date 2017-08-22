@@ -7,7 +7,8 @@ import {
   oldPasswordChanged,
   newPasswordChanged,
   changePassword,
-  confirmPasswordChanged
+  confirmPasswordChanged,
+  clear
 } from '../actions';
 import { BackgroundImage, InputPassword, Spinner } from '../components';
 
@@ -63,7 +64,6 @@ class ChangePasswordScreen extends Component {
         }
       }
     }
-    console.log(props.message);
   }
 
   onNewPasswordChanged(text) {
@@ -73,7 +73,7 @@ class ChangePasswordScreen extends Component {
   onButtonPress() {
     const { oldPassword, newPassword, confirmPassword } = this.props;
     if (newPassword === confirmPassword) {
-      this.props.changePassword({ oldPassword, newPassword })
+      this.props.changePassword({ oldPassword, newPassword });
     }
   }
 
@@ -172,6 +172,7 @@ export default connect(mapStateToProps,
     oldPasswordChanged,
     newPasswordChanged,
     changePassword,
-    confirmPasswordChanged
+    confirmPasswordChanged,
+    clear
   })
   (ChangePasswordScreen);
