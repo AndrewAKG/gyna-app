@@ -139,7 +139,7 @@ class HelpDeskScreen extends Component {
             <FAQs
               onFAQSButtonPressed={() => this.onFAQSButtonPressed()}
               onIssueButtonPressed={() => this.onIssueButtonPressed()}
-              onButtonPress={()=> this.props.navigation.navigate('trouble')}
+              onButtonPress={() => this.props.navigation.navigate('trouble')}
             />
 
           </View>
@@ -231,8 +231,8 @@ const styles = {
   }
 };
 
-const mapStateToProps = ({ message }) => {
-  const { success, loading, serverMessage } = message;
+const mapStateToProps = ({ messageSending }) => {
+  const { success, loading, serverMessage } = messageSending;
   return { success, loading, serverMessage };
 };
 
