@@ -39,7 +39,13 @@ class DataListScreen extends Component {
       //Linking.openURL(item.attach).catch(err => console.error('An error occurred', err));
     }
     else if (item.images.length !== 0) {
-      return () => navigate('webviewScreen', { contentSource: item.content, title: item.title });
+      return () => navigate('webviewScreen',
+        {
+          contentSource: item.content,
+          title: item.title,
+          image: item.images[0],
+          sub_title: item.sub_title
+        });
     }
     else if (item.link) {
       console.log('video faks now');
