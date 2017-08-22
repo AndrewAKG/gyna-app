@@ -1,4 +1,5 @@
 import {
+  CLEAR_STATE,
   EMAIL_CHANGED,
   PASSWORD_CHANGED,
   LOGIN_USER_SUCCESS,
@@ -19,6 +20,10 @@ import {
 } from './types';
 import { Platform, AsyncStorage } from 'react-native';
 import AuthPersistance from './AuthPersistance';
+
+export const clear = () => {
+  return { type: CLEAR_STATE };
+}
 
 export const emailChanged = (text) => {
   return {
@@ -141,8 +146,10 @@ export const loginUser = ({ username, password, checked }) => {
     dispatch({ type: LOGIN_USER });
 
     var formData = new FormData();
+    
     formData.append('username', username);
     formData.append('password', password);
+
     if (Platform.OS === 'ios') {
       formData.append('device_token', 'ios');
       formData.append('version', parseInt(Platform.Version, 10));

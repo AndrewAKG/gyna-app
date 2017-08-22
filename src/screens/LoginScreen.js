@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image, Dimensions, AsyncStorage } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  Dimensions,
+  AsyncStorage,
+  Modal
+} from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -11,7 +19,7 @@ import {
   SignUpAccount,
   Spinner
 } from '../components';
-import { userNameChanged, passwordChanged, loginUser } from '../actions';
+import { userNameChanged, passwordChanged, loginUser, clear } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -21,7 +29,8 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false
+      checked: false,
+      modal: false
     }
   }
 
@@ -89,13 +98,24 @@ class LoginScreen extends Component {
     if (props.success === 'true') {
       this.props.navigation.navigate('mainScreen');
     }
+    else if (props.success === 'false') {
+      this.setState({ modal: true });
+      this.props.clear();
+    }
+    else if (props.loading) {
+      this.setState({ modal: true });
+    }
   }
 
-  renderSpinner() {
+  renderContent() {
     if (this.props.loading) {
-      return <Spinner />
+      return (
+        <View style={styles.feedbackStyle}>
+          <Spinner />
+        </View>
+      );
     }
-    else if (this.props.success === 'false') {
+    else {
       return (
         <View style={styles.feedbackStyle}>
           <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
@@ -104,6 +124,20 @@ class LoginScreen extends Component {
         </View>
       );
     }
+  }
+
+  renderModal() {
+    return (
+      <Modal
+        animationType={'fade'}
+        visible={this.state.modal}
+        transparent={true}
+        presentationStyle={'overFullScreen'}
+        onShow={() => setInterval(() => this.setState({ modal: false }), 5000)}
+      >
+        {this.renderContent()}
+      </Modal>
+    );
   }
 
   render() {
@@ -154,7 +188,7 @@ class LoginScreen extends Component {
               fontSize={0.047 * SCREEN_WIDTH}
             />
 
-            {this.renderSpinner()}
+            {this.renderModal()}
 
             <RememberForgetPass
               onButtonPress={() => navigate('forgetPassowrd')}
@@ -193,14 +227,15 @@ const styles = {
     paddingLeft: 5,
     fontSize: 0.055 * SCREEN_WIDTH,
     lineHeight: 23,
-    fontWeight: "200",
+    fontWeight: '200',
     height: 50
   },
   feedbackStyle: {
     flex: 1,
     alignItems: 'center',
     marginVertical: 10,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
   }
 };
 
@@ -214,6 +249,7 @@ export default connect(mapStateToProps,
   {
     userNameChanged,
     passwordChanged,
-    loginUser
+    loginUser,
+    clear
   })
   (LoginScreen);
