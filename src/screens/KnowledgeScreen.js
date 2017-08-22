@@ -60,6 +60,19 @@ class KnowledgeScreen extends Component {
     }
   }
 
+  onSearchResultPress(item) {
+    const { navigate } = this.props.navigation;
+
+    if (item.type === 'category') {
+      var oldName = item.name;
+      var newName = oldName.replace('-','_');
+      return () => navigate('dataList', { category: newName, title: item.title });
+    }
+    else if (item.type === 'post') {
+      return () => console.log('post');
+    }
+  }
+
   renderContent() {
     const { navigate } = this.props.navigation;
 
@@ -111,6 +124,7 @@ class KnowledgeScreen extends Component {
                     <ListDataItem
                       title={(item.title) ? item.title : item.name}
                       iconType={this.fetchType(item)}
+                      onArrowPress={this.onSearchResultPress(item)}
                     />
                   }
                   key={this.state.search}

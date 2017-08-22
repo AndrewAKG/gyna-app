@@ -7,7 +7,8 @@ import {
   oldPasswordChanged,
   newPasswordChanged,
   changePassword,
-  confirmPasswordChanged
+  confirmPasswordChanged,
+  clear
 } from '../actions';
 import { BackgroundImage, InputPassword, Spinner } from '../components';
 
@@ -43,46 +44,37 @@ class ChangePasswordScreen extends Component {
   }
 
   onOldPasswordChanged(text) {
-    this.setState({ oldPassword: text });
+    //   this.setState({ oldPassword: text });
     this.props.oldPasswordChanged(text);
   }
 
   onConfirmPasswordChanged(text) {
-    this.setState({ confirmPassword: text })
+    //   this.setState({ confirmPassword: text })
     this.props.confirmPasswordChanged(text);
   }
 
   onChangeComplete(props) {
-    if (props.success) {
-      this.props.navigation.navigate('login');
+    if (props.success === 'true') {
+      this.props.navigation.navigate('mainScreen');
     }
-    else {
-      if (props.loading) {
-        return <Spinner />
-      }
-      else {
-        if (props.loading === false) {
-          return <View />
-        }
-        else {
-          if (props.success === false) {
-            this.props.navigation.dispatch(resetAction)
-          }
-        }
-      }
+    else if (props.success === 'false') {
+    //  this.setState({ modal: true });
+      setTimeout(() => this.props.clear(), 3000);
     }
-    console.log(props.message);
+    else if (props.loading) {
+    //  this.setState({ modal: true });
+    }
   }
 
   onNewPasswordChanged(text) {
-    this.setState({ newPassword: text });
+  //  this.setState({ newPassword: text });
     this.props.newPasswordChanged(text);
   }
 
   onButtonPress() {
-    const { oldPassword, newPassword, confirmPassword } = this.state;
+    const { oldPassword, newPassword, confirmPassword } = this.props;
     if (newPassword === confirmPassword) {
-      this.props.changePassword({ oldPassword, newPassword })
+      this.props.changePassword({ oldPassword, newPassword });
     }
   }
 
@@ -164,8 +156,8 @@ const styles = {
     fontSize: 0.047 * SCREEN_WIDTH,
     lineHeight: 23,
     fontWeight: "200",
-    height:  0.095 * SCREEN_HEIGHT,
-    width:  0.8 * SCREEN_WIDTH
+    height: 0.095 * SCREEN_HEIGHT,
+    width: 0.8 * SCREEN_WIDTH
   },
 };
 
@@ -180,6 +172,7 @@ export default connect(mapStateToProps,
     oldPasswordChanged,
     newPasswordChanged,
     changePassword,
-    confirmPasswordChanged
+    confirmPasswordChanged,
+    clear
   })
   (ChangePasswordScreen);
