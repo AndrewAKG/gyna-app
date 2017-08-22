@@ -90,7 +90,7 @@ class SignUpScreen extends Component {
     }
     else if (props.signUpSuccess === 'false') {
       this.setState({ modal: true });
-      setInterval(() => this.props.clear(), 3000);
+      setTimeout(() => this.props.clear(), 3000);
     }
     else if (props.loading) {
       this.setState({ modal: true });
