@@ -18,6 +18,7 @@ import DataListScreen from './DataListScreen';
 import LoginTrouble from './LoginTrouble';
 import PDFsScreen from './PDFsScreen';
 import VideosScreen from './VideosScreen';
+import WebViewScreen from './WebViewScreen';
 
 class Navigator extends Component {
   render() {
@@ -57,6 +58,9 @@ class Navigator extends Component {
       },
       videoScreen: {
         screen: VideosScreen
+      },
+      webviewScreen: {
+        screen: WebViewScreen
       },
       mainScreen: {
         screen: TabNavigator({

@@ -2,9 +2,9 @@ import React from 'react';
 import { View, WebView, Text, TouchableHighlight, Dimensions } from 'react-native';
 import { BackgroundImage, Spinner } from '../components';
 
-class PDFsScreen extends React.Component {
+class WebViewScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: 'pdfScreen',
+    title: 'webviewScreen',
     headerStyle: {
       backgroundColor: '#5C1634'
     },
@@ -25,18 +25,16 @@ class PDFsScreen extends React.Component {
   }
 
   render() {
-    const { pdfLink } = this.props.navigation.state.params;
-    let source = { uri: 'http://image.tianjimedia.com/imagelist/2009/190/caq4z56jadof.pdf', cache: true };
-    console.log('PDF LINK', pdfLink);
+    const { contentSource } = this.props.navigation.state.params;
+    console.log('CONTENT', contentSource);
 
     return (
-      <BackgroundImage>
-        <WebView
-          renderLoading={() => this.renderSpinner()}
-          style={styles.container}
-          source={{ uri: pdfLink }}
-        />
-      </BackgroundImage>);
+      <WebView
+        renderLoading={() => this.renderSpinner()}
+        style={styles.container}
+        source={{ html: contentSource }}
+      />
+    );
   }
 }
 
@@ -50,4 +48,4 @@ const styles = {
   }
 };
 
-export default PDFsScreen;
+export default WebViewScreen;

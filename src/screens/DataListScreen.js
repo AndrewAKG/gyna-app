@@ -31,6 +31,21 @@ class DataListScreen extends Component {
     }
   }
 
+  navigateToScreens(item) {
+    const { navigate } = this.props.navigation;
+
+    if (item.attach) {
+      return () => navigate('pdfScreen', { pdfLink: item.attach, title: item.title });
+      //Linking.openURL(item.attach).catch(err => console.error('An error occurred', err));
+    }
+    else if (item.images.length !== 0) {
+      return () => navigate('webviewScreen', { contentSource: item.content, title: item.title });
+    }
+    else if (item.link) {
+      console.log('video faks now');
+    }
+  }
+
   renderContent() {
     if (this.props.loading) {
       return (
@@ -56,6 +71,7 @@ class DataListScreen extends Component {
                 <ListDataItem
                   title={(item.title) ? item.title : item.name}
                   iconType={this.fetchType(item)}
+                  onArrowPress={this.navigateToScreens(item)}
                 />
               }
               keyExtractor={(item, index) => index}
