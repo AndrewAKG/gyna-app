@@ -44,14 +44,19 @@ class KnowledgeScreen extends Component {
   }
 
   fetchType(item) {
-    if (item.attach) {
-      return { icon: true, type: 'picture-as-pdf' };
+    if (item.type === 'post') {
+      if (item.attach) {
+        return { category: false, icon: true, type: 'picture-as-pdf' };
+      }
+      else if (item.images.length !== 0) {
+        return { category: false, icon: false, image: item.images[0] };
+      }
+      else if (item.link) {
+        return { category: false, icon: true, type: 'ondemand-video' };
+      }
     }
-    else if (item.images.length !== 0) {
-      return { icon: false, image: item.images[0] };
-    }
-    else if (item.link) {
-      return { icon: true, type: 'ondemand-video' };
+    else if (item.type === 'category') {
+      return { category: true, name: item.name };
     }
   }
 

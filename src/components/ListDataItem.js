@@ -14,21 +14,71 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 class ListDataItem extends React.Component {
   renderIcon() {
     if (this.props.iconType) {
-      const { type, icon, image } = this.props.iconType;
-      if (icon) {
-        return (
-          <Icon
-            iconStyle={styles.pdfIcon}
-            name={type}
-            color='white'
-            size={0.2 * SCREEN_WIDTH}
-          />
-        );
+      const { type, icon, image, category, name } = this.props.iconType;
+      if (!category) {
+        if (icon) {
+          return (
+            <Icon
+              iconStyle={styles.pdfIcon}
+              name={type}
+              color='white'
+              size={0.2 * SCREEN_WIDTH}
+            />
+          );
+        }
+        else {
+          return (
+            <Image
+              source={{ uri: image }}
+              style={styles.pdfIcon}
+            />
+          )
+        }
       }
       else {
+
+        let iconPath;
+        console.log(name);
+        switch (name) {
+          case 'guidelines':
+            iconPath = require('../../assets/icons/Knowledge/21.png'); break;
+          case 'medical_article':
+            iconPath = require('../../assets/icons/Knowledge/22.png'); break;
+          case 'trainings':
+            iconPath = require('../../assets/icons/Knowledge/23.png'); break;
+          case 'workshop_videos ':
+            iconPath = require('../../assets/icons/Knowledge/24.png'); break;
+          case 'quick_tips':
+            iconPath = require('../../assets/icons/Knowledge/25.png'); break;
+          case 'gyn_global_societies':
+            iconPath = require('../../assets/icons/Knowledge/26.png'); break;
+          case 'video_of_the_week':
+            iconPath = require('../../assets/icons/Knowledge/27.png'); break;
+          case 'fashion-tips':
+            iconPath = require('../../assets/icons/Life/11.png'); break;
+          case 'beauty-tips':
+            iconPath = require('../../assets/icons/Life/22.png'); break;
+          case 'nutrition_tips':
+            iconPath = require('../../assets/icons/Life/33.png'); break;
+          case 'day_recipe':
+            iconPath = require('../../assets/icons/Life/44.png'); break;
+          case 'family_tips':
+            iconPath = require('../../assets/icons/Life/55.png'); break;
+          case 'home_tips':
+            iconPath = require('../../assets/icons/Life/66.png'); break;
+          case 'work_life_balance':
+            iconPath = require('../../assets/icons/Life/77.png'); break;
+          case 'articles':
+            iconPath = require('../../assets/icons/Life/88.png'); break;
+          case 'taday_quotes':
+            iconPath = require('../../assets/icons/Life/99.png'); break;
+          default:
+            iconPath = require('../../assets/icons/x.png'); break;
+        }
+
         return (
           <Image
-            source={{ uri: image }}
+            source={iconPath}
             style={styles.pdfIcon}
           />
         )
