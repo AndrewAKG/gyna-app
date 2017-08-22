@@ -95,6 +95,7 @@ class LoginScreen extends Component {
   }
 
   onAuthComplete(props) {
+    console.log(props.success);
     if (props.success === 'true') {
       this.props.navigation.navigate('mainScreen');
     }
@@ -127,17 +128,19 @@ class LoginScreen extends Component {
   }
 
   renderModal() {
-    return (
-      <Modal
-        animationType={'fade'}
-        visible={this.state.modal}
-        transparent={true}
-        presentationStyle={'overFullScreen'}
-        onShow={() => setInterval(() => this.setState({ modal: false }), 5000)}
-      >
-        {this.renderContent()}
-      </Modal>
-    );
+    if (this.props.loading || this.props.success === 'false') {
+      return (
+        <Modal
+          animationType={'fade'}
+          visible={this.state.modal}
+          transparent={true}
+          presentationStyle={'overFullScreen'}
+          onShow={() => setInterval(() => this.setState({ modal: false }), 4000)}
+        >
+          {this.renderContent()}
+        </Modal>
+      );
+    }
   }
 
   render() {

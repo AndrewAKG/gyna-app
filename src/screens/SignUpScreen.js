@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
+import { View, Text, Image, Dimensions, ScrollView, Modal } from 'react-native';
 import { Button } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -20,7 +20,8 @@ import {
   dateChanged,
   nameChanged,
   addressChanged,
-  signUpUser
+  signUpUser,
+  clear
 } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -32,7 +33,8 @@ class SignUpScreen extends Component {
     super(props);
     let today = new Date();
     this.state = {
-      date: today
+      date: today,
+      modal: false
     }
   }
 
@@ -46,27 +48,12 @@ class SignUpScreen extends Component {
     headerTitle: ''
   };
 
-  componentWillReceiveProps(nextProps) {
-    this.onSignUpComplete(nextProps);
+  componentWillMount() {
+    this.props.clear();
   }
 
-  renderFeedback() {
-    if (this.props.loading) {
-      return (
-        <View style={styles.feedbackStyle}>
-          <Spinner />
-        </View>
-      )
-    }
-    else if (this.props.signUpSuccess === 'false') {
-      return (
-        <View style={styles.feedbackStyle}>
-          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
-            {this.props.error}
-          </Text>
-        </View>
-      );
-    }
+  componentWillReceiveProps(nextProps) {
+    this.onSignUpComplete(nextProps);
   }
 
   onEmailChange(text) {
@@ -98,8 +85,15 @@ class SignUpScreen extends Component {
   }
 
   onSignUpComplete(props) {
-    if (props.success === 'true') {
+    if (props.signUpSuccess === 'true') {
       this.props.navigation.navigate('mainScreen');
+    }
+    else if (props.signUpSuccess === 'false') {
+      this.setState({ modal: true });
+      setInterval(() => this.props.clear(), 3000);
+    }
+    else if (props.loading) {
+      this.setState({ modal: true });
     }
   }
 
@@ -107,6 +101,41 @@ class SignUpScreen extends Component {
     const { username, password, email, phone, address, name } = this.props;
     const { anniversaryDate } = this.state;
     this.props.signUpUser({ username, password, email, phone, address, anniversaryDate, name });
+  }
+
+  renderContent() {
+    if (this.props.loading) {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Spinner />
+        </View>
+      )
+    }
+    else if (this.props.signUpSuccess === 'false') {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            {this.props.error}
+          </Text>
+        </View>
+      );
+    }
+  }
+
+  renderModal() {
+    if (this.props.loading || this.props.signUpSuccess === 'false') {
+      return (
+        <Modal
+          animationType={'fade'}
+          visible={this.state.modal}
+          transparent={true}
+          presentationStyle={'overFullScreen'}
+          onShow={() => setInterval(() => this.setState({ modal: false }), 4000)}
+        >
+          {this.renderContent()}
+        </Modal>
+      );
+    }
   }
 
   render() {
@@ -173,7 +202,7 @@ class SignUpScreen extends Component {
               onDateChange={(date) => this.setState({ date: date })}
             />
 
-            {this.renderFeedback()}
+            {this.renderModal()}
 
             <Button
               onPress={this.onButtonPress.bind(this)}
@@ -217,7 +246,8 @@ const styles = {
     flex: 1,
     alignItems: 'center',
     marginVertical: 10,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
   }
 };
 
@@ -246,6 +276,7 @@ export default connect(mapStateToProps,
     dateChanged,
     nameChanged,
     addressChanged,
-    signUpUser
+    signUpUser,
+    clear
   })
   (SignUpScreen);

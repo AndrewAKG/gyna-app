@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
+import { View, Text, ScrollView, Image, Dimensions, Modal } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
 import { Input, BackgroundImage, Spinner } from '../components';
 import { connect } from 'react-redux';
-import { forgetPassword, emailChanged } from '../actions';
+import { forgetPassword, emailChanged, clear } from '../actions';
 import { NavigationActions } from 'react-navigation';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
-
-const resetAction = NavigationActions.reset({
-  index: 0,
-  actions: [NavigationActions.navigate({ routeName: 'login' })],
-});
-
 
 class ForgetPasswordScreen extends React.Component {
   static navigationOptions = {
@@ -28,6 +22,13 @@ class ForgetPasswordScreen extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      modal: false
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.onForgetComplete(nextProps);
   }
 
   onEmailChange(text) {
@@ -39,26 +40,36 @@ class ForgetPasswordScreen extends React.Component {
     this.props.forgetPassword({ email });
   }
 
-  renderProcessComplete() {
+  onForgetComplete(props) {
+    if (props.forgetPasswordSuccess === 'true' || props.loading) {
+      this.setState({ modal: true });
+    }
+    else if (props.forgetPasswordSuccess === 'false') {
+      this.setState({ modal: true });
+      setInterval(() => this.props.clear(), 5000);
+    }
+  }
+
+  renderContent() {
     if (this.props.loading) {
       return (
-        <View style={{ flex: 1, alignItems: 'center', marginVertical: 10 }}>
+        <View style={styles.feedbackStyle}>
           <Spinner />
         </View>
       )
     }
-    else if (this.props.forgetPasswordSuccess) {
+    else if (this.props.forgetPasswordSuccess === 'true') {
       return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={styles.feedbackStyle}>
           <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
             Instructions sent, check your email
           </Text>
         </View>
       );
     }
-    else if (!this.props.forgetPasswordSuccess) {
+    else if (this.props.forgetPasswordSuccess === 'false') {
       return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={styles.feedbackStyle}>
           <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
             {this.props.error}
           </Text>
@@ -67,6 +78,19 @@ class ForgetPasswordScreen extends React.Component {
     }
   }
 
+  renderModal() {
+    return (
+      <Modal
+        animationType={'fade'}
+        visible={this.state.modal}
+        transparent={true}
+        presentationStyle={'overFullScreen'}
+        onShow={() => setInterval(() => this.setState({ modal: false }), 6000)}
+      >
+        {this.renderContent()}
+      </Modal>
+    );
+  }
 
   render() {
     const { navigate } = this.props.navigation;
@@ -105,7 +129,7 @@ class ForgetPasswordScreen extends React.Component {
             />
           </View>
 
-          {this.renderProcessComplete()}
+          {this.renderModal()}
 
         </View>
 
@@ -131,6 +155,13 @@ const styles = {
   containerStyle: {
     marginTop: 0.15 * SCREEN_HEIGHT,
     alignItems: 'center'
+  },
+  feedbackStyle: {
+    flex: 1,
+    alignItems: 'center',
+    marginVertical: 10,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
   }
 };
 
@@ -142,6 +173,7 @@ const mapStateToProps = ({ forget }) => {
 export default connect(mapStateToProps,
   {
     forgetPassword,
-    emailChanged
+    emailChanged,
+    clear
   })
   (ForgetPasswordScreen);
