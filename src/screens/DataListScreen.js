@@ -48,7 +48,9 @@ class DataListScreen extends Component {
         });
     }
     else if (item.link) {
-      console.log('video faks now');
+      var oldLink = item.link;
+      var newLink = oldLink.replace('watch?v=', 'embed/');
+      return () => navigate('videoScreen', { videoLink: newLink, title: item.title });
     }
   }
 
