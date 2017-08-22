@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView, Dimensions } from 'react-native';
 import { BackgroundImage, InputMoreScreen, BirthdateInput, Spinner } from '../components';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
-import { userData, editUsername, editAddress, editDate, editEmail, editPhone, editProfile } from '../actions';
+import { userData, editUsername, editAddress, editDate, editEmail, editPhone, editProfile, clearProps } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -24,10 +24,6 @@ class EditProfileScreen extends Component {
     let today = new Date();
     this.state = {
       date: this.props.date,
-      username: this.props.username,
-      email: this.props.email,
-      mobile: this.props.mobile,
-      address: this.props.address,
       loading: false
     }
   }
@@ -36,26 +32,39 @@ class EditProfileScreen extends Component {
     this.props.userData();
   }
 
- /* componentWillReceiveProps(nextProps) {
+ componentWillReceiveProps(nextProps) {
     this.onEditComplete(nextProps);
   }
 
   onEditComplete(props) {
-    if (props.success) {
-      this.setState({
-        username: props.username,
-        address: props.address,
-        mobile: props.mobile,
-        date: props.date,
-        email: props.email
-      })
-    } 
+    console.log(props.success);
+    if (props.success === 'true') {
+      setTimeout(() => this.props.userData(), 2000);
+      setTimeout(() => this.props.clearProps(), 2000);
+        } 
   }
-*/
+
+onUserNameChanged(text) {
+   this.props.editUsername(text)
+ }
+
+ onAddressChanged(text) {
+   this.props.editAddress(text)
+ }
+
+ onEmailChanged(text) {
+   this.props.editEmail(text)
+ }
+
+ onPhoneChanged(text) {
+   this.props.editPhone(text)
+ }
+
   onButtonPress() {
-    const { username, email, address, mobile, date } = this.state;
+    const { username, email, address, mobile } = this.props;
+    const { date } = this.state;
     this.props.editProfile({ username, email, address, mobile, date });
-    this.props.userData();
+   // this.props.userData();
    
   }
 
@@ -93,8 +102,8 @@ class EditProfileScreen extends Component {
             <InputMoreScreen
               placeholder=''
               style={inputStyle}
-              value={this.state.username}
-              onChangeText={(text) => this.setState({ username: text })}
+              value={this.props.username}
+              onChangeText={this.onUserNameChanged.bind(this)}
             />
 
             <Text style={emailPhoneStyle}>
@@ -104,8 +113,8 @@ class EditProfileScreen extends Component {
               placeholder=''
               Type='email-address'
               style={inputStyle}
-              value={this.state.email}
-              onChangeText={(text) => this.setState({ email: text })}
+              value={this.props.email}
+              onChangeText={this.onEmailChanged.bind(this)}
             />
 
             <Text style={emailPhoneStyle}>
@@ -115,8 +124,8 @@ class EditProfileScreen extends Component {
               placeholder=''
               Type='phone-pad'
               style={inputStyle}
-              value={this.state.mobile}
-              onChangeText={(text) => this.setState({ mobile: text })}
+              value={this.props.mobile}
+              onChangeText={this.onPhoneChanged.bind(this)}
             />
 
             <Text style={dateStyle}>
@@ -125,8 +134,8 @@ class EditProfileScreen extends Component {
             <InputMoreScreen
               placeholder=''
               style={inputStyle}
-              value={this.state.address}
-              onChangeText={(text) => this.setState({ address: text })}
+              value={this.props.address}
+              onChangeText={this.onAddressChanged.bind(this)}
             />
 
             <Text style={dateStyle}>
@@ -230,6 +239,7 @@ export default connect(mapStateToProps,
     editPhone,
     editEmail,
     editUsername,
-    editProfile
+    editProfile,
+    clearProps
   })
   (EditProfileScreen);
