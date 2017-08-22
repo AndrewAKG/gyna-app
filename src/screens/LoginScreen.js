@@ -170,7 +170,7 @@ class LoginScreen extends Component {
               value={this.props.username}
               returnKeyType={"next"}
               onSubmit={(event) => {
-                this.refs.password.focus.bind(this);
+                this.refs.password.focus();
               }}
             />
             <InputPassword
@@ -179,6 +179,9 @@ class LoginScreen extends Component {
               onChangeText={this.onPasswordChange.bind(this)}
               value={this.props.password}
               returnKeyType={"go"}
+              onSubmit={(event) => {
+                this.onButtonPress();
+              }}
             />
 
             <Button
