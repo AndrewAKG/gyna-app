@@ -70,7 +70,6 @@ class LifeScreen extends Component {
     else if (item.type === 'post') {
       if (item.attach) {
         return () => navigate('pdfScreen', { pdfLink: item.attach, title: item.title });
-        //Linking.openURL(item.attach).catch(err => console.error('An error occurred', err));
       }
       else if (item.link) {
         if (item.link.indexOf('youtube') !== -1) {
@@ -210,7 +209,6 @@ class LifeScreen extends Component {
               returnKeyType={"search"}
               onSubmit={(event) => {
                 const { keyword } = this.props;
-                console.log(keyword);
                 this.setState({ search: true });
                 this.props.searchContent({ keyword });
               }}

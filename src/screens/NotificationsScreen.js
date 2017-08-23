@@ -43,13 +43,25 @@ class NotificationsScreen extends Component {
 
     if (item.attach) {
       return () => navigate('pdfScreen', { pdfLink: item.attach, title: item.title });
-      //Linking.openURL(item.attach).catch(err => console.error('An error occurred', err));
-    }
-    else if (item.images.length !== 0) {
-      console.log('faks now');
     }
     else if (item.link) {
-      console.log('video faks now');
+      if (item.link.indexOf('youtube') !== -1) {
+        var oldLink = item.link;
+        var newLink = oldLink.replace('watch?v=', 'embed/');
+        return () => navigate('videoScreen', { videoLink: newLink, title: item.title });
+      }
+      else if (item.link.indexOf('http') !== -1) {
+        return () => Linking.openURL(item.link);
+      }
+    }
+    else if (item.content) {
+      return () => navigate('webviewScreen',
+        {
+          contentSource: item.content,
+          title: item.title,
+          image: item.images[0],
+          sub_title: item.sub_title
+        });
     }
   }
 
