@@ -68,7 +68,29 @@ class LifeScreen extends Component {
       return () => navigate('dataList', { category: newName, title: item.title });
     }
     else if (item.type === 'post') {
-      return () => console.log('post');
+      if (item.attach) {
+        return () => navigate('pdfScreen', { pdfLink: item.attach, title: item.title });
+        //Linking.openURL(item.attach).catch(err => console.error('An error occurred', err));
+      }
+      else if (item.link) {
+        if (item.link.indexOf('youtube') !== -1) {
+          var oldLink = item.link;
+          var newLink = oldLink.replace('watch?v=', 'embed/');
+          return () => navigate('videoScreen', { videoLink: newLink, title: item.title });
+        }
+        else {
+          return () => Linking.openURL(item.link);
+        }
+      }
+      else if (item.content) {
+        return () => navigate('webviewScreen',
+          {
+            contentSource: item.content,
+            title: item.title,
+            image: item.images[0],
+            sub_title: item.sub_title
+          });
+      }
     }
   }
 

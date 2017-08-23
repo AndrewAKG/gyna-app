@@ -16,7 +16,7 @@
   },
   {
     "key": 44,
-    "category": "day's_recipe",
+    "category": "day_recipe",
     "title": "Day's Recipe"
   },
   {
@@ -41,7 +41,7 @@
   },
   {
     "key": 99,
-    "category": "todat's_quote",    
+    "category": "today_quotes",    
     "title": "Today's Quote"
   }
 ]

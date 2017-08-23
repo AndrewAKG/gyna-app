@@ -38,24 +38,24 @@ class DataListScreen extends Component {
       return () => navigate('pdfScreen', { pdfLink: item.attach, title: item.title });
       //Linking.openURL(item.attach).catch(err => console.error('An error occurred', err));
     }
-    else if (item.images.length !== 0) {
-      if (item.link) {
-        return () => Linking.openURL(item.link); 
+    else if (item.link) {
+      if (item.link.indexOf('youtube') !== -1) {
+        var oldLink = item.link;
+        var newLink = oldLink.replace('watch?v=', 'embed/');
+        return () => navigate('videoScreen', { videoLink: newLink, title: item.title });
       }
-      else if (item.content) {
-        return () => navigate('webviewScreen',
-          {
-            contentSource: item.content,
-            title: item.title,
-            image: item.images[0],
-            sub_title: item.sub_title
-          });
+      else {
+        return () => Linking.openURL(item.link);
       }
     }
-    else if (item.link) {
-      var oldLink = item.link;
-      var newLink = oldLink.replace('watch?v=', 'embed/');
-      return () => navigate('videoScreen', { videoLink: newLink, title: item.title });
+    else if (item.content) {
+      return () => navigate('webviewScreen',
+        {
+          contentSource: item.content,
+          title: item.title,
+          image: item.images[0],
+          sub_title: item.sub_title
+        });
     }
   }
 
