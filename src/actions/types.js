@@ -20,6 +20,7 @@ export const SIGNUP_USER_FAILED = 'signup_user_failed';
 export const FORGET_PASSWORD = 'forget_password';
 export const FORGET_PASSOWRD_SUCCESS = 'forget_password_success';
 export const FORGET_PASSOWRD_FAILED = 'forget_password_failed';
+export const CLEAR_PASSOWRD = 'clear_password';
 
 /**Change Password Types */
 export const CHANGE_PASSWORD = 'change_password';
@@ -71,6 +72,8 @@ export const EDIT_PHONE = 'edit_phone';
 export const EDIT_ADDRESS = 'edit_address';
 export const CLEAR_PROPS = 'clear_props';
 export const CLEAR_STATE = 'clear_state';
+export const LOGOUT = 'logout';
+export const LOGOUT_USER_SUCCESS = 'logout_user_success';
 
 
 

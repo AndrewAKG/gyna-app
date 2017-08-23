@@ -65,7 +65,7 @@ export const userData = () => {
             if (responseJson) {
               dispatch({ type: FETCH_USERDATA_SUCCESS, result: responseJson });
             } else {
-              dispatch({ type: FETCH_USERDATA_FAILED, result: null });
+              dispatch({ type: FETCH_USERDATA_FAILED, errorData: 'cannot get data , try again later' });
             }
           });
       }
@@ -107,7 +107,7 @@ export const editProfile = ({ username, mobile, token, address, date, email }) =
             if (responseJson.result) {
               dispatch({ type: EDIT_PROFILE_SUCCESS, result: responseJson.message });
             } else {
-              dispatch({ type: EDIT_PROFILE_FAILED, result: responseJson.message });
+              dispatch({ type: EDIT_PROFILE_FAILED, error: responseJson.message });
             }
           });
       }

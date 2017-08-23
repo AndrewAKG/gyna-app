@@ -4,7 +4,8 @@ import {
   OLD_PASSOWRD_CHANGED,
   NEW_PASSOWRD_CHANGED,
   CONFIRM_PASSOWRD_CHANGED,
-  CHANGE_PASSWORD_FAILED
+  CHANGE_PASSWORD_FAILED,
+  CLEAR_PASSOWRD
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -13,11 +14,15 @@ const INITIAL_STATE = {
   confirmPassword: '',
   success: '',
   loading: false,
-  message: ''
+  message: '',
+  error: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+
+    case CLEAR_PASSOWRD:
+      return { ...INITIAL_STATE, error: state.error };
 
     case OLD_PASSOWRD_CHANGED:
       return { ...state, oldPassword: action.oldPassword };
@@ -37,7 +42,7 @@ export default (state = INITIAL_STATE, action) => {
 
     case CHANGE_PASSWORD_FAILED:
       console.log(action.result);
-      return { ...state, ...INITIAL_STATE, success: 'false' };
+      return { ...state, ...INITIAL_STATE, success: 'false', error: action.error };
 
     default:
       return state;

@@ -19,7 +19,8 @@ const INITIAL_STATE = {
   address: '',
   date: '',
   loading: false,
-  success: ''
+  success: '',
+  error: ''
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -31,13 +32,18 @@ export default (state = INITIAL_STATE, action) => {
     case FETCH_USERDATA_SUCCESS:
       console.log(action.result);
       return {
-        ...state, username: action.result.username, email: action.result.email, mobile: action.result.mobile,
-        address: action.result.address, date: action.result.anniversary_date, loading: false
+        ...state,
+        username: action.result.username,
+        email: action.result.email,
+        mobile: action.result.mobile,
+        address: action.result.address,
+        date: action.result.anniversary_date,
+        loading: false
       };
 
     case FETCH_USERDATA_FAILED:
       console.log(action.result);
-      return { ...state, ...INITIAL_STATE };
+      return { ...state, ...INITIAL_STATE, error: action.errorData };
 
     case EDIT_USERNAME:
       return { ...state, username: action.editUsername };
@@ -61,8 +67,8 @@ export default (state = INITIAL_STATE, action) => {
       };
 
     case EDIT_PROFILE_FAILED:
-      console.log(action.result);
-      return { ...state, loading: false, success: 'false' };
+      console.log(action.error);
+      return { ...state, loading: false, success: 'false', error: action.error };
 
     case CLEAR_PROPS:
       return { success: '' };
