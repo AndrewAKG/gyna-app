@@ -51,6 +51,38 @@ class EditProfileScreen extends Component {
     }
   }
 
+  onUserNameChanged(text) {
+    this.props.editUsername(text)
+  }
+
+  onAddressChanged(text) {
+    this.props.editAddress(text)
+  }
+
+  onEmailChanged(text) {
+    this.props.editEmail(text)
+  }
+
+  onPhoneChanged(text) {
+    this.props.editPhone(text)
+  }
+
+  onButtonPress() {
+    const { username, email, address, mobile } = this.props;
+    const { date } = this.state;
+    this.props.editProfile({ username, email, address, mobile, date });
+  }
+
+  renderSpinner() {
+    if (this.props.loading) {
+      return (
+        <View style={{ flex: 1, marginTop: 10 }}>
+          <Spinner />
+        </View>
+      );
+    }
+  }
+
   renderContent() {
     if (this.props.loading) {
       return (
