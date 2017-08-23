@@ -37,17 +37,15 @@ class EditProfileScreen extends Component {
   }
 
   onEditComplete(props) {
-    console.log(props.success);
     if (props.success === 'true') {
-      console.log('gh hna');
-      this.props.userData();
       this.props.clearProps();
+      this.props.navigation.navigate('more');
     }
     else if (props.success === 'false') {
-      console.log('gh hna')
       this.setState({ modal: true });
-      this.props.clearProps();
-    }
+      setTimeout(() => this.props.clearProps(), 4000)
+      setTimeout(() => this.props.userData(), 4000)
+        }
     else if (props.loading) {
       this.setState({ modal: true });
     }
@@ -62,9 +60,11 @@ class EditProfileScreen extends Component {
       );
     }
     else {
+      console.log('d5l else')
       return (
         <View style={styles.feedbackStyle}>
           <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            {console.log(this.props.error)}
             {this.props.error}
           </Text>
         </View>
@@ -80,7 +80,7 @@ class EditProfileScreen extends Component {
           visible={this.state.modal}
           transparent={true}
           presentationStyle={'overFullScreen'}
-          onShow={() => setTimeout(() => this.setState({ modal: false }), 3000)}
+          onShow={() => setTimeout(() => this.setState({ modal: false }), 4000)}
         >
           {this.renderContent()}
         </Modal>
@@ -108,7 +108,6 @@ class EditProfileScreen extends Component {
     const { username, email, address, mobile } = this.props;
     const { date } = this.state;
     this.props.editProfile({ username, email, address, mobile, date });
-//    this.props.userData();
 
   }
 

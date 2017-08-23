@@ -27,7 +27,7 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
     case FETCH_USERDATA:
-      return { ...state, loading: true };
+      return { ...state, loading: false };
 
     case FETCH_USERDATA_SUCCESS:
       console.log(action.result);

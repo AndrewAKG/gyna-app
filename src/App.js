@@ -8,6 +8,8 @@ import LoadingScreen from './screens/LoadingScreen';
 import configureStore from './state/Store';
 import Data from './Images.json';
 import reducers from './reducers';
+import { Permissions, Notifications } from 'expo';
+import registerForNotifications from './services/Push_notifications';
 
 const store = configureStore();
 const assets = [
@@ -19,7 +21,7 @@ const assets = [
   require('../assets/icons/18.png'),
   require('../assets/icons/arrow.png'),
   require('../assets/icons/pdfIcon.png'),
-  require('../assets/icons/Book.png'),  
+  require('../assets/icons/Book.png'),
   require('../assets/icons/search.png'),
   require('../assets/icons/Welcome.png'),
   require('../assets/icons/Forms/doc.png'),
@@ -59,7 +61,21 @@ const assets = [
 export default class App extends React.Component {
 
   state = {
-    appLoaded: false
+    appLoaded: false,
+    notification: {}
+  }
+
+  componentWillMount() {
+    
+    registerForNotifications();
+    Notifications.addListener((notification) => {
+      const { data: { text }, origin } = notification;
+      if (origin === 'received' && text) {
+        Alert.alert('New Push Notifiction',
+          text, [{ text: 'ok' }]
+        );
+      }
+    });
   }
 
   componentDidMount() {
