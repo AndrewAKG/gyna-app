@@ -162,6 +162,7 @@ class LoginScreen extends Component {
               source={require('../../assets/icons/4_1.png')}
               style={{ width: 0.35 * SCREEN_WIDTH, height: 0.3 * SCREEN_HEIGHT, paddingTop: 10 }}
             />
+
             <Input
               iconSource={require('../../assets/icons/Forms/doc.png')}
               placeholder='Username'
@@ -170,9 +171,10 @@ class LoginScreen extends Component {
               value={this.props.username}
               returnKeyType={"next"}
               onSubmit={(event) => {
-                this.refs.password.focus();
+                this.refs.nextInput.focus();
               }}
             />
+
             <InputPassword
               placeholder='Password'
               style={inputStyle}
