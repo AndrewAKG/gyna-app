@@ -41,9 +41,10 @@ class VideosScreen extends React.Component {
           </View>
           <View style={{ flex: 6 }}>
             <WebView
-              renderLoading={() => this.renderSpinner()}
+              renderLoading={this.renderSpinner}
               style={styles.container}
               source={{ uri: videoLink }}
+              startInLoadingState
             />
           </View>
         </View>

@@ -130,7 +130,7 @@ class SignUpScreen extends Component {
           visible={this.state.modal}
           transparent={true}
           presentationStyle={'overFullScreen'}
-          onShow={() => setInterval(() => this.setState({ modal: false }), 4000)}
+          onShow={() => setTimeout(() => this.setState({ modal: false }), 4000)}
         >
           {this.renderContent()}
         </Modal>

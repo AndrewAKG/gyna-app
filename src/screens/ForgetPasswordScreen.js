@@ -85,7 +85,7 @@ class ForgetPasswordScreen extends React.Component {
         visible={this.state.modal}
         transparent={true}
         presentationStyle={'overFullScreen'}
-        onShow={() => setInterval(() => this.setState({ modal: false }), 6000)}
+        onShow={() => setTimeout(() => this.setState({ modal: false }), 6000)}
       >
         {this.renderContent()}
       </Modal>
