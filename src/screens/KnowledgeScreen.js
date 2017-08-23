@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, Text, ScrollView, Dimensions, FlatList } from 'react-native';
+import { View, Image, Text, ScrollView, Dimensions, FlatList, Linking } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { BackgroundImage, SearchInput, Spinner, ListDataItem } from '../components';
@@ -69,7 +69,28 @@ class KnowledgeScreen extends Component {
       return () => navigate('dataList', { category: newName, title: item.title });
     }
     else if (item.type === 'post') {
-      return () => console.log('post');
+      if (item.attach) {
+        return () => navigate('pdfScreen', { pdfLink: item.attach, title: item.title });
+      }
+      else if (item.images.length !== 0) {
+        if (item.link) {
+          return () => Linking.openURL(item.link);
+        }
+        else if (item.content) {
+          return () => navigate('webviewScreen',
+            {
+              contentSource: item.content,
+              title: item.title,
+              image: item.images[0],
+              sub_title: item.sub_title
+            });
+        }
+      }
+      else if (item.link) {
+        var oldLink = item.link;
+        var newLink = oldLink.replace('watch?v=', 'embed/');
+        return () => navigate('videoScreen', { videoLink: newLink, title: item.title });
+      }
     }
   }
 
@@ -111,7 +132,7 @@ class KnowledgeScreen extends Component {
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
               <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
                 No Data matched ur search word
-            </Text>
+              </Text>
             </View>
           );
         } else {

@@ -49,12 +49,12 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: true };
 
     case LOGOUT:
-    console.log('reducerrrrr here');
+      console.log('reducerrrrr here');
       return { ...state, loading: true };
 
     case LOGOUT_USER_SUCCESS:
-    console.log(action.resultLogout);
-    console.log('reducerrrrr');
+      console.log(action.resultLogout);
+      console.log('reducerrrrr');
       return { ...state, ...INITIAL_STATE, user: null, logoutSuccess: 'true' };
 
     case LOGIN_USER_SUCCESS:

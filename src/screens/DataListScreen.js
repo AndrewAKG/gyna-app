@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, FlatList, ScrollView } from 'react-native';
+import { View, Text, Image, FlatList, ScrollView, Linking } from 'react-native';
 import { connect } from 'react-redux';
 import { BackgroundImage, Spinner, ListDataItem } from '../components';
 import { fetchData } from '../actions';
@@ -39,13 +39,18 @@ class DataListScreen extends Component {
       //Linking.openURL(item.attach).catch(err => console.error('An error occurred', err));
     }
     else if (item.images.length !== 0) {
-      return () => navigate('webviewScreen',
-        {
-          contentSource: item.content,
-          title: item.title,
-          image: item.images[0],
-          sub_title: item.sub_title
-        });
+      if (item.link) {
+        return () => Linking.openURL(item.link); 
+      }
+      else if (item.content) {
+        return () => navigate('webviewScreen',
+          {
+            contentSource: item.content,
+            title: item.title,
+            image: item.images[0],
+            sub_title: item.sub_title
+          });
+      }
     }
     else if (item.link) {
       var oldLink = item.link;
