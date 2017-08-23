@@ -39,17 +39,49 @@ class EditProfileScreen extends Component {
   onEditComplete(props) {
     console.log(props.success);
     if (props.success === 'true') {
-      console.log('gh hna');
-      this.props.userData();
       this.props.clearProps();
+      this.props.userData();
     }
     else if (props.success === 'false') {
-      console.log('gh hna')
+      console.log(props.error, 'ERROR');
       this.setState({ modal: true });
       this.props.clearProps();
+      this.props.userData();
     }
     else if (props.loading) {
       this.setState({ modal: true });
+    }
+  }
+
+  onUserNameChanged(text) {
+    this.props.editUsername(text)
+  }
+
+  onAddressChanged(text) {
+    this.props.editAddress(text)
+  }
+
+  onEmailChanged(text) {
+    this.props.editEmail(text)
+  }
+
+  onPhoneChanged(text) {
+    this.props.editPhone(text)
+  }
+
+  onButtonPress() {
+    const { username, email, address, mobile } = this.props;
+    const { date } = this.state;
+    this.props.editProfile({ username, email, address, mobile, date });
+  }
+
+  renderSpinner() {
+    if (this.props.loading) {
+      return (
+        <View style={{ flex: 1, marginTop: 10 }}>
+          <Spinner />
+        </View>
+      );
     }
   }
 
@@ -80,44 +112,10 @@ class EditProfileScreen extends Component {
           visible={this.state.modal}
           transparent={true}
           presentationStyle={'overFullScreen'}
-          onShow={() => setTimeout(() => this.setState({ modal: false }), 3000)}
+          onShow={() => setTimeout(() => this.setState({ modal: false }), 5000)}
         >
           {this.renderContent()}
         </Modal>
-      );
-    }
-  }
-
-  onUserNameChanged(text) {
-    this.props.editUsername(text)
-  }
-
-  onAddressChanged(text) {
-    this.props.editAddress(text)
-  }
-
-  onEmailChanged(text) {
-    this.props.editEmail(text)
-  }
-
-  onPhoneChanged(text) {
-    this.props.editPhone(text)
-  }
-
-  onButtonPress() {
-    const { username, email, address, mobile } = this.props;
-    const { date } = this.state;
-    this.props.editProfile({ username, email, address, mobile, date });
-//    this.props.userData();
-
-  }
-
-  renderSpinner() {
-    if (this.props.loading) {
-      return (
-        <View style={{ flex: 1, marginTop: 10 }}>
-          <Spinner />
-        </View>
       );
     }
   }

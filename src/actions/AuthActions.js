@@ -173,7 +173,7 @@ export const loginUser = ({ username, password, checked }) => {
         if (responseJson.result) {
           try {
             let token = responseJson.message;
-            AsyncStorage.setItem('token', token, loginSuccess(dispatch, token));
+            AsyncStorage.setItem('token', token, loginSuccess(dispatch, token, checked, username, password));
           } catch (error) {
             console.error('AsyncStorage error: ' + error.message);
           }
@@ -184,9 +184,21 @@ export const loginUser = ({ username, password, checked }) => {
   };
 };
 
-const loginSuccess = (dispatch, token) => {
+const loginSuccess = (dispatch, token, checked, username, password) => {
   console.log('TOKEN WASAL: ', token);
-  dispatch({ type: LOGIN_USER_SUCCESS, result: token });
+  console.log(checked, username, password);
+  if (checked) {
+    try {
+      AsyncStorage.multiSet([['username', username], ['password', password]], () => {
+        dispatch({ type: LOGIN_USER_SUCCESS, result: token });
+      });
+    } catch (error) {
+      console.error('AsyncStorage error: ' + error.message);
+    }
+  }
+  else {
+    dispatch({ type: LOGIN_USER_SUCCESS, result: token });
+  }
 };
 
 export const logout = () => {

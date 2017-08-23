@@ -29,6 +29,8 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: '',
+      password: '',
       checked: false,
       modal: false
     }
@@ -45,32 +47,30 @@ class LoginScreen extends Component {
     headerLeft: null
   };
 
-  /*
-    ComponentWillMount() {
-      AsyncStorage.getItem('email').then((email) => {
-        if (email !== null) {
-          this.setState({ email });
-          AsyncStorage.getItem('password').then((password) => {
-            if (password !== null) {
-              this.setState({ password });
-            }
-          })
-        }
-        else {
-          return;
-        }
-      })
-    }
-  
-    ComponentDidMount() {
-      const { email, password, checked } = this.state;
-      if (email !== null && password !== null) {
-        this.props.LoginUser({ email, password, checked });
-        this.props.navigation.navigate('mainScreen');
+  componentDidMount() {
+    AsyncStorage.getItem('username').then((username) => {
+      console.log(username);
+      if (username !== null) {
+        this.setState({ username });
+        AsyncStorage.getItem('password').then((password) => {
+          console.log(password);
+          if (password !== null) {
+            this.setState({ password });
+          }
+        }).then(() => {
+          const { username, password, checked } = this.state;
+          console.log('WASAL', username, password);
+          if (username !== '' && password !== '') {
+            console.log('DA5AL', username, password, checked);
+            this.props.loginUser({ username, password, checked });
+          }
+        });
       }
-      return;
-    }
-  */
+      else {
+        return;
+      }
+    });
+  }
 
   componentWillReceiveProps(nextProps) {
     this.onAuthComplete(nextProps);
