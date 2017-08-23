@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView, Dimensions } from 'react-native';
+import { View, Text, Image, ScrollView, Dimensions,  Modal } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
@@ -8,7 +8,7 @@ import {
   newPasswordChanged,
   changePassword,
   confirmPasswordChanged,
-  clear
+  clearPassword
 } from '../actions';
 import { BackgroundImage, InputPassword, Spinner } from '../components';
 
@@ -24,6 +24,9 @@ class ChangePasswordScreen extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      modal: false
+    }
   }
 
   static navigationOptions = {
@@ -46,23 +49,53 @@ class ChangePasswordScreen extends Component {
     this.props.confirmPasswordChanged(text);
   }
 
-  onChangeComplete(props) {
-    if (props.success === 'true') {
+  renderContent() {
+    if (this.props.loading) {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Spinner />
+        </View>
+      );
     }
     else {
-      if (props.loading) {
-        return <Spinner />
-      }
-      else {
-        if (props.loading === false) {
-          return <View />
-        }
-        else {
-          if (props.success === 'false') {
-            this.props.navigation.dispatch(resetAction)
-          }
-        }
-      }
+      return (
+        <View style={styles.feedbackStyle}>
+          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            {this.props.error}
+          </Text>
+        </View>
+      );
+    }
+  }
+
+  renderModal() {
+    if (this.props.loading || this.props.success === 'false') {
+      return (
+        <Modal
+          animationType={'fade'}
+          visible={this.state.modal}
+          transparent={true}
+          presentationStyle={'overFullScreen'}
+          onShow={() => setInterval(() => this.setState({ modal: false }), 3000)}
+        >
+          {this.renderContent()}
+        </Modal>
+      );
+    }
+  }
+
+
+  onChangeComplete(props) {
+    if (props.success === 'true') {
+      setTimeout(() => this.props.clearPassword(), 1000);
+      this.props.navigation.navigate('more');
+    }
+    else if (props.success === 'false') {
+      this.setState({ modal: true });
+      setTimeout(() => this.props.clearPassword(), 3000);
+    }
+    else if (props.loading) {
+      this.setState({ modal: true });
     }
   }
 
@@ -72,9 +105,7 @@ class ChangePasswordScreen extends Component {
 
   onButtonPress() {
     const { oldPassword, newPassword, confirmPassword } = this.props;
-    if (newPassword === confirmPassword) {
       this.props.changePassword({ oldPassword, newPassword });
-    }
   }
 
   render() {
@@ -117,6 +148,7 @@ class ChangePasswordScreen extends Component {
               fontWeight='bold'
               fontSize={0.047 * SCREEN_WIDTH}
             />
+            {this.renderModal()}
 
           </ScrollView>
         </View>
@@ -158,11 +190,18 @@ const styles = {
     height: 0.095 * SCREEN_HEIGHT,
     width: 0.8 * SCREEN_WIDTH
   },
+  feedbackStyle: {
+    flex: 1,
+    alignItems: 'center',
+    marginVertical: 10,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
+  }
 };
 
 const mapStateToProps = ({ changePassword }) => {
-  const { success, loading, message, oldPassword, newPassword, confirmPassword } = changePassword;
-  return { success, loading, message, oldPassword, newPassword, confirmPassword };
+  const { success, loading, message, oldPassword, newPassword, confirmPassword, error } = changePassword;
+  return { success, loading, message, oldPassword, newPassword, confirmPassword, error };
 
 };
 
@@ -173,6 +212,6 @@ export default connect(mapStateToProps,
     newPasswordChanged,
     changePassword,
     confirmPasswordChanged,
-    clear
+    clearPassword
   })
   (ChangePasswordScreen);

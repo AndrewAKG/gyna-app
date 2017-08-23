@@ -12,7 +12,9 @@ import {
   NAME_CHANGED,
   ADDRESS_CHANGED,
   LOGIN_USER_FAILED,
-  SIGNUP_USER_FAILED
+  SIGNUP_USER_FAILED,
+  LOGOUT,
+  LOGOUT_USER_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -27,6 +29,7 @@ const INITIAL_STATE = {
   anniversaryDate: '',
   success: '',
   signUpSuccess: '',
+  logoutSuccess: '',
   error: ''
 };
 
@@ -44,6 +47,15 @@ export default (state = INITIAL_STATE, action) => {
 
     case LOGIN_USER:
       return { ...state, loading: true };
+
+    case LOGOUT:
+    console.log('reducerrrrr here');
+      return { ...state, loading: true };
+
+    case LOGOUT_USER_SUCCESS:
+    console.log(action.resultLogout);
+    console.log('reducerrrrr');
+      return { ...state, ...INITIAL_STATE, user: null, logoutSuccess: 'true' };
 
     case LOGIN_USER_SUCCESS:
       return { ...state, ...INITIAL_STATE, user: action.result, success: 'true' };

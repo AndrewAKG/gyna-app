@@ -3,7 +3,8 @@ import { View, Text, Image, ScrollView, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { BackgroundImage, Input, MoreScreenButton } from '../components';
-import { userData } from '../actions';
+import { userData, logout } from '../actions';
+
 
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -26,6 +27,16 @@ class MoreScreen extends Component {
       />
     )
   };
+
+  onButtonPress() {
+    this.props.logout();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.logoutSuccess === 'true') {
+      this.props.navigation.navigate('login');
+    }
+  }
 
   componentWillMount() {
     this.props.userData();
@@ -92,7 +103,7 @@ class MoreScreen extends Component {
             />
             <MoreScreenButton
               buttonStyle={buttonStyle}
-              onPress={() => console.log('logout')}
+              onPress={this.onButtonPress.bind(this)}
               title='logout'
               fontSize={0.047 * SCREEN_WIDTH}
             />
@@ -151,14 +162,16 @@ const styles = {
 
 };
 
-const mapStateToProps = ({ data }) => {
+const mapStateToProps = ({ data, auth }) => {
   const { username, loading } = data;
-  return { username, loading };
+  const { logoutSuccess } = auth
+  return { username, loading, logoutSuccess };
 };
 
 
 export default connect(mapStateToProps,
   {
-    userData
+    userData,
+    logout
   })
   (MoreScreen);

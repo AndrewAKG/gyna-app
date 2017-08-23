@@ -4,12 +4,17 @@ import {
   OLD_PASSOWRD_CHANGED,
   NEW_PASSOWRD_CHANGED,
   CONFIRM_PASSOWRD_CHANGED,
-  CHANGE_PASSWORD_FAILED
+  CHANGE_PASSWORD_FAILED,
+  CLEAR_PASSOWRD
 }
   from './types';
 
   import { Platform, AsyncStorage } from 'react-native';
   import AuthPersistance from './AuthPersistance';
+
+  export const clearPassword = () => {
+    return { type: CLEAR_PASSOWRD };
+  }
 
 export const oldPasswordChanged = (text) => {
   return {
@@ -60,7 +65,7 @@ export const changePassword = ({ oldPassword, newPassword, token }) => {
             if (responseJson.result) {
               dispatch({ type: CHANGE_PASSWORD_SUCESS, result: responseJson.message });
             } else {
-              dispatch({ type: CHANGE_PASSWORD_FAILED, result: responseJson.message });
+              dispatch({ type: CHANGE_PASSWORD_FAILED, error: responseJson.message });
             }
           });
       }

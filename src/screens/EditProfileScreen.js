@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView, Dimensions } from 'react-native';
+import { View, Text, Image, ScrollView, Dimensions, Modal } from 'react-native';
 import { BackgroundImage, InputMoreScreen, BirthdateInput, Spinner } from '../components';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
@@ -24,7 +24,7 @@ class EditProfileScreen extends Component {
     let today = new Date();
     this.state = {
       date: this.props.date,
-      loading: false
+      modal: false
     }
   }
 
@@ -32,40 +32,84 @@ class EditProfileScreen extends Component {
     this.props.userData();
   }
 
- componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.onEditComplete(nextProps);
   }
 
   onEditComplete(props) {
     console.log(props.success);
     if (props.success === 'true') {
+      console.log('gh hna');
       setTimeout(() => this.props.userData(), 2000);
       setTimeout(() => this.props.clearProps(), 2000);
-        } 
+    }
+    else if (props.success === 'false') {
+      console.log('gh hna')
+      this.setState({ modal: true });
+      setTimeout(() => this.props.clearProps(), 3000);
+      setTimeout(() => this.props.userData(), 3000);
+    }
+    else if (props.loading) {
+      this.setState({ modal: true });
+    }
+  }
+  renderContent() {
+    if (this.props.loading) {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Spinner />
+        </View>
+      );
+    }
+    else {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            {this.props.error}
+          </Text>
+        </View>
+      );
+    }
   }
 
-onUserNameChanged(text) {
-   this.props.editUsername(text)
- }
+  renderModal() {
+    if (this.props.loading || this.props.success === 'false') {
+      return (
+        <Modal
+          animationType={'fade'}
+          visible={this.state.modal}
+          transparent={true}
+          presentationStyle={'overFullScreen'}
+          onShow={() => setInterval(() => this.setState({ modal: false }), 3000)}
+        >
+          {this.renderContent()}
+        </Modal>
+      );
+    }
+  }
 
- onAddressChanged(text) {
-   this.props.editAddress(text)
- }
+  onUserNameChanged(text) {
+    this.props.editUsername(text)
+  }
 
- onEmailChanged(text) {
-   this.props.editEmail(text)
- }
+  onAddressChanged(text) {
+    this.props.editAddress(text)
+  }
 
- onPhoneChanged(text) {
-   this.props.editPhone(text)
- }
+  onEmailChanged(text) {
+    this.props.editEmail(text)
+  }
+
+  onPhoneChanged(text) {
+    this.props.editPhone(text)
+  }
 
   onButtonPress() {
     const { username, email, address, mobile } = this.props;
     const { date } = this.state;
     this.props.editProfile({ username, email, address, mobile, date });
-   // this.props.userData();
-   
+    // this.props.userData();
+
   }
 
   renderSpinner() {
@@ -148,8 +192,6 @@ onUserNameChanged(text) {
               onDateChange={(date) => this.setState({ date: date })}
             />
 
-            {this.renderSpinner()}
-
             <Button
               onPress={this.onButtonPress.bind(this)}
               title="Save"
@@ -158,7 +200,7 @@ onUserNameChanged(text) {
               fontWeight='bold'
               fontSize={0.047 * SCREEN_WIDTH}
             />
-
+            {this.renderModal()}
           </ScrollView>
 
         </View>
@@ -223,11 +265,18 @@ const styles = {
     height: 50,
     width: 0.6 * SCREEN_WIDTH
   },
+  feedbackStyle: {
+    flex: 1,
+    alignItems: 'center',
+    marginVertical: 10,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
+  }
 };
 
 const mapStateToProps = ({ data }) => {
-  const { username, email, mobile, address, date, loading, success } = data;
-  return { username, email, mobile, address, date, loading, success };
+  const { username, email, mobile, address, date, loading, success, error } = data;
+  return { username, email, mobile, address, date, loading, success, error };
 };
 
 

@@ -16,7 +16,9 @@ import {
   FORGET_PASSOWRD_SUCCESS,
   FORGET_PASSOWRD_FAILED,
   FORGET_COMPLETE,
-  SIGNUP_USER_FAILED
+  SIGNUP_USER_FAILED,
+  LOGOUT,
+  LOGOUT_USER_SUCCESS
 } from './types';
 import { Platform, AsyncStorage } from 'react-native';
 import AuthPersistance from './AuthPersistance';
@@ -146,7 +148,7 @@ export const loginUser = ({ username, password, checked }) => {
     dispatch({ type: LOGIN_USER });
 
     var formData = new FormData();
-    
+
     formData.append('username', username);
     formData.append('password', password);
 
@@ -185,4 +187,20 @@ export const loginUser = ({ username, password, checked }) => {
 const loginSuccess = (dispatch, token) => {
   console.log('TOKEN WASAL: ', token);
   dispatch({ type: LOGIN_USER_SUCCESS, result: token });
+};
+
+export const logout = () => {
+  console.log('hereeeeeeeeeeee');
+  return (dispatch) => {
+    dispatch({ type: LOGOUT });
+    try {
+      AsyncStorage.removeItem('token', logoutSuccess(dispatch));
+    } catch (error) {
+      console.error('AsyncStorage error: ' + error.message);
+    }
+  }
+};
+
+const logoutSuccess = (dispatch) => {
+  dispatch({ type: LOGOUT_USER_SUCCESS, resultLogout: 'success' });
 };
