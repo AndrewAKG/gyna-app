@@ -39,7 +39,6 @@ class LifeScreen extends Component {
   }
 
   onWordChange(text) {
-    this.setState({ keyword: text });
     this.props.searchWordChanged(text);
   }
 
@@ -69,7 +68,29 @@ class LifeScreen extends Component {
       return () => navigate('dataList', { category: newName, title: item.title });
     }
     else if (item.type === 'post') {
-      return () => console.log('post');
+      if (item.attach) {
+        return () => navigate('pdfScreen', { pdfLink: item.attach, title: item.title });
+        //Linking.openURL(item.attach).catch(err => console.error('An error occurred', err));
+      }
+      else if (item.link) {
+        if (item.link.indexOf('youtube') !== -1) {
+          var oldLink = item.link;
+          var newLink = oldLink.replace('watch?v=', 'embed/');
+          return () => navigate('videoScreen', { videoLink: newLink, title: item.title });
+        }
+        else {
+          return () => Linking.openURL(item.link);
+        }
+      }
+      else if (item.content) {
+        return () => navigate('webviewScreen',
+          {
+            contentSource: item.content,
+            title: item.title,
+            image: item.images[0],
+            sub_title: item.sub_title
+          });
+      }
     }
   }
 
@@ -174,7 +195,7 @@ class LifeScreen extends Component {
               onIconPress={
                 (!this.state.search) ?
                   () => {
-                    const { keyword } = this.state;
+                    const { keyword } = this.props;
                     this.setState({ search: true });
                     this.props.searchContent({ keyword });
                   }
@@ -186,6 +207,13 @@ class LifeScreen extends Component {
               }
               value={this.props.keyword}
               onChangeText={this.onWordChange.bind(this)}
+              returnKeyType={"search"}
+              onSubmit={(event) => {
+                const { keyword } = this.props;
+                console.log(keyword);
+                this.setState({ search: true });
+                this.props.searchContent({ keyword });
+              }}
             />
           </View>
           {this.renderContent()}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, FlatList, ScrollView } from 'react-native';
+import { View, Text, Image, FlatList, ScrollView, Linking } from 'react-native';
 import { connect } from 'react-redux';
 import { BackgroundImage, Spinner, ListDataItem } from '../components';
 import { fetchData } from '../actions';
@@ -38,7 +38,17 @@ class DataListScreen extends Component {
       return () => navigate('pdfScreen', { pdfLink: item.attach, title: item.title });
       //Linking.openURL(item.attach).catch(err => console.error('An error occurred', err));
     }
-    else if (item.images.length !== 0) {
+    else if (item.link) {
+      if (item.link.indexOf('youtube') !== -1) {
+        var oldLink = item.link;
+        var newLink = oldLink.replace('watch?v=', 'embed/');
+        return () => navigate('videoScreen', { videoLink: newLink, title: item.title });
+      }
+      else {
+        return () => Linking.openURL(item.link);
+      }
+    }
+    else if (item.content) {
       return () => navigate('webviewScreen',
         {
           contentSource: item.content,
@@ -46,11 +56,6 @@ class DataListScreen extends Component {
           image: item.images[0],
           sub_title: item.sub_title
         });
-    }
-    else if (item.link) {
-      var oldLink = item.link;
-      var newLink = oldLink.replace('watch?v=', 'embed/');
-      return () => navigate('videoScreen', { videoLink: newLink, title: item.title });
     }
   }
 

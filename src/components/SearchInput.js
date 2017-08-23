@@ -7,7 +7,14 @@ import { View, Text, TextInput, Image, Dimensions, TouchableOpacity } from 'reac
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-const SearchInput = ({ value, placeholder, iconSource, onIconPress, onChangeText }) => {
+const SearchInput = ({
+  value,
+  placeholder,
+  iconSource,
+  onIconPress,
+  onChangeText,
+  returnKeyType,
+  onSubmit }) => {
   const { containerStyle, inputStyle, imageStyle } = styles;
 
   return (
@@ -20,6 +27,8 @@ const SearchInput = ({ value, placeholder, iconSource, onIconPress, onChangeText
           style={inputStyle}
           value={value}
           onChangeText={onChangeText}
+          returnKeyType={returnKeyType}
+          onSubmitEditing={onSubmit}
         />
       </View>
       <View style={{ flex: 2 }}>

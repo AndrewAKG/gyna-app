@@ -9,6 +9,16 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 
 class Input extends React.Component {
+  constructor(props) {
+    super(props);
+    this.focus = this.focus.bind(this);
+  }
+
+  focus() {
+    // Explicitly focus the text input using the raw DOM API
+    this.input.focus();
+  }
+
   render() {
     const {
       value,
@@ -19,7 +29,7 @@ class Input extends React.Component {
       secure,
       onChangeText,
       returnKeyType,
-      onSubmit
+      onSubmit,
     } = this.props;
     const { containerStyle, inputStyle, imageStyle } = styles;
 
@@ -33,8 +43,7 @@ class Input extends React.Component {
         </View>
         <View style={{ flex: 8 }}>
           <TextInput
-            {...this.props}
-            ref={'textInput'}
+            ref={el => this.input = el}
             returnKeyType={returnKeyType}
             keyboardType={Type}
             autoCorrect={false}

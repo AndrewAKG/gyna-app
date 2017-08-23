@@ -6,7 +6,7 @@
   },
   {
     "key": 2,
-    "category": "medical_articles",
+    "category": "medical_article",
     "title": "Medical articles"
   },
   {
@@ -26,8 +26,8 @@
   },
   {
     "key": 6,
-    "category": "gyna_global_society",
-    "title": "Gyna Global Society"
+    "category": "gyn_global_societies",
+    "title": "Gyn Global Society"
   },
   {
     "key": 7,

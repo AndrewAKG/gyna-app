@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, Text, ScrollView, Dimensions, FlatList } from 'react-native';
+import { View, Image, Text, ScrollView, Dimensions, FlatList, Linking } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { BackgroundImage, SearchInput, Spinner, ListDataItem } from '../components';
@@ -39,7 +39,6 @@ class KnowledgeScreen extends Component {
   }
 
   onWordChange(text) {
-    this.setState({ keyword: text });
     this.props.searchWordChanged(text);
   }
 
@@ -69,7 +68,29 @@ class KnowledgeScreen extends Component {
       return () => navigate('dataList', { category: newName, title: item.title });
     }
     else if (item.type === 'post') {
-      return () => console.log('post');
+      if (item.attach) {
+        return () => navigate('pdfScreen', { pdfLink: item.attach, title: item.title });
+        //Linking.openURL(item.attach).catch(err => console.error('An error occurred', err));
+      }
+      else if (item.link) {
+        if (item.link.indexOf('youtube') !== -1) {
+          var oldLink = item.link;
+          var newLink = oldLink.replace('watch?v=', 'embed/');
+          return () => navigate('videoScreen', { videoLink: newLink, title: item.title });
+        }
+        else {
+          return () => Linking.openURL(item.link);
+        }
+      }
+      else if (item.content) {
+        return () => navigate('webviewScreen',
+          {
+            contentSource: item.content,
+            title: item.title,
+            image: item.images[0],
+            sub_title: item.sub_title
+          });
+      }
     }
   }
 
@@ -111,7 +132,7 @@ class KnowledgeScreen extends Component {
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
               <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
                 No Data matched ur search word
-            </Text>
+              </Text>
             </View>
           );
         } else {
@@ -177,6 +198,13 @@ class KnowledgeScreen extends Component {
               }
               value={this.props.keyword}
               onChangeText={this.onWordChange.bind(this)}
+              returnKeyType={"search"}
+              onSubmit={(event) => {
+                const { keyword } = this.props;
+                console.log(keyword);
+                this.setState({ search: true });
+                this.props.searchContent({ keyword });
+              }}
             />
           </View>
           {this.renderContent()}

@@ -9,7 +9,17 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class InputPassword extends React.Component {
-  state = { secured: true }
+  constructor(props) {
+    super(props);
+    this.state = { secured: true };
+    this.focus = this.focus.bind(this);
+  }
+
+  focus() {
+    // Explicitly focus the text input using the raw DOM API
+    this.nextInput.focus();
+  }
+
 
   onPressInButton() {
     this.setState({ secured: false });
@@ -43,7 +53,7 @@ class InputPassword extends React.Component {
 
         <View style={{ flex: 5 }}>
           <TextInput
-            {... this.props}
+            ref={el => this.nextInput = el}
             autoCorrect={false}
             placeholder={placeholder}
             placeholderTextColor='white'
@@ -51,7 +61,6 @@ class InputPassword extends React.Component {
             value={value}
             secureTextEntry={this.state.secured}
             onChangeText={onChangeText}
-            ref='password'
             returnKeyType={returnKeyType}
             onSubmitEditing={onSubmit}
           />

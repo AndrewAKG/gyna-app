@@ -48,6 +48,11 @@ const assets = [
   require('../assets/icons/Life/77.png'),
   require('../assets/icons/Life/88.png'),
   require('../assets/icons/Life/99.png'),
+  require('../assets/icons/Life/clothes.png'),
+  require('../assets/icons/Life/watches.png'),
+  require('../assets/icons/Life/bags.png'),
+  require('../assets/icons/Life/accessories.png'),
+  require('../assets/icons/Life/shoes.png'),
   require('../assets/icons/ask.png')
 ];
 
