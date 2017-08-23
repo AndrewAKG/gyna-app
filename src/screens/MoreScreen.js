@@ -57,7 +57,7 @@ class MoreScreen extends Component {
     return (
       <BackgroundImage>
         <View style={{ flex: 1 }}>
-
+          
           <ScrollView
             contentContainerStyle={containerStyle}
           >

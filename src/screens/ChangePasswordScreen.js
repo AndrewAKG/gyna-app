@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView, Dimensions,  Modal } from 'react-native';
+import { View, Text, Image, ScrollView, Dimensions, Modal } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
@@ -104,22 +104,22 @@ class ChangePasswordScreen extends Component {
 
   onButtonPress() {
     const { oldPassword, newPassword, confirmPassword } = this.props;
-      this.props.changePassword({ oldPassword, newPassword, confirmPassword });
+    this.props.changePassword({ oldPassword, newPassword, confirmPassword });
   }
 
   render() {
     const {
       containerStyle,
       buttonStyle,
-      inputStyle
+      inputStyle,
+      viewStyle
      } = styles;
 
     return (
       <BackgroundImage>
-        <View style={{ flex: 1 }}>
-          <ScrollView
-            contentContainerStyle={containerStyle}
-          >
+        <View style={viewStyle}>
+
+          <View style={{ flex: 2.5 }}>
             <InputPassword
               placeholder='Old Password'
               style={inputStyle}
@@ -127,18 +127,24 @@ class ChangePasswordScreen extends Component {
               value={this.props.oldPassword}
 
             />
+          </View>
+          <View style={{ flex: 2.5 }}>
             <InputPassword
               placeholder='New Password'
               style={inputStyle}
               onChangeText={this.onNewPasswordChanged.bind(this)}
               value={this.props.newPassword}
             />
+          </View>
+          <View style={{ flex: 2.5 }}>
             <InputPassword
               placeholder='Confirm Password'
               style={inputStyle}
               onChangeText={this.onConfirmPasswordChanged.bind(this)}
               value={this.props.confirmPassword}
             />
+          </View>
+          <View style={{ flex: 2.5 }}>
             <Button
               onPress={this.onButtonPress.bind(this)}
               title="Save"
@@ -147,9 +153,8 @@ class ChangePasswordScreen extends Component {
               fontWeight='bold'
               fontSize={0.047 * SCREEN_WIDTH}
             />
-            {this.renderModal()}
-
-          </ScrollView>
+          </View>
+          {this.renderModal()}
         </View>
       </BackgroundImage>
     );
@@ -195,6 +200,11 @@ const styles = {
     marginVertical: 10,
     justifyContent: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.6)'
+  },
+  viewStyle: {
+    flex: 1, 
+    alignItems: 'center', 
+    marginVertical: 40
   }
 };
 

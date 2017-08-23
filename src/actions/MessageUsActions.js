@@ -61,7 +61,7 @@ export const sendMessage = ({ name, subject, message, email }) => {
         console.log(err);
       }
       else {
-        if ((name || subject || message || email) === '') {
+        if ((name === '') || (subject === '') || (email === '') || (message === '')) {
           dispatch({ type: SEND_MESSAGE_FAILED, error: 'Please enter all fields' });
         }
         else {
