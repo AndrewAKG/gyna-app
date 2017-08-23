@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Dimensions, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { View, Text, Image, Dimensions, TouchableWithoutFeedback, ScrollView, Modal } from 'react-native';
 import {
   BackgroundImage,
   AnotherIssue,
@@ -13,7 +13,8 @@ import {
   subjectChanged,
   messageChanged,
   sendIssue,
-  senderEmailChanged
+  senderEmailChanged,
+  clearIssue
 } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -41,31 +42,56 @@ class HelpDeskScreen extends Component {
     headerTitle: 'Help Desk',
   };
 
+  renderContent() {
+    if (this.props.loading) {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Spinner />
+        </View>
+      );
+    }
+    else {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            {this.props.errorIssue}
+          </Text>
+        </View>
+      );
+    }
+  }
+
+  renderModal() {
+    if (this.props.loading || this.props.successIssue === 'false') {
+      return (
+        <Modal
+          animationType={'fade'}
+          visible={this.state.modal}
+          transparent={true}
+          presentationStyle={'overFullScreen'}
+          onShow={() => setTimeout(() => this.setState({ modal: false }), 4000)}
+        >
+          {this.renderContent()}
+        </Modal>
+      );
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     this.onIssueSent(nextProps);
   }
 
   onIssueSent(props) {
-    if (props.success === 'true') {
-      this.setState({ onIssueButtonPressed: true })
-    //  this.props.navigation.navigate('helpDesk');
+    if (props.successIssue === 'true') {
+      setTimeout(() => this.props.clearIssue(), 1000);
     }
-    else {
-      if (props.loading) {
-        return <Spinner />
-      }
-      else {
-        if (props.loading === false) {
-          return <View />
-        }
-        else {
-          if (props.success === 'false') {
-            this.props.navigation.navigate('more');
-          }
-        }
-      }
+    else if (props.successIssue === 'false') {
+      this.setState({ modal: true });
+      setTimeout(() => this.props.clearIssue(), 3000);
     }
-    console.log(props.serverMessage);
+    else if (props.loading) {
+      this.setState({ modal: true });
+    }
   }
 
   onIssueButtonPressed() {
@@ -83,22 +109,18 @@ class HelpDeskScreen extends Component {
   }
 
   onNameChanged(text) {
-    //  this.setState({ name: text });
     this.props.senderNameChanged(text);
   }
 
   onSubjectChanged(text) {
-    // this.setState({ subject: text });
     this.props.subjectChanged(text);
   }
 
   onMessageChanged(text) {
-    //this.setState({ message: text });
     this.props.messageChanged(text);
   }
 
   onEmailChanged(text) {
-    //  this.setState({ email: text });
     this.props.senderEmailChanged(text);
   }
 
@@ -169,6 +191,7 @@ class HelpDeskScreen extends Component {
                 onChangeTextMessage={this.onMessageChanged.bind(this)}
                 valueMessage={this.props.message}
               />
+              {this.renderModal()}
 
             </ScrollView>
 
@@ -228,12 +251,19 @@ const styles = {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0)',
     marginBottom: 20
+  },
+  feedbackStyle: {
+    flex: 1,
+    alignItems: 'center',
+    marginVertical: 10,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
   }
 };
 
 const mapStateToProps = ({ messageSending }) => {
-  const { success, loading, serverMessage, name, email, subject, message } = messageSending;
-  return { success, loading, serverMessage, name, email, subject, message };
+  const { successIssue, loading, serverMessage, name, email, subject, message, errorIssue } = messageSending;
+  return { successIssue, loading, serverMessage, name, email, subject, message, errorIssue };
 };
 
 
@@ -243,6 +273,7 @@ export default connect(mapStateToProps,
     senderNameChanged,
     subjectChanged,
     messageChanged,
-    sendIssue
+    sendIssue,
+    clearIssue
   })
   (HelpDeskScreen);

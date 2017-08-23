@@ -76,14 +76,13 @@ class ChangePasswordScreen extends Component {
           visible={this.state.modal}
           transparent={true}
           presentationStyle={'overFullScreen'}
-          onShow={() => setInterval(() => this.setState({ modal: false }), 3000)}
+          onShow={() => setTimeout(() => this.setState({ modal: false }), 4000)}
         >
           {this.renderContent()}
         </Modal>
       );
     }
   }
-
 
   onChangeComplete(props) {
     if (props.success === 'true') {
@@ -92,7 +91,7 @@ class ChangePasswordScreen extends Component {
     }
     else if (props.success === 'false') {
       this.setState({ modal: true });
-      setTimeout(() => this.props.clearPassword(), 3000);
+      setTimeout(() => this.props.clearPassword(), 4000);
     }
     else if (props.loading) {
       this.setState({ modal: true });
@@ -105,7 +104,7 @@ class ChangePasswordScreen extends Component {
 
   onButtonPress() {
     const { oldPassword, newPassword, confirmPassword } = this.props;
-      this.props.changePassword({ oldPassword, newPassword });
+      this.props.changePassword({ oldPassword, newPassword, confirmPassword });
   }
 
   render() {
