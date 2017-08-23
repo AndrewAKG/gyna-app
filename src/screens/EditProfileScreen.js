@@ -40,19 +40,19 @@ class EditProfileScreen extends Component {
     console.log(props.success);
     if (props.success === 'true') {
       console.log('gh hna');
-      setTimeout(() => this.props.userData(), 2000);
-      setTimeout(() => this.props.clearProps(), 2000);
+      this.props.userData();
+      this.props.clearProps();
     }
     else if (props.success === 'false') {
       console.log('gh hna')
       this.setState({ modal: true });
-      setTimeout(() => this.props.clearProps(), 3000);
-      setTimeout(() => this.props.userData(), 3000);
+      this.props.clearProps();
     }
     else if (props.loading) {
       this.setState({ modal: true });
     }
   }
+
   renderContent() {
     if (this.props.loading) {
       return (
@@ -80,7 +80,7 @@ class EditProfileScreen extends Component {
           visible={this.state.modal}
           transparent={true}
           presentationStyle={'overFullScreen'}
-          onShow={() => setInterval(() => this.setState({ modal: false }), 3000)}
+          onShow={() => setTimeout(() => this.setState({ modal: false }), 3000)}
         >
           {this.renderContent()}
         </Modal>
@@ -108,7 +108,7 @@ class EditProfileScreen extends Component {
     const { username, email, address, mobile } = this.props;
     const { date } = this.state;
     this.props.editProfile({ username, email, address, mobile, date });
-    // this.props.userData();
+//    this.props.userData();
 
   }
 

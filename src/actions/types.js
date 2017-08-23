@@ -51,6 +51,8 @@ export const SEND_ISSUE = 'send_issue';
 export const SEND_ISSUE_SUCCESS = 'send_issue_success';
 export const SEND_ISSUE_FAILED = 'send_issue_failed';
 export const CLEAR_STATE_MESSAGE = 'clear_state_message';
+export const CLEAR_SUCCESS = 'clear_success';
+export const CLEAR_ISSUE = 'clear_issue';
 
 /** Search Types **/
 export const SEARCH_WORD_CHANGED = 'search_word';
@@ -72,6 +74,8 @@ export const EDIT_PHONE = 'edit_phone';
 export const EDIT_ADDRESS = 'edit_address';
 export const CLEAR_PROPS = 'clear_props';
 export const CLEAR_STATE = 'clear_state';
+
+/**Logout types */
 export const LOGOUT = 'logout';
 export const LOGOUT_USER_SUCCESS = 'logout_user_success';
 

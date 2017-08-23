@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Dimensions, Linking, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { View, Text, Image, Dimensions, Linking, TouchableWithoutFeedback, ScrollView, Modal } from 'react-native';
 import { Entypo, Foundation, FontAwesome } from '@expo/vector-icons';
 import { BackgroundImage, MessageUs, Address, Spinner, MoreScreenButton } from '../components';
 import { connect } from 'react-redux';
@@ -8,7 +8,8 @@ import {
   subjectChanged,
   messageChanged,
   sendMessage,
-  senderEmailChanged
+  senderEmailChanged,
+  clearSuccess
 } from '../actions';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -31,26 +32,56 @@ class ContactUsScreen extends Component {
     headerTintColor: 'white',
     headerTitle: 'Contact Us',
   };
+  renderContent() {
+    if (this.props.loading) {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Spinner />
+        </View>
+      );
+    }
+    else {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            {this.props.error}
+          </Text>
+        </View>
+      );
+    }
+  }
+
+  renderModal() {
+    if (this.props.loading || this.props.success === 'false') {
+      return (
+        <Modal
+          animationType={'fade'}
+          visible={this.state.modal}
+          transparent={true}
+          presentationStyle={'overFullScreen'}
+          onShow={() => setTimeout(() => this.setState({ modal: false }), 4000)}
+        >
+          {this.renderContent()}
+        </Modal>
+      );
+    }
+  }
 
   componentWillReceiveProps(nextProps) {
     this.onMessageSent(nextProps);
   }
 
   onMessageSent(props) {
-    if (props.success) {
-      this.setState({ onMessageButtonPressed: true })
-      //  this.props.navigation.navigate('contactUs');
+    if (props.success === 'true') {
+      setTimeout(() => this.props.clearSuccess(), 1000);
+    }
+    else if (props.success === 'false') {
+      this.setState({ modal: true });
+      setTimeout(() => this.props.clearSuccess(), 3000);
     }
     else if (props.loading) {
-      return <Spinner />;
+      this.setState({ modal: true });
     }
-    else if (!props.loading) {
-      return <View />;
-    }
-    else if (!props.success) {
-      this.props.navigation.navigate('login');
-    }
-    console.log(props.serverMessage);
   }
 
   onPress() {
@@ -74,22 +105,18 @@ class ContactUsScreen extends Component {
   }
 
   onNameChanged(text) {
-    // this.setState({ name: text });
     this.props.senderNameChanged(text);
   }
 
   onSubjectChanged(text) {
-    //this.setState({ subject: text });
     this.props.subjectChanged(text);
   }
 
   onMessageChanged(text) {
-    //this.setState({ message: text });
     this.props.messageChanged(text);
   }
 
   onEmailChanged(text) {
-    //this.setState({ email: text });
     this.props.senderEmailChanged(text);
   }
 
@@ -171,7 +198,7 @@ class ContactUsScreen extends Component {
                 onChangeTextMessage={this.onMessageChanged.bind(this)}
                 valueMessage={this.props.message}
               />
-
+              {this.renderModal()}
             </ScrollView>
 
           </View>
@@ -215,11 +242,18 @@ const styles = {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0)',
     marginBottom: 20
+  },
+  feedbackStyle: {
+    flex: 1,
+    alignItems: 'center',
+    marginVertical: 10,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
   }
 }
 const mapStateToProps = ({ messageSending }) => {
-  const { success, loading, serverMessage, name, email, message, subject } = messageSending;
-  return { success, loading, serverMessage, name, email, message, subject };
+  const { success, loading, serverMessage, name, email, message, subject, error } = messageSending;
+  return { success, loading, serverMessage, name, email, message, subject, error };
 };
 
 
@@ -229,6 +263,7 @@ export default connect(mapStateToProps,
     senderNameChanged,
     subjectChanged,
     messageChanged,
-    sendMessage
+    sendMessage,
+    clearSuccess
   })
   (ContactUsScreen);
