@@ -31,7 +31,7 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: false, errorMsg: action.error, success: false };
 
     case SEARCH_WORD_CHANGED:
-      return { ...state, keyword: action.payLoad };
+      return { ...state, keyword: action.keyword };
 
     case SEARCH_FETCH:
       return { ...state, loading: true };

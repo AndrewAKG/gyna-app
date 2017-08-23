@@ -39,7 +39,6 @@ class KnowledgeScreen extends Component {
   }
 
   onWordChange(text) {
-    this.setState({ keyword: text });
     this.props.searchWordChanged(text);
   }
 
@@ -198,6 +197,13 @@ class KnowledgeScreen extends Component {
               }
               value={this.props.keyword}
               onChangeText={this.onWordChange.bind(this)}
+              returnKeyType={"go"}
+              onSubmit={(event) => {
+                const { keyword } = this.props;
+                console.log(keyword);
+                this.setState({ search: true });
+                this.props.searchContent({ keyword });
+              }}
             />
           </View>
           {this.renderContent()}

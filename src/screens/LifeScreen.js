@@ -39,7 +39,6 @@ class LifeScreen extends Component {
   }
 
   onWordChange(text) {
-    this.setState({ keyword: text });
     this.props.searchWordChanged(text);
   }
 
@@ -174,7 +173,7 @@ class LifeScreen extends Component {
               onIconPress={
                 (!this.state.search) ?
                   () => {
-                    const { keyword } = this.state;
+                    const { keyword } = this.props;
                     this.setState({ search: true });
                     this.props.searchContent({ keyword });
                   }
@@ -186,6 +185,13 @@ class LifeScreen extends Component {
               }
               value={this.props.keyword}
               onChangeText={this.onWordChange.bind(this)}
+              returnKeyType={"go"}
+              onSubmit={(event) => {
+                const { keyword } = this.props;
+                console.log(keyword);
+                this.setState({ search: true });
+                this.props.searchContent({ keyword });
+              }}
             />
           </View>
           {this.renderContent()}

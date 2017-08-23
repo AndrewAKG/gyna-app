@@ -38,7 +38,7 @@ class InputPassword extends React.Component {
       style,
       returnKeyType,
       onChangeText,
-      onSubmit,
+      onSubmit
     } = this.props;
 
     return (

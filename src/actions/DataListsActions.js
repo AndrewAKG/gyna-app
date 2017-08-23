@@ -13,7 +13,7 @@ import { AsyncStorage } from 'react-native';
 export const searchWordChanged = (text) => {
   return {
     type: SEARCH_WORD_CHANGED,
-    payload: text
+    keyword: text
   };
 };
 
