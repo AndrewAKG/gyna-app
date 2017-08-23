@@ -198,7 +198,7 @@ class KnowledgeScreen extends Component {
               }
               value={this.props.keyword}
               onChangeText={this.onWordChange.bind(this)}
-              returnKeyType={"go"}
+              returnKeyType={"search"}
               onSubmit={(event) => {
                 const { keyword } = this.props;
                 console.log(keyword);
