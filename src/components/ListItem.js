@@ -74,8 +74,7 @@ const styles = {
     marginTop: 15
   },
   textContainer: {
-    marginTop: 5,
-    flex: 2,
+    marginTop: 10,
     alignItems: 'center'
   },
   textStyle: {
@@ -84,9 +83,7 @@ const styles = {
     textAlign: 'center'
   },
   iconContainer: {
-    flex: 8,
-    alignItems: 'center',
-    justifyContent: 'flex-start'
+    alignItems: 'center'
   },
   iconStyle: {
     margin: 5,

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, FlatList, ScrollView, Linking } from 'react-native';
 import { connect } from 'react-redux';
-import { BackgroundImage, Spinner, ListDataItem } from '../components';
+import { BackgroundImage, Spinner, ListDataItem, ScreensHeaderTitle } from '../components';
 import { fetchData } from '../actions';
 
 class DataListScreen extends Component {
@@ -11,7 +11,11 @@ class DataListScreen extends Component {
       backgroundColor: '#5C1634'
     },
     headerTintColor: 'white',
-    headerTitle: navigation.state.params.title
+    headerTitle:
+    <ScreensHeaderTitle
+      title={navigation.state.params.title}
+      iconType={navigation.state.params.category}
+    />
   });
 
   componentWillMount() {

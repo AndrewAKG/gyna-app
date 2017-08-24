@@ -84,8 +84,8 @@ const styles = {
     color: 'white'
   },
   iconStyle: {
-    width: 0.055 * SCREEN_WIDTH,
-    height: 0.055 * SCREEN_WIDTH,
+    width: 0.06 * SCREEN_WIDTH,
+    height: 0.06 * SCREEN_WIDTH,
     marginRight: 10,
     paddingVertical: 10
   }
