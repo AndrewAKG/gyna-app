@@ -45,7 +45,7 @@ class EditProfileScreen extends Component {
       this.setState({ modal: true });
       setTimeout(() => this.props.clearProps(), 4000)
       setTimeout(() => this.props.userData(), 4000)
-        }
+    }
     else if (props.loading) {
       this.setState({ modal: true });
     }
@@ -216,10 +216,11 @@ class EditProfileScreen extends Component {
               Anniversary Date
             </Text>
             <BirthdateInput
-              width={0.75 * SCREEN_WIDTH}
-              height={0.08 * SCREEN_HEIGHT}
+              style={{ width: 0.75 * SCREEN_WIDTH }}
+              inputStyle={{ height: 0.08 * SCREEN_HEIGHT, paddingLeft: 5 }}
               date={this.state.date}
               onDateChange={(date) => this.setState({ date: date })}
+              show={false}
             />
 
             <Button
