@@ -49,12 +49,9 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: true };
 
     case LOGOUT:
-      console.log('reducerrrrr here');
       return { ...state, loading: true };
 
     case LOGOUT_USER_SUCCESS:
-      console.log(action.resultLogout);
-      console.log('reducerrrrr');
       return { ...state, ...INITIAL_STATE, user: null, logoutSuccess: 'true' };
 
     case LOGIN_USER_SUCCESS:
@@ -82,11 +79,9 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loading: true };
 
     case SIGNUP_USER_SUCCESS:
-      console.log(action.result);
       return { ...state, ...INITIAL_STATE, user: action.result, signUpSuccess: 'true' };
 
     case SIGNUP_USER_FAILED:
-      console.log(action.result);
       return { ...state, signUpSuccess: 'false', loading: false, error: action.error };
 
     default:

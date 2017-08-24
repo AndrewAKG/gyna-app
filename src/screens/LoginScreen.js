@@ -48,26 +48,14 @@ class LoginScreen extends Component {
   };
 
   componentDidMount() {
-    AsyncStorage.getItem('username').then((username) => {
-      console.log(username);
-      if (username !== null) {
-        this.setState({ username });
-        AsyncStorage.getItem('password').then((password) => {
-          console.log(password);
-          if (password !== null) {
-            this.setState({ password });
-          }
-        }).then(() => {
-          const { username, password, checked } = this.state;
-          console.log('WASAL', username, password);
-          if (username !== '' && password !== '') {
-            console.log('DA5AL', username, password, checked);
-            this.props.loginUser({ username, password, checked });
-          }
-        });
-      }
-      else {
-        return;
+    let keys = ['username', 'password'];
+    AsyncStorage.multiGet(keys, (err, values) => {
+      console.log(values);
+      let username = values[0][1];
+      let password = values[1][1];
+      const { checked } = this.state;
+      if (username !== '' && password !== '') {
+        this.props.loginUser({ username, password, checked });
       }
     });
   }
