@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform } from 'react-native';
+import { Platform, Dimensions } from 'react-native';
 import { StackNavigator, TabNavigator } from 'react-navigation';
 import WelcomeScreen from './WelcomeScreen';
 import LoginScreen from './LoginScreen';
@@ -20,6 +20,8 @@ import LoginTrouble from './LoginTrouble';
 import PDFsScreen from './PDFsScreen';
 import VideosScreen from './VideosScreen';
 import WebViewScreen from './WebViewScreen';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class Navigator extends Component {
   render() {
@@ -90,12 +92,12 @@ class Navigator extends Component {
                 backgroundColor: 'white'
               },
               labelStyle: {
-                fontSize: 10,
+                fontSize: 0.03 * SCREEN_WIDTH,
                 paddingBottom: 5
               },
-              tabStyle: {
-                flex: 1
-              },
+              // tabStyle: {
+              //   flex: 1
+              // },
               style: {
                 backgroundColor: '#5C1634',
                 height: 56,

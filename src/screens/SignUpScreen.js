@@ -154,19 +154,20 @@ class SignUpScreen extends Component {
               source={require('../../assets/icons/18.png')}
               style={{ width: 0.9 * SCREEN_WIDTH, height: 0.22 * SCREEN_HEIGHT }}
             />
-            <Input
-              iconSource={require('../../assets/icons/Forms/doc.png')}
-              placeholder='Username'
-              style={{ marginTop: 20 }}
-              onChangeText={this.onUserNameChange.bind(this)}
-              value={this.props.username}
-            />
 
             <Input
               iconSource={require('../../assets/icons/Forms/doc.png')}
               placeholder='Name'
+              style={{ marginTop: 20 }}
               onChangeText={this.onNameChange.bind(this)}
               value={this.props.name}
+            />
+
+            <Input
+              iconSource={require('../../assets/icons/Forms/doc.png')}
+              placeholder='Username'
+              onChangeText={this.onUserNameChange.bind(this)}
+              value={this.props.username}
             />
 
             <InputPassword

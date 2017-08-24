@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, FlatList, ScrollView } from 'react-native';
-import { BackgroundImage, Spinner, ListDataItem } from '../components';
+import { BackgroundImage, Spinner, ListDataItem, ScreensHeaderTitle } from '../components';
 import FashionData from '../FashionData.json';
 
 class FashionScreen extends Component {
@@ -10,7 +10,11 @@ class FashionScreen extends Component {
       backgroundColor: '#5C1634'
     },
     headerTintColor: 'white',
-    headerTitle: navigation.state.params.title
+    headerTitle:
+    <ScreensHeaderTitle
+      title={navigation.state.params.title}
+      iconType={navigation.state.params.category}
+    />
   });
 
   navigateToData(item) {

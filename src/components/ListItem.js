@@ -44,7 +44,7 @@ class ListItem extends React.PureComponent {
       case 99:
         iconPath = require('../../assets/icons/Life/99.png'); break;
       default:
-        iconPath = require('../../assets/icons/Knowledge/21.png'); break;
+        iconPath = require('../../assets/icons/image.png'); break;
     }
 
     return (
