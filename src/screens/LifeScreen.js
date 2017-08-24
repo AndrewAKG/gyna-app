@@ -229,8 +229,7 @@ class LifeScreen extends Component {
 const styles = {
   scrollStyle: {
     flex: 9,
-    alignItems: 'center',
-    justifyContent: 'space-between'
+    alignItems: 'center'
   },
   icon: {
     width: 24,

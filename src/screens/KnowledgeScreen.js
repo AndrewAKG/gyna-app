@@ -140,7 +140,7 @@ class KnowledgeScreen extends Component {
           );
         } else {
           return (
-            <View style={styles.scrollStyle}>
+            <View style={{ flex: 9 }}>
               <ScrollView>
                 <FlatList
                   data={this.props.searchData}
@@ -219,8 +219,7 @@ class KnowledgeScreen extends Component {
 const styles = {
   scrollStyle: {
     flex: 9,
-    alignItems: 'center',
-    justifyContent: 'space-between'    
+    alignItems: 'center'
   },
   icon: {
     width: 24,
