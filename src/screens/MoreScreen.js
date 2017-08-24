@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView, Dimensions } from 'react-native';
+import { View, Text, Image, ScrollView, Dimensions, Alert, Modal } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { BackgroundImage, Input, MoreScreenButton } from '../components';
-import { userData, logout } from '../actions';
-
-
+import { userData, logout,clearLogoutSuccess } from '../actions';
+import { NavigationActions } from 'react-navigation'
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
+const resetAction = NavigationActions.reset({
+  index: 1,
+  actions: [
+    NavigationActions.navigate({ routeName: 'welcome'}) ,
+    NavigationActions.navigate({ routeName: 'login'}) 
+  ]
+})
 class MoreScreen extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false,
+    }
+  }
+
   static navigationOptions = {
     tabBarLabel: 'More',
     headerLeft: null,
@@ -20,7 +34,6 @@ class MoreScreen extends Component {
     },
     headerTitle: '',
     tabBarIcon: ({ tintColor }) => (
-      // setting the Tab's Icon
       <Image
         source={require('../../assets/icons/Tabs/more.png')}
         style={[styles.icon, { tintColor }]}
@@ -34,7 +47,8 @@ class MoreScreen extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.logoutSuccess === 'true') {
-      this.props.navigation.navigate('login');
+      this.props.clearLogoutSuccess();
+      this.props.navigation.dispatch(resetAction)
     }
   }
 
@@ -172,6 +186,7 @@ const mapStateToProps = ({ data, auth }) => {
 export default connect(mapStateToProps,
   {
     userData,
-    logout
+    logout,
+    clearLogoutSuccess
   })
   (MoreScreen);

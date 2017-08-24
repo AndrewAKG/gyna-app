@@ -18,7 +18,8 @@ import {
   FORGET_COMPLETE,
   SIGNUP_USER_FAILED,
   LOGOUT,
-  LOGOUT_USER_SUCCESS
+  LOGOUT_USER_SUCCESS,
+  CLEAR_LOGOUT_SUCCESS
 } from './types';
 import { Platform, AsyncStorage } from 'react-native';
 import AuthPersistance from './AuthPersistance';
@@ -226,3 +227,7 @@ const logoutSuccess = (dispatch) => {
   console.log('Removed');
   dispatch({ type: LOGOUT_USER_SUCCESS, resultLogout: 'success' });
 };
+
+export const clearLogoutSuccess = () => {
+  return { type: CLEAR_LOGOUT_SUCCESS };
+}

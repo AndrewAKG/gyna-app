@@ -14,7 +14,8 @@ import {
   LOGIN_USER_FAILED,
   SIGNUP_USER_FAILED,
   LOGOUT,
-  LOGOUT_USER_SUCCESS
+  LOGOUT_USER_SUCCESS,
+  CLEAR_LOGOUT_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -35,6 +36,9 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+
+    case CLEAR_LOGOUT_SUCCESS:
+    return { logoutSuccess: '' };
 
     case CLEAR_STATE:
       return { ...INITIAL_STATE, error: state.error };
