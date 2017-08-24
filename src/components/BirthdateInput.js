@@ -26,14 +26,16 @@ class BirthdateInput extends React.Component {
 
   renderPicker() {
     let today = new Date();
+    const { style, inputStyle,show } = this.props;
     return (
       <DatePicker
-        style={styles.pickerStyle}
+        style={[styles.pickerStyle, style]}
         mode="date"
         date={this.props.date}
         placeholder={'Aniversary Date'}
         format="MM-DD-YYYY"
         minDate="01-01-1930"
+        showIcon={show}
         maxDate={today}
         androidMode='spinner'
         confirmBtnText="Confirm"
@@ -44,10 +46,10 @@ class BirthdateInput extends React.Component {
             position: 'absolute',
             left: 10,
             top: 6,
-            width: 25,
-            height: 25
+            width: 0.1 * SCREEN_WIDTH,
+            height: 0.1 * SCREEN_WIDTH
           },
-          dateInput: {
+          dateInput: [{
             borderColor: 'white',
             backgroundColor: 'rgba(0,0,0,0)',
             borderRadius: 0.06 * SCREEN_HEIGHT,
@@ -57,7 +59,7 @@ class BirthdateInput extends React.Component {
             alignItems: 'flex-start',
             paddingLeft: 53,
             marginBottom: 10
-          },
+          }, inputStyle],
           dateText: {
             fontSize: 0.055 * SCREEN_WIDTH,
             color: 'white',

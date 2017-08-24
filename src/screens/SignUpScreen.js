@@ -201,6 +201,7 @@ class SignUpScreen extends Component {
             <BirthdateInput
               date={this.state.date}
               onDateChange={(date) => this.setState({ date: date })}
+              show={true}
             />
 
             {this.renderModal()}

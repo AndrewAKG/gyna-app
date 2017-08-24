@@ -41,8 +41,8 @@ class MoreScreen extends Component {
     )
   };
 
-  onButtonPress() {
-    this.props.logout();
+  componentWillMount() {
+    this.props.userData();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -52,8 +52,8 @@ class MoreScreen extends Component {
     }
   }
 
-  componentWillMount() {
-    this.props.userData();
+  onButtonPress() {
+    this.props.logout();
   }
 
   render() {
@@ -172,8 +172,7 @@ const styles = {
     width: 0.75 * SCREEN_WIDTH,
     height: 0.08 * SCREEN_HEIGHT,
     margin: 18
-  },
-
+  }
 };
 
 const mapStateToProps = ({ data, auth }) => {
@@ -181,7 +180,6 @@ const mapStateToProps = ({ data, auth }) => {
   const { logoutSuccess } = auth
   return { username, loading, logoutSuccess };
 };
-
 
 export default connect(mapStateToProps,
   {

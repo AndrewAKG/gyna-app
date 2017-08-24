@@ -164,9 +164,6 @@ class LoginScreen extends Component {
               onChangeText={this.onEmailChange.bind(this)}
               value={this.props.username}
               returnKeyType={"next"}
-              onSubmit={(event) => {
-                this.refs.nextInput.focus();
-              }}
             />
 
             <InputPassword
