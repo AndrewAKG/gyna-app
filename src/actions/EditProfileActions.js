@@ -82,34 +82,43 @@ export const editProfile = ({ username, mobile, token, address, date, email }) =
         console.log(err);
       }
       else {
-        console.log(username);
-        console.log(mobile);
-        console.log(email);
-        console.log(address);
-        console.log(date)
-        var formData = new FormData();
-        formData.append('username', username);
-        formData.append('mobile', mobile);
-        formData.append('email', email);
-        formData.append('address', address);
-        formData.append('anniversary_date', date);
-        formData.append('api_key', token);
+        if ((username === '') || (mobile === '') || (email === '') || (date === '') || (address === '')) {
+          dispatch({ type: EDIT_PROFILE_FAILED, error: 'please enter all fields' });
+        } else {
+          const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          if (re.test(email)) {
+            console.log(username);
+            console.log(mobile);
+            console.log(email);
+            console.log(address);
+            console.log(date)
+            var formData = new FormData();
+            formData.append('username', username);
+            formData.append('mobile', mobile);
+            formData.append('email', email);
+            formData.append('address', address);
+            formData.append('anniversary_date', date);
+            formData.append('api_key', token);
 
-        fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/edit_profile', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'multipart/form-data'
-          },
-          body: formData
-        }).then((response) => response.json())
-          .then((responseJson) => {
-            if (responseJson.result) {
-              dispatch({ type: EDIT_PROFILE_SUCCESS, result: responseJson.message });
-            } else {
-              dispatch({ type: EDIT_PROFILE_FAILED, error: responseJson.message });
-            }
-          });
+            fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/edit_profile', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'multipart/form-data'
+              },
+              body: formData
+            }).then((response) => response.json())
+              .then((responseJson) => {
+                if (responseJson.result) {
+                  dispatch({ type: EDIT_PROFILE_SUCCESS, result: responseJson.message });
+                } else {
+                  dispatch({ type: EDIT_PROFILE_FAILED, error: responseJson.message });
+                }
+              });
+          } else {
+            dispatch({ type: EDIT_PROFILE_FAILED, error: 'please enter a valid email' });            
+          }
+        }
       }
     });
   };
