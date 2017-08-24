@@ -28,7 +28,7 @@ class Navigator extends Component {
         screen: WelcomeScreen
       },
       login: {
-        screen: LoginScreen
+        screen: LoginScreen,
       },
       signUp: {
         screen: SignUpScreen
@@ -63,7 +63,7 @@ class Navigator extends Component {
       webviewScreen: {
         screen: WebViewScreen
       },
-      fashion:{
+      fashion: {
         screen: FashionScreen
       },
       mainScreen: {
@@ -73,11 +73,16 @@ class Navigator extends Component {
           life: { screen: LifeScreen },
           noti: { screen: NotificationsScreen },
           more: { screen: MoreScreen }
-        }, {
+        },
+          {
             tabBarPosition: 'bottom',
             animationEnabled: true,
             swipeEnabled: true,
-            tabBarOptions: {
+            navigationOptions: {
+              gesturesEnabled: false
+            },
+            tabBarOptions:
+            {
               showIcon: true,
               upperCaseLabel: false,
               activeTintColor: '#FFFFFF',

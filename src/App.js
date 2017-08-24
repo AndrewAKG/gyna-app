@@ -16,6 +16,7 @@ const assets = [
   require('../assets/icons/1.png'),
   require('../assets/icons/2.png'),
   require('../assets/icons/bigZ.png'),
+  require('../assets/icons/rsz_bigz.png'),
   require('../assets/icons/4_1.png'),
   require('../assets/icons/5.png'),
   require('../assets/icons/18.png'),

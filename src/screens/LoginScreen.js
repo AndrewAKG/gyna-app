@@ -44,7 +44,8 @@ class LoginScreen extends Component {
       backgroundColor: '#5C1634'
     },
     headerTitle: '',
-    headerLeft: null
+    headerLeft: null,
+    gesturesEnabled: false
   };
 
   componentDidMount() {

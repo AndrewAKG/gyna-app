@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, Text, ScrollView, Dimensions, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { SearchBar } from 'react-native-elements';
-import { BackgroundImage, SearchInput, Spinner, ListDataItem } from '../components';
+import { BackgroundImage, SearchInput, Spinner, ListDataItem, ScreensHeaderTitle } from '../components';
 import ListItem from '../components/ListItem';
 import LifeData from '../LifeData.json';
 import { searchContent, searchWordChanged, emptySearchWord } from '../actions';
@@ -19,7 +19,12 @@ class LifeScreen extends Component {
     },
     headerBackTitle: 'Back',
     headerTintColor: 'white',
-    headerTitle: 'Your Life',
+    headerTitle:
+    <ScreensHeaderTitle
+      title='Your Life'
+      iconType='tabBar'
+    />
+    ,
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image
@@ -108,7 +113,7 @@ class LifeScreen extends Component {
     if (!this.state.search) {
       return (
         <View style={styles.scrollStyle}>
-          <ScrollView>
+          <ScrollView style={{ width: 0.8 * SCREEN_WIDTH }}>
             <FlatList
               data={LifeData}
               numColumns={3}
@@ -223,7 +228,9 @@ class LifeScreen extends Component {
 
 const styles = {
   scrollStyle: {
-    flex: 9
+    flex: 9,
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   icon: {
     width: 24,

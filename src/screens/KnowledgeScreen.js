@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Image, Text, ScrollView, Dimensions, FlatList, Linking } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { BackgroundImage, SearchInput, Spinner, ListDataItem } from '../components';
+import { BackgroundImage, SearchInput, Spinner, ListDataItem, ScreensHeaderTitle } from '../components';
 import ListItem from '../components/ListItem';
 import KnowledgeData from '../KnowledgeData.json';
 import { searchContent, searchWordChanged, emptySearchWord } from '../actions';
@@ -18,8 +18,12 @@ class KnowledgeScreen extends Component {
     headerStyle: {
       backgroundColor: '#5C1634'
     },
-    headerTitle: 'Your Knowledge',
     headerBackTitle: 'Back',
+    headerTitle:
+    <ScreensHeaderTitle
+      title='Your Knowledge'
+      iconType='tabBar'
+    />,
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image
@@ -99,7 +103,7 @@ class KnowledgeScreen extends Component {
     if (!this.state.search) {
       return (
         <View style={styles.scrollStyle}>
-          <ScrollView>
+          <ScrollView style={{ width: 0.8 * SCREEN_WIDTH }}>
             <FlatList
               data={this.state.data}
               numColumns={3}
@@ -214,7 +218,9 @@ class KnowledgeScreen extends Component {
 
 const styles = {
   scrollStyle: {
-    flex: 9
+    flex: 9,
+    alignItems: 'center',
+    justifyContent: 'space-between'    
   },
   icon: {
     width: 24,

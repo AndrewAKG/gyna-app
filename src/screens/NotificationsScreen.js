@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, FlatList, ScrollView, Linking } from 'react-native';
 import { connect } from 'react-redux';
-import { BackgroundImage, Spinner, ListDataItem } from '../components';
+import { BackgroundImage, Spinner, ListDataItem, ScreensHeaderTitle } from '../components';
 import { fetchNotifications } from '../actions';
 
 class NotificationsScreen extends Component {
@@ -12,7 +12,11 @@ class NotificationsScreen extends Component {
       backgroundColor: '#5C1634'
     },
     headerTintColor: 'white',
-    headerTitle: 'Notifications',
+    headerTitle:
+    <ScreensHeaderTitle
+      title='Notifications'
+      iconType='tabBar'
+    />,
     tabBarIcon: ({ tintColor }) => (
       // setting the Tab's Icon
       <Image

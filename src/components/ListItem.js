@@ -71,15 +71,15 @@ const styles = {
   containerStyle: {
     backgroundColor: 'transparent',
     flex: 1,
-    marginTop: 10
+    marginTop: 15
   },
   textContainer: {
+    marginTop: 5,
     flex: 2,
-    alignItems: 'center',
-    justifyContent: 'flex-start'
+    alignItems: 'center'
   },
   textStyle: {
-    fontSize: 16,
+    fontSize: 0.04 * SCREEN_WIDTH,
     color: 'white',
     textAlign: 'center'
   },
@@ -90,8 +90,8 @@ const styles = {
   },
   iconStyle: {
     margin: 5,
-    width: 0.17 * SCREEN_WIDTH,
-    height: 0.17 * SCREEN_WIDTH
+    width: 0.2 * SCREEN_WIDTH,
+    height: 0.2 * SCREEN_WIDTH
   }
 };
 
