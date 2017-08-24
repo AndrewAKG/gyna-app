@@ -92,7 +92,6 @@ class EditProfileScreen extends Component {
       );
     }
     else {
-      console.log('d5l else')
       return (
         <View style={styles.feedbackStyle}>
           <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>

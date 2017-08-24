@@ -81,36 +81,41 @@ export const signUpUser = ({ username, password, email, phone, address, annivers
     dispatch({ type: SIGNUP_USER });
     console.log(email + 'email');
     console.log(anniversaryDate + 'date');
-    var formData = new FormData();
-    formData.append('username', username);
-    formData.append('password', password);
-    formData.append('email', email);
-    formData.append('name', name);
-    formData.append('mobile', phone);
-    formData.append('anniversary_date', anniversaryDate);
-    formData.append('address', address);
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(email)) {
+      var formData = new FormData();
+      formData.append('username', username);
+      formData.append('password', password);
+      formData.append('email', email);
+      formData.append('name', name);
+      formData.append('mobile', phone);
+      formData.append('anniversary_date', anniversaryDate);
+      formData.append('address', address);
 
-    fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/register', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'multipart/form-data'
-      },
-      body: formData
-    }).then((response) => response.json())
-      .then((responseJson) => {
-        if (responseJson.result) {
-          try {
-            let token = responseJson.api_key;
-            AsyncStorage.setItem('token', token, signUpSuccess(dispatch, token));
-          } catch (error) {
-            console.error('AsyncStorage error: ' + error.message);
+      fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/register', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'multipart/form-data'
+        },
+        body: formData
+      }).then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson.result) {
+            try {
+              let token = responseJson.api_key;
+              AsyncStorage.setItem('token', token, signUpSuccess(dispatch, token));
+            } catch (error) {
+              console.error('AsyncStorage error: ' + error.message);
+            }
           }
-        }
-        else {
-          dispatch({ type: SIGNUP_USER_FAILED, error: responseJson.message });
-        }
-      });
+          else {
+            dispatch({ type: SIGNUP_USER_FAILED, error: responseJson.message });
+          }
+        });
+    } else {
+      dispatch({ type: SIGNUP_USER_FAILED, error: 'please enter a valid email !!' });
+    }
   };
 };
 
@@ -122,24 +127,28 @@ const signUpSuccess = (dispatch, token) => {
 export const forgetPassword = ({ email }) => {
   return (dispatch) => {
     dispatch({ type: FORGET_PASSWORD });
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(email)) {
+      var formData = new FormData();
+      formData.append('email', email);
 
-    var formData = new FormData();
-    formData.append('email', email);
-
-    fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/forget-password?email=' + email, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'multipart/form-data'
-      },
-    }).then((response) => response.json())
-      .then((responseJson) => {
-        if (responseJson.result) {
-          dispatch({ type: FORGET_PASSOWRD_SUCCESS, result: responseJson.message });
-        } else {
-          dispatch({ type: FORGET_PASSOWRD_FAILED, error: responseJson.message });
-        }
-      });
+      fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/forget-password?email=' + email, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'multipart/form-data'
+        },
+      }).then((response) => response.json())
+        .then((responseJson) => {
+          if (responseJson.result) {
+            dispatch({ type: FORGET_PASSOWRD_SUCCESS, result: responseJson.message });
+          } else {
+            dispatch({ type: FORGET_PASSOWRD_FAILED, error: responseJson.message });
+          }
+        });
+    } else {
+      dispatch({ type: FORGET_PASSOWRD_FAILED, error: 'please enter a valid email !!' });      
+    }
   };
 };
 
