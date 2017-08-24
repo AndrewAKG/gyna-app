@@ -211,11 +211,11 @@ const loginSuccess = (dispatch, token, checked, username, password) => {
 };
 
 export const logout = () => {
-  console.log('hereeeeeeeeeeee');
   return (dispatch) => {
     dispatch({ type: LOGOUT });
     try {
-      AsyncStorage.removeItem('token', logoutSuccess(dispatch));
+      let keys = ['token','username','password'];
+      AsyncStorage.multiRemove(keys, logoutSuccess(dispatch));
     } catch (error) {
       console.error('AsyncStorage error: ' + error.message);
     }
@@ -223,5 +223,6 @@ export const logout = () => {
 };
 
 const logoutSuccess = (dispatch) => {
+  console.log('Removed');
   dispatch({ type: LOGOUT_USER_SUCCESS, resultLogout: 'success' });
 };
