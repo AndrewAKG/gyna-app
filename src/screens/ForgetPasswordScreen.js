@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image, Dimensions, Modal } from 'react-native';
+import { View, Text, ScrollView, Image, Dimensions, Modal, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { Button, CheckBox } from 'react-native-elements';
 import { Input, BackgroundImage, Spinner } from '../components';
 import { connect } from 'react-redux';
@@ -104,33 +104,38 @@ class ForgetPasswordScreen extends React.Component {
       <BackgroundImage>
 
         <View style={{ flex: 1 }}>
-
-          <Image
-            source={require('../../assets/icons/4_1.png')}
-            style={imageStyle}
-          />
-
-          <View style={containerStyle}>
-            <Input
-              iconSource={require('../../assets/icons/Forms/email.png')}
-              placeholder='E-mail Address'
-              Type='email-address'
-              onChangeText={this.onEmailChange.bind(this)}
-              value={this.props.email}
+          <ScrollView
+          >
+            <Image
+              source={require('../../assets/icons/4_1.png')}
+              style={imageStyle}
             />
 
-            <Button
-              onPress={this.onButtonPress.bind(this)}
-              title="Send Instructions"
-              buttonStyle={buttonStyle}
-              color='white'
-              fontWeight='normal'
-              fontSize={18}
-            />
-          </View>
+            <View style={containerStyle}>
+              <Input
+                iconSource={require('../../assets/icons/Forms/email.png')}
+                placeholder='E-mail Address'
+                Type='email-address'
+                onChangeText={this.onEmailChange.bind(this)}
+                value={this.props.email}
+                returnKeyType={"go"}
+                onSubmit={(event) => {
+                  this.onButtonPress();
+                }}
+              />
 
-          {this.renderModal()}
+              <Button
+                onPress={this.onButtonPress.bind(this)}
+                title="Send Instructions"
+                buttonStyle={buttonStyle}
+                color='white'
+                fontWeight='normal'
+                fontSize={18}
+              />
+            </View>
 
+            {this.renderModal()}
+          </ScrollView>
         </View>
 
       </BackgroundImage>
