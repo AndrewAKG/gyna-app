@@ -44,7 +44,7 @@ class ListItem extends React.PureComponent {
       case 99:
         iconPath = require('../../assets/icons/Life/99.png'); break;
       default:
-        iconPath = require('../../assets/icons/Knowledge/21.png'); break;
+        iconPath = require('../../assets/icons/image.png'); break;
     }
 
     return (
@@ -71,27 +71,24 @@ const styles = {
   containerStyle: {
     backgroundColor: 'transparent',
     flex: 1,
-    marginTop: 10
+    marginTop: 15
   },
   textContainer: {
-    flex: 2,
-    alignItems: 'center',
-    justifyContent: 'flex-start'
+    marginTop: 10,
+    alignItems: 'center'
   },
   textStyle: {
-    fontSize: 16,
+    fontSize: 0.04 * SCREEN_WIDTH,
     color: 'white',
     textAlign: 'center'
   },
   iconContainer: {
-    flex: 8,
-    alignItems: 'center',
-    justifyContent: 'flex-start'
+    alignItems: 'center'
   },
   iconStyle: {
     margin: 5,
-    width: 0.17 * SCREEN_WIDTH,
-    height: 0.17 * SCREEN_WIDTH
+    width: 0.2 * SCREEN_WIDTH,
+    height: 0.2 * SCREEN_WIDTH
   }
 };
 

@@ -78,7 +78,7 @@ class InputPassword extends React.Component {
             <Entypo
               name='eye'
               color="white"
-              size={30}
+              size={0.08 * SCREEN_WIDTH}
             />
           </TouchableWithoutFeedback>
         </View>
@@ -104,8 +104,8 @@ const styles = {
     margin: 10
   },
   imageStyle: {
-    width: 25,
-    height: 25,
+    width: 0.1 * SCREEN_WIDTH,
+    height: 0.1 * SCREEN_WIDTH,
     margin: 15
   }
 }

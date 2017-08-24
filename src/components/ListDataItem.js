@@ -84,7 +84,7 @@ class ListDataItem extends React.Component {
           case 'accessories':
             iconPath = require('../../assets/icons/Life/accessories.png'); break;
           default:
-            iconPath = require('../../assets/icons/x.png'); break;
+            iconPath = require('../../assets/icons/image.png'); break;
         }
 
         return (
