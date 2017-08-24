@@ -53,9 +53,14 @@ class LoginScreen extends Component {
       console.log(values);
       let username = values[0][1];
       let password = values[1][1];
-      const { checked } = this.state;
-      if (username !== '' && password !== '') {
-        this.props.loginUser({ username, password, checked });
+      if (username && password) {
+        const { checked } = this.state;
+        if (username !== '' && password !== '') {
+          this.props.loginUser({ username, password, checked });
+        }
+      }
+      else {
+        return;
       }
     });
   }
