@@ -142,6 +142,10 @@ class ChangePasswordScreen extends Component {
               style={inputStyle}
               onChangeText={this.onConfirmPasswordChanged.bind(this)}
               value={this.props.confirmPassword}
+              returnKeyType={"go"}
+              onSubmit={(event) => {
+                this.onButtonPress();
+              }}
             />
           </View>
           <View style={{ flex: 2.5 }}>
@@ -202,8 +206,8 @@ const styles = {
     backgroundColor: 'rgba(0, 0, 0, 0.6)'
   },
   viewStyle: {
-    flex: 1, 
-    alignItems: 'center', 
+    flex: 1,
+    alignItems: 'center',
     marginVertical: 40
   }
 };
