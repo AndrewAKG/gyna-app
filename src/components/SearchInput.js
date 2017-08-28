@@ -2,7 +2,7 @@
  * this component is used whenever i want to take a text field as input from user
  */
 import React from 'react';
-import { View, Text, TextInput, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Dimensions, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -37,10 +37,10 @@ const SearchInput = ({
       <View style={{ flex: 2 }}>
         <TouchableOpacity onPress={onIconPress}>
           <Ionicons
-              name={iconSource}
-              color="white"
-              size={0.08 * SCREEN_WIDTH}
-            />
+            name={iconSource}
+            color="white"
+            size={0.08 * SCREEN_WIDTH}
+          />
         </TouchableOpacity>
       </View>
     </View>
@@ -70,11 +70,6 @@ const styles = {
     fontWeight: '400',
     height: 50,
     width: 0.6 * SCREEN_WIDTH
-  },
-  imageStyle: {
-    width: 0.06 * SCREEN_WIDTH,
-    height: 0.06 * SCREEN_WIDTH,
-    margin: 15
   }
 };
 
