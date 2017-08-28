@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { View, Text, TextInput, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -14,7 +15,8 @@ const SearchInput = ({
   onIconPress,
   onChangeText,
   returnKeyType,
-  onSubmit }) => {
+  onSubmit
+}) => {
   const { containerStyle, inputStyle, imageStyle } = styles;
 
   return (
@@ -33,10 +35,11 @@ const SearchInput = ({
       </View>
       <View style={{ flex: 2 }}>
         <TouchableOpacity onPress={onIconPress}>
-          <Image
-            style={imageStyle}
-            source={iconSource}
-          />
+          <Ionicons
+              name={iconSource}
+              color="white"
+              size={0.08 * SCREEN_WIDTH}
+            />
         </TouchableOpacity>
       </View>
     </View>

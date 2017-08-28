@@ -129,6 +129,7 @@ class LoginScreen extends Component {
           transparent={true}
           presentationStyle={'overFullScreen'}
           onShow={() => setTimeout(() => this.setState({ modal: false }), 4000)}
+          onRequestClose={() => {  }}
         >
           {this.renderContent()}
         </Modal>
