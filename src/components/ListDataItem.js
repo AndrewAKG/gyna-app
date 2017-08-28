@@ -110,30 +110,32 @@ class ListDataItem extends React.Component {
     } = styles;
 
     return (
-      <View style={{ flex: 1, margin: 10 }}>
-        <View style={containerStyle}>
-          <View style={pdfPicContainer}>
-            {this.renderIcon()}
+      <TouchableWithoutFeedback onPress={this.props.onArrowPress}>
+        <View style={{ flex: 1, margin: 10 }}>
+          <View style={containerStyle}>
+            <View style={pdfPicContainer}>
+              {this.renderIcon()}
+            </View>
+            <View style={textContainer}>
+              <Text style={textStyle}>
+                {this.props.title}
+              </Text>
+            </View>
+            <TouchableOpacity onPress={this.props.onArrowPress}>
+              <Icon
+                iconStyle={arrowIcon}
+                name='navigate-next'
+                color='white'
+                size={0.1 * SCREEN_WIDTH}
+                containerStyle={arrowContainer}
+              />
+            </TouchableOpacity>
           </View>
-          <View style={textContainer}>
-            <Text style={textStyle}>
-              {this.props.title}
-            </Text>
+          <View style={{ flex: 1 }}>
+            <Divider style={DividerStyle} />
           </View>
-          <TouchableOpacity onPress={this.props.onArrowPress}>
-            <Icon
-              iconStyle={arrowIcon}
-              name='navigate-next'
-              color='white'
-              size={0.1 * SCREEN_WIDTH}
-              containerStyle={arrowContainer}
-            />
-          </TouchableOpacity>
         </View>
-        <View style={{ flex: 1 }}>
-          <Divider style={DividerStyle} />
-        </View>
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

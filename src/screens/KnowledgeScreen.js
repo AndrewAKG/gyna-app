@@ -184,7 +184,7 @@ class KnowledgeScreen extends Component {
               placeholder="Search"
               iconSource={
                 (!this.state.search) ?
-                  require('../../assets/icons/search.png') : require('../../assets/icons/x.png')
+                  'ios-search-outline' : 'ios-close-circle'
               }
               onIconPress={
                 (!this.state.search) ?

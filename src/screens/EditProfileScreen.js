@@ -254,7 +254,7 @@ const styles = {
   item: {
     padding: 10,
     fontSize: 18,
-    height: 44,
+    height: 44
   },
   buttonStyle: {
     borderRadius: 0.05 * SCREEN_HEIGHT,
