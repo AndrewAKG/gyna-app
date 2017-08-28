@@ -200,7 +200,6 @@ class SignUpScreen extends Component {
             />
 
             <BirthdateInput
-              inputStyle={{ height: 0.08 * SCREEN_HEIGHT }}
               date={this.state.date}
               onDateChange={(date) => this.setState({ date: date })}
               show={true}
@@ -236,7 +235,6 @@ const styles = {
     backgroundColor: '#00C1FF',
     width: 0.8 * SCREEN_WIDTH,
     margin: 10,
-    marginTop: 30
   },
   inputStyle: {
     color: 'white',

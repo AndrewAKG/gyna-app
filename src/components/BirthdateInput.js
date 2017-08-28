@@ -46,8 +46,8 @@ class BirthdateInput extends React.Component {
             position: 'absolute',
             left: 10,
             top: 3,
-            width: 0.08 * SCREEN_WIDTH,
-            height: 0.08 * SCREEN_WIDTH
+            width: 0.1 * SCREEN_WIDTH,
+            height: 0.1 * SCREEN_WIDTH
           },
           dateInput: [{
             borderColor: 'white',
@@ -91,8 +91,7 @@ class BirthdateInput extends React.Component {
 
 const styles = {
   pickerStyle: {
-    width: 0.75 * SCREEN_WIDTH,
-    height: 0.08 * SCREEN_HEIGHT,
+    width: 0.8 * SCREEN_WIDTH,
     paddingTop: 20
   }
 };
