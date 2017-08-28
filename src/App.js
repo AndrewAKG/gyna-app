@@ -80,7 +80,7 @@ export default class App extends React.Component {
 
   state = {
     appLoaded: false,
-    notification: {}
+   // notification: {}
   }
 
   componentWillMount() {
@@ -88,6 +88,7 @@ export default class App extends React.Component {
     registerForNotifications();
     Notifications.addListener((notification) => {
       const { data: { text }, origin } = notification;
+      console.log(Notifications+"lolooo");
       if (origin === 'received' && text) {
         Alert.alert('New Push Notifiction',
           text, [{ text: 'ok' }]

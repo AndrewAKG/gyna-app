@@ -268,21 +268,21 @@ const styles = {
   userNameStyle: {
     color: 'white',
     backgroundColor: 'rgba(0,0,0,0)',
-    fontSize: 16,
+    fontSize:  0.045 * SCREEN_WIDTH,
     marginRight: 0.47 * SCREEN_WIDTH,
     fontWeight: '500'
   },
   emailPhoneStyle: {
     color: 'white',
     backgroundColor: 'rgba(0,0,0,0)',
-    fontSize: 16,
+    fontSize: 0.045 * SCREEN_WIDTH,
     marginRight: 0.55 * SCREEN_WIDTH,
     fontWeight: '500'
   },
   dateStyle: {
     color: 'white',
     backgroundColor: 'rgba(0,0,0,0)',
-    fontSize: 16,
+    fontSize:  0.045 * SCREEN_WIDTH,
     marginRight: 0.33 * SCREEN_WIDTH,
     fontWeight: '500'
   },
