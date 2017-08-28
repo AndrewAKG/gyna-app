@@ -76,29 +76,40 @@ class NotificationsScreen extends Component {
           <Spinner />
         </View>
       );
-    } else if (this.props.notifications.length == 0) {
+    } else if (this.props.notifications) {
+      if (this.props.notifications.length == 0) {
+        return (
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+              No Notifications at the moment
+            </Text>
+          </View>
+        );
+      } else {
+        return (
+          <ScrollView>
+            <FlatList
+              data={this.props.notifications}
+              renderItem={({ item }) =>
+                <ListDataItem
+                  title={(item.title) ? item.title : item.name}
+                  iconType={this.fetchType(item)}
+                  onArrowPress={this.navigateToScreens(item)}
+                />
+              }
+              keyExtractor={(item, index) => index}
+            />
+          </ScrollView>
+        );
+      }
+    }
+    else {
       return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
-            No Notifications at the moment
+            connection error
           </Text>
         </View>
-      );
-    } else {
-      return (
-        <ScrollView>
-          <FlatList
-            data={this.props.notifications}
-            renderItem={({ item }) =>
-              <ListDataItem
-                title={(item.title) ? item.title : item.name}
-                iconType={this.fetchType(item)}
-                onArrowPress={this.navigateToScreens(item)}
-              />
-            }
-            keyExtractor={(item, index) => index}
-          />
-        </ScrollView>
       );
     }
   }
