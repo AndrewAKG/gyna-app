@@ -83,42 +83,6 @@ class EditProfileScreen extends Component {
     }
   }
 
-  renderContent() {
-    if (this.props.loading) {
-      return (
-        <View style={styles.feedbackStyle}>
-          <Spinner />
-        </View>
-      );
-    }
-    else {
-      return (
-        <View style={styles.feedbackStyle}>
-          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
-            {console.log(this.props.error)}
-            {this.props.error}
-          </Text>
-        </View>
-      );
-    }
-  }
-
-  renderModal() {
-    if (this.props.loading || this.props.success === 'false') {
-      return (
-        <Modal
-          animationType={'fade'}
-          visible={this.state.modal}
-          transparent={true}
-          presentationStyle={'overFullScreen'}
-          onShow={() => setTimeout(() => this.setState({ modal: false }), 4000)}
-        >
-          {this.renderContent()}
-        </Modal>
-      );
-    }
-  }
-
   onUserNameChanged(text) {
     this.props.editUsername(text)
   }
@@ -151,6 +115,44 @@ class EditProfileScreen extends Component {
       );
     }
   }
+
+  renderContent() {
+    if (this.props.loading) {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Spinner />
+        </View>
+      );
+    }
+    else {
+      return (
+        <View style={styles.feedbackStyle}>
+          <Text style={{ fontSize: 18, backgroundColor: 'transparent', color: 'white' }}>
+            {console.log(this.props.error)}
+            {this.props.error}
+          </Text>
+        </View>
+      );
+    }
+  }
+
+  renderModal() {
+    if (this.props.loading || this.props.success === 'false') {
+      return (
+        <Modal
+          animationType={'fade'}
+          visible={this.state.modal}
+          transparent={true}
+          presentationStyle={'overFullScreen'}
+          onShow={() => setTimeout(() => this.setState({ modal: false }), 4000)}
+          onRequestClose={() => { }}
+        >
+          {this.renderContent()}
+        </Modal>
+      );
+    }
+  }
+
 
   render() {
     const {

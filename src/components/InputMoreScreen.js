@@ -22,7 +22,7 @@ const InputMoreScreen = ({ value, placeholder, style, Type, secure, onChangeText
           value={value}
           secureTextEntry={secure}
           onChangeText={onChangeText}
-       //   returnKeyType='next'
+          underlineColorAndroid='transparent'
         />
       </View>
     </View>

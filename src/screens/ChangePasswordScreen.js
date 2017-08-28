@@ -49,6 +49,29 @@ class ChangePasswordScreen extends Component {
     this.props.confirmPasswordChanged(text);
   }
 
+  onChangeComplete(props) {
+    if (props.success === 'true') {
+      setTimeout(() => this.props.clearPassword(), 1000);
+      this.props.navigation.navigate('more');
+    }
+    else if (props.success === 'false') {
+      this.setState({ modal: true });
+      setTimeout(() => this.props.clearPassword(), 4000);
+    }
+    else if (props.loading) {
+      this.setState({ modal: true });
+    }
+  }
+
+  onNewPasswordChanged(text) {
+    this.props.newPasswordChanged(text);
+  }
+
+  onButtonPress() {
+    const { oldPassword, newPassword, confirmPassword } = this.props;
+    this.props.changePassword({ oldPassword, newPassword, confirmPassword });
+  }
+
   renderContent() {
     if (this.props.loading) {
       return (
@@ -77,34 +100,12 @@ class ChangePasswordScreen extends Component {
           transparent={true}
           presentationStyle={'overFullScreen'}
           onShow={() => setTimeout(() => this.setState({ modal: false }), 4000)}
+          onRequestClose={() => { }}
         >
           {this.renderContent()}
         </Modal>
       );
     }
-  }
-
-  onChangeComplete(props) {
-    if (props.success === 'true') {
-      setTimeout(() => this.props.clearPassword(), 1000);
-      this.props.navigation.navigate('more');
-    }
-    else if (props.success === 'false') {
-      this.setState({ modal: true });
-      setTimeout(() => this.props.clearPassword(), 4000);
-    }
-    else if (props.loading) {
-      this.setState({ modal: true });
-    }
-  }
-
-  onNewPasswordChanged(text) {
-    this.props.newPasswordChanged(text);
-  }
-
-  onButtonPress() {
-    const { oldPassword, newPassword, confirmPassword } = this.props;
-    this.props.changePassword({ oldPassword, newPassword, confirmPassword });
   }
 
   render() {

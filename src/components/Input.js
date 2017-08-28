@@ -54,6 +54,7 @@ class Input extends React.Component {
             secureTextEntry={secure}
             onChangeText={onChangeText}
             onSubmitEditing={onSubmit}
+            underlineColorAndroid='transparent'
           />
         </View>
       </View>

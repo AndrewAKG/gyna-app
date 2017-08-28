@@ -31,6 +31,7 @@ const SearchInput = ({
           onChangeText={onChangeText}
           returnKeyType={returnKeyType}
           onSubmitEditing={onSubmit}
+          underlineColorAndroid='transparent'
         />
       </View>
       <View style={{ flex: 2 }}>

@@ -23,8 +23,8 @@ class LoadingScreen extends Component {
 const styles = {
   LoadingImageStyle: {
     flex: 1,
-    width: 0.6 * width,
-    height: 0.3 * height
+    width: 0.5 * width,
+    height: 0.2 * height
   }
 };
 

@@ -63,6 +63,7 @@ class InputPassword extends React.Component {
             onChangeText={onChangeText}
             returnKeyType={returnKeyType}
             onSubmitEditing={onSubmit}
+            underlineColorAndroid='transparent'
           />
         </View>
 
