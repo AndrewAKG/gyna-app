@@ -84,14 +84,14 @@ const styles = {
   emailPhoneStyle: {
     color: 'white',
     backgroundColor: 'rgba(0,0,0,0)',
-    fontSize: 16,
+    fontSize: 0.045 * SCREEN_WIDTH,
     marginRight: 0.55 * SCREEN_WIDTH,
     fontWeight: '500'
   },
   dateStyle: {
     color: 'white',
     backgroundColor: 'rgba(0,0,0,0)',
-    fontSize: 16,
+    fontSize: 0.045 * SCREEN_WIDTH,
     marginRight: 0.5 * SCREEN_WIDTH,
     fontWeight: '500'
   },

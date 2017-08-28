@@ -1,9 +1,10 @@
 import { Permissions, Notifications } from 'expo';
 import { AsyncStorage } from 'react-native';
 import axios from 'axios';
-const PUSH_ENDPOINT = 'http://rallycoding.herokuapp.com/api/tokens';
+const PUSH_ENDPOINT = 'https://exp.host/--/api/v2/push/send';
 export default async () => {
   let previousToken = await AsyncStorage.getItem('pushtoken');
+  console.log(previousToken);
   if (previousToken) {
     return;
   } else {
@@ -12,9 +13,24 @@ export default async () => {
     if (status != 'granted') {
       return;
     }
+    let token = await Notifications.getExponentPushTokenAsync();
+   fetch(PUSH_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      token: {
+        value: token,
+       },
+       user: {
+        username: 'Brent',
+       },
+    }),
+  });
+    AsyncStorage.setItem('pushtoken', token);
   }
-  let token = await Notifications.getExponentPushTokenAsync();
-  await axios.post(PUSH_ENDPOINT, { token: { token } });
-  AsyncStorage.setItem('pushtoken', token);
+  
 };
 
