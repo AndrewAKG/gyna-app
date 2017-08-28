@@ -26,7 +26,7 @@ class BirthdateInput extends React.Component {
 
   renderPicker() {
     let today = new Date();
-    const { style, inputStyle,show } = this.props;
+    const { style, inputStyle, show } = this.props;
     return (
       <DatePicker
         style={[styles.pickerStyle, style]}
@@ -45,9 +45,9 @@ class BirthdateInput extends React.Component {
           dateIcon: {
             position: 'absolute',
             left: 10,
-            top: 6,
-            width: 0.1 * SCREEN_WIDTH,
-            height: 0.1 * SCREEN_WIDTH
+            top: 3,
+            width: 0.08 * SCREEN_WIDTH,
+            height: 0.08 * SCREEN_WIDTH
           },
           dateInput: [{
             borderColor: 'white',
@@ -91,7 +91,8 @@ class BirthdateInput extends React.Component {
 
 const styles = {
   pickerStyle: {
-    width: 0.81 * SCREEN_WIDTH,
+    width: 0.75 * SCREEN_WIDTH,
+    height: 0.08 * SCREEN_HEIGHT,
     paddingTop: 20
   }
 };
