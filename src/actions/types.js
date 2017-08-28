@@ -78,6 +78,7 @@ export const CLEAR_STATE = 'clear_state';
 /**Logout types */
 export const LOGOUT = 'logout';
 export const LOGOUT_USER_SUCCESS = 'logout_user_success';
+export const CLEAR_LOGOUT_SUCCESS = 'clear_logout_success';
 
 
 

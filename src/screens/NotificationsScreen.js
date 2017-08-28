@@ -26,7 +26,7 @@ class NotificationsScreen extends Component {
     )
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchNotifications();
   }
 
