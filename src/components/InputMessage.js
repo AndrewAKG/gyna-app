@@ -44,7 +44,7 @@ const styles = {
         borderColor: 'white',
         backgroundColor: '#5c1634',
         height: 0.2 * SCREEN_HEIGHT,
-        width: 0.8 * SCREEN_WIDTH,
+        width: 0.75 * SCREEN_WIDTH,
         marginHorizontal: 20,
         marginBottom: 20,
         marginTop: 5

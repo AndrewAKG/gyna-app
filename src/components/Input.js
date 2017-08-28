@@ -72,8 +72,8 @@ const styles = {
     borderWidth: 0.3,
     borderColor: 'white',
     backgroundColor: '#5c1634',
-    height: 0.095 * SCREEN_HEIGHT,
-    width: 0.8 * SCREEN_WIDTH,
+    height: 0.08 * SCREEN_HEIGHT,
+    width: 0.75 * SCREEN_WIDTH,
     margin: 10
   },
   inputStyle: {
@@ -87,8 +87,8 @@ const styles = {
     width: 0.6 * SCREEN_WIDTH
   },
   imageStyle: {
-    width: 0.1 * SCREEN_WIDTH,
-    height: 0.1* SCREEN_WIDTH,
+    width: 0.08 * SCREEN_WIDTH,
+    height: 0.08 * SCREEN_WIDTH,
     margin: 15
   }
 }
