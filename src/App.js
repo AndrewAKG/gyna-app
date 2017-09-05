@@ -15,7 +15,7 @@ import registerForNotifications from './services/Push_notifications';
 const store = configureStore();
 const assets = [
   require('../assets/icons/1.png'),
-  require('../assets/icons/image.png'),  
+  require('../assets/icons/image.png'),
   require('../assets/icons/2.png'),
   require('../assets/icons/bigZ.png'),
   require('../assets/icons/rsz_bigz.png'),
@@ -84,14 +84,12 @@ export default class App extends React.Component {
   }
 
   componentWillMount() {
-    
+
     registerForNotifications();
     Notifications.addListener((notification) => {
-      const { data: { text }, origin } = notification;
-      if (origin === 'received' && text) {
-        Alert.alert('New Push Notifiction',
-          text, [{ text: 'ok' }]
-        );
+      const { origin } = notification;
+      if (origin === 'received') {
+        console.log('recieved');
       }
     });
   }
