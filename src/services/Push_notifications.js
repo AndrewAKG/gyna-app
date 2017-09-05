@@ -26,11 +26,10 @@ export default async () => {
        },
        user: {
         username: 'Brent',
-       },
+       }
     }),
   });
     AsyncStorage.setItem('pushtoken', token);
   }
-  
 };
 
