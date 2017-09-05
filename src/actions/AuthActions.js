@@ -80,8 +80,6 @@ export const addressChanged = (text) => {
 export const signUpUser = ({ username, password, email, phone, address, anniversaryDate, name }) => {
   return (dispatch) => {
     dispatch({ type: SIGNUP_USER });
-    console.log(email + 'email');
-    console.log(anniversaryDate + 'date');
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (re.test(email)) {
       var formData = new FormData();
@@ -121,7 +119,7 @@ export const signUpUser = ({ username, password, email, phone, address, annivers
 };
 
 const signUpSuccess = (dispatch, token) => {
-  console.log('TOKEN WASAL: ', token);
+  console.log('TOKEN: ', token);
   dispatch({ type: SIGNUP_USER_SUCCESS, result: token });
 };
 
@@ -195,7 +193,7 @@ export const loginUser = ({ username, password, checked }) => {
 };
 
 const loginSuccess = (dispatch, token, checked, username, password) => {
-  console.log('TOKEN WASAL: ', token);
+  console.log('TOKEN: ', token);
   console.log(checked, username, password);
   if (checked) {
     try {
@@ -224,7 +222,6 @@ export const logout = () => {
 };
 
 const logoutSuccess = (dispatch) => {
-  console.log('Removed');
   dispatch({ type: LOGOUT_USER_SUCCESS, resultLogout: 'success' });
 };
 

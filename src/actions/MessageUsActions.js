@@ -103,7 +103,6 @@ export const sendMessage = ({ name, subject, message, email }) => {
 };
 
 export const sendIssue = ({ name, subject, message, email }) => {
-  console.log('gh hna');
   return (dispatch) => {
     dispatch({ type: SEND_ISSUE });
 
@@ -123,10 +122,7 @@ export const sendIssue = ({ name, subject, message, email }) => {
             formData.append('message', message);
             formData.append('api_key', token);
             formData.append('email', email)
-            console.log(name + ' name');
-            console.log(subject + ' subjecct');
-            console.log(email + ' email');
-            console.log(message + ' message');
+            
             fetch('http://scope-rubix.com/gyna-backend/public_html/api_auth/message', {
               method: 'POST',
               headers: {

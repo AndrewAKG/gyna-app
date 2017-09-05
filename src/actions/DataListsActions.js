@@ -24,7 +24,6 @@ export const emptySearchWord = () => {
 };
 
 export const searchContent = ({ keyword }) => {
-  console.log('D5AL ACTIONS', keyword);
   return (dispatch) => {
     dispatch({ type: SEARCH_FETCH });
 
