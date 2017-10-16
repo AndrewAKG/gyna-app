@@ -13,6 +13,10 @@ const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class AnotherIssue extends React.Component {
 
+
+
+  
+
   render() {
     const {
       inputStyle,
